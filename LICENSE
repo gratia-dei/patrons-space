@@ -4,6 +4,6 @@ Copyright (c) 2021 Patrons Space Contributors
 (available on: https://github.com/pranmaris/patrons-space/contributors)
 
 This repository content is licensed under:
- - CC-BY-SA 4.0: all files in data directory (more details: others/LICENSE-CC-BY-SA-4.0)
- - MIT: all other files (more details: others/LICENSE-MIT)
+ - MIT: all files with following extensions: *.css, *.html, *.js, *.php (more details: any/others/LICENSE-MIT)
+ - CC-BY-SA 4.0: all other files (more details: any/others/LICENSE-CC-BY-SA-4.0)
 
