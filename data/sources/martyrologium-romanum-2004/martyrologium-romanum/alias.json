@@ -1,0 +1,27 @@
+{
+    "01": "ianuarius",
+    "02": "februarius",
+    "03": "martius",
+    "04": "aprilus",
+    "05": "maius",
+    "06": "iunius",
+    "07": "iulius",
+    "08": "augustus",
+    "09": "september",
+    "10": "october",
+    "11": "november",
+    "12": "december",
+
+    "ian.": "ianuarius",
+    "feb.": "februarius",
+    "mar.": "martius",
+    "apr.": "aprilus",
+    "maii": "maius",
+    "iun.": "iunius",
+    "iul.": "iulius",
+    "aug.": "augustus",
+    "sept.": "september",
+    "oct.": "october",
+    "nov.": "november",
+    "dec.": "december"
+}
