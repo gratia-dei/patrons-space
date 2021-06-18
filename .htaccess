@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
-  ErrorDocument 404 /
+  #ErrorDocument 404 /not-found
 
   RewriteEngine On
   RewriteBase /
@@ -7,7 +7,8 @@
   RewriteCond %{REQUEST_FILENAME} !-f
 
   RewriteRule ^favicon\.ico$ /resources/images/ico/favicon.ico [R=301,L]
-  RewriteRule ^[^.]*$ /resources/html/index.html [L]
+  RewriteRule ^(.+)/data$ /data/$1.json [L]
+  RewriteRule ^[^.]*$ /resources/php/index.php [L]
 </IfModule>
 
 <IfModule mod_headers.c>
