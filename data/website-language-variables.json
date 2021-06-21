@@ -1,0 +1,23 @@
+{
+  "comming-soon": {
+    "en": "comming soon",
+    "pl": "już wkrótce"
+  },
+
+  "email": {
+    "en": "E-mail"
+  },
+
+  "github": {
+    "en": "GitHub"
+  },
+
+  "original-language": {
+    "en": "original language",
+    "pl": "język oryginalny"
+  },
+
+  "service-name": {
+    "en": "Patrons Space"
+  }
+}

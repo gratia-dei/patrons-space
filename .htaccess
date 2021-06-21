@@ -7,7 +7,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
 
   RewriteRule ^favicon\.ico$ /resources/images/ico/favicon.ico [R=301,L]
-  RewriteRule ^(.+)/data$ /data/$1.json [L]
+  RewriteRule ^(.+)/data/?$ /data/$1.json [L]
   RewriteRule ^[^.]*$ /resources/php/index.php [L]
 </IfModule>
 

@@ -6,39 +6,46 @@ const CONTENT_MODE_SUFFIX = 'content';
 const DOMAIN_PATTERN = '/patrons([.][a-z]+)?[.]space$/';
 const PROJECT_DIR = '/patrons-space/';
 
-const RESOURCES_PATH = '/resources/';
+const ROOT_PATH = '/';
+const RESOURCES_PATH = ROOT_PATH . 'resources/';
+const DATA_PATH = ROOT_PATH . 'data/';
 const HTML_TEMPLATES_PATH = RESOURCES_PATH . 'html/';
-const STYLES_PATH = RESOURCES_PATH . 'css/';
 const PHP_PATH = RESOURCES_PATH . 'php/';
+const STYLES_PATH = RESOURCES_PATH . 'css/';
 
 $host = $_SERVER['SERVER_NAME'];
 $language = rtrim(preg_replace(DOMAIN_PATTERN, '', $host), '.');
-
-$rootPath = preg_replace('~' . PROJECT_DIR . '.*~', PROJECT_DIR, __FILE__);
 $requestPath = rtrim($_SERVER['REQUEST_URI'], '/');
 $lastRequestPathElement = basename($requestPath);
 
-if ($lastRequestPathElement === 'content') {
+if ($lastRequestPathElement === CONTENT_MODE_SUFFIX) {
     $suffix = CONTENT_MODE_SUFFIX;
 } else {
     $suffix = FULL_MODE_SUFFIX;
 }
-
+$rootPath = preg_replace('~' . PROJECT_DIR . '.*~', PROJECT_DIR, __FILE__);
 $htmlPath = $rootPath . HTML_TEMPLATES_PATH . 'index.html';
 $bodyPath = $rootPath . HTML_TEMPLATES_PATH . "body-$suffix.html";
 $stylePath = STYLES_PATH . "style-$suffix.css";
+$languageVarsPath = $rootPath . DATA_PATH . 'website-language-variables.json';
+$languagesPath = $rootPath . DATA_PATH . 'languages.json';
 
-$html = file_get_contents($htmlPath);
-$body = file_get_contents($bodyPath);
+require($rootPath . PHP_PATH . '/content.php');
+$contentObj = new Content($language, $languageVarsPath, $languagesPath);
 
-require($rootPath . PHP_PATH . 'content.php');
-$contentObj = new Content();
-$title = $contentObj->getTitle();
-$content = $contentObj->getContent();
+$bodyVars = [
+    'content' => $contentObj->getContent(),
+];
+$body = $contentObj->getFileContent($bodyPath, $bodyVars);
 
-$html = str_replace('#TITLE#', $title, $html);
-$html = str_replace('#STYLE#', $stylePath, $html);
-$html = str_replace('#BODY#', $body, $html);
-$html = str_replace('#CONTENT#', $content, $html);
+$htmlVars = [
+    'title' => $contentObj->getTitle(),
+    'style' => $stylePath,
+    'body' => $body,
+];
+$html = $contentObj->getFileContent($htmlPath, $htmlVars);
+
+$websiteTranslatedVariables = $contentObj->getWebsiteTranslatedVariables();
+$html = $contentObj->getReplacedContent($html, $websiteTranslatedVariables, true);
 
 echo $html;
