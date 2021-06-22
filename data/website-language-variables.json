@@ -1,23 +1,39 @@
 {
-  "comming-soon": {
+  "lang-comming-soon": {
     "en": "comming soon",
     "pl": "już wkrótce"
   },
 
-  "email": {
-    "en": "E-mail"
+  "lang-contact": {
+    "en": "contact",
+    "pl": "kontakt"
   },
 
-  "github": {
-    "en": "GitHub"
+  "lang-email-to-us": {
+    "en": "mailto:patrons@patrons.space"
   },
 
-  "original-language": {
+  "lang-sources": {
+    "en": "sources",
+    "pl": "źródła"
+  },
+
+  "lang-link-to-source": {
+    "en": "http://source.patrons.space"
+  },
+
+  "lang-original-language": {
     "en": "original language",
     "pl": "język oryginalny"
   },
 
-  "service-name": {
+  "lang-language": {
+    "en": "language",
+    "la": "lingua",
+    "pl": "język"
+  },
+
+  "lang-service-name": {
     "en": "Patrons Space"
   }
 }

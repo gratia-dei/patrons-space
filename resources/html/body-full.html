@@ -1,9 +1,32 @@
 <div class="container">
 
   <header>
-    <div id="header-title">
-      <h1>#service-name|original#</h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">#lang-service-name|original#</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#lang-email-to-us|original#">#lang-contact|capitalize-all#</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#lang-link-to-source|original#">#lang-sources|capitalize-all#</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                #lang-language|capitalize#: #selected-language#
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+#selectable-languages-list#
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <hr />
   </header>
 
@@ -13,7 +36,7 @@
 
   <footer>
     <hr />
-    ©2021 <a href="#">#service-name|original#</a> (beta) <!--| <a href="mailto:patrons@patrons.space">#email|original#</a>--> | <a href="http://source.patrons.space">#github|original#</a>
+    ©2021 <a href="#">#lang-service-name|original#</a> (beta)
     <br />
     <br />
   </footer>
