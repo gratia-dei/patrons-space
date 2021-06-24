@@ -15,11 +15,12 @@ namespace {
         const MODIFIER_ORIGINAL = 'original';
         const MODIFIER_UPPERCASE = 'uppercase';
 
+        const LANGUAGE_VARIABLE_NAME = 'lang-language';
+        const ORIGINAL_VARIABLE_NAME = 'lang-original';
+
         const ORIGINAL_LANGUAGE_CODE = '??';
         const ACTIVE_LANGUAGE_CLASS = 'active';
-        const ORIGINAL_LANGUAGE_VARIABLE_NAME = 'lang-original-language';
         const TITLE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-service-name' . self::MODIFIER_SEPARATOR . self::MODIFIER_ORIGINAL . self::VARIABLE_NAME_SIGN;
-        const ORIGINAL_LANGUAGE_VARIABLE = self::VARIABLE_NAME_SIGN . self::ORIGINAL_LANGUAGE_VARIABLE_NAME . self::VARIABLE_NAME_SIGN;
 
         private $language;
         private $websiteTranslatedVariables;
@@ -90,7 +91,8 @@ namespace {
 
         public function getMissingTranslationMessage(string $originalLanguage): string
         {
-            $message = self::ORIGINAL_LANGUAGE_VARIABLE . ': ' . self::VARIABLE_NAME_SIGN . $originalLanguage . self::VARIABLE_NAME_SIGN . ' (' . $originalLanguage . ')';
+            $message = self::VARIABLE_NAME_SIGN . self::LANGUAGE_VARIABLE_NAME . self::VARIABLE_NAME_SIGN
+                . ': ' . self::VARIABLE_NAME_SIGN . $originalLanguage . self::VARIABLE_NAME_SIGN . ' (' . $originalLanguage . ')';
 
             $languagesVariables = $this->getLanguages();
             $message = $this->getReplacedContent($message, $languagesVariables);
@@ -179,7 +181,7 @@ namespace {
             }
 
             $variables = $this->getWebsiteTranslatedVariables();
-            $content = self::VARIABLE_NAME_SIGN . self::ORIGINAL_LANGUAGE_VARIABLE_NAME . self::VARIABLE_NAME_SIGN;
+            $content = self::VARIABLE_NAME_SIGN . self::ORIGINAL_VARIABLE_NAME . self::VARIABLE_NAME_SIGN;
 
             return $this->getReplacedContent($content, $variables, true);
         }
@@ -187,8 +189,8 @@ namespace {
         public function getSelectableLanguagesListValues(): array
         {
             $codes = ['' => ''];
-            $translated = ['' => self::VARIABLE_NAME_SIGN . self::ORIGINAL_LANGUAGE_VARIABLE_NAME . self::VARIABLE_NAME_SIGN];
-            $original = ['' => self::VARIABLE_NAME_SIGN . self::ORIGINAL_LANGUAGE_VARIABLE_NAME . self::MODIFIER_SEPARATOR . self::MODIFIER_ORIGINAL . self::VARIABLE_NAME_SIGN];
+            $translated = ['' => self::VARIABLE_NAME_SIGN . self::ORIGINAL_VARIABLE_NAME . self::VARIABLE_NAME_SIGN];
+            $original = ['' => self::VARIABLE_NAME_SIGN . self::ORIGINAL_VARIABLE_NAME . self::MODIFIER_SEPARATOR . self::MODIFIER_ORIGINAL . self::VARIABLE_NAME_SIGN];
 
             $allLanguages = $this->getLanguages();
             foreach ($allLanguages as $codeOriginal => $name) {
