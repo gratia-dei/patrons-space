@@ -2,7 +2,7 @@
 
 namespace {
 
-    class Content
+    class ContentBase
     {
         const ENCODING = 'UTF-8';
 
@@ -22,10 +22,17 @@ namespace {
         const ACTIVE_LANGUAGE_CLASS = 'active';
         const TITLE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-service-name' . self::MODIFIER_SEPARATOR . self::MODIFIER_ORIGINAL . self::VARIABLE_NAME_SIGN;
 
+        private $contentObj;
+
         private $language;
         private $websiteTranslatedVariables;
 
-        public function __construct(string $language, string $languageVariablesFilePath, string $languagesFilePath)
+        public function __construct(object $contentObj)
+        {
+            $this->contentObj = $contentObj;
+        }
+
+        public function setLanguages(string $language, string $languageVariablesFilePath, string $languagesFilePath)
         {
             $this->language = $language;
             $this->websiteTranslatedVariables = $this->getTranslatedVariables($language, $languageVariablesFilePath);
@@ -155,11 +162,9 @@ namespace {
             return self::TITLE_VARIABLE;
         }
 
-        public function getContent(): string
+        public function getContent(string $httpStatusCode, string $requestPath): string
         {
-            $content = '#lang-comming-soon# ...';
-
-            return $content;
+            return $this->contentObj->getContent($requestPath, httpStatusCode);
         }
 
         public function getSelectedLanguage(): string
