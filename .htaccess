@@ -1,14 +1,14 @@
 <IfModule mod_rewrite.c>
-  #ErrorDocument 404 /not-found
+  ErrorDocument 403 /resources/php/index.php
+  ErrorDocument 404 /resources/php/index.php
 
   RewriteEngine On
   RewriteBase /
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-
-  RewriteRule ^favicon\.ico$ /resources/images/ico/favicon.ico [R=301,L]
-  RewriteRule ^(.+)/data/?$ /data/$1.json [L]
-  RewriteRule ^[^.]*$ /resources/php/index.php [L]
+  RewriteRule ^favicon\.ico$ /files/resources/images/ico/favicon.ico [R=301,END]
+  RewriteRule ^(.+)/data/?$ /data/$1.json [END]
+  RewriteRule ^files/(.*)$ $1 [END]
+  RewriteRule ^.*$ /resources/php/index.php [END]
 </IfModule>
 
 <IfModule mod_headers.c>

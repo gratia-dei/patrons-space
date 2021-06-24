@@ -152,17 +152,14 @@ namespace {
 
         public function getTitle(): string
         {
-            $variables = $this->getWebsiteTranslatedVariables();
-
-            return $this->getReplacedContent(self::TITLE_VARIABLE, $variables);
+            return self::TITLE_VARIABLE;
         }
 
         public function getContent(): string
         {
-            $variables = $this->getWebsiteTranslatedVariables();
             $content = '#lang-comming-soon# ...';
 
-            return $this->getReplacedContent($content, $variables, true);
+            return $content;
         }
 
         public function getSelectedLanguage(): string
