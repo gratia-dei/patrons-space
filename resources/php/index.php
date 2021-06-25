@@ -25,12 +25,11 @@ if (basename($requestPath) === CONTENT_MODE_SUFFIX) {
 } else {
     $suffix = FULL_MODE_SUFFIX;
 }
-$htmlPath = $pathsObj->getHtmlPath(true) . 'index.html';
-$bodyPath = $pathsObj->getHtmlPath(true) . "body-$suffix.html";
-$selectableLanguagesListPath = $pathsObj->getHtmlPath(true) . 'selectable-languages-list-item.html';
-$stylePath = $pathsObj->getStylesPath() . "style-$suffix.css";
-$languageVarsPath = $pathsObj->getDataPath(true) . 'website-language-variables.json';
-$languagesPath = $pathsObj->getDataPath(true) . 'languages.json';
+$htmlPath = $pathsObj->getHtmlPath() . 'index.html';
+$bodyPath = $pathsObj->getHtmlPath() . "body-$suffix.html";
+$selectableLanguagesListPath = $pathsObj->getHtmlPath() . 'selectable-languages-list-item.html';
+$languageVarsPath = $pathsObj->getDataPath() . 'website-language-variables.json';
+$languagesPath = $pathsObj->getDataPath() . 'languages.json';
 
 $contentBaseObj->setLanguages($language, $languageVarsPath, $languagesPath);
 
@@ -48,7 +47,6 @@ $body = $contentBaseObj->getFileContent($bodyPath, $bodyVars);
 
 $htmlVars = [
     'title' => $contentBaseObj->getTitle(),
-    'style' => $stylePath,
     'body' => $body,
 ];
 $html = $contentBaseObj->getFileContent($htmlPath, $htmlVars);

@@ -6,33 +6,28 @@ namespace {
     {
         const PROJECT_DIR = '/patrons-space/';
 
-        public static function getRootPath(bool $getFullPath = true): string
+        public function getRootPath(bool $getDocumentRootPath = false): string
         {
-            if ($getFullPath) {
+            if (!$getDocumentRootPath) {
                 return preg_replace('~' . self::PROJECT_DIR . '.*~', self::PROJECT_DIR, __FILE__);
             }
 
             return '/';
         }
 
-        public static function getResourcesPath(bool $getFullPath = true): string
+        public function getResourcesPath(bool $getDocumentRootPath = false): string
         {
-            return self::getRootPath($getFullPath) . 'resources/';
+            return $this->getRootPath($getDocumentRootPath) . 'resources/';
         }
 
-        public static function getDataPath(bool $getFullPath = true): string
+        public function getDataPath(bool $getDocumentRootPath = false): string
         {
-            return self::getRootPath($getFullPath) . 'data/';
+            return $this->getRootPath($getDocumentRootPath) . 'data/';
         }
 
-        public static function getHtmlPath(bool $getFullPath = true): string
+        public function getHtmlPath(bool $getDocumentRootPath = false): string
         {
-            return self::getResourcesPath($getFullPath) . 'html/';
-        }
-
-        public static function getStylesPath(bool $getFullPath = true): string
-        {
-            return self::getResourcesPath($getFullPath) . 'css/';
+            return $this->getResourcesPath($getDocumentRootPath) . 'html/';
         }
     }
 }
