@@ -7,10 +7,10 @@ abstract class Content
     protected const VARIABLE_NAME_SIGN = '#';
     protected const MODIFIER_SEPARATOR = '|';
 
-    private const MODIFIER_CAPITALIZE = 'capitalize';
-    private const MODIFIER_CAPITALIZE_ALL = 'capitalize-all';
+    protected const MODIFIER_CAPITALIZE = 'capitalize';
+    protected const MODIFIER_CAPITALIZE_ALL = 'capitalize-all';
     protected const MODIFIER_ORIGINAL = 'original';
-    private const MODIFIER_UPPERCASE = 'uppercase';
+    protected const MODIFIER_UPPERCASE = 'uppercase';
 
     private const LANGUAGE_VARIABLE_NAME = 'lang-language';
 

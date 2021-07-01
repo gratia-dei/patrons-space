@@ -14,9 +14,10 @@ class IndexContent extends Content
     {
         $originalContent = $this->getOriginalHtmlFileContent('index.html');
 
+        list($title, $content) = $this->bodyContent->getTitleAndContent();
         $variables = [
-            'title' => $this->bodyContent->getTitle(),
-            'body' => $this->bodyContent->getContent(),
+            'title' => $title,
+            'body' => $content,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 

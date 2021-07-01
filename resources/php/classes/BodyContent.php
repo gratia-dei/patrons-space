@@ -18,37 +18,39 @@ class BodyContent extends Content
         $this->mainContent = new MainContent();
     }
 
-    public function getTitle(): string
-    {
-        $requestPath = $this->getEnvironment()->getRequestPath();
-
-        return $this->mainContent->getTitle($requestPath);
-    }
-
-    public function getContent(): string
+    public function getTitleAndContent(): array
     {
         $protocol = $this->getEnvironment()->getHostProtocol();
         $domain = $this->getEnvironment()->getHostDomain();
         $requestPath = $this->getEnvironment()->getRequestPath();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
 
-        $variables = [
-            'content' => $this->mainContent->getContent($requestPath, $httpStatusCode),
-        ];
-
-        if (basename($requestPath) === self::RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY) {
+        $variables = [];
+        if ($this->isContentOnlySuffixOnRequestPath($requestPath)) {
             $htmlFileName = 'body-content.html';
         } else {
             $htmlFileName = 'body-full.html';
-
             $variables['selected-language'] = $this->getSelectedLanguageName();
             $variables['selectable-languages-list'] = $this->getSelectableLanguagesList($protocol, $domain, $requestPath);
         }
+        list($title, $variables['content']) = $this->mainContent->getTitleAndContent($requestPath, $httpStatusCode);
 
         $originalContent = $this->getOriginalHtmlFileContent($htmlFileName);
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
-        return $replacedContent;
+        return [$title, $replacedContent];
+    }
+
+    private function isContentOnlySuffixOnRequestPath(string &$requestPath): bool
+    {
+        $result = false;
+
+        if (basename($requestPath) === self::RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY) {
+            $requestPath = dirname($requestPath);
+            $result = true;
+        }
+
+        return $result;
     }
 
     private function getSelectedLanguageName(): string

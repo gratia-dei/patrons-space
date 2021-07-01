@@ -24,9 +24,9 @@ class Environment
         return rtrim($requestPath, '/');
     }
 
-    public function getHttpStatusCode(): string
+    public function getHttpStatusCode(): int
     {
-        return $this->getFromServerGlobal('REDIRECT_STATUS');
+        return (int) $this->getFromServerGlobal('REDIRECT_STATUS');
     }
 
     public function getHostProtocol(): string
