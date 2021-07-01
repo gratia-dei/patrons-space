@@ -1,6 +1,6 @@
 <?php
 
-class MainContent extends Content
+class MainContentManager extends Content
 {
     private const DEFAULT_TITLE = self::VARIABLE_NAME_SIGN . 'lang-service-name' . self::MODIFIER_SEPARATOR . self::MODIFIER_ORIGINAL . self::VARIABLE_NAME_SIGN;
     private const DEFAULT_CONTENT = self::VARIABLE_NAME_SIGN . 'lang-comming-soon' . self::VARIABLE_NAME_SIGN;
@@ -26,10 +26,15 @@ class MainContent extends Content
 
     private function getMainContentObjectForParams(string $path, int $httpStatusCode): ?object
     {
-        $object = null;
+        $class = 'MainContentForInvalidHttpStatusCode';
+        $object = new $class();
+        $params = [$class::PARAMS_KEY => $httpStatusCode];
+        if ($object->configure($params)) {
+            return $object;
+        }
 
-        //... todo
+        //...
 
-        return $object;
+        return null;
     }
 }

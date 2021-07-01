@@ -10,12 +10,12 @@ class BodyContent extends Content
     private const ORIGINAL_LANGUAGE_CODE = '??';
     private const ACTIVE_LANGUAGE_CLASS = 'active';
 
-    private $mainContent;
+    private $mainContentManager;
 
     public function __construct()
     {
         parent::__construct();
-        $this->mainContent = new MainContent();
+        $this->mainContentManager = new MainContentManager();
     }
 
     public function getTitleAndContent(): array
@@ -33,7 +33,7 @@ class BodyContent extends Content
             $variables['selected-language'] = $this->getSelectedLanguageName();
             $variables['selectable-languages-list'] = $this->getSelectableLanguagesList($protocol, $domain, $requestPath);
         }
-        list($title, $variables['content']) = $this->mainContent->getTitleAndContent($requestPath, $httpStatusCode);
+        list($title, $variables['content']) = $this->mainContentManager->getTitleAndContent($requestPath, $httpStatusCode);
 
         $originalContent = $this->getOriginalHtmlFileContent($htmlFileName);
         $replacedContent = $this->getReplacedContent($originalContent, $variables);

@@ -6,6 +6,7 @@
 
   "lang-contact": {
     "en": "contact",
+    "la": "contactus",
     "pl": "kontakt"
   },
 
@@ -13,10 +14,19 @@
     "en": "mailto:patrons.space@mypatrons.org"
   },
 
-  "lang-sources": {
-    "en": "sources",
-    "la": "fontes",
-    "pl": "źródła"
+  "lang-error-forbidden": {
+    "en": "You don't have permission to access this resource!",
+    "pl": "Nie masz dostępu do tego zasobu!"
+  },
+
+  "lang-error-not-found": {
+    "en": "Resource not found!",
+    "pl": "Zasób nie został znaleziony!"
+  },
+
+  "lang-error-other": {
+    "en": "An unexpected error has occured!",
+    "pl": "Wystąpił nieoczekiwany błąd!"
   },
 
   "lang-link-to-source": {
@@ -36,5 +46,11 @@
 
   "lang-service-name": {
     "en": "Patrons Space"
+  },
+
+  "lang-sources": {
+    "en": "sources",
+    "la": "fontes",
+    "pl": "źródła"
   }
 }

@@ -13,16 +13,16 @@ class IndexContent extends Content
     public function getContent(): string
     {
         $originalContent = $this->getOriginalHtmlFileContent('index.html');
+        $language = $this->getEnvironment()->getHostSubdomainOnly();
+        $websiteTranslatedVariables = $this->getTranslatedVariables($language, 'website-language-variables.json');
 
         list($title, $content) = $this->bodyContent->getTitleAndContent();
         $variables = [
-            'title' => $title,
+            'title' => $this->getReplacedContent($title, $websiteTranslatedVariables),
             'body' => $content,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
-        $language = $this->getEnvironment()->getHostSubdomainOnly();
-        $websiteTranslatedVariables = $this->getTranslatedVariables($language, 'website-language-variables.json');
         $translatedContent = $this->getReplacedContent($replacedContent, $websiteTranslatedVariables, true);
         $translatedAgainContent = $this->getReplacedContent($translatedContent, $websiteTranslatedVariables);
 
