@@ -2,7 +2,7 @@
 
 interface MainContentInterface
 {
-    public function configure(array $params): bool;
-    public function getTitle(): string;
+    public function configure(string $param): bool;
+    public function getTitle(string $prefix): string;
     public function getContent(): string;
 }

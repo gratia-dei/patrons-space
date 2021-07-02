@@ -1,6 +1,6 @@
 <?php
 
-class Paths
+class Path
 {
     private $environment;
 
@@ -9,17 +9,17 @@ class Paths
         $this->environment = new Environment();
     }
 
-    public function getJsonPath(string $subPath, bool $getDocumentRootPath = false): string
+    public function getDataPath(string $subPath = '', bool $getDocumentRootPath = false): string
     {
         return $this->getRootPath('data/' . $subPath, $getDocumentRootPath);
     }
 
-    public function getHtmlPath(string $subPath, bool $getDocumentRootPath = false): string
+    public function getHtmlPath(string $subPath = '', bool $getDocumentRootPath = false): string
     {
         return $this->getResourcesPath('html/' . $subPath, $getDocumentRootPath);
     }
 
-    private function getRootPath(string $subPath, bool $getDocumentRootPath = false): string
+    private function getRootPath(string $subPath = '', bool $getDocumentRootPath = false): string
     {
         if (!$getDocumentRootPath) {
             $rootPath = $this->environment->getRootDirectoryPath();
@@ -30,7 +30,7 @@ class Paths
         return $rootPath . $subPath;
     }
 
-    private function getResourcesPath(string $subPath, bool $getDocumentRootPath = false): string
+    private function getResourcesPath(string $subPath = '', bool $getDocumentRootPath = false): string
     {
         return $this->getRootPath('resources/' . $subPath, $getDocumentRootPath);
     }

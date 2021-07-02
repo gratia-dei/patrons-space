@@ -17,7 +17,7 @@ abstract class Content
     private $environment;
     private $file;
     private $json;
-    private $paths;
+    private $path;
 
     private $translatedLanguagesVariablesCache;
 
@@ -26,7 +26,7 @@ abstract class Content
         $this->environment = new Environment();
         $this->file = new File();
         $this->json = new Json();
-        $this->paths = new Paths();
+        $this->path = new Path();
     }
 
     protected function getEnvironment(): Environment
@@ -34,9 +34,14 @@ abstract class Content
         return $this->environment;
     }
 
+    protected function getDataPath(string $subPath = ''): string
+    {
+        return $this->path->getDataPath($subPath);
+    }
+
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
     {
-        $jsonPath = $this->paths->getJsonPath($jsonFileName);
+        $jsonPath = $this->getDataPath($jsonFileName);
         $content = $this->file->getFileContent($jsonPath);
         $array = $this->json->decode($content);
 
@@ -45,7 +50,7 @@ abstract class Content
 
     protected function getOriginalHtmlFileContent(string $htmlFileName): string
     {
-        $htmlPath = $this->paths->getHtmlPath($htmlFileName);
+        $htmlPath = $this->path->getHtmlPath($htmlFileName);
         $content = $this->file->getFileContent($htmlPath);
 
         return $content;

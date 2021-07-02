@@ -1,9 +1,7 @@
 <?php
 
-class MainContentForInvalidHttpStatusCode extends Content implements MainContentInterface
+class MainContentForErrors extends Content implements MainContentInterface
 {
-    public const PARAMS_KEY = 'status-code';
-
     private const NONE_STATUS_CODE = 0;
     private const OTHER_STATUS_CODE = self::NONE_STATUS_CODE;
     private const VALID_STATUS_CODE = 200;
@@ -16,9 +14,9 @@ class MainContentForInvalidHttpStatusCode extends Content implements MainContent
 
     private $statusCode;
 
-    public function configure($params): bool
+    public function configure(string $param): bool
     {
-        $statusCode = $params[self::PARAMS_KEY] ?? self::NONE_STATUS_CODE;
+        $statusCode = (int) $param;
         if ($statusCode !== self::VALID_STATUS_CODE) {
             $this->statusCode = $statusCode;
 
@@ -28,18 +26,18 @@ class MainContentForInvalidHttpStatusCode extends Content implements MainContent
         return false;
     }
 
-    public function getTitle(): string
+    public function getTitle(string $prefix): string
     {
         $statusCode = $this->statusCode;
         $variableName = self::HTTP_STATUSES_DATA[$statusCode]
             ?? self::HTTP_STATUSES_DATA[self::OTHER_STATUS_CODE];
 
-        return self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN;
+        return $prefix . ': ' . self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN;
     }
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-invalid-http-status-code.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-errors.html');
 
         $statusCode = $this->statusCode;
         $variableName = self::HTTP_STATUSES_DATA[$statusCode]
