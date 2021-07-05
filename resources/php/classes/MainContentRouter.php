@@ -22,7 +22,7 @@ class MainContentRouter extends Content
     {
         $stepsData = [
             'MainContentForErrors' => $httpStatusCode,
-            //'MainContentForDates' => $path,
+            'MainContentForDates' => $path,
             //'MainContentForDataFiles' => $path,
             //'MainContentForDirectories' => $path,
             'MainContentForMainPage' => $path,
