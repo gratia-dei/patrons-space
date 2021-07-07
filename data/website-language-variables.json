@@ -29,6 +29,12 @@
     "pl": "Wystąpił nieoczekiwany błąd!"
   },
 
+  "lang-language": {
+    "en": "language",
+    "la": "lingua",
+    "pl": "język"
+  },
+
   "lang-link-to-source": {
     "en": "http://source.patrons.space"
   },
@@ -38,10 +44,14 @@
     "pl": "oryginalny"
   },
 
-  "lang-language": {
-    "en": "language",
-    "la": "lingua",
-    "pl": "język"
+  "lang-parent-directory": {
+    "en": "parent directory",
+    "pl": "katalog nadrzędny"
+  },
+
+  "lang-location": {
+    "en": "location",
+    "pl": "lokalizacja"
   },
 
   "lang-service-name": {

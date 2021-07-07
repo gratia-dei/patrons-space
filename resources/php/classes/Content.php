@@ -12,7 +12,8 @@ abstract class Content
     protected const MODIFIER_ORIGINAL = 'original';
     protected const MODIFIER_UPPERCASE = 'uppercase';
 
-    private const LANGUAGE_VARIABLE_NAME = 'lang-language';
+    private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
+    private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
 
     private $environment;
     private $file;
@@ -34,14 +35,14 @@ abstract class Content
         return $this->environment;
     }
 
-    protected function getDataPath(string $subPath = ''): string
+    protected function getLanguage(): string
     {
-        return $this->path->getDataPath($subPath);
+        return $this->environment->getHostSubdomainOnly();
     }
 
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
     {
-        $jsonPath = $this->getDataPath($jsonFileName);
+        $jsonPath = $this->path->getDataPath($jsonFileName);
         $content = $this->file->getFileContent($jsonPath);
         $array = $this->json->decode($content);
 
@@ -77,7 +78,7 @@ abstract class Content
 
                         if ($value !== null && $showUsingOriginalLanguageInfo && !$isOriginalModifier) {
                             $message = $this->getMissingTranslationMessage($originalLanguage);
-                            $value = '<span title="' . $message . '">' . $value . '</span>';
+                            $value = '<span class="original-language-info" title="' . $message . '">' . $value . '</span>';
                         }
                     }
                 } else {
@@ -101,7 +102,7 @@ abstract class Content
             return $result;
         }
 
-        $language = $this->environment->getHostSubdomainOnly();
+        $language = $this->getLanguage();
         $result = $this->getTranslatedVariables($language, 'languages.json');
 
         $this->translatedLanguagesVariablesCache = $result;
@@ -129,9 +130,20 @@ abstract class Content
         return $result;
     }
 
+    protected function getFinallyTranslatedContent(string $content, array $websiteTranslatedVariables): string
+    {
+        $variables = [
+            self::LANGUAGE_VARIABLE_NAME_BEFORE => self::VARIABLE_NAME_SIGN . self::LANGUAGE_VARIABLE_NAME_AFTER . self::VARIABLE_NAME_SIGN,
+        ];
+        $replacedContent = $this->getReplacedContent($content, $variables);
+        $translatedContent = $this->getReplacedContent($replacedContent, $websiteTranslatedVariables);
+
+        return $translatedContent;
+    }
+
     private function getMissingTranslationMessage(string $originalLanguage): string
     {
-        $originalMessage = self::VARIABLE_NAME_SIGN . self::LANGUAGE_VARIABLE_NAME . self::VARIABLE_NAME_SIGN
+        $originalMessage = self::VARIABLE_NAME_SIGN . self::LANGUAGE_VARIABLE_NAME_BEFORE . self::VARIABLE_NAME_SIGN
             . ': ' . self::VARIABLE_NAME_SIGN . $originalLanguage . self::VARIABLE_NAME_SIGN . ' (' . mb_strtoupper($originalLanguage) . ')';
 
         $languagesVariables = $this->getTranslatedLanguagesVariables();

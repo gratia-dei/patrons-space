@@ -24,8 +24,8 @@ class IndexContent extends Content
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
         $translatedContent = $this->getReplacedContent($replacedContent, $websiteTranslatedVariables, true);
-        $translatedAgainContent = $this->getReplacedContent($translatedContent, $websiteTranslatedVariables);
+        $finallyTranslatedContent = $this->getFinallyTranslatedContent($translatedContent, $websiteTranslatedVariables);
 
-        return $translatedAgainContent;
+        return $finallyTranslatedContent;
     }
 }
