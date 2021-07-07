@@ -2,8 +2,6 @@
 
 class MainContentForDirectories extends Content implements MainContentInterface
 {
-    private const ROOT_PARENT_DIRECTORY_PATH = '/data';
-
     private $indexData;
     private $path;
 
@@ -11,14 +9,14 @@ class MainContentForDirectories extends Content implements MainContentInterface
     {
         if ($path === '') {
             return false;
-        } else if ($path === self::ROOT_PARENT_DIRECTORY_PATH) {
+        } else if ($path === self::DATA_ROOT_PARENT_DIRECTORY_PATH) {
             $path = '';
         }
 
         $path .= '/';
         $indexFilePath = $this->getIndexFilePath($path);
         $indexData = $this->getOriginalJsonFileContentArray($indexFilePath);
-        if ($indexData === []) {
+        if (empty($indexData)) {
             return false;
         }
 
@@ -57,28 +55,11 @@ class MainContentForDirectories extends Content implements MainContentInterface
 
         $mainContentVariables = [
             'path' => $path . ':',
-            'back-href' => $this->getParentDirectoryPath($path),
+            'back-href' => $this->getDataParentDirectoryPath($path),
             'list-content' => $translatedListContent,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $mainContentVariables);
 
         return $replacedContent;
-    }
-
-    private function getIndexFilePath(string $path): string
-    {
-        return $path . 'index.json';
-    }
-
-    private function getParentDirectoryPath(string $path): string
-    {
-        if ($path !== '/') {
-            $path = dirname($path);
-            if ($path === '/') {
-                $path = self::ROOT_PARENT_DIRECTORY_PATH;
-            }
-        }
-
-        return $path;
     }
 }

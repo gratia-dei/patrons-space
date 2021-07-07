@@ -29,6 +29,11 @@
     "pl": "Wystąpił nieoczekiwany błąd!"
   },
 
+  "lang-invalid-location": {
+    "en": "invalid location!",
+    "pl": "błędna lokalizacja!"
+  },
+
   "lang-language": {
     "en": "language",
     "la": "lingua",

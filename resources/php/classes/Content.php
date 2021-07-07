@@ -15,6 +15,8 @@ abstract class Content
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
 
+    protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
+
     private $environment;
     private $file;
     private $json;
@@ -139,6 +141,23 @@ abstract class Content
         $translatedContent = $this->getReplacedContent($replacedContent, $websiteTranslatedVariables);
 
         return $translatedContent;
+    }
+
+    protected function getDataParentDirectoryPath(string $path): string
+    {
+        if ($path !== '/') {
+            $path = dirname($path);
+            if ($path === '/') {
+                $path = self::DATA_ROOT_PARENT_DIRECTORY_PATH;
+            }
+        }
+
+        return $path;
+    }
+
+    protected function getIndexFilePath(string $path): string
+    {
+        return $path . 'index.json';
     }
 
     private function getMissingTranslationMessage(string $originalLanguage): string

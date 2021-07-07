@@ -2,9 +2,9 @@
 
 class MainContentForMainPage extends Content implements MainContentInterface
 {
-    public function configure(string $param): bool
+    public function configure(string $path): bool
     {
-        return true;
+        return ($path === '');
     }
 
     public function getTitle(string $prefix): string

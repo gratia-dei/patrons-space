@@ -27,6 +27,7 @@ class MainContentRouter extends Content
             'MainContentForDataFiles' => $path,
             'MainContentForDirectories' => $path,
             'MainContentForMainPage' => $path,
+            'MainContentForInvalidPath' => $path,
         ];
         foreach ($stepsData as $class => $param) {
             $object = new $class();
