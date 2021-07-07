@@ -9,13 +9,15 @@ class MainContentForDates extends Content implements MainContentInterface
     private $year;
     private $month;
     private $day;
+    private $view;
 
     public function configure(string $path): bool
     {
-        if (preg_match("~^/dates/(?'year'[0-9]{4})/(?'month'[0-9]{2})/(?'day'[0-9]{2})$~", $path, $matches)) {
+        if (preg_match("~^/dates/(?'year'[0-9]{4})/(?'month'[0-9]{2})/(?'day'[0-9]{2})/(?'view'[-a-z0-9]+)$~", $path, $matches)) {
             $year = (int) $matches['year'];
             $month = (int) $matches['month'];
             $day = (int) $matches['day'];
+            $view = $matches['view'];
 
             if (checkdate($month, $day, $year)) {
                 if ($year < self::MIN_YEAR_ALLOWED
@@ -28,6 +30,7 @@ class MainContentForDates extends Content implements MainContentInterface
                 $this->year = $year;
                 $this->month = $month;
                 $this->day = $day;
+                $this->view = $view;
 
                 return true;
             }
