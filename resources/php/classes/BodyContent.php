@@ -25,9 +25,14 @@ class BodyContent extends Content
         $requestPath = $this->getEnvironment()->getRequestPath();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
 
+        $requestPathBasename = basename($requestPath);
+
         $variables = [];
-        if ($this->isContentOnlySuffixOnRequestPath($requestPath)) {
+        $resourcePathSuffix = '/';
+        if ($requestPathBasename === self::RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY) {
             $htmlFileName = 'body-content.html';
+            $requestPath = dirname($requestPath);
+            $resourcePathSuffix = '/' . $requestPathBasename;
         } else {
             $htmlFileName = 'body-full.html';
             $variables['selected-language'] = $this->getSelectedLanguageName();
@@ -38,19 +43,13 @@ class BodyContent extends Content
         $originalContent = $this->getOriginalHtmlFileContent($htmlFileName);
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
-        return [$title, $replacedContent];
-    }
+        $resourcePathSuffixVariableName = $this->getResourcePathSuffixVariableName();
+        $variables = [
+            $resourcePathSuffixVariableName => $resourcePathSuffix,
+        ];
+        $replacedAgainContent = $this->getReplacedContent($replacedContent, $variables);
 
-    private function isContentOnlySuffixOnRequestPath(string &$requestPath): bool
-    {
-        $result = false;
-
-        if (basename($requestPath) === self::RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY) {
-            $requestPath = dirname($requestPath);
-            $result = true;
-        }
-
-        return $result;
+        return [$title, $replacedAgainContent];
     }
 
     private function getSelectedLanguageName(): string

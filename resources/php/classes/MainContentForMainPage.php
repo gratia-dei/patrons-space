@@ -4,7 +4,7 @@ class MainContentForMainPage extends Content implements MainContentInterface
 {
     public function configure(string $path): bool
     {
-        return ($path === '');
+        return (trim($path, '/') === '');
     }
 
     public function getTitle(string $prefix): string

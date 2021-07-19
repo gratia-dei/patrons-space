@@ -7,7 +7,7 @@ class MainContentForDirectories extends Content implements MainContentInterface
 
     public function configure(string $path): bool
     {
-        if ($path === '') {
+        if (trim($path, '/') === '') {
             return false;
         } else if ($path === self::DATA_ROOT_PARENT_DIRECTORY_PATH) {
             $path = '';
@@ -43,7 +43,7 @@ class MainContentForDirectories extends Content implements MainContentInterface
         $listContent = '';
         foreach ($indexData as $variableName => $itemNames) {
             $itemVariables = [
-                'href' => $path . $variableName,
+                'href' => $this->getFullResourcePath($path . $variableName),
                 'name' => self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN,
             ];
             $listContent .= $this->getReplacedContent($itemContent, $itemVariables);
@@ -55,7 +55,7 @@ class MainContentForDirectories extends Content implements MainContentInterface
 
         $mainContentVariables = [
             'path' => $path . ':',
-            'back-href' => $this->getDataParentDirectoryPath($path),
+            'back-href' => $this->getFullResourcePath($this->getDataParentDirectoryPath($path)),
             'list-content' => $translatedListContent,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $mainContentVariables);

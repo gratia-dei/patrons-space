@@ -37,7 +37,7 @@ class MainContentForDataFiles extends Content implements MainContentInterface
 
         $variables = [
             'file-name' => $this->fileName,
-            'parent-directory' => $this->directoryPath,
+            'parent-directory' => $this->getFullResourcePath($this->directoryPath),
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 

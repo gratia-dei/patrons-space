@@ -14,6 +14,7 @@ abstract class Content
 
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
+    private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
 
@@ -40,6 +41,11 @@ abstract class Content
     protected function getLanguage(): string
     {
         return $this->environment->getHostSubdomainOnly();
+    }
+
+    protected function getResourcePathSuffixVariableName(): string
+    {
+        return self::RESOURCE_PATH_SUFFIX_VARIABLE_NAME;
     }
 
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
@@ -141,6 +147,11 @@ abstract class Content
         $translatedContent = $this->getReplacedContent($replacedContent, $websiteTranslatedVariables);
 
         return $translatedContent;
+    }
+
+    protected function getFullResourcePath(string $path): string
+    {
+        return rtrim($path, '/') . self::VARIABLE_NAME_SIGN . $this->getResourcePathSuffixVariableName() . self::VARIABLE_NAME_SIGN;
     }
 
     protected function getDataParentDirectoryPath(string $path): string
