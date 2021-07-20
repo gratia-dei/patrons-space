@@ -36,10 +36,15 @@ class Environment
 
     public function getHostDomain(): string
     {
-        $serverName = $this->getFromServerGlobal('SERVER_NAME');
+        return $this->getFromServerGlobal('SERVER_NAME');
+    }
+
+    public function getHostMainDomainOnly(): string
+    {
+        $host = $this->getHostDomain();
         $subdomainOnly = $this->getHostSubdomainOnly();
 
-        return ltrim(mb_substr($serverName, mb_strlen($subdomainOnly)), '.');
+        return ltrim(mb_substr($host, mb_strlen($subdomainOnly)), '.');
     }
 
     public function getHostSubdomainOnly(): string
@@ -47,6 +52,12 @@ class Environment
         $serverName = $this->getFromServerGlobal('SERVER_NAME');
 
         return rtrim(preg_replace(self::DOMAIN_PATTERN, '', $serverName), '.');
+    }
+
+    public function redirect(string $location): void
+    {
+        header('Location: ' . $location);
+        exit;
     }
 
     private function getEnvironmentClassPath(): string

@@ -21,6 +21,13 @@ class MainContentForPathAliasRedirections extends Content implements MainContent
 
     private function redirectIfNeeded(string $path): void
     {
-        //... todo
+        $redirectPath = $this->getPathToRedirect($path);
+
+        if ($redirectPath) {
+            $protocol = $this->getEnvironment()->getHostProtocol();
+            $host = $this->getEnvironment()->getHostDomain();
+
+            $this->getEnvironment()->redirect($protocol . $host . '/' . $redirectPath);
+        }
     }
 }

@@ -21,7 +21,7 @@ class BodyContent extends Content
     public function getTitleAndContent(): array
     {
         $protocol = $this->getEnvironment()->getHostProtocol();
-        $domain = $this->getEnvironment()->getHostDomain();
+        $domain = $this->getEnvironment()->getHostMainDomainOnly();
         $requestPath = $this->getEnvironment()->getRequestPath();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
 

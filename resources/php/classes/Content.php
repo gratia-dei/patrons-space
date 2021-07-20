@@ -17,6 +17,7 @@ abstract class Content
     private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
+    protected const DATA_FILE_EXTENSION = '.json';
 
     private $environment;
     private $file;
@@ -46,6 +47,13 @@ abstract class Content
     protected function getResourcePathSuffixVariableName(): string
     {
         return self::RESOURCE_PATH_SUFFIX_VARIABLE_NAME;
+    }
+
+    protected function dataPathExists(string $path): bool
+    {
+        $dataPath = $this->path->getDataPath($path);
+
+        return $this->file->exists($dataPath);
     }
 
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
@@ -111,7 +119,7 @@ abstract class Content
         }
 
         $language = $this->getLanguage();
-        $result = $this->getTranslatedVariables($language, 'languages.json');
+        $result = $this->getTranslatedVariables($language, 'languages' . self::DATA_FILE_EXTENSION);
 
         $this->translatedLanguagesVariablesCache = $result;
 
@@ -166,9 +174,61 @@ abstract class Content
         return $path;
     }
 
+    protected function getTidyPath(string $path): string
+    {
+        return trim(preg_replace('~//+~', '/', $path), '/');
+    }
+
+    protected function getPathToRedirect(string $path): string
+    {
+        $path = $this->getTidyPath($path);
+        if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
+            return '';
+        }
+
+        $wasPathChanged = false;
+        $pathElements = explode('/', $path);
+        $pathCount = count($pathElements);
+        for ($element = 1; $element <= $pathCount; $element++) {
+            $tmpPath = implode('/', array_slice($pathElements, 0, $element));
+            $basename = $pathElements[$element - 1];
+
+            if (!$this->dataPathExists($tmpPath)) {
+                $aliasFilePath = $this->getAliasFilePath(dirname($tmpPath));
+                if (!$this->dataPathExists($aliasFilePath)) {
+                    break;
+                }
+
+                $aliasData = $this->getOriginalJsonFileContentArray($aliasFilePath);
+                if (!isset($aliasData[$basename])) {
+                    break;
+                }
+
+                if ($basename !== $aliasData[$basename]) {
+                    $pathElements[$element - 1] = $aliasData[$basename];
+                    $wasPathChanged = true;
+                }
+            }
+        }
+
+        if ($wasPathChanged) {
+            $path = implode('/', $pathElements);
+            if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
+                return $path;
+            }
+        }
+
+        return '';
+    }
+
     protected function getIndexFilePath(string $path): string
     {
-        return $path . 'index.json';
+        return $path . '/index' . self::DATA_FILE_EXTENSION;
+    }
+
+    private function getAliasFilePath(string $path): string
+    {
+        return $path . '/alias' . self::DATA_FILE_EXTENSION;
     }
 
     private function getMissingTranslationMessage(string $originalLanguage): string
