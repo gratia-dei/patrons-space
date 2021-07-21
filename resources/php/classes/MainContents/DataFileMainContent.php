@@ -2,18 +2,33 @@
 
 class DataFileMainContent extends MainContent implements MainContentInterface
 {
+    private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
+    private const CONTENT_BLOCK_ROUTING = [
+        '/sources/martyrologium-romanum-2004/martyrologium-romanum/' => 'RomanMartyrology2004DayElogiesContentBlock',
+    ];
+
     private $fileData;
-    private $fileName;
+    private $fileBaseName;
+    private $fileNameTranslated;
     private $directoryPath;
 
     public function configure(string $path): bool
     {
-        $fileData = $this->getOriginalJsonFileContentArray($path . self::DATA_FILE_EXTENSION);
-        if (empty($fileData)) {
+        $directoryPath = $this->getDataParentDirectoryPath($path);
+        $fileBaseName = basename($path) . self::DATA_FILE_EXTENSION;
+        $fullPath = $directoryPath . '/' . $fileBaseName;
+
+        if (in_array($fullPath, [
+            $this->getIndexFilePath($directoryPath),
+            $this->getAliasFilePath($directoryPath),
+        ])) {
             return false;
         }
 
-        $directoryPath = $this->getDataParentDirectoryPath($path);
+        $fileData = $this->getOriginalJsonFileContentArray($fullPath);
+        if (empty($fileData)) {
+            return false;
+        }
 
         $language = $this->getLanguage();
         $indexFilePath = $this->getIndexFilePath($directoryPath . '/');
@@ -21,14 +36,15 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
         $this->directoryPath = $directoryPath;
         $this->fileData = $fileData;
-        $this->fileName = $this->getFileName($path, $indexVariables);
+        $this->fileBaseName = $fileBaseName;
+        $this->fileNameTranslated = $this->getFileNameTranslated($path, $indexVariables);
 
         return true;
     }
 
     public function getTitle(string $prefix): string
     {
-        return $prefix . ': ' . $this->fileName;
+        return $prefix . ': ' . $this->fileNameTranslated;
     }
 
     public function getContent(): string
@@ -36,7 +52,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/data-file-main-content.html');
 
         $variables = [
-            'file-name' => $this->fileName,
+            'file-name' => $this->fileNameTranslated,
             'parent-directory' => $this->getFullResourcePath($this->directoryPath),
             'content' => $this->getDataFileContent(),
         ];
@@ -45,7 +61,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
         return $replacedContent;
     }
 
-    private function getFileName(string $path, array $indexVariables): string
+    private function getFileNameTranslated(string $path, array $indexVariables): string
     {
         $fileNameVariable = self::VARIABLE_NAME_SIGN . basename($path) . self::VARIABLE_NAME_SIGN;
         $translatedFileName = $this->getReplacedContent($fileNameVariable, $indexVariables, true);
@@ -55,10 +71,18 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
     private function getDataFileContent(): string
     {
-        $class = 'OtherContentBlock';
+        $directoryPath = $this->directoryPath;
+        $fileBaseName = $this->fileBaseName;
+        $fileData = $this->fileData;
 
-        //... todo routing
+        $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
+        foreach (self::CONTENT_BLOCK_ROUTING as $path => $classForPath) {
+            if (strpos($directoryPath, $path) === 0) {
+                $class = $classForPath;
+                break;
+            }
+        }
 
-        return (new $class())->getContent();
+        return (new $class())->getContent($directoryPath, $fileBaseName, $fileData);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class OtherContentBlock extends ContentBlock implements ContentBlockInterface
+class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements ContentBlockInterface
 {
     public function getContent(string $directoryPath, string $fileName, array $fileData): string
     {

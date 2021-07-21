@@ -174,14 +174,8 @@ abstract class Content
         return $path;
     }
 
-    protected function getTidyPath(string $path): string
-    {
-        return trim(preg_replace('~//+~', '/', $path), '/');
-    }
-
     protected function getPathToRedirect(string $path): string
     {
-        $path = $this->getTidyPath($path);
         if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
             return '';
         }
@@ -226,7 +220,7 @@ abstract class Content
         return $path . '/index' . self::DATA_FILE_EXTENSION;
     }
 
-    private function getAliasFilePath(string $path): string
+    protected function getAliasFilePath(string $path): string
     {
         return $path . '/alias' . self::DATA_FILE_EXTENSION;
     }

@@ -21,7 +21,7 @@ class Environment
     {
         $requestPath = $this->getFromServerGlobal('REQUEST_URI');
 
-        return rtrim($requestPath, '/');
+        return '/' . $this->getTidyPath($requestPath);
     }
 
     public function getHttpStatusCode(): int
@@ -68,5 +68,10 @@ class Environment
     private function getFromServerGlobal(string $key): string
     {
         return $_SERVER[$key] ?? '';
+    }
+
+    private function getTidyPath(string $path): string
+    {
+        return trim(preg_replace('~//+~', '/', $path), '/');
     }
 }
