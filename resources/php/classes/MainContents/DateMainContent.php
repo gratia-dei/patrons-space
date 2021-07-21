@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForDates extends Content implements MainContentInterface
+class DateMainContent extends MainContent implements MainContentInterface
 {
     private const MIN_YEAR_ALLOWED = 2020;
     private const MIN_MONTH_ALLOWED_IN_MIN_YEAR = 8;
@@ -46,7 +46,7 @@ class MainContentForDates extends Content implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-dates.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/date-main-content.html');
 
         return $originalContent;
     }

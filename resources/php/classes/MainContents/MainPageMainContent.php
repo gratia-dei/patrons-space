@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForMainPage extends Content implements MainContentInterface
+class MainPageMainContent extends MainContent implements MainContentInterface
 {
     public function configure(string $path): bool
     {
@@ -14,7 +14,7 @@ class MainContentForMainPage extends Content implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-main-page.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/main-page-main-content.html');
 
         return $originalContent;
     }

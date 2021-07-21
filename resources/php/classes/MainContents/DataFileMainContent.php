@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForDataFiles extends Content implements MainContentInterface
+class DataFileMainContent extends MainContent implements MainContentInterface
 {
     private $fileData;
     private $fileName;
@@ -8,7 +8,7 @@ class MainContentForDataFiles extends Content implements MainContentInterface
 
     public function configure(string $path): bool
     {
-        $fileData = $this->getOriginalJsonFileContentArray($path . '.json');
+        $fileData = $this->getOriginalJsonFileContentArray($path . self::DATA_FILE_EXTENSION);
         if (empty($fileData)) {
             return false;
         }
@@ -33,15 +33,14 @@ class MainContentForDataFiles extends Content implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-data-files.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/data-file-main-content.html');
 
         $variables = [
             'file-name' => $this->fileName,
             'parent-directory' => $this->getFullResourcePath($this->directoryPath),
+            'content' => $this->getDataFileContent(),
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
-
-        //... todo
 
         return $replacedContent;
     }
@@ -52,5 +51,14 @@ class MainContentForDataFiles extends Content implements MainContentInterface
         $translatedFileName = $this->getReplacedContent($fileNameVariable, $indexVariables, true);
 
         return $translatedFileName;
+    }
+
+    private function getDataFileContent(): string
+    {
+        $class = 'OtherContentBlock';
+
+        //... todo routing
+
+        return (new $class())->getContent();
     }
 }

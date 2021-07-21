@@ -75,7 +75,7 @@ class BodyContent extends Content
         $content = '';
 
         $selectedLanguage = $this->getEnvironment()->getHostSubdomainOnly();
-        $optionContent = $this->getOriginalHtmlFileContent('selectable-languages-list-item.html');
+        $optionContent = $this->getOriginalHtmlFileContent('items/selectable-languages-list-item.html');
         list($codesList, $translatedNamesList, $originalNamesList) = $this->getSelectableLanguagesListValues();
 
         foreach ($codesList as $code) {

@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForInvalidPath extends Content implements MainContentInterface
+class InvalidPathMainContent extends MainContent implements MainContentInterface
 {
     private const INVALID_LOCATION_VARIABLE = 'lang-invalid-location';
 
@@ -20,7 +20,7 @@ class MainContentForInvalidPath extends Content implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-invalid-path.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/invalid-path-main-content.html');
 
         $variables = [
             'parent-directory' => $this->getFullResourcePath($this->directoryPath),

@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForErrors extends Content implements MainContentInterface
+class ErrorMainContent extends MainContent implements MainContentInterface
 {
     private const NONE_STATUS_CODE = 0;
     private const OTHER_STATUS_CODE = self::NONE_STATUS_CODE;
@@ -37,7 +37,7 @@ class MainContentForErrors extends Content implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-errors.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/error-main-content.html');
 
         $statusCode = $this->statusCode;
         $variableName = self::HTTP_STATUSES_DATA[$statusCode]

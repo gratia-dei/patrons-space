@@ -21,13 +21,13 @@ class MainContentRouter extends Content
     private function getMainContentObjectForParams(string $path, int $httpStatusCode): object
     {
         $stepsData = [
-            'MainContentForErrors' => $httpStatusCode,
-            'MainContentForDates' => $path,
-            'MainContentForDataFiles' => $path,
-            'MainContentForDirectories' => $path,
-            'MainContentForMainPage' => $path,
-            'MainContentForPathAliasRedirections' => $path,
-            'MainContentForInvalidPath' => $path,
+            'ErrorMainContent' => $httpStatusCode,
+            'DateMainContent' => $path,
+            'DataFileMainContent' => $path,
+            'DirectoryMainContent' => $path,
+            'MainPageMainContent' => $path,
+            'PathAliasRedirectionMainContent' => $path,
+            'InvalidPathMainContent' => $path,
         ];
         foreach ($stepsData as $class => $param) {
             $object = new $class();

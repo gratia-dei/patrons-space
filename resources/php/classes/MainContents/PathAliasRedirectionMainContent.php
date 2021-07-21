@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForPathAliasRedirections extends Content implements MainContentInterface
+class PathAliasRedirectionMainContent extends MainContent implements MainContentInterface
 {
     public function configure(string $path): bool
     {

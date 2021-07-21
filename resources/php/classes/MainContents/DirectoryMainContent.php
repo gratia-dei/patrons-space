@@ -1,6 +1,6 @@
 <?php
 
-class MainContentForDirectories extends Content implements MainContentInterface
+class DirectoryMainContent extends MainContent implements MainContentInterface
 {
     private $indexData;
     private $path;
@@ -37,8 +37,8 @@ class MainContentForDirectories extends Content implements MainContentInterface
         $path = $this->path;
         $language = $this->getLanguage();
 
-        $originalContent = $this->getOriginalHtmlFileContent('main-content-for-directories.html');
-        $itemContent = $this->getOriginalHtmlFileContent('directory-list-item.html');
+        $originalContent = $this->getOriginalHtmlFileContent('main-contents/directory-main-content.html');
+        $itemContent = $this->getOriginalHtmlFileContent('items/directory-list-item.html');
 
         $listContent = '';
         foreach ($indexData as $variableName => $itemNames) {
