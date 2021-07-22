@@ -1,4 +1,8 @@
 {
+  "records": {
+    "en": "Records",
+    "pl": "Rejestry"
+  },
   "sources": {
     "en": "Sources",
     "la": "Fontes",
