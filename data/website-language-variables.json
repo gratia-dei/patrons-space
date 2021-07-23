@@ -49,6 +49,12 @@
     "pl": "oryginalny"
   },
 
+  "lang-page-number": {
+    "en": "page",
+    "la": "pagina",
+    "pl": "strona"
+  },
+
   "lang-parent-directory": {
     "en": "parent directory",
     "pl": "katalog nadrzędny"

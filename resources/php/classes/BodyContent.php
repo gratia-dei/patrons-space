@@ -40,6 +40,8 @@ class BodyContent extends Content
         }
         list($title, $variables['content']) = $this->mainContentRouter->getTitleAndContent($requestPath, $httpStatusCode);
 
+        $strippedTitle = $this->stripTags($title);
+
         $originalContent = $this->getOriginalHtmlFileContent($htmlFileName);
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
@@ -49,7 +51,7 @@ class BodyContent extends Content
         ];
         $replacedAgainContent = $this->getReplacedContent($replacedContent, $variables);
 
-        return [$title, $replacedAgainContent];
+        return [$strippedTitle, $replacedAgainContent];
     }
 
     private function getSelectedLanguageName(): string

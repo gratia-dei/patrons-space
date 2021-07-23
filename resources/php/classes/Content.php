@@ -2,7 +2,7 @@
 
 abstract class Content
 {
-    private const ENCODING = 'UTF-8';
+    protected const ENCODING = 'UTF-8';
 
     protected const VARIABLE_NAME_SIGN = '#';
     protected const MODIFIER_SEPARATOR = '|';
@@ -131,7 +131,13 @@ abstract class Content
         $result = [];
 
         $variables = $this->getOriginalJsonFileContentArray($fileDataSubpath);
-        foreach ($variables as $name => $values) {
+
+        return $this->getTranslatedVariablesForLangData($language, $variables);
+    }
+
+    protected function getTranslatedVariablesForLangData(string $language, array $langData): array
+    {
+        foreach ($langData as $name => $values) {
             $value = $values[$language] ?? null;
             if ($value !== null) {
                 $result[$name] = $value;
@@ -223,6 +229,11 @@ abstract class Content
     protected function getAliasFilePath(string $path): string
     {
         return $path . '/alias' . self::DATA_FILE_EXTENSION;
+    }
+
+    protected function stripTags(string $content): string
+    {
+        return strip_tags($content);
     }
 
     private function getMissingTranslationMessage(string $originalLanguage): string
