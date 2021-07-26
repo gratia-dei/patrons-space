@@ -5,6 +5,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
     private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
     private const CONTENT_BLOCK_ROUTING = [
         '/sources/martyrologium-romanum-2004/martyrologium-romanum/' => 'RomanMartyrology2004DayElogiesContentBlock',
+        '/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/' => 'RomanMartyrology2004IndexContentBlock',
     ];
 
     private $fileData;

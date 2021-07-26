@@ -49,6 +49,12 @@
     "pl": "oryginalny"
   },
 
+  "lang-page-column-number": {
+    "en": "page column",
+    "la": "pagina divisa",
+    "pl": "kolumna strony"
+  },
+
   "lang-page-number": {
     "en": "page",
     "la": "pagina",

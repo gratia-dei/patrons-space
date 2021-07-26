@@ -1,2 +1,8 @@
 main {
 }
+
+.no-margin-on-first-line-only-paragraph {
+  padding-left: 1em;
+  text-indent: -1em;
+  display: inline-block;
+}

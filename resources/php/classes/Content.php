@@ -15,6 +15,7 @@ abstract class Content
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
     private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
+    private const UNKNOWN_LANGUAGE_SIGN = '';
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
     protected const DATA_FILE_EXTENSION = '.json';
@@ -137,6 +138,8 @@ abstract class Content
 
     protected function getTranslatedVariablesForLangData(string $language, array $langData): array
     {
+        $result = [];
+
         foreach ($langData as $name => $values) {
             $value = $values[$language] ?? null;
             if ($value !== null) {
@@ -244,7 +247,9 @@ abstract class Content
         $languagesVariables = $this->getTranslatedLanguagesVariables();
         $replacedMessage = $this->getReplacedContent($originalMessage, $languagesVariables);
 
-        return $replacedMessage;
+        $unknownLanguagesReplacedMessage = preg_replace('/#[a-z]+#/', self::UNKNOWN_LANGUAGE_SIGN, $replacedMessage);
+
+        return $unknownLanguagesReplacedMessage;
     }
 
     private function getModifiedValue(string $value, array $modifiers): string
