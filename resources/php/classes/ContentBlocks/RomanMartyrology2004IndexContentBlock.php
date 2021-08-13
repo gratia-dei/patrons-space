@@ -7,10 +7,9 @@ class RomanMartyrology2004IndexContentBlock extends ContentBlock implements Cont
 
     private const VAR_PREFIX = 'record-text-';
 
-    public function getContent(string $directoryPath, string $fileName, array $fileData): string
+    public function getContent(string $directoryPath, string $fileName, array $fileData, string $fileNameTranslated): string
     {
-        $result = '';
-
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-index-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');
         $indexItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-index-item.html');
 
@@ -23,6 +22,7 @@ class RomanMartyrology2004IndexContentBlock extends ContentBlock implements Cont
         $pageNumber = self::UNKNOWN_PAGE_NUMBER;
         $pageColumnNumber = self::UNKNOWN_PAGE_COLUMN_NUMBER;
 
+        $indexItemsContent = '';
         foreach ($fileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
             $pageColumn = $recordData[self::PAGE_COLUMN_INDEX] ?? null;
@@ -39,18 +39,24 @@ class RomanMartyrology2004IndexContentBlock extends ContentBlock implements Cont
                     'page-number' => $pageNumber,
                     'page-column-number' => $pageColumnNumber,
                 ];
-                $result .= $this->getReplacedContent($pageHeaderContent, $variables);
+                $indexItemsContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
             $variables = [
                 'record-id' => $recordId,
                 'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
             ];
-            $result .= $this->getReplacedContent($indexItemContent, $variables);
+            $indexItemsContent .= $this->getReplacedContent($indexItemContent, $variables);
 
             $prevPageNumber = $pageNumber;
             $prevPageColumnNumber = $pageColumnNumber;
         }
+
+        $variables = [
+            'starting-letters' => $fileNameTranslated,
+            'index-items-content' => $indexItemsContent,
+        ];
+        $result = $this->getReplacedContent($contentBlockContent, $variables);
 
         return $this->getReplacedContent($result, $textVariables, true);
     }

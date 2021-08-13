@@ -9,8 +9,11 @@ abstract class Content
 
     protected const MODIFIER_CAPITALIZE = 'capitalize';
     protected const MODIFIER_CAPITALIZE_ALL = 'capitalize-all';
+    protected const MODIFIER_COMMA_SEPARATED_LIST = 'comma-separated-list';
+    protected const MODIFIER_FIRST_ELEMENT = 'first-element';
     protected const MODIFIER_ORIGINAL = 'original';
     protected const MODIFIER_UPPERCASE = 'uppercase';
+    protected const MODIFIER_WITHOUT_FIRST_ELEMENT = 'without-first-element';
 
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
@@ -252,19 +255,34 @@ abstract class Content
         return $unknownLanguagesReplacedMessage;
     }
 
-    private function getModifiedValue(string $value, array $modifiers): string
+    private function getModifiedValue($value, array $modifiers): string
     {
         foreach ($modifiers as $modifier) {
             switch ($modifier) {
-                case self::MODIFIER_UPPERCASE:
-                    $value = mb_strtoupper($value);
-                    break;
+                //--- string to string modifiers:
                 case self::MODIFIER_CAPITALIZE:
                     $value = mb_strtoupper(mb_substr($value, 0, 1, self::ENCODING), self::ENCODING)
                         . mb_strtolower(mb_substr($value, 1, mb_strlen($value), self::ENCODING), self::ENCODING);
                     break;
                 case self::MODIFIER_CAPITALIZE_ALL:
                     $value = mb_convert_case($value, MB_CASE_TITLE, self::ENCODING);
+                    break;
+                case self::MODIFIER_UPPERCASE:
+                    $value = mb_strtoupper($value);
+                    break;
+
+                //--- array to string modifiers:
+                case self::MODIFIER_COMMA_SEPARATED_LIST:
+                    $value = implode(', ', $value);
+                    break;
+                case self::MODIFIER_FIRST_ELEMENT:
+                    $firstKey = array_key_first($value);
+                    $value = $value[$firstKey] ?? null;
+                    break;
+
+                //--- array to array modifiers:
+                case self::MODIFIER_WITHOUT_FIRST_ELEMENT:
+                    array_shift($value);
                     break;
             }
         }

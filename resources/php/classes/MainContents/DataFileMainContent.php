@@ -4,6 +4,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 {
     private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
     private const CONTENT_BLOCK_ROUTING = [
+        '/records/patrons-and-feasts/patrons/' => 'PatronContentBlock',
         '/sources/martyrologium-romanum-2004/martyrologium-romanum/' => 'RomanMartyrology2004DayElogiesContentBlock',
         '/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/' => 'RomanMartyrology2004IndexContentBlock',
     ];
@@ -75,6 +76,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
         $directoryPath = $this->directoryPath;
         $fileBaseName = $this->fileBaseName;
         $fileData = $this->fileData;
+        $fileNameTranslated = $this->fileNameTranslated;
 
         $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
         foreach (self::CONTENT_BLOCK_ROUTING as $path => $classForPath) {
@@ -84,6 +86,6 @@ class DataFileMainContent extends MainContent implements MainContentInterface
             }
         }
 
-        return (new $class())->getContent($directoryPath, $fileBaseName, $fileData);
+        return (new $class())->getContent($directoryPath, $fileBaseName, $fileData, $fileNameTranslated);
     }
 }

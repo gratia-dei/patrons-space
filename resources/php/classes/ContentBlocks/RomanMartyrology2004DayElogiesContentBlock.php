@@ -11,10 +11,9 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
     private const VAR_FIRST_CHARACTER_ONLY_SUFFIX = '-first-character-only';
     private const VAR_WITHOUT_FIRST_CHARACTER_SUFFIX = '-without-first-character';
 
-    public function getContent(string $directoryPath, string $fileName, array $fileData): string
+    public function getContent(string $directoryPath, string $fileName, array $fileData, string $fileNameTranslated): string
     {
-        $result = '';
-
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-day-elogies-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');
         $importantItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-day-elogy-important-item.html');
         $normalItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-day-elogy-normal-item.html');
@@ -26,6 +25,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
         $prevPageNumber = null;
         $pageNumber = self::UNKNOWN_PAGE_NUMBER;
 
+        $elogiesContent = '';
         foreach ($fileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
             $recordType = $recordData[self::MARK_INDEX] ?? '';
@@ -38,7 +38,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
                 $variables = [
                     'page-number' => $pageNumber,
                 ];
-                $result .= $this->getReplacedContent($pageHeaderContent, $variables);
+                $elogiesContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
             $variables = [
@@ -50,13 +50,26 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
             ];
 
             if ($recordType === self::IMPORTANT_RECORD_MARK_SIGN) {
-                $result .= $this->getReplacedContent($importantItemContent, $variables);
+                $elogiesContent .= $this->getReplacedContent($importantItemContent, $variables);
             } else {
-                $result .= $this->getReplacedContent($normalItemContent, $variables);
+                $elogiesContent .= $this->getReplacedContent($normalItemContent, $variables);
             }
 
             $prevPageNumber = $pageNumber;
         }
+
+        $mainDayName = $fileNameTranslated;
+        $romanCalendarDayName = '';
+        if (preg_match("/^(?'opentag'<[^>]+>)?(?'main'.+)\s\((?'roman'.+)\)(?'closetag'<\/[^>]+>)?/", $fileNameTranslated, $matches)) {
+            $mainDayName = $matches['opentag'] . $matches['main'] . $matches['closetag'];
+            $romanCalendarDayName = $matches['opentag'] . $matches['roman'] . $matches['closetag'];
+        }
+        $variables = [
+            'main-day-name' => $mainDayName,
+            'roman-calendar-day-name' => $romanCalendarDayName,
+            'elogies-content' => $elogiesContent,
+        ];
+        $result = $this->getReplacedContent($contentBlockContent, $variables);
 
         return $this->getReplacedContent($result, $textVariables, true);
     }
