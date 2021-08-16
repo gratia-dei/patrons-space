@@ -7,7 +7,7 @@ class RomanMartyrology2004IndexContentBlock extends ContentBlock implements Cont
 
     private const VAR_PREFIX = 'record-text-';
 
-    public function getContent(string $directoryPath, string $fileName, array $fileData, string $fileNameTranslated): string
+    public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string
     {
         $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-index-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');

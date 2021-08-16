@@ -21,6 +21,7 @@ abstract class Content
     private const UNKNOWN_LANGUAGE_SIGN = '';
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
+    protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
     protected const DATA_FILE_EXTENSION = '.json';
 
     private $environment;
@@ -202,7 +203,10 @@ abstract class Content
             if (!$this->dataPathExists($tmpPath)) {
                 $aliasFilePath = $this->getAliasFilePath(dirname($tmpPath));
                 if (!$this->dataPathExists($aliasFilePath)) {
-                    break;
+                    $aliasFilePath = $this->getAliasFilePath(dirname($tmpPath), true);
+                    if (!$this->dataPathExists($aliasFilePath)) {
+                        break;
+                    }
                 }
 
                 $aliasData = $this->getOriginalJsonFileContentArray($aliasFilePath);
@@ -227,14 +231,14 @@ abstract class Content
         return '';
     }
 
-    protected function getIndexFilePath(string $path): string
+    protected function getIndexFilePath(string $path, bool $forGeneratedFile = false): string
     {
-        return $path . '/index' . self::DATA_FILE_EXTENSION;
+        return $path . '/index' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
     }
 
-    protected function getAliasFilePath(string $path): string
+    protected function getAliasFilePath(string $path, bool $forGeneratedFile = false): string
     {
-        return $path . '/alias' . self::DATA_FILE_EXTENSION;
+        return $path . '/alias' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
     }
 
     protected function stripTags(string $content): string

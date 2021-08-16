@@ -11,7 +11,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
     private const VAR_FIRST_CHARACTER_ONLY_SUFFIX = '-first-character-only';
     private const VAR_WITHOUT_FIRST_CHARACTER_SUFFIX = '-without-first-character';
 
-    public function getContent(string $directoryPath, string $fileName, array $fileData, string $fileNameTranslated): string
+    public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string
     {
         $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-day-elogies-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');

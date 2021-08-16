@@ -4,6 +4,7 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
 {
     private $indexData;
     private $path;
+    private $usedGeneratedIndexFile;
 
     public function configure(string $path): bool
     {
@@ -16,12 +17,19 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
         $path .= '/';
         $indexFilePath = $this->getIndexFilePath($path);
         $indexData = $this->getOriginalJsonFileContentArray($indexFilePath);
+        $usedGeneratedIndexFile = false;
         if (empty($indexData)) {
-            return false;
+            $indexFilePath = $this->getIndexFilePath($path, true);
+            $indexData = $this->getOriginalJsonFileContentArray($indexFilePath);
+            $usedGeneratedIndexFile = true;
+            if (empty($indexData)) {
+                return false;
+            }
         }
 
         $this->path = $path;
         $this->indexData = $indexData;
+        $this->usedGeneratedIndexFile = $usedGeneratedIndexFile;
 
         return true;
     }
@@ -35,6 +43,7 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
     {
         $indexData = $this->indexData;
         $path = $this->path;
+        $usedGeneratedIndexFile = $this->usedGeneratedIndexFile;
         $language = $this->getLanguage();
 
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/directory-main-content.html');
@@ -49,7 +58,7 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
             $listContent .= $this->getReplacedContent($itemContent, $itemVariables);
         }
 
-        $indexFilePath = $this->getIndexFIlePath($path);
+        $indexFilePath = $this->getIndexFIlePath($path, $usedGeneratedIndexFile);
         $indexVariables = $this->getTranslatedVariables($language, $indexFilePath);
         $translatedListContent = $this->getReplacedContent($listContent, $indexVariables, true);
 

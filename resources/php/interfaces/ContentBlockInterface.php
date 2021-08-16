@@ -2,5 +2,5 @@
 
 interface ContentBlockInterface
 {
-    public function getContent(string $directoryPath, string $fileBaseName, array $fileData, string $fileNameTranslated): string;
+    public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string;
 }
