@@ -17,10 +17,20 @@
       "Alfons Liguori"
     ]
   },
+
+  "born": ["1696-09-27"],
   "died": ["1787-08-01"],
+  "beatified": {
+    "type": "ceremonially",
+    "date": "1816-09-15"
+  },
+  "canonized": {
+    "type": "ceremonially",
+    "date": "1839-05-26"
+  },
 
   "data-links": {
     "mr-2004-index": ["alp/18"],
-    "mr-2004": ["aug./1/1"]
+    "mr-2004-elogies": ["aug./1:1"]
   }
 }

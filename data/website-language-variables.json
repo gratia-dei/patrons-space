@@ -1,4 +1,21 @@
 {
+  "lang-beatification": {
+    "en": "beatification",
+    "la": "beatificationis",
+    "pl": "beatyfikacja"
+  },
+
+  "lang-canonization": {
+    "en": "canonization",
+    "la": "canonizationis",
+    "pl": "kononizacja"
+  },
+
+  "lang-ceremonially-adverb": {
+    "en": "ceremonially",
+    "pl": "ceremonialnie"
+  },
+
   "lang-comming-soon": {
     "en": "comming soon",
     "pl": "już wkrótce"
@@ -8,6 +25,18 @@
     "en": "contact",
     "la": "contactus",
     "pl": "kontakt"
+  },
+
+  "lang-date-of-birth": {
+    "en": "date of birth",
+    "la": "diem natalis",
+    "pl": "data urodzenia"
+  },
+
+  "lang-date-of-death": {
+    "en": "date of death",
+    "la": "diem mortis",
+    "pl": "data śmierci"
   },
 
   "lang-email-to-us": {
@@ -42,6 +71,11 @@
 
   "lang-link-to-source": {
     "en": "http://source.patrons.space"
+  },
+
+  "lang-non-existence": {
+    "en": "non-existence",
+    "pl": "brak"
   },
 
   "lang-original": {

@@ -14,11 +14,14 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
         $translations = $this->getPreparedTranslations($fileData);
         $language = $this->getLanguage();
-        $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
+        $variables = $this->getTranslatedVariablesForLangData($language, $translations);
 
-        //...
+        $variables['date-of-birth'] = $this->getFormattedDates($fileData['born'] ?? self::UNKNOWN_SIGN);
+        $variables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
+        $variables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
+        $variables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
 
-        return $this->getReplacedContent($content, $textVariables, true);
+        return $this->getReplacedContent($content, $variables, true);
     }
 
     private function getPreparedTranslations(array $data): array
@@ -37,5 +40,19 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     private function getTranslationsWithAllConvertedFieldsAdded(array $data): array
     {
         return $data;
+    }
+
+    private function getDateWithType(array $data): string
+    {
+        $result = $data['date'] ?? null;
+        $type = $data['type'] ?? null;
+
+        if (is_null($result)) {
+            $result = self::NON_EXISTENCE;
+        } else if (!is_null($type)) {
+            $result .= " (#lang-$type-adverb#)";
+        }
+
+        return $result;
     }
 }
