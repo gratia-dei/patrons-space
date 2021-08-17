@@ -224,7 +224,7 @@ abstract class Content
         if ($wasPathChanged) {
             $path = implode('/', $pathElements);
             if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
-                return $path;
+                return preg_replace('~[/]+~', '/', '/' . $path);
             }
         }
 

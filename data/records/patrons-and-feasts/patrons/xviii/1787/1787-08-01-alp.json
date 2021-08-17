@@ -30,7 +30,7 @@
   },
 
   "data-links": {
-    "mr-2004-index": ["alp/18"],
-    "mr-2004-elogies": ["aug./1:1"]
+    "mr-2004-index": ["alp:18"],
+    "mr-2004": ["aug./1:1"]
   }
 }

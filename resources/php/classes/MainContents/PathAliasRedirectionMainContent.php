@@ -27,7 +27,7 @@ class PathAliasRedirectionMainContent extends MainContent implements MainContent
             $protocol = $this->getEnvironment()->getHostProtocol();
             $host = $this->getEnvironment()->getHostDomain();
 
-            $this->getEnvironment()->redirect($protocol . $host . '/' . $redirectPath);
+            $this->getEnvironment()->redirect($protocol . $host . $redirectPath);
         }
     }
 }
