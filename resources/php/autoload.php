@@ -7,6 +7,8 @@ spl_autoload_register(function ($class) {
         include dirname(__FILE__) . '/classes/ContentBlocks/' . $class . '.php';
     } else if (substr($class, -11) === 'MainContent') {
         include dirname(__FILE__) . '/classes/MainContents/' . $class . '.php';
+    } else if (substr($class, -9) === 'Procedure') {
+        include dirname(__FILE__) . '/classes/Procedures/' . $class . '.php';
     } else {
         include dirname(__FILE__) . '/classes/' . $class . '.php';
     }

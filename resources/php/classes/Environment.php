@@ -60,6 +60,11 @@ class Environment
         exit;
     }
 
+    public function isCliMode(): bool
+    {
+        return (php_sapi_name() === 'cli');
+    }
+
     private function getEnvironmentClassPath(): string
     {
         return __FILE__;
