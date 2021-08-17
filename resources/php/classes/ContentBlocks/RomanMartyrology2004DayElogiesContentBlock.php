@@ -29,7 +29,6 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
         foreach ($fileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
             $recordType = $recordData[self::MARK_INDEX] ?? '';
-            $recordText = $recordTranslations[$recordId];
 
             if (!is_null($page)) {
                 $pageNumber = $page;
@@ -61,8 +60,11 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
         $mainDayName = $fileNameTranslated;
         $romanCalendarDayName = '';
         if (preg_match("/^(?'opentag'<[^>]+>)?(?'main'.+)\s\((?'roman'.+)\)(?'closetag'<\/[^>]+>)?/", $fileNameTranslated, $matches)) {
-            $mainDayName = $matches['opentag'] . $matches['main'] . $matches['closetag'];
-            $romanCalendarDayName = $matches['opentag'] . $matches['roman'] . $matches['closetag'];
+            $openTag = $matches['opentag'] ?? '';
+            $closeTag = $matches['closetag'] ?? '';
+
+            $mainDayName = $openTag . $matches['main'] . $closeTag;
+            $romanCalendarDayName = $openTag . $matches['roman'] . $closeTag;
         }
         $variables = [
             'main-day-name' => $mainDayName,
