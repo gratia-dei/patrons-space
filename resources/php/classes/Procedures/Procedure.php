@@ -1,9 +1,9 @@
 <?php
 
-class Procedure
+class Procedure extends Base
 {
     protected function print($data): void
     {
-        echo $data;
+        echo $this->getDate()->getCurrentDateTime() . ' [' . get_called_class() . '] ' . print_r($data, true) . "\n";
     }
 }

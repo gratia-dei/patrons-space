@@ -1,6 +1,6 @@
 <?php
 
-abstract class Content
+abstract class Content extends Base
 {
     protected const ENCODING = 'UTF-8';
 
@@ -15,38 +15,20 @@ abstract class Content
     protected const MODIFIER_UPPERCASE = 'uppercase';
     protected const MODIFIER_WITHOUT_FIRST_ELEMENT = 'without-first-element';
 
+    protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
+    protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
+    protected const DATA_FILE_EXTENSION = '.json';
+
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
     private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
     private const UNKNOWN_LANGUAGE_SIGN = '';
 
-    protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
-    protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
-    protected const DATA_FILE_EXTENSION = '.json';
-
-    private $environment;
-    private $file;
-    private $json;
-    private $path;
-
     private $translatedLanguagesVariablesCache;
-
-    public function __construct()
-    {
-        $this->environment = new Environment();
-        $this->file = new File();
-        $this->json = new Json();
-        $this->path = new Path();
-    }
-
-    protected function getEnvironment(): Environment
-    {
-        return $this->environment;
-    }
 
     protected function getLanguage(): string
     {
-        return $this->environment->getHostSubdomainOnly();
+        return $this->getEnvironment()->getHostSubdomainOnly();
     }
 
     protected function getResourcePathSuffixVariableName(): string
@@ -56,24 +38,24 @@ abstract class Content
 
     protected function dataPathExists(string $path): bool
     {
-        $dataPath = $this->path->getDataPath($path);
+        $dataPath = $this->getPath()->getDataPath($path);
 
-        return $this->file->exists($dataPath);
+        return $this->getFile()->exists($dataPath);
     }
 
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
     {
-        $jsonPath = $this->path->getDataPath($jsonFileName);
-        $content = $this->file->getFileContent($jsonPath);
-        $array = $this->json->decode($content);
+        $jsonPath = $this->getPath()->getDataPath($jsonFileName);
+        $content = $this->getFile()->getFileContent($jsonPath);
+        $array = $this->getJson()->decode($content);
 
         return $array;
     }
 
     protected function getOriginalHtmlFileContent(string $htmlFileName): string
     {
-        $htmlPath = $this->path->getHtmlPath($htmlFileName);
-        $content = $this->file->getFileContent($htmlPath);
+        $htmlPath = $this->getPath()->getHtmlPath($htmlFileName);
+        $content = $this->getFile()->getFileContent($htmlPath);
 
         return $content;
     }
