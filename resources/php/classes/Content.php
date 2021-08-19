@@ -16,8 +16,6 @@ abstract class Content extends Base
     protected const MODIFIER_WITHOUT_FIRST_ELEMENT = 'without-first-element';
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
-    protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
-    protected const DATA_FILE_EXTENSION = '.json';
 
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';

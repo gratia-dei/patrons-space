@@ -2,10 +2,14 @@
 
 abstract class Base
 {
+    private $date;
     private $environment;
     private $file;
     private $json;
     private $path;
+
+    protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
+    protected const DATA_FILE_EXTENSION = '.json';
 
     public function __construct()
     {
