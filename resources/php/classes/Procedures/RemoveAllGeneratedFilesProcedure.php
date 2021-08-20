@@ -12,7 +12,7 @@ class RemoveAllGeneratedFilesProcedure extends Procedure
             if (!$isDirectory && mb_substr($path, -mb_strlen($generatedFilesSuffix)) === $generatedFilesSuffix) {
                 $isRemoved = $this->getFile()->removeFile($path);
                 if (!$isRemoved) {
-                    $this->print("generated file '$path' remove error");
+                    $this->error("generated file '$path' remove error");
                 }
             }
         }

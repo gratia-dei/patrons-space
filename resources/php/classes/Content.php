@@ -41,15 +41,6 @@ abstract class Content extends Base
         return $this->getFile()->exists($dataPath);
     }
 
-    protected function getOriginalJsonFileContentArray(string $jsonFileName): array
-    {
-        $jsonPath = $this->getPath()->getDataPath($jsonFileName);
-        $content = $this->getFile()->getFileContent($jsonPath);
-        $array = $this->getJson()->decode($content);
-
-        return $array;
-    }
-
     protected function getOriginalHtmlFileContent(string $htmlFileName): string
     {
         $htmlPath = $this->getPath()->getHtmlPath($htmlFileName);

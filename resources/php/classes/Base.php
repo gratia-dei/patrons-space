@@ -44,4 +44,13 @@ abstract class Base
     {
         return $this->path;
     }
+
+    protected function getOriginalJsonFileContentArray(string $jsonFileName): array
+    {
+        $jsonPath = $this->getPath()->getDataPath($jsonFileName);
+        $content = $this->getFile()->getFileContent($jsonPath);
+        $array = $this->getJson()->decode($content);
+
+        return $array;
+    }
 }

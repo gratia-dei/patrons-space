@@ -9,6 +9,8 @@ spl_autoload_register(function ($class) {
         include dirname(__FILE__) . '/classes/MainContents/' . $class . '.php';
     } else if (substr($class, -9) === 'Procedure') {
         include dirname(__FILE__) . '/classes/Procedures/' . $class . '.php';
+    } else if (substr($class, -9) === 'Exception') {
+        include dirname(__FILE__) . '/classes/Exceptions/' . $class . '.php';
     } else {
         include dirname(__FILE__) . '/classes/' . $class . '.php';
     }

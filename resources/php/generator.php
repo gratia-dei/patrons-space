@@ -4,7 +4,7 @@ include 'autoload.php';
 
 $env = new Environment();
 if ($env->isCliMode()) {
-    (new GeneratorScript())->run();
+    (new GeneratorProcedure())->run();
 } else {
     $env->redirect('/');
 }
