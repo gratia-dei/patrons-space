@@ -53,4 +53,24 @@ abstract class Base
 
         return $array;
     }
+
+    protected function getDataFilesSuffix(): string
+    {
+        return self::DATA_FILE_EXTENSION;
+    }
+
+    protected function getGeneratedFilesSuffix(): string
+    {
+        return self::GENERATED_FILE_NAME_SUFFIX . $this->getDataFilesSuffix();
+    }
+
+    protected function getIndexFilePath(string $path, bool $forGeneratedFile = false): string
+    {
+        return $path . '/index' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
+    }
+
+    protected function getAliasFilePath(string $path, bool $forGeneratedFile = false): string
+    {
+        return $path . '/alias' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
+    }
 }

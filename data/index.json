@@ -1,11 +1,11 @@
 {
-  "records": {
-    "en": "Records",
-    "pl": "Rejestry"
-  },
-  "sources": {
-    "en": "Sources",
-    "la": "Fontes",
-    "pl": "Źródła"
-  }
+    "records": {
+        "en": "Records",
+        "pl": "Rejestry"
+    },
+    "sources": {
+        "en": "Sources",
+        "la": "Fontes",
+        "pl": "Źródła"
+    }
 }

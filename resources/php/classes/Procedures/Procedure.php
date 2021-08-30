@@ -18,7 +18,7 @@ class Procedure extends Base
 
     protected function getPathTree(string $path): array
     {
-        $result = [rtrim($path, '/') => true];
+        $result = [rtrim($path, '/') => $this->getFile()->isDirectory($path)];
 
         $elements = $this->getFile()->getList($path);
         foreach ($elements as $elementPath) {
@@ -30,5 +30,13 @@ class Procedure extends Base
         }
 
         return $result;
+    }
+
+    protected function setJsonFileContentFromArray(string $fullFilePath, array $data): bool
+    {
+        $content = $this->getJson()->encode($data);
+        $bytesSaved = $this->getFile()->setFileContent($fullFilePath, $content);
+
+        return ($bytesSaved > 0);
     }
 }

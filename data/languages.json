@@ -1,19 +1,19 @@
 {
-  "en": {
-    "en": "English",
-    "la": "Anglica",
-    "pl": "angielski"
-  },
+    "en": {
+        "en": "English",
+        "la": "Anglica",
+        "pl": "angielski"
+    },
 
-  "la": {
-    "la": "Latina",
-    "en": "Latin",
-    "pl": "łaciński"
-  },
+    "la": {
+        "la": "Latina",
+        "en": "Latin",
+        "pl": "łaciński"
+    },
 
-  "pl": {
-    "pl": "polski",
-    "en": "Polish",
-    "la": "Polonica"
-  }
+    "pl": {
+        "pl": "polski",
+        "en": "Polish",
+        "la": "Polonica"
+    }
 }

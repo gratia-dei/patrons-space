@@ -12,6 +12,11 @@ class File
         return @file_get_contents($filePath);
     }
 
+    public function setFileContent(string $filePath, string $content): int
+    {
+        return @file_put_contents($filePath, $content);
+    }
+
     public function getList(string $path, string $pattern = '*'): array
     {
         return @glob(rtrim($path, '/') . '/' . $pattern);

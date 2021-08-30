@@ -4,7 +4,7 @@ class RemoveAllGeneratedFilesProcedure extends Procedure
 {
     public function run(): void
     {
-        $generatedFilesSuffix = self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFilesSuffix = $this->getGeneratedFilesSuffix();
         $dataPath = $this->getPath()->getDataPath();
 
         $paths = $this->getPathTree($dataPath);

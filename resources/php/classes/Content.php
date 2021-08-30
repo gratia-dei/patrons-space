@@ -202,16 +202,6 @@ abstract class Content extends Base
         return '';
     }
 
-    protected function getIndexFilePath(string $path, bool $forGeneratedFile = false): string
-    {
-        return $path . '/index' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
-    }
-
-    protected function getAliasFilePath(string $path, bool $forGeneratedFile = false): string
-    {
-        return $path . '/alias' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
-    }
-
     protected function stripTags(string $content): string
     {
         return strip_tags($content);

@@ -65,6 +65,11 @@ class Environment
         return (php_sapi_name() === 'cli');
     }
 
+    public function getTidyPath(string $path): string
+    {
+        return trim(preg_replace('~//+~', '/', $path), '/');
+    }
+
     private function getEnvironmentClassPath(): string
     {
         return __FILE__;
@@ -73,10 +78,5 @@ class Environment
     private function getFromServerGlobal(string $key): string
     {
         return $_SERVER[$key] ?? '';
-    }
-
-    private function getTidyPath(string $path): string
-    {
-        return trim(preg_replace('~//+~', '/', $path), '/');
     }
 }
