@@ -7,6 +7,7 @@
   RewriteBase /
 
   RewriteRule ^favicon\.ico$ /files/resources/images/ico/favicon.ico [R=301,END]
+  RewriteRule ^(.+)/data/generated/?$ /data/$1.generated.json [END]
   RewriteRule ^(.+)/data/?$ /data/$1.json [END]
   RewriteRule ^files/(.*)$ $1 [END]
   RewriteRule ^.*$ /resources/php/index.php [END]
