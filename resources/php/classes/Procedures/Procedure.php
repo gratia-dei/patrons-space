@@ -16,6 +16,11 @@ class Procedure extends Base
         throw new GeneratorException($message);
     }
 
+    protected function getFullDataPath(string $dataPath): string
+    {
+        return '/' . $this->getEnvironment()->getTidyPath($this->getPath()->getDataPath($dataPath));
+    }
+
     protected function getPathTree(string $path): array
     {
         $result = [rtrim($path, '/') => $this->getFile()->isDirectory($path)];
@@ -35,8 +40,39 @@ class Procedure extends Base
     protected function setJsonFileContentFromArray(string $fullFilePath, array $data): bool
     {
         $content = $this->getJson()->encode($data);
-        $bytesSaved = $this->getFile()->setFileContent($fullFilePath, $content);
+        $bytesSaved = (int) $this->getFile()->setFileContent($fullFilePath, $content);
 
         return ($bytesSaved > 0);
+    }
+
+    protected function saveGeneratedFiles(array $generatedFilesData): void
+    {
+        foreach ($generatedFilesData as $path => $content) {
+            if (!$this->setJsonFileContentFromArray($path, $content)) {
+                $this->error("Write file error for path '$path'");
+            }
+        }
+    }
+
+    protected function getAllMainLanguageValues(array $data): array
+    {
+        $result = [];
+
+        foreach ($data as $language => $valueData) {
+            if (is_array($valueData)) {
+                $result[$language] = reset($valueData);
+            } else {
+                $result[$language] = $valueData;
+            }
+        }
+
+        return $result;
+    }
+
+    protected function getFileNameWithoutExtension(string $fullPath): string
+    {
+        $result = basename($fullPath);
+
+        return preg_replace('/^([^.]+)[.].*$/', '\\1', $result);
     }
 }

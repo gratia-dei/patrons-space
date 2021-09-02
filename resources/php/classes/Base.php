@@ -45,13 +45,18 @@ abstract class Base
         return $this->path;
     }
 
+    protected function getOriginalJsonFileContentArrayForFullPath(string $jsonFilePath): array
+    {
+        $content = $this->getFile()->getFileContent($jsonFilePath);
+
+        return $this->getJson()->decode($content);
+    }
+
     protected function getOriginalJsonFileContentArray(string $jsonFileName): array
     {
         $jsonPath = $this->getPath()->getDataPath($jsonFileName);
-        $content = $this->getFile()->getFileContent($jsonPath);
-        $array = $this->getJson()->decode($content);
 
-        return $array;
+        return $this->getOriginalJsonFileContentArrayForFullPath($jsonPath);
     }
 
     protected function getDataFilesSuffix(): string

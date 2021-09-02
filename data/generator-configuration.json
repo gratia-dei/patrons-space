@@ -4,7 +4,11 @@
         "params": []
     },
     {
-        "class": "GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure",
+        "class": "GenerateIndexAndAliasFilesForSubDirectoriesPrefixedNamedFilesProcedure",
         "params": ["/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/", "la"]
+    },
+    {
+        "class": "GenerateIndexFileForAllSubDirectoriesDataFilesProcedure",
+        "params": ["/records/patrons-and-feasts/patrons/", "names"]
     }
 ]

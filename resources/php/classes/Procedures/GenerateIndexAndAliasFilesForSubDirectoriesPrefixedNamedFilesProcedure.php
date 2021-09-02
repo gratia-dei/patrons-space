@@ -1,6 +1,6 @@
 <?php
 
-class GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure extends Procedure
+class GenerateIndexAndAliasFilesForSubDirectoriesPrefixedNamedFilesProcedure extends Procedure
 {
     private const STEP = 1;
 
@@ -13,7 +13,7 @@ class GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure exten
         $generatedFilesSuffix = $this->getGeneratedFilesSuffix();
         $dataFilesSuffix = $this->getDataFilesSuffix();
 
-        $rootPath = '/' . $this->getEnvironment()->getTidyPath($this->getPath()->getDataPath($dataPath));
+        $rootPath = $this->getFullDataPath($dataPath);
         $paths = $this->getPathTree($rootPath);
         foreach ($paths as $fullPath => $isDirectory) {
             $path = trim(mb_substr($fullPath, mb_strlen($rootPath)), '/');
@@ -42,7 +42,7 @@ class GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure exten
             }
         }
 
-        $this->saveGeneratedFiles();
+        $this->saveGeneratedFiles($this->generatedFilesData);
     }
 
     private function isPathElementsValid(array $elements, int $step): bool
@@ -83,7 +83,6 @@ class GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure exten
 
         $this->addIndexDataElement($path, $indexedElement, $defaultLanguage);
         $this->addAliasDataElement($path, $baseIndexedElement, $baseAliasPath);
-        $this->saveGeneratedFiles();
     }
 
     private function addIndexDataElement(string $path, string $element, string $defaultLanguage): void
@@ -96,14 +95,5 @@ class GenerateIndexAndAliasFilesForSubDirectoryPrefixedNamedFilesProcedure exten
     {
         $filePath = $this->getAliasFilePath($path, true);
         $this->generatedFilesData[$filePath][$element] = $aliasPath;
-    }
-
-    private function saveGeneratedFiles(): void
-    {
-        foreach ($this->generatedFilesData as $path => $content) {
-            if (!$this->setJsonFileContentFromArray($path, $content)) {
-                $this->error("Write file error for path '$path'");
-            }
-        }
     }
 }
