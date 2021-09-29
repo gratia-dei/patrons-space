@@ -1,7 +1,12 @@
 {
     "1": {
         "la": "1. Kaléndis Augústi",
-        "en": "1. August calends",
+        "en": "1. The August Kalends",
         "pl": "1. Kalendy sierpniowe"
+    },
+    "2": {
+        "la": "2. Quarto Nonas Augústi",
+        "en": "2. 4th day before the August Nones",
+        "pl": "2. Czwarty dzień przed nonami sierpniowymi"
     }
 }
