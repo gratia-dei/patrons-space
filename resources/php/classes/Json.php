@@ -14,6 +14,6 @@ class Json
 
     public function encode($content): string
     {
-        return @json_encode($content, JSON_PRETTY_PRINT);
+        return @json_encode($content, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
     }
 }
