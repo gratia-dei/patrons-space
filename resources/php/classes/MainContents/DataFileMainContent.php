@@ -5,8 +5,9 @@ class DataFileMainContent extends MainContent implements MainContentInterface
     private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
     private const CONTENT_BLOCK_ROUTING = [
         '/records/patrons-and-feasts/patrons/' => 'PatronContentBlock',
+        '/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/' => 'RomanMartyrologyIndexContentBlock',
         '/sources/martyrologium-romanum-2004/martyrologium-romanum/' => 'RomanMartyrology2004DayElogiesContentBlock',
-        '/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/' => 'RomanMartyrology2004IndexContentBlock',
+        '/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/' => 'RomanMartyrologyIndexContentBlock',
     ];
 
     private $directoryPath;

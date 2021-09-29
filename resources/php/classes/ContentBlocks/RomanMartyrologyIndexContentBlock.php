@@ -1,6 +1,6 @@
 <?php
 
-class RomanMartyrology2004IndexContentBlock extends ContentBlock implements ContentBlockInterface
+class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentBlockInterface
 {
     private const PAGE_INDEX = 'page';
     private const PAGE_COLUMN_INDEX = 'column';
