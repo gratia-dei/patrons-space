@@ -2,5 +2,10 @@
     "patrons-and-feasts": {
         "en": "Patrons and feasts",
         "pl": "Patroni i święta"
+    },
+    "popes": {
+        "en": "Popes",
+        "la": "Papae",
+        "pl": "Papieże"
     }
 }
