@@ -9,9 +9,9 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
 
     public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string
     {
-        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-index-content-block.html');
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-index-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');
-        $indexItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-index-item.html');
+        $indexItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-index-item.html');
 
         $translations = $this->getRecordTranslations($fileData);
         $language = $this->getLanguage();
