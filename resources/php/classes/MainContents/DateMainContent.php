@@ -2,6 +2,10 @@
 
 class DateMainContent extends MainContent implements MainContentInterface
 {
+    private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'DateOtherContentBlock';
+
+    private const PARENT_DIRECTORY = self::DATA_ROOT_PARENT_DIRECTORY_PATH;
+
     private const MIN_YEAR_ALLOWED = 2020;
     private const MIN_MONTH_ALLOWED_IN_MIN_YEAR = 8;
     private const MAX_FUTURE_YEARS = 1;
@@ -48,7 +52,13 @@ class DateMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/date-main-content.html');
 
-        return $originalContent;
+        $variables = [
+            'parent-directory' => $this->getFullResourcePath(self::PARENT_DIRECTORY),
+            'content' => $this->getDateFileContent(),
+        ];
+        $replacedContent = $this->getReplacedContent($originalContent, $variables);
+
+        return $replacedContent;
     }
 
     private function getDateString(): string
@@ -56,5 +66,24 @@ class DateMainContent extends MainContent implements MainContentInterface
         return $this->year
             . '-' . str_pad($this->month, 2, '0', STR_PAD_LEFT)
             . '-' . str_pad($this->day, 2, '0', STR_PAD_LEFT);
+    }
+
+    private function getDateFileContent(): string
+    {
+        $directoryPath = $this->getDateString();
+        $fileNameTranslated = '...fileNameTranslated';
+        $fileData = ['...fileData'];
+        $generatedFileData = ['...generatedFileData'];
+
+        $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
+        $contentBlockViews = $this->getOriginalJsonFileContentArray('date-content-block-configuration.json');
+        foreach ($contentBlockViews as $view => $classForPath) {
+            if ($view === $this->view) {
+                $class = $classForPath;
+                break;
+            }
+        }
+
+        return (new $class())->getContent($directoryPath, $fileNameTranslated, $fileData, $generatedFileData);
     }
 }
