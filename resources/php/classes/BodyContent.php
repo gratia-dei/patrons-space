@@ -23,6 +23,7 @@ class BodyContent extends Content
         $protocol = $this->getEnvironment()->getHostProtocol();
         $domain = $this->getEnvironment()->getHostMainDomainOnly();
         $requestPath = $this->getEnvironment()->getRequestPath();
+        //not used at this moment... $requestParams = $this->getEnvironment()->getRequestQueryParams();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
 
         $requestPathBasename = basename($requestPath);

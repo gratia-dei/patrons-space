@@ -19,9 +19,19 @@ class Environment
 
     public function getRequestPath(): string
     {
-        $requestPath = $this->getFromServerGlobal('REQUEST_URI');
+        $requestUri = $this->getFromServerGlobal('REQUEST_URI');
+        $requestPath = parse_url($requestUri, PHP_URL_PATH);
 
         return '/' . $this->getTidyPath($requestPath);
+    }
+
+    public function getRequestQueryParams(): array
+    {
+        $requestUri = $this->getFromServerGlobal('REQUEST_URI');
+        $requestQuery = (string) parse_url($requestUri, PHP_URL_QUERY);
+        parse_str($requestQuery, $result);
+
+        return $result;
     }
 
     public function getHttpStatusCode(): int
