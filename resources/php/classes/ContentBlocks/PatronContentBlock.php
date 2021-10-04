@@ -8,9 +8,15 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         self::NAMES_INDEX
     ];
 
-    public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string
+    public function getContent(string $path, string $fileNameTranslated): string
     {
         $content = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
+
+        $filePath = $path . self::DATA_FILE_EXTENSION;
+        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+
+        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
         $translations = $this->getPreparedTranslations($fileData);
         $language = $this->getLanguage();

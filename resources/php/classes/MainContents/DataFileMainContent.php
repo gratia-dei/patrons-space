@@ -4,7 +4,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 {
     private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
 
-    private $directoryPath;
+    private $path;
     private $fileNameTranslated;
     private $fileData;
     private $generatedFileData;
@@ -13,11 +13,8 @@ class DataFileMainContent extends MainContent implements MainContentInterface
     {
         $directoryPath = $this->getDataParentDirectoryPath($path);
 
-        $fileBaseName = basename($path) . self::DATA_FILE_EXTENSION;
-        $filePath = $directoryPath . '/' . $fileBaseName;
-
-        $generatedFileBaseName = basename($path) . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
-        $generatedFilePath = $directoryPath . '/' . $generatedFileBaseName;
+        $filePath = $path . self::DATA_FILE_EXTENSION;
+        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
 
         if (in_array($filePath, [
             $this->getIndexFilePath($directoryPath),
@@ -28,7 +25,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
-        if (empty($fileData) && empty($generatedFileData)) {
+        if (!$this->dataPathExists($filePath) && !$this->dataPathExists($generatedFilePath)) {
             return false;
         }
 
@@ -40,7 +37,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
             $indexVariables = $this->getTranslatedVariables($language, $indexFilePath);
         }
 
-        $this->directoryPath = $directoryPath;
+        $this->path = $path;
         $this->fileNameTranslated = $this->getFileNameTranslated($path, $indexVariables);
         $this->fileData = $fileData;
         $this->generatedFileData = $generatedFileData;
@@ -57,9 +54,10 @@ class DataFileMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/data-file-main-content.html');
 
+        $directoryPath = $this->getDataParentDirectoryPath($this->path);
         $variables = [
             'file-name' => $this->fileNameTranslated,
-            'parent-directory' => $this->getFullResourcePath($this->directoryPath),
+            'parent-directory' => $this->getFullResourcePath($directoryPath),
             'content' => $this->getDataFileContent(),
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
@@ -77,20 +75,19 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
     private function getDataFileContent(): string
     {
-        $directoryPath = $this->directoryPath;
+        $path = $this->path;
         $fileNameTranslated = $this->fileNameTranslated;
-        $fileData = $this->fileData;
-        $generatedFileData = $this->generatedFileData;
 
+        $directoryPath = $this->getDataParentDirectoryPath($path);
         $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
         $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
-        foreach ($contentBlockRouting as $path => $classForPath) {
-            if (strpos($directoryPath, $path) === 0) {
+        foreach ($contentBlockRouting as $routingPath => $classForPath) {
+            if (strpos($directoryPath, $routingPath) === 0) {
                 $class = $classForPath;
                 break;
             }
         }
 
-        return (new $class())->getContent($directoryPath, $fileNameTranslated, $fileData, $generatedFileData);
+        return (new $class())->getContent($path, $fileNameTranslated);
     }
 }

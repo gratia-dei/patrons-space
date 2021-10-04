@@ -70,10 +70,8 @@ class DateMainContent extends MainContent implements MainContentInterface
 
     private function getDateFileContent(): string
     {
-        $directoryPath = $this->getDateString();
+        $path = $this->getDateString();
         $fileNameTranslated = '...fileNameTranslated';
-        $fileData = ['...fileData'];
-        $generatedFileData = ['...generatedFileData'];
 
         $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
         $contentBlockViews = $this->getOriginalJsonFileContentArray('date-content-block-configuration.json');
@@ -84,6 +82,6 @@ class DateMainContent extends MainContent implements MainContentInterface
             }
         }
 
-        return (new $class())->getContent($directoryPath, $fileNameTranslated, $fileData, $generatedFileData);
+        return (new $class())->getContent($path, $fileNameTranslated);
     }
 }

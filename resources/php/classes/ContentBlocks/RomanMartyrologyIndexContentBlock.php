@@ -7,11 +7,17 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
 
     private const VAR_PREFIX = 'record-text-';
 
-    public function getContent(string $directoryPath, string $fileNameTranslated, array $fileData, array $generatedFileData): string
+    public function getContent(string $path, string $fileNameTranslated): string
     {
         $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-index-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');
         $indexItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-index-item.html');
+
+        $filePath = $path . self::DATA_FILE_EXTENSION;
+        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+
+        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
         $translations = $this->getRecordTranslations($fileData);
         $language = $this->getLanguage();
