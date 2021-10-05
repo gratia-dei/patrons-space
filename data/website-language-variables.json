@@ -73,6 +73,21 @@
         "en": "http://source.patrons.space"
     },
 
+    "lang-liturgical-calendar": {
+        "en": "Liturgical calendar",
+        "pl": "Kalendarz liturgiczny"
+    },
+
+    "lang-liturgical-calendar-my-patrons-info": {
+        "en": "You can also invite the patron announced at the Mass you attend, based on valid liturgical calendar.",
+        "pl": "Możesz także zaprosić patrona ogłoszonego na Mszy św. w której uczestniczysz, na podstawie obowiązującego kalendarza liturgicznego."
+    },
+
+    "lang-location": {
+        "en": "location",
+        "pl": "lokalizacja"
+    },
+
     "lang-non-existence": {
         "en": "non-existence",
         "pl": "brak"
@@ -100,9 +115,15 @@
         "pl": "katalog nadrzędny"
     },
 
-    "lang-location": {
-        "en": "location",
-        "pl": "lokalizacja"
+    "lang-roman-martyrology": {
+        "en": "Roman Martyrology",
+        "la": "Martyrologium Romanum",
+        "pl": "Martyrologium Rzymskie"
+    },
+
+    "lang-selected-patrons-for-day": {
+        "en": "Selected patrons for day",
+        "pl": "Wybrani patroni dla dnia"
     },
 
     "lang-service-name": {
