@@ -22,6 +22,8 @@ abstract class Content extends Base
     private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
     private const UNKNOWN_LANGUAGE_SIGN = '';
 
+    private const ACTIVE_RECORD_ID_QUERY_PARAM = 'active-record-id';
+
     private $translatedLanguagesVariablesCache;
 
     protected function getLanguage(): string
@@ -205,6 +207,13 @@ abstract class Content extends Base
     protected function stripTags(string $content): string
     {
         return strip_tags($content);
+    }
+
+    protected function getActiveRecordId(): ?string
+    {
+        $queryParams = $this->getEnvironment()->getRequestQueryParams();
+
+        return $queryParams[self::ACTIVE_RECORD_ID_QUERY_PARAM] ?? null;
     }
 
     private function getMissingTranslationMessage(string $originalLanguage): string

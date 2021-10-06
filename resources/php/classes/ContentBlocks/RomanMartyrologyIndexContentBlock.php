@@ -51,6 +51,7 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
             $variables = [
                 'record-id' => $recordId,
                 'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
+                'record-activeness-class' => $this->getRecordActivenessClass($recordId),
             ];
             $indexItemsContent .= $this->getReplacedContent($indexItemContent, $variables);
 

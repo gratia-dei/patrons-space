@@ -8,6 +8,9 @@ abstract class ContentBlock extends Content
     protected const NON_EXISTENCE = self::VARIABLE_NAME_SIGN . 'lang-non-existence' . self::VARIABLE_NAME_SIGN;
     protected const UNKNOWN_SIGN = '???';
 
+    protected const RECORD_ACTIVENESS_CLASS_ACTIVE = 'record-active';
+    protected const RECORD_ACTIVENESS_CLASS_INACTIVE = 'record-inactive';
+
     protected function getFormattedDate(string $date): string
     {
         return $date;
@@ -24,5 +27,17 @@ abstract class ContentBlock extends Content
         }
 
         return $dates;
+    }
+
+    protected function getRecordActivenessClass(string $recordId): string
+    {
+        $activeRecordId = $this->getActiveRecordId();
+        if ($activeRecordId === $recordId) {
+            $class = self::RECORD_ACTIVENESS_CLASS_ACTIVE;
+        } else {
+            $class = self::RECORD_ACTIVENESS_CLASS_INACTIVE;
+        }
+
+        return $class;
     }
 }

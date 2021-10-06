@@ -6,3 +6,9 @@ main {
   text-indent: -1em;
   display: inline-block;
 }
+
+.record-active {
+    background-color: #FFFF77;
+}
+.record-inactive {
+}
