@@ -95,11 +95,15 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
     {
         $result = [];
 
+        $aliases = []; //...todo numeric links data from generatedFileData
+
         foreach ($data as $key => $values) {
             unset($values[self::PAGE_INDEX]);
             unset($values[self::PAGE_COLUMN_INDEX]);
 
-            $result[self::VAR_PREFIX . $key] = $values;
+            foreach ($values as $language => $text) {
+                $result[self::VAR_PREFIX . $key][$language] = $this->getTextWithSpecialLinks($text, $aliases);
+            }
         }
 
         return $result;

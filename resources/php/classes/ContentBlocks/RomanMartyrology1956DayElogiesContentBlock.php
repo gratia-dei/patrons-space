@@ -99,11 +99,16 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
     {
         $result = [];
 
+        $aliases = []; //...todo numeric links data from generatedFileData
+
         foreach ($data as $key => $values) {
             unset($values[self::PAGE_INDEX]);
 
             $result[self::VAR_PREFIX . $key] = $values;
             foreach ($values as $language => $text) {
+                $text = $this->getTextWithSpecialLinks($text, $aliases);
+
+                $result[self::VAR_PREFIX . $key][$language] = $text;
                 $result[self::VAR_PREFIX . $key . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX][$language] = mb_substr($text, 0, 1, self::ENCODING);
                 $result[self::VAR_PREFIX . $key . self::VAR_WITHOUT_FIRST_CHARACTER_SUFFIX][$language] = mb_substr($text, 1, null, self::ENCODING);
             }

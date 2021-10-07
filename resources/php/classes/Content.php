@@ -216,6 +216,11 @@ abstract class Content extends Base
         return $queryParams[self::ACTIVE_RECORD_ID_QUERY_PARAM] ?? null;
     }
 
+    protected function getLinkWithActiveRecordIdForAnchor(string $link): string
+    {
+        return preg_replace('/^([^#]+)[#](.*)$/U', '\1?' . self::ACTIVE_RECORD_ID_QUERY_PARAM . '=\2#\2', $link);
+    }
+
     private function getMissingTranslationMessage(string $originalLanguage): string
     {
         $originalMessage = self::VARIABLE_NAME_SIGN . self::LANGUAGE_VARIABLE_NAME_BEFORE . self::VARIABLE_NAME_SIGN
