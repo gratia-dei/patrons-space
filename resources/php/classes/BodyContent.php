@@ -78,6 +78,13 @@ class BodyContent extends Content
         $content = '';
 
         $selectedLanguage = $this->getEnvironment()->getHostSubdomainOnly();
+        $queryParams = $this->getEnvironment()->getRequestQueryParams();
+
+        $queryParamsString = '';
+        if (!empty($queryParams)) {
+            $queryParamsString = '?' . http_build_query($queryParams);
+        }
+
         $optionContent = $this->getOriginalHtmlFileContent('items/selectable-languages-list-item.html');
         list($codesList, $translatedNamesList, $originalNamesList) = $this->getSelectableLanguagesListValues();
 
@@ -95,7 +102,7 @@ class BodyContent extends Content
                 }
             }
             $variables = [
-                'href' => $protocol . ltrim($code . '.' . $domain . $requestPath, '.'),
+                'href' => $protocol . ltrim($code . '.' . $domain . $requestPath . $queryParamsString, '.'),
                 'name' => $name,
                 'class' => $selectedLanguage === $code ? ' ' . self::ACTIVE_LANGUAGE_CLASS : '',
             ];
