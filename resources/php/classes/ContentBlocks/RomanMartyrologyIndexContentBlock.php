@@ -7,29 +7,45 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
 
     private const VAR_PREFIX = 'record-text-';
 
-    public function getContent(string $path, string $fileNameTranslated): string
-    {
-        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-index-content-block.html');
-        $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');
-        $indexItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-index-item.html');
+    private $recordContent;
+    private $fileData;
+    private $generatedFileData;
+    private $textVariables;
 
-        $filePath = $path . self::DATA_FILE_EXTENSION;
+    public function prepare(string $path): ContentBlock
+    {
+        $recordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-index-item.html');
+
+        $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
 
-        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
         $translations = $this->getRecordTranslations($fileData);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
+        $this->recordContent = $recordContent;
+        $this->fileData = $fileData;
+        $this->generatedFileData = $generatedFileData;
+        $this->textVariables = $textVariables;
+
+        return $this;
+    }
+
+    public function getFullContent(string $translatedName): string
+    {
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-index-content-block.html');
+        $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-with-column-item.html');
+
         $prevPageNumber = null;
         $prevPageColumnNumber = null;
         $pageNumber = self::UNKNOWN_PAGE_NUMBER;
         $pageColumnNumber = self::UNKNOWN_PAGE_COLUMN_NUMBER;
 
-        $indexItemsContent = '';
-        foreach ($fileData as $recordId => $recordData) {
+        $recordsContent = '';
+        foreach ($this->fileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
             $pageColumn = $recordData[self::PAGE_COLUMN_INDEX] ?? null;
 
@@ -45,27 +61,34 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
                     'page-number' => $pageNumber,
                     'page-column-number' => $pageColumnNumber,
                 ];
-                $indexItemsContent .= $this->getReplacedContent($pageHeaderContent, $variables);
+                $recordsContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
-            $variables = [
-                'record-id' => $recordId,
-                'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
-                'record-activeness-class' => $this->getRecordActivenessClass($recordId),
-            ];
-            $indexItemsContent .= $this->getReplacedContent($indexItemContent, $variables);
+            $recordsContent .= $this->getRecordContent($recordId);
 
             $prevPageNumber = $pageNumber;
             $prevPageColumnNumber = $pageColumnNumber;
         }
 
         $variables = [
-            'starting-letters' => $fileNameTranslated,
-            'index-items-content' => $indexItemsContent,
+            'starting-letters' => $translatedName,
+            'index-items-content' => $recordsContent,
         ];
         $result = $this->getReplacedContent($contentBlockContent, $variables);
 
-        return $this->getReplacedContent($result, $textVariables, true);
+        return $this->getReplacedContent($result, $this->textVariables, true);
+    }
+
+    public function getRecordContent(string $recordId): string
+    {
+        $variables = [
+            'record-id' => $recordId,
+            'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
+            'record-activeness-class' => $this->getRecordActivenessClass($recordId),
+        ];
+        $content = $this->getReplacedContent($this->recordContent, $variables);
+
+        return $this->getReplacedContent($content, $this->textVariables, true);
     }
 
     private function getRecordTranslations(array $data): array

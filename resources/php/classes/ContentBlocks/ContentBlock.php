@@ -13,6 +13,8 @@ abstract class ContentBlock extends Content
 
     protected function getFormattedDate(string $date): string
     {
+        //...
+
         return $date;
     }
 
@@ -27,6 +29,19 @@ abstract class ContentBlock extends Content
         }
 
         return $dates;
+    }
+
+    protected function getArrayIndexedFrom1(array $array): array
+    {
+        $result = [];
+
+        $elementId = 0;
+        foreach ($array as $value) {
+            $elementId++;
+            $result[$elementId] = $value;
+        }
+
+        return $result;
     }
 
     protected function getRecordActivenessClass(string $recordId): string

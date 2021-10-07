@@ -8,26 +8,47 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         self::NAMES_INDEX
     ];
 
-    public function getContent(string $path, string $fileNameTranslated): string
-    {
-        $content = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
+    private $fileData;
+    private $generatedFileData;
+    private $textVariables;
 
-        $filePath = $path . self::DATA_FILE_EXTENSION;
+    public function prepare(string $path): ContentBlock
+    {
+        $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
 
-        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
         $translations = $this->getPreparedTranslations($fileData);
         $language = $this->getLanguage();
-        $variables = $this->getTranslatedVariablesForLangData($language, $translations);
+        $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
-        $variables['date-of-birth'] = $this->getFormattedDates($fileData['born'] ?? self::UNKNOWN_SIGN);
-        $variables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
-        $variables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
-        $variables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
+        $this->fileData = $fileData;
+        $this->generatedFileData = $generatedFileData;
+        $this->textVariables = $textVariables;
 
-        return $this->getReplacedContent($content, $variables, true);
+        return $this;
+    }
+
+    public function getFullContent(string $translatedName): string
+    {
+        $content = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
+
+        $fileData = $this->fileData;
+        $textVariables = $this->textVariables;
+
+        $textVariables['date-of-birth'] = $this->getFormattedDates($fileData['born'] ?? self::UNKNOWN_SIGN);
+        $textVariables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
+        $textVariables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
+        $textVariables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
+
+        return $this->getReplacedContent($content, $textVariables, true);
+    }
+
+    public function getRecordContent(string $recordId): string
+    {
+        return ''; //... to do for each patron's title sections
     }
 
     private function getPreparedTranslations(array $data): array

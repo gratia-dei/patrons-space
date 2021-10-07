@@ -2,8 +2,6 @@
 
 class DateMainContent extends MainContent implements MainContentInterface
 {
-    private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'DateOtherContentBlock';
-
     private const PARENT_DIRECTORY = self::DATA_ROOT_PARENT_DIRECTORY_PATH;
 
     private const MIN_YEAR_ALLOWED = 2020;
@@ -14,6 +12,7 @@ class DateMainContent extends MainContent implements MainContentInterface
     private $month;
     private $day;
     private $view;
+    private $contentBlockClass;
 
     public function configure(string $path): bool
     {
@@ -31,10 +30,17 @@ class DateMainContent extends MainContent implements MainContentInterface
                     return false;
                 }
 
+                $contentBlockViews = $this->getOriginalJsonFileContentArray('date-content-block-configuration.json');
+                $contentBlockClass = $contentBlockViews[$view] ?? null;
+                if (is_null($contentBlockClass)) {
+                    return false;
+                }
+
                 $this->year = $year;
                 $this->month = $month;
                 $this->day = $day;
                 $this->view = $view;
+                $this->contentBlockClass = $contentBlockClass;
 
                 return true;
             }
@@ -70,18 +76,9 @@ class DateMainContent extends MainContent implements MainContentInterface
 
     private function getDateFileContent(): string
     {
-        $path = $this->getDateString();
-        $fileNameTranslated = '...fileNameTranslated';
+        $date = $this->getDateString();
+        $nameTranslated = '';
 
-        $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
-        $contentBlockViews = $this->getOriginalJsonFileContentArray('date-content-block-configuration.json');
-        foreach ($contentBlockViews as $view => $classForPath) {
-            if ($view === $this->view) {
-                $class = $classForPath;
-                break;
-            }
-        }
-
-        return (new $class())->getContent($path, $fileNameTranslated);
+        return (new $this->contentBlockClass())->prepare($date)->getFullContent($nameTranslated);
     }
 }

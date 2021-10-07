@@ -8,30 +8,47 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
     private const VAR_FIRST_CHARACTER_ONLY_SUFFIX = '-first-character-only';
     private const VAR_WITHOUT_FIRST_CHARACTER_SUFFIX = '-without-first-character';
 
-    public function getContent(string $path, string $fileNameTranslated): string
-    {
-        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-1956-day-elogies-content-block.html');
-        $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');
-        $importantItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-1956-day-elogy-important-item.html');
-        $normalItemContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-1956-day-elogy-normal-item.html');
+    private $importantRecordContent;
+    private $normalRecordContent;
+    private $fileData;
+    private $generatedFileData;
+    private $textVariables;
 
-        $filePath = $path . self::DATA_FILE_EXTENSION;
+    public function prepare(string $path): ContentBlock
+    {
+        $importantRecordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-1956-day-elogy-important-item.html');
+        $normalRecordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-1956-day-elogy-normal-item.html');
+
+        $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
 
-        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
         $translations = $this->getRecordTranslations($fileData);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
+        $this->importantRecordContent = $importantRecordContent;
+        $this->normalRecordContent = $normalRecordContent;
+        $this->fileData = $fileData;
+        $this->generatedFileData = $generatedFileData;
+        $this->textVariables = $textVariables;
+
+        return $this;
+    }
+
+    public function getFullContent(string $translatedName): string
+    {
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-1956-day-elogies-content-block.html');
+        $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');
+
         $prevPageNumber = null;
         $pageNumber = self::UNKNOWN_PAGE_NUMBER;
 
         $elogiesContent = '';
-        foreach ($fileData as $recordId => $recordData) {
+        foreach ($this->fileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
-            $isRecordImportant = ($recordId === 1);
 
             if (!is_null($page)) {
                 $pageNumber = $page;
@@ -43,31 +60,39 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
                 $elogiesContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
-            $variables = [
-                'record-id' => $recordId,
-                'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
-                'record-text-first-character-only' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX . self::VARIABLE_NAME_SIGN,
-                'record-text-without-first-character' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_WITHOUT_FIRST_CHARACTER_SUFFIX . self::VARIABLE_NAME_SIGN,
-                'record-activeness-class' => $this->getRecordActivenessClass($recordId),
-            ];
-
-            if ($isRecordImportant) {
-                $elogiesContent .= $this->getReplacedContent($importantItemContent, $variables);
-            } else {
-                $elogiesContent .= $this->getReplacedContent($normalItemContent, $variables);
-            }
+            $elogiesContent .= $this->getRecordContent($recordId);
 
             $prevPageNumber = $pageNumber;
         }
 
-        $dayHeader = $fileNameTranslated;
+        $dayHeader = $translatedName;
         $variables = [
             'day-header' => $dayHeader,
             'elogies-content' => $elogiesContent,
         ];
         $result = $this->getReplacedContent($contentBlockContent, $variables);
 
-        return $this->getReplacedContent($result, $textVariables, true);
+        return $this->getReplacedContent($result, $this->textVariables, true);
+    }
+
+    public function getRecordContent(string $recordId): string
+    {
+        $variables = [
+            'record-id' => $recordId,
+            'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
+            'record-text-first-character-only' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX . self::VARIABLE_NAME_SIGN,
+            'record-text-without-first-character' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_WITHOUT_FIRST_CHARACTER_SUFFIX . self::VARIABLE_NAME_SIGN,
+            'record-activeness-class' => $this->getRecordActivenessClass($recordId),
+        ];
+
+        $isRecordImportant = ($recordId === '1');
+        if ($isRecordImportant) {
+            $result = $this->getReplacedContent($this->importantRecordContent, $variables);
+        } else {
+            $result = $this->getReplacedContent($this->normalRecordContent, $variables);
+        }
+
+        return $this->getReplacedContent($result, $this->textVariables, true);
     }
 
     private function getRecordTranslations(array $data): array

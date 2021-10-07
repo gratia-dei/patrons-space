@@ -2,12 +2,11 @@
 
 class DataFileMainContent extends MainContent implements MainContentInterface
 {
-    private const DEFAULT_CONTENT_BLOCK_CLASS_NAME = 'OtherContentBlock';
-
     private $path;
     private $fileNameTranslated;
     private $fileData;
     private $generatedFileData;
+    private $contentBlockClass;
 
     public function configure(string $path): bool
     {
@@ -37,10 +36,23 @@ class DataFileMainContent extends MainContent implements MainContentInterface
             $indexVariables = $this->getTranslatedVariables($language, $indexFilePath);
         }
 
+        $contentBlockClass = null;
+        $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
+        foreach ($contentBlockRouting as $routingPath => $classForPath) {
+            if (strpos($directoryPath, $routingPath) === 0) {
+                $contentBlockClass = $classForPath;
+                break;
+            }
+        }
+        if (is_null($contentBlockClass)) {
+            return false;
+        }
+
         $this->path = $path;
         $this->fileNameTranslated = $this->getFileNameTranslated($path, $indexVariables);
         $this->fileData = $fileData;
         $this->generatedFileData = $generatedFileData;
+        $this->contentBlockClass = $contentBlockClass;
 
         return true;
     }
@@ -78,16 +90,6 @@ class DataFileMainContent extends MainContent implements MainContentInterface
         $path = $this->path;
         $fileNameTranslated = $this->fileNameTranslated;
 
-        $directoryPath = $this->getDataParentDirectoryPath($path);
-        $class = self::DEFAULT_CONTENT_BLOCK_CLASS_NAME;
-        $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
-        foreach ($contentBlockRouting as $routingPath => $classForPath) {
-            if (strpos($directoryPath, $routingPath) === 0) {
-                $class = $classForPath;
-                break;
-            }
-        }
-
-        return (new $class())->getContent($path, $fileNameTranslated);
+        return (new $this->contentBlockClass())->prepare($path)->getFullContent($fileNameTranslated);
     }
 }

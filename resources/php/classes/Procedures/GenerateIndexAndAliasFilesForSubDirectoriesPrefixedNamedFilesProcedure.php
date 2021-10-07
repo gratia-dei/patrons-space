@@ -10,8 +10,8 @@ class GenerateIndexAndAliasFilesForSubDirectoriesPrefixedNamedFilesProcedure ext
     {
         $step = self::STEP;
 
-        $generatedFilesSuffix = $this->getGeneratedFilesSuffix();
-        $dataFilesSuffix = $this->getDataFilesSuffix();
+        $generatedFilesSuffix = $this->getGeneratedFileSuffix();
+        $dataFilesSuffix = $this->getDataFileSuffix();
 
         $rootPath = $this->getFullDataPath($dataPath);
         $paths = $this->getPathTree($rootPath);

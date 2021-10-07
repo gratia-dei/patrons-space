@@ -59,14 +59,14 @@ abstract class Base
         return $this->getOriginalJsonFileContentArrayForFullPath($jsonPath);
     }
 
-    protected function getDataFilesSuffix(): string
+    protected function getDataFileSuffix(string $path = ''): string
     {
-        return self::DATA_FILE_EXTENSION;
+        return $path . self::DATA_FILE_EXTENSION;
     }
 
-    protected function getGeneratedFilesSuffix(): string
+    protected function getGeneratedFileSuffix(string $path = ''): string
     {
-        return self::GENERATED_FILE_NAME_SUFFIX . $this->getDataFilesSuffix();
+        return $path . self::GENERATED_FILE_NAME_SUFFIX . $this->getDataFileSuffix();
     }
 
     protected function getIndexFilePath(string $path, bool $forGeneratedFile = false): string
