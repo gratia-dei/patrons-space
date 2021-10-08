@@ -52,7 +52,7 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
         $listContent = '';
         foreach ($indexData as $variableName => $itemNames) {
             $itemVariables = [
-                'href' => $this->getFullResourcePath($path . $variableName),
+                'href' => $path . $variableName,
                 'name' => self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN,
             ];
             $listContent .= $this->getReplacedContent($itemContent, $itemVariables);
@@ -64,7 +64,7 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
 
         $mainContentVariables = [
             'path' => $path . ':',
-            'back-href' => $this->getFullResourcePath($this->getDataParentDirectoryPath($path)),
+            'back-href' => $this->getDataParentDirectoryPath($path),
             'list-content' => $translatedListContent,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $mainContentVariables);

@@ -34,6 +34,16 @@ class Environment
         return $result;
     }
 
+    public function getRequestQueryParamsString(): string
+    {
+        $queryParams = $this->getRequestQueryParams();
+        if (!empty($queryParams)) {
+            return '?' . http_build_query($queryParams);
+        }
+
+        return '';
+    }
+
     public function getHttpStatusCode(): int
     {
         return (int) $this->getFromServerGlobal('REDIRECT_STATUS');

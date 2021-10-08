@@ -26,12 +26,7 @@ class PathAliasRedirectionMainContent extends MainContent implements MainContent
         if ($redirectPath) {
             $protocol = $this->getEnvironment()->getHostProtocol();
             $host = $this->getEnvironment()->getHostDomain();
-            $queryParams = $this->getEnvironment()->getRequestQueryParams();
-
-            $queryParamsString = '';
-            if (!empty($queryParams)) {
-                $queryParamsString = '?' . http_build_query($queryParams);
-            }
+            $queryParamsString = $this->getEnvironment()->getRequestQueryParamsString();
 
             $this->getEnvironment()->redirect($protocol . $host . $redirectPath . $queryParamsString);
         }

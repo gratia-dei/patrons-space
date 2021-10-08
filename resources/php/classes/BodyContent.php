@@ -23,17 +23,11 @@ class BodyContent extends Content
         $protocol = $this->getEnvironment()->getHostProtocol();
         $domain = $this->getEnvironment()->getHostMainDomainOnly();
         $requestPath = $this->getEnvironment()->getRequestPath();
-        //not used at this moment... $requestParams = $this->getEnvironment()->getRequestQueryParams();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
 
-        $requestPathBasename = basename($requestPath);
-
         $variables = [];
-        $resourcePathSuffix = '/';
-        if ($requestPathBasename === self::RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY) {
+        if ($this->isContentOnlyMode()) {
             $htmlFileName = 'body-content.html';
-            $requestPath = dirname($requestPath);
-            $resourcePathSuffix = '/' . $requestPathBasename;
         } else {
             $htmlFileName = 'body-full.html';
             $variables['selected-language'] = $this->getSelectedLanguageName();
@@ -46,13 +40,7 @@ class BodyContent extends Content
         $originalContent = $this->getOriginalHtmlFileContent($htmlFileName);
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 
-        $resourcePathSuffixVariableName = $this->getResourcePathSuffixVariableName();
-        $variables = [
-            $resourcePathSuffixVariableName => $resourcePathSuffix,
-        ];
-        $replacedAgainContent = $this->getReplacedContent($replacedContent, $variables);
-
-        return [$strippedTitle, $replacedAgainContent];
+        return [$strippedTitle, $replacedContent];
     }
 
     private function getSelectedLanguageName(): string
@@ -78,12 +66,7 @@ class BodyContent extends Content
         $content = '';
 
         $selectedLanguage = $this->getEnvironment()->getHostSubdomainOnly();
-        $queryParams = $this->getEnvironment()->getRequestQueryParams();
-
-        $queryParamsString = '';
-        if (!empty($queryParams)) {
-            $queryParamsString = '?' . http_build_query($queryParams);
-        }
+        $queryParamsString = $this->getEnvironment()->getRequestQueryParamsString();
 
         $optionContent = $this->getOriginalHtmlFileContent('items/selectable-languages-list-item.html');
         list($codesList, $translatedNamesList, $originalNamesList) = $this->getSelectableLanguagesListValues();

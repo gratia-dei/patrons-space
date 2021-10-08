@@ -23,7 +23,7 @@ class InvalidPathMainContent extends MainContent implements MainContentInterface
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/invalid-path-main-content.html');
 
         $variables = [
-            'parent-directory' => $this->getFullResourcePath($this->directoryPath),
+            'parent-directory' => $this->directoryPath,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 

@@ -17,12 +17,6 @@ class MainPageMainContent extends MainContent implements MainContentInterface
         $result = $this->getOriginalHtmlFileContent('main-contents/main-page-main-content.html');
 
         $variables = [
-            'data-link' => $this->getFullResourcePath('data'),
-            'my-patrons-for-today-link' => $this->getFullResourcePath('/dates/my-patrons/#current-year#/#current-month#/#current-day#'),
-        ];
-        $result = $this->getReplacedContent($result, $variables);
-
-        $variables = [
             'current-year' => $this->getDate()->getCurrentYear(),
             'current-month' => $this->getDate()->getCurrentMonth(),
             'current-day' => $this->getDate()->getCurrentDay(),

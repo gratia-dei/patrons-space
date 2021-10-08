@@ -2,8 +2,6 @@
 
 class DateMainContent extends MainContent implements MainContentInterface
 {
-    private const PARENT_DIRECTORY = '/';
-
     private const MIN_YEAR_ALLOWED = 2020;
     private const MIN_MONTH_ALLOWED_IN_MIN_YEAR = 8;
     private const MAX_FUTURE_YEARS = 1;
@@ -58,9 +56,14 @@ class DateMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/date-main-content.html');
 
+        if ($this->isContentOnlyMode()) {
+            $visibilityClass = self::VISIBILITY_CLASS_INVISIBLE;
+        } else {
+            $visibilityClass = self::VISIBILITY_CLASS_VISIBLE;
+        }
         $variables = [
-            'parent-directory' => $this->getFullResourcePath(self::PARENT_DIRECTORY),
             'content' => $this->getDateFileContent(),
+            'visibility-class' => $visibilityClass,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 

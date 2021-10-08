@@ -17,23 +17,21 @@ abstract class Content extends Base
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
 
+    protected const VISIBILITY_CLASS_VISIBLE = 'visible';
+    protected const VISIBILITY_CLASS_INVISIBLE = 'invisible';
+
+    private const CONTENT_ONLY_QUERY_PARAM_NAME = 'content-only';
+    private const ACTIVE_RECORD_ID_QUERY_PARAM_NAME = 'active-record-id';
+
     private const LANGUAGE_VARIABLE_NAME_BEFORE = 'lang-language-before-final-translation';
     private const LANGUAGE_VARIABLE_NAME_AFTER = 'lang-language';
-    private const RESOURCE_PATH_SUFFIX_VARIABLE_NAME = 'resource-path-suffix';
     private const UNKNOWN_LANGUAGE_SIGN = '';
-
-    private const ACTIVE_RECORD_ID_QUERY_PARAM = 'active-record-id';
 
     private $translatedLanguagesVariablesCache;
 
     protected function getLanguage(): string
     {
         return $this->getEnvironment()->getHostSubdomainOnly();
-    }
-
-    protected function getResourcePathSuffixVariableName(): string
-    {
-        return self::RESOURCE_PATH_SUFFIX_VARIABLE_NAME;
     }
 
     protected function dataPathExists(string $path): bool
@@ -143,11 +141,6 @@ abstract class Content extends Base
         return $translatedContent;
     }
 
-    protected function getFullResourcePath(string $path): string
-    {
-        return rtrim($path, '/') . self::VARIABLE_NAME_SIGN . $this->getResourcePathSuffixVariableName() . self::VARIABLE_NAME_SIGN;
-    }
-
     protected function getDataParentDirectoryPath(string $path): string
     {
         if ($path !== '/') {
@@ -213,12 +206,19 @@ abstract class Content extends Base
     {
         $queryParams = $this->getEnvironment()->getRequestQueryParams();
 
-        return $queryParams[self::ACTIVE_RECORD_ID_QUERY_PARAM] ?? null;
+        return $queryParams[self::ACTIVE_RECORD_ID_QUERY_PARAM_NAME] ?? null;
     }
 
     protected function getLinkWithActiveRecordIdForAnchor(string $link): string
     {
-        return preg_replace('/^([^#]+)[#](.*)$/U', '\1?' . self::ACTIVE_RECORD_ID_QUERY_PARAM . '=\2#\2', $link);
+        return preg_replace('/^([^#]+)[#](.*)$/U', '\1?' . self::ACTIVE_RECORD_ID_QUERY_PARAM_NAME . '=\2#\2', $link);
+    }
+
+    protected function isContentOnlyMode(): bool
+    {
+        $requestParams = $this->getEnvironment()->getRequestQueryParams();
+
+        return !empty($requestParams[self::CONTENT_ONLY_QUERY_PARAM_NAME] ?? '');
     }
 
     private function getMissingTranslationMessage(string $originalLanguage): string
