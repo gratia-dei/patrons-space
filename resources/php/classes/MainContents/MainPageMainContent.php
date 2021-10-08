@@ -16,6 +16,13 @@ class MainPageMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/main-page-main-content.html');
 
-        return $originalContent;
+        $variables = [
+            'current-year' => $this->getDate()->getCurrentYear(),
+            'current-month' => $this->getDate()->getCurrentMonth(),
+            'current-day' => $this->getDate()->getCurrentDay(),
+        ];
+        $result = $this->getReplacedContent($originalContent, $variables);
+
+        return $result;
     }
 }

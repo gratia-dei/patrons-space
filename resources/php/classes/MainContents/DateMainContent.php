@@ -2,7 +2,7 @@
 
 class DateMainContent extends MainContent implements MainContentInterface
 {
-    private const PARENT_DIRECTORY = self::DATA_ROOT_PARENT_DIRECTORY_PATH;
+    private const PARENT_DIRECTORY = '/';
 
     private const MIN_YEAR_ALLOWED = 2020;
     private const MIN_MONTH_ALLOWED_IN_MIN_YEAR = 8;

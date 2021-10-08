@@ -27,6 +27,11 @@
         "pl": "kontakt"
     },
 
+    "lang-data": {
+        "en": "service data",
+        "pl": "dane serwisu"
+    },
+
     "lang-date-of-birth": {
         "en": "date of birth",
         "la": "diem natalis",
@@ -86,6 +91,16 @@
     "lang-location": {
         "en": "location",
         "pl": "lokalizacja"
+    },
+
+    "lang-main-page": {
+        "en": "main page",
+        "pl": "strona główna"
+    },
+
+    "lang-my-patrons-for-today": {
+        "en": "My Patrons for today",
+        "pl": "Moi Patroni na dziś"
     },
 
     "lang-non-existence": {
