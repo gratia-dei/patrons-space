@@ -46,7 +46,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         return $this->getReplacedContent($content, $textVariables, true);
     }
 
-    public function getRecordContent(string $recordId): string
+    public function getRecordContent(string $recordId, bool $useContextOptions = false): string
     {
         return ''; //... to do for each patron's title sections
     }

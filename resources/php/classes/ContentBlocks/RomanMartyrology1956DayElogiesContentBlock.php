@@ -60,7 +60,7 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
                 $elogiesContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
-            $elogiesContent .= $this->getRecordContent($recordId);
+            $elogiesContent .= $this->getRecordContent($recordId, true);
 
             $prevPageNumber = $pageNumber;
         }
@@ -75,14 +75,14 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
         return $this->getReplacedContent($result, $this->textVariables, true);
     }
 
-    public function getRecordContent(string $recordId): string
+    public function getRecordContent(string $recordId, bool $useContextOptions = false): string
     {
         $variables = [
             'record-id' => $recordId,
             'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
             'record-text-first-character-only' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX . self::VARIABLE_NAME_SIGN,
             'record-text-without-first-character' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_WITHOUT_FIRST_CHARACTER_SUFFIX . self::VARIABLE_NAME_SIGN,
-            'record-activeness-class' => $this->getRecordActivenessClass($recordId),
+            'record-activeness-class' => $this->getRecordActivenessClass($recordId, $useContextOptions),
         ];
 
         $isRecordImportant = ($recordId === '1');

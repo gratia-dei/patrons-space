@@ -26,7 +26,7 @@ class DateMyTopPatronsContentBlock extends ContentBlock implements ContentBlockI
         $patronsListContent = '';
         $recordIds = array_keys($this->dayData);
         foreach ($recordIds as $recordId) {
-            $patronsListContent .= $this->getRecordContent($recordId);
+            $patronsListContent .= $this->getRecordContent($recordId, true);
         }
 
         $variables = [
@@ -37,7 +37,7 @@ class DateMyTopPatronsContentBlock extends ContentBlock implements ContentBlockI
         return $this->getReplacedContent($contentBlockContent, $variables);
     }
 
-    public function getRecordContent(string $recordId): string
+    public function getRecordContent(string $recordId, bool $useContextOptions = false): string
     {
         $variables = [
             'name' => $this->dayData[$recordId],
