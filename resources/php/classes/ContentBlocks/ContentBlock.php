@@ -70,8 +70,14 @@ abstract class ContentBlock extends Content
             $link = $matches['link'][$key];
 
             if (preg_match('/^[1-9][0-9]*$/', $link)) {
-                //... todo set link to patron or feast, currently remove link
-                $replacement = $value;
+                $link = $aliases[$link] ?? null;
+
+                if (is_null($link)) {
+                    $replacement = $value;
+                } else {
+                    $link = $this->getLinkWithActiveRecordIdForAnchor('/' . ltrim($link, '/'));
+                    $replacement = '<a href="' . $link . '">' . $value . '</a>';
+                }
             } else {
                 $link = $this->getLinkWithActiveRecordIdForAnchor('/' . ltrim($link, '/'));
                 $replacement = '<a href="' . $link . '">' . $value . '</a>';

@@ -78,4 +78,55 @@ abstract class Base
     {
         return $path . '/alias' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
     }
+
+    protected function getPathToRedirect(string $path): string
+    {
+        if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
+            return '';
+        }
+
+        $wasPathChanged = false;
+        $pathElements = explode('/', $path);
+        $pathCount = count($pathElements);
+        for ($element = 1; $element <= $pathCount; $element++) {
+            $tmpPath = implode('/', array_slice($pathElements, 0, $element));
+            $basename = $pathElements[$element - 1];
+
+            if (!$this->dataPathExists($tmpPath)) {
+                $aliasFilePath = $this->getAliasFilePath(dirname($tmpPath));
+                if (!$this->dataPathExists($aliasFilePath)) {
+                    $aliasFilePath = $this->getAliasFilePath(dirname($tmpPath), true);
+                    if (!$this->dataPathExists($aliasFilePath)) {
+                        break;
+                    }
+                }
+
+                $aliasData = $this->getOriginalJsonFileContentArray($aliasFilePath);
+                if (!isset($aliasData[$basename])) {
+                    break;
+                }
+
+                if ($basename !== $aliasData[$basename]) {
+                    $pathElements[$element - 1] = $aliasData[$basename];
+                    $wasPathChanged = true;
+                }
+            }
+        }
+
+        if ($wasPathChanged) {
+            $path = implode('/', $pathElements);
+            if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
+                return preg_replace('~[/]+~', '/', '/' . $path);
+            }
+        }
+
+        return '';
+    }
+
+    protected function dataPathExists(string $path): bool
+    {
+        $dataPath = $this->getPath()->getDataPath($path);
+
+        return $this->getFile()->exists($dataPath);
+    }
 }

@@ -22,7 +22,7 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
         $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
-        $translations = $this->getRecordTranslations($fileData);
+        $translations = $this->getRecordTranslations($fileData, $generatedFileData);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
@@ -91,18 +91,16 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
         return $this->getReplacedContent($content, $this->textVariables, true);
     }
 
-    private function getRecordTranslations(array $data): array
+    private function getRecordTranslations(array $data, array $aliases): array
     {
         $result = [];
-
-        $aliases = []; //...todo numeric links data from generatedFileData
 
         foreach ($data as $key => $values) {
             unset($values[self::PAGE_INDEX]);
             unset($values[self::PAGE_COLUMN_INDEX]);
 
             foreach ($values as $language => $text) {
-                $result[self::VAR_PREFIX . $key][$language] = $this->getTextWithSpecialLinks($text, $aliases);
+                $result[self::VAR_PREFIX . $key][$language] = $this->getTextWithSpecialLinks($text, $aliases[$key] ?? []);
             }
         }
 
