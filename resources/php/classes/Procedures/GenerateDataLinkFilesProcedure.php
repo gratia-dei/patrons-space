@@ -50,12 +50,11 @@ class GenerateDataLinkFilesProcedure extends Procedure
         foreach ($data as $fieldPath => $fieldData) {
             foreach ($fieldData as $dstDirPathAlias => $dataLinks) {
                 foreach ($dataLinks as $link) {
-                    if (!preg_match("/^(?'link_id'[1-9][0-9]*)[:](?'path'[^# ]+)[#](?'record_id'[1-9][0-9]*)$/", $link, $matches)) {
+                    $linkData = $this->getDataLinkElements($link);
+                    if (is_null($linkData)) {
                         $this->error("invalid link '$link' in file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");
                     }
-                    $linkId = (int) $matches['link_id'];
-                    $dstFilePathAlias = $matches['path'];
-                    $recordId = (int) $matches['record_id'];
+                    list($linkId, $dstFilePathAlias, $recordId) = $linkData;
 
                     $dstPathAlias = "$dstDirPathAlias/$dstFilePathAlias";
                     $dstPath = $this->getPathToRedirect($dstPathAlias);

@@ -46,10 +46,10 @@ abstract class ContentBlock extends Content
         return $result;
     }
 
-    protected function getRecordActivenessClass(string $recordId, bool $canBeActive = true): string
+    protected function getRecordActivenessClass(string $recordId): string
     {
         $activeRecordId = $this->getActiveRecordId();
-        if ($activeRecordId === $recordId && $canBeActive) {
+        if ($activeRecordId === $recordId) {
             $class = self::RECORD_ACTIVENESS_CLASS_ACTIVE;
         } else {
             $class = self::RECORD_ACTIVENESS_CLASS_INACTIVE;

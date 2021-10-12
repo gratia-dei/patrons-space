@@ -64,7 +64,7 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
                 $recordsContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
-            $recordsContent .= $this->getRecordContent($recordId, true);
+            $recordsContent .= $this->getRecordContent($recordId);
 
             $prevPageNumber = $pageNumber;
             $prevPageColumnNumber = $pageColumnNumber;
@@ -79,12 +79,12 @@ class RomanMartyrologyIndexContentBlock extends ContentBlock implements ContentB
         return $this->getReplacedContent($result, $this->textVariables, true);
     }
 
-    public function getRecordContent(string $recordId, bool $useContextOptions = false): string
+    public function getRecordContent(string $recordId): string
     {
         $variables = [
             'record-id' => $recordId,
             'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
-            'record-activeness-class' => $this->getRecordActivenessClass($recordId, $useContextOptions),
+            'record-activeness-class' => $this->getRecordActivenessClass($recordId),
         ];
         $content = $this->getReplacedContent($this->recordContent, $variables);
 

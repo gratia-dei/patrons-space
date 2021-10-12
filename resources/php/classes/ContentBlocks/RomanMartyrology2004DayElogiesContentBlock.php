@@ -63,7 +63,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
                 $elogiesContent .= $this->getReplacedContent($pageHeaderContent, $variables);
             }
 
-            $elogiesContent .= $this->getRecordContent($recordId, true);
+            $elogiesContent .= $this->getRecordContent($recordId);
 
             $prevPageNumber = $pageNumber;
         }
@@ -87,7 +87,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
         return $this->getReplacedContent($result, $this->textVariables, true);
     }
 
-    public function getRecordContent(string $recordId, bool $useContextOptions = false): string
+    public function getRecordContent(string $recordId): string
     {
         $recordType = $this->fileData[$recordId][self::MARK_INDEX] ?? '';
 
@@ -97,7 +97,7 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
             'record-text' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VARIABLE_NAME_SIGN,
             'record-text-first-character-only' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX . self::VARIABLE_NAME_SIGN,
             'record-text-without-first-character' => self::VARIABLE_NAME_SIGN . self::VAR_PREFIX . $recordId . self::VAR_WITHOUT_FIRST_CHARACTER_SUFFIX . self::VARIABLE_NAME_SIGN,
-            'record-activeness-class' => $this->getRecordActivenessClass($recordId, $useContextOptions),
+            'record-activeness-class' => $this->getRecordActivenessClass($recordId),
         ];
 
         if ($recordType === self::IMPORTANT_RECORD_MARK_SIGN) {

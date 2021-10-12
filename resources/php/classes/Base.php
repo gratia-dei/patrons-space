@@ -129,4 +129,17 @@ abstract class Base
 
         return $this->getFile()->exists($dataPath);
     }
+
+    protected function getDataLinkElements(string $link): ?array
+    {
+        if (!preg_match("/^(?'link_id'[1-9][0-9]*)[:](?'path'[^# ]+)[#](?'record_id'[1-9][0-9]*)$/", $link, $matches)) {
+            return null;
+        }
+
+        $linkId = (int) $matches['link_id'];
+        $path = $matches['path'];
+        $recordId = (int) $matches['record_id'];
+
+        return [$linkId, $path, $recordId];
+    }
 }
