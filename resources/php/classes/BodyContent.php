@@ -2,20 +2,25 @@
 
 class BodyContent extends Content
 {
-    private const RESOURCE_PATH_SUFFIX_FOR_MAIN_CONTENT_ONLY = 'content';
-
     private const ORIGINAL_VARIABLE_NAME = 'lang-original';
 
     private const NEWLINE = "\n";
     private const ORIGINAL_LANGUAGE_CODE = '??';
     private const ACTIVE_LANGUAGE_CLASS = 'active';
 
+    private const PATH_TITLE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-path' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
+    private const BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS = [
+        'dates',
+    ];
+
     private $mainContentRouter;
+    private $breadcrumbsContentBlock;
 
     public function __construct()
     {
         parent::__construct();
         $this->mainContentRouter = new MainContentRouter();
+        $this->breadcrumbsContentBlock = new BreadcrumbsContentBlock();
     }
 
     public function getTitleAndContent(): array
@@ -32,7 +37,9 @@ class BodyContent extends Content
             $htmlFileName = 'body-full.html';
             $variables['selected-language'] = $this->getSelectedLanguageName();
             $variables['selectable-languages-list'] = $this->getSelectableLanguagesList($protocol, $domain, $requestPath);
+            $variables['breadcrumbs-content-block'] = $this->getBreadcrumbsContent($requestPath);
         }
+
         list($title, $variables['content']) = $this->mainContentRouter->getTitleAndContent($requestPath, $httpStatusCode);
 
         $strippedTitle = $this->stripTags($title);
@@ -113,5 +120,25 @@ class BodyContent extends Content
         }
 
         return [$codes, $translated, $original];
+    }
+
+    private function getBreadcrumbsContent(string $requestPath): string
+    {
+        $showDataElement = true;
+        foreach (self::BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS as $path) {
+            if (mb_strpos("$requestPath/", "/$path/") === 0) {
+                $showDataElement = false;
+            }
+        }
+
+        $bcFullPath = $requestPath === self::DATA_ROOT_PARENT_DIRECTORY_PATH ? '/' : $requestPath;
+        $bcContextPath = $requestPath === '/' ? '/' : '';
+        $bcPath = $this->breadcrumbsContentBlock->getPathWithContext($bcFullPath, $bcContextPath);
+
+        return $this->breadcrumbsContentBlock
+            ->showDataElement($showDataElement)
+            ->prepare($bcPath)
+            ->getFullContent(self::PATH_TITLE_VARIABLE)
+        ;
     }
 }

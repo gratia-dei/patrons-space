@@ -130,6 +130,11 @@
         "pl": "katalog nadrzędny"
     },
 
+    "lang-path": {
+        "en": "path",
+        "pl": "ścieżka"
+    },
+
     "lang-roman-martyrology": {
         "en": "Roman Martyrology",
         "la": "Martyrologium Romanum",
