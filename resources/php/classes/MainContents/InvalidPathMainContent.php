@@ -4,12 +4,8 @@ class InvalidPathMainContent extends MainContent implements MainContentInterface
 {
     private const INVALID_LOCATION_VARIABLE = 'lang-invalid-location';
 
-    private $directoryPath;
-
     public function configure(string $path): bool
     {
-        $this->directoryPath = $this->getDataParentDirectoryPath($path);
-
         return true;
     }
 
@@ -20,13 +16,6 @@ class InvalidPathMainContent extends MainContent implements MainContentInterface
 
     public function getContent(): string
     {
-        $originalContent = $this->getOriginalHtmlFileContent('main-contents/invalid-path-main-content.html');
-
-        $variables = [
-            'parent-directory' => $this->directoryPath,
-        ];
-        $replacedContent = $this->getReplacedContent($originalContent, $variables);
-
-        return $replacedContent;
+        return $this->getOriginalHtmlFileContent('main-contents/invalid-path-main-content.html');
     }
 }

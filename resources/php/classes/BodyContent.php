@@ -11,6 +11,7 @@ class BodyContent extends Content
     private const PATH_TITLE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-path' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
     private const BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS = [
         'dates',
+        'files',
     ];
 
     private $mainContentRouter;

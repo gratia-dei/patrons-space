@@ -63,8 +63,6 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
         $translatedListContent = $this->getReplacedContent($listContent, $indexVariables, true);
 
         $mainContentVariables = [
-            'path' => $path . ':',
-            'back-href' => $this->getDataParentDirectoryPath($path),
             'list-content' => $translatedListContent,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $mainContentVariables);

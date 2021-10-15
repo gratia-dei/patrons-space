@@ -56,14 +56,8 @@ class DateMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/date-main-content.html');
 
-        if ($this->isContentOnlyMode()) {
-            $visibilityClass = self::VISIBILITY_CLASS_INVISIBLE;
-        } else {
-            $visibilityClass = self::VISIBILITY_CLASS_VISIBLE;
-        }
         $variables = [
             'content' => $this->getDateFileContent(),
-            'visibility-class' => $visibilityClass,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
 

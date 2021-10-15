@@ -10,7 +10,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
     public function configure(string $path): bool
     {
-        $directoryPath = $this->getDataParentDirectoryPath($path);
+        $directoryPath = dirname($path);
 
         $filePath = $path . self::DATA_FILE_EXTENSION;
         $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
@@ -66,10 +66,8 @@ class DataFileMainContent extends MainContent implements MainContentInterface
     {
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/data-file-main-content.html');
 
-        $directoryPath = $this->getDataParentDirectoryPath($this->path);
         $variables = [
             'file-name' => $this->fileNameTranslated,
-            'parent-directory' => $directoryPath,
             'content' => $this->getDataFileContent(),
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $variables);
