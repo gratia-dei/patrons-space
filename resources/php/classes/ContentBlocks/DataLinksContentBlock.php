@@ -4,8 +4,20 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
 {
     private const DATA_LINKS_FIELD_NAME = 'data-links';
 
+    private const LIST_PATH_NAME = '';
+    private const RECORD_PATH_NAME = self::VARIABLE_NAME_SIGN . 'lang-resource' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
+    private const RECORD_NAME = self::VARIABLE_NAME_SIGN . 'lang-position' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
+
     private $data = [];
     private $pathData = [];
+    private $breadcrumbsContentBlock;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->breadcrumbsContentBlock = new BreadcrumbsContentBlock();
+    }
 
     public function setData(array $data): ContentBlock
     {
@@ -46,7 +58,8 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
                 }
             }
 
-            $listTitle = $this->getTranslatedNameForPath($mainPath);
+            $listName = self::LIST_PATH_NAME;
+            $listTitle = $this->getTranslatedNameForPath($listName, $mainPath);
             $listContent = '';
 
             if (is_null($contentBlockClass)) {
@@ -65,14 +78,17 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
 
                 $fullPath = $this->getPathToRedirect($mainPath . $subPathAlias);
 
-                $recordTitle = $this->getTranslatedNameForPath($fullPath, $mainPath);
+                $recordName = self::RECORD_PATH_NAME;
+                $recordTitle = $this->getTranslatedNameForPath($recordName, $fullPath, $mainPath);
+                $recordIdLink = $this->getActiveBreadcrumbsLink($fullPath, $recordId);
                 $recordContent = (new $contentBlockClass())->prepare($fullPath)->getRecordContent($recordId);
 
                 $recordContent = preg_replace('/ id="([0-9]+)"/U', ' id="record_' . $recordNumber . '"', $recordContent);
                 $recordContent = str_replace(self::RECORD_ACTIVENESS_CLASS_ACTIVE, self::RECORD_ACTIVENESS_CLASS_INACTIVE, $recordContent);
 
+
                 $variables = [
-                    'record-title' => $recordTitle,
+                    'record-title' => "$recordTitle | " . self::RECORD_NAME . ": $recordIdLink",
                     'record-content' => $recordContent,
                 ];
                 $listContent .= $this->getReplacedContent($recordContentItem, $variables);
@@ -109,8 +125,18 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
         return $data[self::DATA_LINKS_FIELD_NAME] ?? [];
     }
 
-    private function getTranslatedNameForPath(string $path, string $rootPath = ''): string
+    private function getTranslatedNameForPath(string $name, string $fullPath, string $contextPath = self::DATA_ROOT_PARENT_DIRECTORY_PATH): string
     {
-        return "$path";
+        $bcPath = $this->breadcrumbsContentBlock->getPathWithContext($fullPath, $contextPath);
+
+        return $this->breadcrumbsContentBlock
+            ->prepare($bcPath)
+            ->getFullContent($name)
+        ;
+    }
+
+    private function getActiveBreadcrumbsLink(string $path, string $recordId): string
+    {
+        return $this->breadcrumbsContentBlock->getLinkWithAnchor($path, $recordId);
     }
 }

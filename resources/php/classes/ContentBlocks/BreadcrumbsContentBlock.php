@@ -13,11 +13,18 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
 
     private GlobalVariables $globalVariables;
 
-    private bool $showDataElement = true;
+    private bool $showDataElement = false;
     private string $activeLinkContent;
     private string $inactiveLinkContent;
     private bool $showMainPage = false;
     private array $pathElements = [];
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->globalVariables = GlobalVariables::getInstance();
+    }
 
     public function getPathWithContext(string $fullPath, string $contextPath = ''): string
     {
@@ -33,8 +40,6 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
 
     public function prepare(string $originalPath): ContentBlock
     {
-        $globalVariables = GlobalVariables::getInstance();
-
         $activeLinkContent = $this->getOriginalHtmlFileContent('items/breadcrumbs-active-link.html');
         $inactiveLinkContent = $this->getOriginalHtmlFileContent('items/breadcrumbs-inactive-link.html');
 
@@ -61,7 +66,6 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
             }
         }
 
-        $this->globalVariables = $globalVariables;
         $this->activeLinkContent = $activeLinkContent;
         $this->inactiveLinkContent = $inactiveLinkContent;
         $this->showMainPage = $showMainPage;
@@ -126,6 +130,18 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
         return self::RECORD_SEPARATOR;
     }
 
+    public function getLinkWithAnchor(string $path, string $anchor): string
+    {
+        $activeLinkContent = $this->activeLinkContent;
+
+        $variables = [
+            'link' => $this->getLinkWithActiveRecordIdForAnchor("$path#$anchor"),
+            'name' => "#$anchor",
+        ];
+
+        return $this->getReplacedContent($activeLinkContent, $variables);
+    }
+
     private function getTidyPath(string $path): string
     {
         return $this->getEnvironment()->getTidyPath($path);
@@ -146,7 +162,7 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
 
             $currentPath = $contextPath;
             foreach ($pathElements as $pathElement) {
-                $currentPath = "$currentPath/$pathElement";
+                $currentPath = '/' . ltrim("$currentPath/$pathElement", '/');
 
                 $result[$currentPath] = $this->getPathElementName($currentPath, $pathElement);
             }

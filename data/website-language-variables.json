@@ -135,6 +135,16 @@
         "pl": "ścieżka"
     },
 
+    "lang-position": {
+        "en": "position",
+        "pl": "pozycja"
+    },
+
+    "lang-resource": {
+        "en": "resource",
+        "pl": "zasób"
+    },
+
     "lang-roman-martyrology": {
         "en": "Roman Martyrology",
         "la": "Martyrologium Romanum",
