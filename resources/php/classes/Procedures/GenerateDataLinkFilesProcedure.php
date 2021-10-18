@@ -4,6 +4,8 @@ class GenerateDataLinkFilesProcedure extends Procedure
 {
     private const ANCHOR_REPLACE_PATH = 'titles/';
 
+    private const LANGUAGE_CODE_PATTERN = '/^[a-z][a-z][a-z]?$/';
+
     private $generatedFilesData = [];
 
     public function run(string $dataPath, string $fieldName): void
@@ -41,6 +43,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
             $this->addDataLinks($dataLinksData, $sourceFilePath);
         }
+        $this->checkGeneratedFilesData();
 
         $this->saveGeneratedFiles($this->generatedFilesData);
     }
@@ -62,12 +65,53 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     $staticFilePath = $this->getDataFileSuffix($dstPath);
                     if (!$this->dataPathExists($staticFilePath)) {
-                        $this->error("cannot find static file '$staticFilePath' for file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");
+                        $this->error("cannot find static file '$staticFilePath' for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
                     }
 
                     $generatedFilePath = $this->getGeneratedFileSuffix($dstPath);
                     $generatedFileFullPath = $this->getFullDataPath($generatedFilePath);
 
+                    $staticFileData = $this->getOriginalJsonFileContentArray($staticFilePath);
+                    if (!isset($this->generatedFilesData[$generatedFileFullPath][$recordId])) {
+                        $recordData = $staticFileData[$recordId] ?? null;
+                        if (is_null($recordData)) {
+                            $this->error("cannot find static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
+                        }
+
+                        $standardTagList = null;
+                        $firstField = '';
+                        foreach ($recordData as $field => $text) {
+                            if (!preg_match(self::LANGUAGE_CODE_PATTERN, $field)) {
+                                continue;
+                            }
+
+                            $tagList = [];
+                            $textTags = $this->getTextTags($text);
+                            foreach ($textTags as list($tagFull, $tagLink, $tagValue)) {
+                                $tagList[$tagLink] = ($tagList[$tagLink] ?? 0) + 1;
+                            }
+                            ksort($tagList);
+
+                            if (is_null($standardTagList)) {
+                                $standardTagList = $tagList;
+                                $firstField = $field;
+                            } else if ($standardTagList !== $tagList) {
+                                $this->error("there are tag list differencies between text in language '$field' and '$firstField' in static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
+                            }
+                        }
+
+                        foreach ($standardTagList as $tagLink => $tagQuantity) {
+                            if (preg_match('/^[0-9]+$/', $tagLink)) {
+                                $this->generatedFilesData[$generatedFileFullPath][$recordId][$tagLink] = null;
+                            }
+                        }
+                    }
+
+                    if (isset($this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId])) {
+                        $this->error("try to override static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
+                    } else if (in_array($sourceFilePath, $this->generatedFilesData[$generatedFileFullPath][$recordId] ?? [])) {
+                        $this->error("more than one different generated link IDs have same location in static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
+                    }
                     $this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId] = $sourceFilePath . $anchor;
                 }
             }
@@ -85,5 +129,18 @@ class GenerateDataLinkFilesProcedure extends Procedure
         }
 
         return $result;
+    }
+
+    private function checkGeneratedFilesData(): void
+    {
+        foreach ($this->generatedFilesData as $generatedFilePath => $pathData) {
+            foreach ($pathData as $recordId => $recordData) {
+                foreach ($recordData as $linkId => $link) {
+                    if (is_null($link)) {
+                        $this->error("orphan link ID '$linkId' in generated file '$generatedFilePath' record with ID #$recordId");
+                    }
+                }
+            }
+        }
     }
 }

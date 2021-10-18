@@ -64,11 +64,8 @@ abstract class ContentBlock extends Content
             return self::EMPTY_TEXT_SPECIAL_TAG;
         }
 
-        preg_match_all("/\[(?'link'[^|]+)[|](?'value'[^|]+)\]/U", $text, $matches);
-        foreach ($matches[0] ?? [] as $key => $tag) {
-            $value = $matches['value'][$key];
-            $link = $matches['link'][$key];
-
+        $textTags = $this->getTextTags($text);
+        foreach ($textTags as list($tag, $link, $value)) {
             if (preg_match('/^[1-9][0-9]*$/', $link)) {
                 $link = $aliases[$link] ?? null;
 

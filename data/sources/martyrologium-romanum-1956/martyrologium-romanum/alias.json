@@ -33,5 +33,18 @@
     "Septembris": "september",
     "Octobris": "october",
     "Novembris": "november",
-    "Decembris": "december"
+    "Decembris": "december",
+
+    "ian": "januarius",
+    "feb": "februarius",
+    "mar": "martius",
+    "apr": "aprilis",
+    "mai": "majus",
+    "iun": "junius",
+    "iul": "julius",
+    "aug": "augustus",
+    "sep": "september",
+    "oct": "october",
+    "nov": "november",
+    "dec": "december"
 }
