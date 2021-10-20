@@ -1,8 +1,32 @@
 {
+    "lang-after": {
+        "en": "after",
+        "la": "post",
+        "pl": "po"
+    },
+
+    "lang-around": {
+        "en": "around",
+        "la": "circa",
+        "pl": "około"
+    },
+
     "lang-beatification": {
         "en": "beatification",
         "la": "beatificationis",
         "pl": "beatyfikacja"
+    },
+
+    "lang-before": {
+        "en": "before",
+        "la": "ante",
+        "pl": "przed"
+    },
+
+    "lang-before-christ-abbreviation": {
+        "en": "B.C.",
+        "la": "A.C.N.",
+        "pl": "p.n.e."
     },
 
     "lang-canonization": {
@@ -61,6 +85,11 @@
     "lang-error-other": {
         "en": "An unexpected error has occured!",
         "pl": "Wystąpił nieoczekiwany błąd!"
+    },
+
+    "lang-go-to": {
+        "en": "go to",
+        "pl": "idź do"
     },
 
     "lang-invalid-location": {

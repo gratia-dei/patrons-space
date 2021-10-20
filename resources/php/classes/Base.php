@@ -8,6 +8,8 @@ abstract class Base
     private $json;
     private $path;
 
+    protected const PATRON_TITLES_PATH = 'titles/';
+
     protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
     protected const DATA_FILE_EXTENSION = '.json';
 

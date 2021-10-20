@@ -39,7 +39,7 @@ class DataFileMainContent extends MainContent implements MainContentInterface
         $contentBlockClass = null;
         $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
         foreach ($contentBlockRouting as $routingPath => $classForPath) {
-            if (strpos($directoryPath, $routingPath) === 0) {
+            if (strpos($directoryPath, $routingPath) === 0 || $directoryPath . '/' === $routingPath) {
                 $contentBlockClass = $classForPath;
                 break;
             }

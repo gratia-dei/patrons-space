@@ -2,8 +2,6 @@
 
 class GenerateDataLinkFilesProcedure extends Procedure
 {
-    private const ANCHOR_REPLACE_PATH = 'titles/';
-
     private const LANGUAGE_CODE_PATTERN = '/^[a-z][a-z][a-z]?$/';
 
     private $generatedFilesData = [];
@@ -31,7 +29,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
             $fileData = $this->getOriginalJsonFIleContentArrayForFullPath($sourceFileFullPath);
             $dataLinksData = $this->getFileDataLinks($fileData, $fieldName);
             if (empty($dataLinksData)) {
-                $this->error("file '$sourceFilePath' must have any '$fieldName' section");
+                $this->error("file '$sourceFileFullPath' must have any '$fieldName' section");
             }
 
             $dataRootPath = $this->getPath()->getDataPath();
@@ -51,6 +49,14 @@ class GenerateDataLinkFilesProcedure extends Procedure
     private function addDataLinks(array $data, string $sourceFilePath): void
     {
         foreach ($data as $fieldPath => $fieldData) {
+            if (!is_array($fieldData)) {
+                $path = $this->getPathToRedirect($fieldData);
+                if ($path === '') {
+                    $this->error("invalid data-links alias path '$fieldData' for file '$sourceFilePath', data-links field '$fieldPath'");
+                }
+
+                break;
+            }
             foreach ($fieldData as $dstDirPathAlias => $dataLinks) {
                 foreach ($dataLinks as $link) {
                     $linkData = $this->getDataLinkElements($link);
@@ -61,7 +67,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     $dstPathAlias = "$dstDirPathAlias/$dstFilePathAlias";
                     $dstPath = $this->getPathToRedirect($dstPathAlias);
-                    $anchor = str_replace(self::ANCHOR_REPLACE_PATH, '#', $fieldPath);
+                    $anchor = str_replace(self::PATRON_TITLES_PATH, '#', $fieldPath);
 
                     $staticFilePath = $this->getDataFileSuffix($dstPath);
                     if (!$this->dataPathExists($staticFilePath)) {
@@ -109,7 +115,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     if (isset($this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId])) {
                         $this->error("try to override static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
-                    } else if (in_array($sourceFilePath, $this->generatedFilesData[$generatedFileFullPath][$recordId] ?? [])) {
+                    } else if (in_array($sourceFilePath . $anchor, $this->generatedFilesData[$generatedFileFullPath][$recordId] ?? [])) {
                         $this->error("more than one different generated link IDs have same location in static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
                     }
                     $this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId] = $sourceFilePath . $anchor;

@@ -16,6 +16,10 @@
         "params": ["/records/patrons-and-feasts/patrons/", "names"]
     },
     {
+        "class": "GenerateIndexFileForAllSubDirectoriesDataFilesProcedure",
+        "params": ["/records/patrons-and-feasts/feasts/", "names"]
+    },
+    {
         "class": "GenerateDataLinkFilesProcedure",
         "params": ["/records/patrons-and-feasts", "data-links"]
     }

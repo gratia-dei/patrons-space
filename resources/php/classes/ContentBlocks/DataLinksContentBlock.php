@@ -36,7 +36,23 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
 
     public function getFullContent(string $translatedName): string
     {
+        $pathData = $this->pathData;
+        if (is_array($pathData)) {
+            return $this->getFullContentForArray($translatedName, $pathData);
+        }
+
+        return $this->getFullContentForString($translatedName, $pathData);
+    }
+
+    public function getRecordContent(string $recordId): string
+    {
+        //no separate records possible for two dimensions list
+    }
+
+    private function getFullContentForArray(string $translatedName, array $pathData): string
+    {
         $result = '';
+        $foundAnyRecord = false;
 
         $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
 
@@ -47,7 +63,7 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
         $recordNumber = 0;
         $tableTitle = $translatedName;
         $tableContent = '';
-        foreach ($this->pathData as $aliasPath => $aliasData) {
+        foreach ($pathData as $aliasPath => $aliasData) {
             $mainPath = $this->getPathToRedirect($aliasPath);
 
             $contentBlockClass = null;
@@ -92,6 +108,8 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
                     'record-content' => $recordContent,
                 ];
                 $listContent .= $this->getReplacedContent($recordContentItem, $variables);
+
+                $foundAnyRecord = true;
             }
 
             $variables = [
@@ -107,15 +125,24 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
         ];
         $result = $this->getReplacedContent($contentBlockContent, $variables);
 
-        return $result;
+        return $foundAnyRecord ? $result : '';
     }
 
-    public function getRecordContent(string $recordId): string
+    private function getFullContentForString(string $translatedName, string $path): string
     {
-        //no separate records possible for two dimensions list
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/data-links-alias-content-block.html');
+
+        $fullPath = $this->getPathToRedirect($path);
+        $link = $this->getTranslatedNameForPath('', $fullPath, dirname($fullPath));
+
+        $variables = [
+            'link' => $link,
+        ];
+
+        return $this->getReplacedContent($contentBlockContent, $variables);
     }
 
-    private function getPathDataLinks(array $data, string $path): array
+    private function getPathDataLinks(array $data, string $path)
     {
         $pathElements = $path === '' ? [] : explode('/', trim($path, '/'));
         foreach ($pathElements as $element) {

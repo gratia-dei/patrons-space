@@ -3,9 +3,13 @@
 class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 {
     private const NAMES_INDEX = 'names';
+    private const TITLES_INDEX = 'titles';
 
     private const TRANSLATED_INDEXES = [
-        self::NAMES_INDEX
+        self::NAMES_INDEX,
+    ];
+    private const TITLES_TRANSLATED_INDEXES = [
+        self::NAMES_INDEX,
     ];
 
     private $dataLinksContentBlock;
@@ -23,6 +27,8 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function prepare(string $path): ContentBlock
     {
+        $titleRecordContent = $this->getOriginalHtmlFileContent('items/patron-title-record-item.html');
+
         $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
 
@@ -33,6 +39,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
+        $this->titleRecordContent = $titleRecordContent;
         $this->fileData = $fileData;
         $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
@@ -42,7 +49,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function getFullContent(string $translatedName): string
     {
-        $content = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
+        $mainContent = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
 
         $fileData = $this->fileData;
         $textVariables = $this->textVariables;
@@ -56,14 +63,34 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . self::NAMES_INDEX . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
         $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName);
 
-        $content = $this->getReplacedContent($content, $variables);
+        $titleItemsContent = '';
+        foreach ($fileData[self::TITLES_INDEX] ?? [] as $recordId => $recordData) {
+            $titleItemsContent .= $this->getRecordContent($recordId);
+        }
+        $variables['title-items'] = $titleItemsContent;
 
-        return $this->getReplacedContent($content, $textVariables, true);
+        $mainContent = $this->getReplacedContent($mainContent, $variables);
+
+        return $this->getReplacedContent($mainContent, $textVariables, true);
     }
 
     public function getRecordContent(string $recordId): string
     {
-        return ''; //... to do for each patron's title sections
+        $result = '';
+
+        $titleRecordContent = $this->titleRecordContent;
+        $titleRow = $this->fileData[self::TITLES_INDEX][$recordId] ?? [];
+
+        $variables = [];
+        $variables['record-id'] = $recordId;
+        $variables['record-activeness-class'] = $this->getRecordActivenessClass($recordId);
+
+        $dataLinksTableName = self::VARIABLE_NAME_SIGN . $this->getPreparedTranslationRecordKey(self::NAMES_INDEX, $recordId) . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
+        $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName, self::PATRON_TITLES_PATH . $recordId);
+
+        return $this->getReplacedContent($titleRecordContent, $variables);
+
+        return $result;
     }
 
     private function getPreparedTranslations(array $data): array
@@ -76,12 +103,16 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
             }
         }
 
-        return $this->getTranslationsWithAllConvertedFieldsAdded($result);
-    }
+        foreach ($data[self::TITLES_INDEX] ?? [] as $recordId => $recordData) {
+            foreach ($recordData as $key => $values) {
+                if (in_array($key, self::TITLES_TRANSLATED_INDEXES)) {
+                    $preparedKey = $this->getPreparedTranslationRecordKey($key, $recordId);
+                    $result[$preparedKey] = $values;
+                }
+            }
+        }
 
-    private function getTranslationsWithAllConvertedFieldsAdded(array $data): array
-    {
-        return $data;
+        return $result;
     }
 
     private function getDataLinksContent(string $tableName, string $path = ''): string
@@ -106,5 +137,10 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         }
 
         return $result;
+    }
+
+    private function getPreparedTranslationRecordKey(string $key, string $recordId): string
+    {
+        return 'record-' . $recordId . '-' . $key;
     }
 }

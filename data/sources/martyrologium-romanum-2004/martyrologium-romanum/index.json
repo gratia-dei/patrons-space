@@ -1,4 +1,9 @@
 {
+    "ianuarius": {
+        "la": "Ianuarius",
+        "en": "January",
+        "pl": "Styczeń"
+    },
     "augustus": {
         "la": "Augustus",
         "en": "August",

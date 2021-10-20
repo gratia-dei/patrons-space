@@ -7,15 +7,32 @@ abstract class ContentBlock extends Content
 
     protected const NON_EXISTENCE = self::VARIABLE_NAME_SIGN . 'lang-non-existence' . self::VARIABLE_NAME_SIGN;
     protected const UNKNOWN_SIGN = '???';
+    protected const INVALID_SIGN = '!!!';
 
     protected const RECORD_ACTIVENESS_CLASS_ACTIVE = 'record-active';
     protected const RECORD_ACTIVENESS_CLASS_INACTIVE = 'record-inactive';
 
     private const EMPTY_TEXT_SPECIAL_TAG = '[...]';
 
+    private const DATE_REPLACES = [
+        '/^([<>~])?([-]?[0-9]*)[-]([0-9][0-9])[-]([0-9][0-9])$/' => '\1\4.\3.\2',
+        '/[-]([0-9]+)/' => '\1 ' . self::VARIABLE_NAME_SIGN . 'lang-before-christ-abbreviation' . self::VARIABLE_NAME_SIGN,
+        '/[<]/' => self::VARIABLE_NAME_SIGN . 'lang-before' . self::VARIABLE_NAME_SIGN . ' ',
+        '/[>]/' => self::VARIABLE_NAME_SIGN . 'lang-after' . self::VARIABLE_NAME_SIGN . ' ',
+        '/[~]/' => self::VARIABLE_NAME_SIGN . 'lang-around' . self::VARIABLE_NAME_SIGN . ' ',
+    ];
+
     protected function getFormattedDate(string $date): string
     {
-        //...
+        if ($date === '') {
+            return self::UNKNOWN_SIGN;
+        } else if (!preg_match('/^[<>~]?[-]?[1-9][0-9]?[0-9]?[0-9]?([-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[0-1]))?$/', $date)) {
+            return self::INVALID_SIGN;
+        }
+
+        foreach (self::DATE_REPLACES as $pattern => $replacement) {
+            $date = preg_replace($pattern, $replacement, $date);
+        }
 
         return $date;
     }

@@ -1,8 +1,8 @@
 {
     "1": {
-        "page": 701,
-        "column": 1,
-        "la": ""
+        "page": 454,
+        "mark": "!",
+        "la": "Sollémnitas [1|Assumptiónis beátæ Mariæ Vírginis], Dei et Dómini nostri Iesu Christi Genetrícis, quæ, expléto terréstris vatæ cursu, córpore et ánima ad cæléstem glóriam assúmpta est. Hanc fidem Ecclésiæ traditióne recéptam Pius papa Duodécimus sollémniter definívit."
     },
 
     "2": {
@@ -22,31 +22,36 @@
     },
 
     "6": {
+        "mark": "*",
         "la": ""
     },
 
     "7": {
+        "mark": "*",
         "la": ""
     },
 
     "8": {
+        "page": 455,
         "la": ""
     },
 
     "9": {
+        "mark": "*",
         "la": ""
     },
 
     "10": {
+        "mark": "*",
         "la": ""
     },
 
     "11": {
-        "column": 2,
         "la": ""
     },
 
     "12": {
+        "mark": "*",
         "la": ""
     },
 
@@ -55,38 +60,43 @@
     },
 
     "14": {
+        "mark": "*",
         "la": ""
     },
 
     "15": {
+        "page": 456,
+        "mark": "*",
         "la": ""
     },
 
     "16": {
+        "mark": "*",
         "la": ""
     },
 
     "17": {
+        "mark": "*",
         "la": ""
     },
 
     "18": {
-        "la": "[1|Alphonsus Maria de' Liguori], ep. S. Agathæ Gothorum et doctor Eccl., [mr-2004/aug./1#1|1 aug., 1] (1787)"
+        "mark": "*",
+        "la": ""
     },
 
     "19": {
+        "mark": "*",
         "la": ""
     },
 
     "20": {
+        "mark": "*",
         "la": ""
     },
 
     "21": {
-        "la": ""
-    },
-
-    "22": {
+        "mark": "*",
         "la": ""
     }
 }

@@ -1,8 +1,8 @@
 {
     "1": {
-        "page": 701,
-        "column": 1,
-        "la": ""
+        "page": 77,
+        "mark": "!",
+        "la": "In octáva Navitátis Dómini et die eius Circumcisiónis, solémnitas sanctæ [1|Dei Genetrícis Mariæ], quam Patres in Concílio Ephesíno Theotókon acclamavérunt, quia ex ea Verbum carnem assúmpsit et inter hómines habitávit Dei Fílius, princeps pacis, cui Nomen super omne nomen datum est."
     },
 
     "2": {
@@ -26,14 +26,18 @@
     },
 
     "7": {
+        "page": 78,
+        "mark": "*",
         "la": ""
     },
 
     "8": {
+        "mark": "*",
         "la": ""
     },
 
     "9": {
+        "mark": "*",
         "la": ""
     },
 
@@ -42,51 +46,42 @@
     },
 
     "11": {
-        "column": 2,
         "la": ""
     },
 
     "12": {
+        "mark": "*",
         "la": ""
     },
 
     "13": {
+        "mark": "*",
         "la": ""
     },
 
     "14": {
+        "mark": "*",
         "la": ""
     },
 
     "15": {
+        "mark": "*",
         "la": ""
     },
 
     "16": {
+        "page": 79,
+        "mark": "*",
         "la": ""
     },
 
     "17": {
+        "mark": "*",
         "la": ""
     },
 
     "18": {
-        "la": "[1|Alphonsus Maria de' Liguori], ep. S. Agathæ Gothorum et doctor Eccl., [mr-2004/aug./1#1|1 aug., 1] (1787)"
-    },
-
-    "19": {
-        "la": ""
-    },
-
-    "20": {
-        "la": ""
-    },
-
-    "21": {
-        "la": ""
-    },
-
-    "22": {
+        "mark": "*",
         "la": ""
     }
 }

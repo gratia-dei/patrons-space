@@ -3,5 +3,10 @@
         "la": "Die 1 augusti (Kaléndis augústi)",
         "en": "On 1st August (The August Kalends)",
         "pl": "Dnia 1 sierpnia (Kalendy sierpniowe)"
+    },
+    "die-15-augusti": {
+        "la": "Die 15 augusti (Décimo octávo Kaléndas septémbris)",
+        "en": "On 15th August (The 18th day before the September Kalends)",
+        "pl": "Dnia 15 sierpnia (18 dzień przed kalendami wrześniowymi)"
     }
 }

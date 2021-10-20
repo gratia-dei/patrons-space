@@ -1,0 +1,63 @@
+{
+    "names": {
+        "arc": [
+            "מרים"
+        ],
+        "en": [
+            "Mary, mother of Jesus",
+            "Virgin Mary"
+        ],
+        "la": [
+            "Maria, mater Iesu",
+            "Maria Virgo",
+            "Madonna"
+        ],
+        "pl": [
+            "Najświętsza Maryja Panna",
+            "Maria z Nazaretu",
+            "Maria, matka Jezusa",
+            "Dziewica Maryja"
+        ]
+    },
+
+    "born": ["<-20"],
+    "died": [">30"],
+
+    "data-links": {
+        "mr-2004-index": ["1:mar#143"]
+    },
+
+    "titles": {
+        "1": {
+            "names": {
+                "en": [
+                    "Maria, Holy Mother of God"
+                ],
+                "la": [
+                    "Maria, Sancta Dei Genetrix"
+                ],
+                "pl": [
+                    "Najświętsza Maryja Panna, Święta Boża Rodzicielka"
+                ]
+            },
+
+            "data-links": {
+                "mr-2004-index": ["2:mar#143"],
+                "mr-2004": ["1:ian/1#1"]
+            }
+        },
+
+        "2": {
+            "names": {
+                "en": [
+                    "Assumed Holy Mary"
+                ],
+                "pl": [
+                    "Najświętsza Maryja Panna Wniebowzięta"
+                ]
+            },
+
+            "data-links": "feasts/assumptio"
+        }
+    }
+}
