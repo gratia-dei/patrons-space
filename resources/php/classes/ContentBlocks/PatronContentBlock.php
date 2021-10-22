@@ -132,8 +132,11 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
         if (is_null($result)) {
             $result = self::NON_EXISTENCE;
-        } else if (!is_null($type)) {
-            $result .= " (#lang-$type-adverb#)";
+        } else {
+            $result = $this->getFormattedDate($result);
+            if (!is_null($type)) {
+                $result .= " (#lang-$type-adverb#)";
+            }
         }
 
         return $result;
