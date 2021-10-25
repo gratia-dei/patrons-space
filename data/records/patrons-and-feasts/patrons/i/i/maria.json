@@ -24,7 +24,8 @@
     "died": [">30"],
 
     "data-links": {
-        "mr-2004-index": ["1:mar#143"]
+        "mr-2004-index": ["1:mar#143"],
+        "mr-1956-index-1-1": ["1:mar#95", "1:mar#108"]
     },
 
     "titles": {

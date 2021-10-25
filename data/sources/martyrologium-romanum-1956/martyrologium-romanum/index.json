@@ -3,5 +3,10 @@
         "la": "Augustus",
         "en": "August",
         "pl": "Sierpień"
+    },
+    "october": {
+        "la": "October",
+        "en": "October",
+        "pl": "Październik"
     }
 }

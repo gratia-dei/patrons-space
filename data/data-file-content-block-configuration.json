@@ -3,6 +3,7 @@
     "/records/patrons-and-feasts/patrons/": "PatronContentBlock",
     "/sources/martyrologium-romanum-1956/martyrologium-romanum/": "RomanMartyrology1956DayElogiesContentBlock",
     "/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/": "RomanMartyrologyIndexContentBlock",
+    "/sources/martyrologium-romanum-1956/ii-index-festorum-quae-non-sunt-sanctorum-natalitia-et-officiorum-quae-elogio-sunt-decorata/": "RomanMartyrologyIndexContentBlock",
     "/sources/martyrologium-romanum-2004/martyrologium-romanum/": "RomanMartyrology2004DayElogiesContentBlock",
     "/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/": "RomanMartyrologyIndexContentBlock"
 }
