@@ -8,7 +8,13 @@ main {
 }
 
 .record-active {
-    background-color: #FFFF77;
+  background-color: #FFFF77;
 }
 .record-inactive {
+}
+
+.visible {
+}
+.invisible {
+  display: none;
 }

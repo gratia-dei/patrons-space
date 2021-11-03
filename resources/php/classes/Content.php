@@ -17,6 +17,9 @@ abstract class Content extends Base
 
     protected const DATA_ROOT_PARENT_DIRECTORY_PATH = '/data';
 
+    protected const VISIBILITY_STYLE_CLASS_VISIBLE = 'visible';
+    protected const VISIBILITY_STYLE_CLASS_INVISIBLE = 'invisible';
+
     private const CONTENT_ONLY_QUERY_PARAM_NAME = 'content-only';
     private const ACTIVE_RECORD_ID_QUERY_PARAM_NAME = 'active-record-id';
 

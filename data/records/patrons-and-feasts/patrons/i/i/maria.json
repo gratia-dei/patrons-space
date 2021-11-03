@@ -44,7 +44,8 @@
 
             "data-links": {
                 "mr-2004-index": ["2:mar#143"],
-                "mr-2004": ["1:ian/1#1"]
+                "mr-2004": ["1:ian/1#1"],
+                "alias-from": ["feasts/maternitatem"]
             }
         },
 
@@ -58,7 +59,9 @@
                 ]
             },
 
-            "data-links": "feasts/assumptio"
+            "data-links": {
+                "alias-to": ["feasts/assumptio"]
+            }
         }
     }
 }

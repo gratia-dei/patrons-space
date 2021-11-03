@@ -49,16 +49,23 @@ class GenerateDataLinkFilesProcedure extends Procedure
     private function addDataLinks(array $data, string $sourceFilePath): void
     {
         foreach ($data as $fieldPath => $fieldData) {
-            if (!is_array($fieldData)) {
-                $path = $this->getPathToRedirect($fieldData);
-                if ($path === '') {
-                    $this->error("invalid data-links alias path '$fieldData' for file '$sourceFilePath', data-links field '$fieldPath'");
-                }
-
-                break;
-            }
             foreach ($fieldData as $dstDirPathAlias => $dataLinks) {
                 foreach ($dataLinks as $link) {
+                    if ($dstDirPathAlias === self::DATA_LINK_ALIAS_FROM || $dstDirPathAlias === self::DATA_LINK_ALIAS_TO) {
+                        $linkData = $this->getDataLinkAliasElements($link);
+                        if (is_null($linkData)) {
+                            $this->error("invalid link '$link' in file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");
+                        }
+                        list($dstFilePathAlias, $recordId) = $linkData;
+
+                        $path = $this->getPathToRedirect($dstFilePathAlias);
+                        if ($path === '') {
+                            $this->error("invalid data-links alias path '$dstFilePathAlias' for file '$sourceFilePath', data-links field '$fieldPath'");
+                        }
+
+                        continue;
+                    }
+
                     $linkData = $this->getDataLinkElements($link);
                     if (is_null($linkData)) {
                         $this->error("invalid link '$link' in file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");

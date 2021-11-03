@@ -5,6 +5,16 @@
         "pl": "po"
     },
 
+    "lang-alias-from": {
+        "en": "related from",
+        "pl": "dowiązane z"
+    },
+
+    "lang-alias-to": {
+        "en": "related to",
+        "pl": "dotyczy"
+    },
+
     "lang-around": {
         "en": "around",
         "la": "circa",
@@ -85,11 +95,6 @@
     "lang-error-other": {
         "en": "An unexpected error has occured!",
         "pl": "Wystąpił nieoczekiwany błąd!"
-    },
-
-    "lang-go-to": {
-        "en": "go to",
-        "pl": "idź do"
     },
 
     "lang-invalid-location": {
