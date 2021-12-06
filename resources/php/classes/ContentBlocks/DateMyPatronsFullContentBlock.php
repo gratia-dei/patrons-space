@@ -1,6 +1,6 @@
 <?php
 
-class DateMyTopPatronsContentBlock extends ContentBlock implements ContentBlockInterface
+class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlockInterface
 {
     private $date;
     private $dayData;
@@ -21,7 +21,7 @@ class DateMyTopPatronsContentBlock extends ContentBlock implements ContentBlockI
 
     public function getFullContent(string $translatedName): string
     {
-        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/date-my-top-patrons-content-block.html');
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/date-my-patrons-full-content-block.html');
 
         $patronsListContent = '';
         $recordIds = array_keys($this->dayData);

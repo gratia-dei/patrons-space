@@ -1,4 +1,4 @@
 {
-    "my-patrons": "DateMyTopPatronsContentBlock",
-    "my-top-patrons": "DateMyTopPatronsContentBlock"
+    "my-patrons": "DateMyPatronsFullContentBlock",
+    "my-patrons-and-feasts": "DateMyPatronsFullContentBlock"
 }
