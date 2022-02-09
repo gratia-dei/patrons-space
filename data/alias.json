@@ -1,6 +1,5 @@
 {
-    "feasts": "/records/patrons-and-feasts/feasts/",
-    "patrons": "/records/patrons-and-feasts/patrons/",
+    "patrons": "/records/patrons/",
     "mr-2004": "/sources/martyrologium-romanum-2004/martyrologium-romanum/",
     "mr-2004-index": "/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/",
     "mr-1956": "/sources/martyrologium-romanum-1956/martyrologium-romanum/",

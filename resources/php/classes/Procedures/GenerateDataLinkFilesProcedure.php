@@ -51,21 +51,6 @@ class GenerateDataLinkFilesProcedure extends Procedure
         foreach ($data as $fieldPath => $fieldData) {
             foreach ($fieldData as $dstDirPathAlias => $dataLinks) {
                 foreach ($dataLinks as $link) {
-                    if ($dstDirPathAlias === self::DATA_LINK_ALIAS_FROM || $dstDirPathAlias === self::DATA_LINK_ALIAS_TO) {
-                        $linkData = $this->getDataLinkAliasElements($link);
-                        if (is_null($linkData)) {
-                            $this->error("invalid link '$link' in file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");
-                        }
-                        list($dstFilePathAlias, $recordId) = $linkData;
-
-                        $path = $this->getPathToRedirect($dstFilePathAlias);
-                        if ($path === '') {
-                            $this->error("invalid data-links alias path '$dstFilePathAlias' for file '$sourceFilePath', data-links field '$fieldPath'");
-                        }
-
-                        continue;
-                    }
-
                     $linkData = $this->getDataLinkElements($link);
                     if (is_null($linkData)) {
                         $this->error("invalid link '$link' in file '$sourceFilePath', data-links field '$fieldPath' and directory path alias '$dstDirPathAlias'");
@@ -74,7 +59,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     $dstPathAlias = "$dstDirPathAlias/$dstFilePathAlias";
                     $dstPath = $this->getPathToRedirect($dstPathAlias);
-                    $anchor = str_replace(self::PATRON_TITLES_PATH, '#', $fieldPath);
+                    $anchor = str_replace(self::PATRON_FEASTS_PATH, '#', $fieldPath);
 
                     $staticFilePath = $this->getDataFileSuffix($dstPath);
                     if (!$this->dataPathExists($staticFilePath)) {

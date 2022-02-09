@@ -15,7 +15,6 @@
         "pl": [
             "Najświętsza Maryja Panna",
             "Maria z Nazaretu",
-            "Maria, matka Jezusa",
             "Dziewica Maryja"
         ]
     },
@@ -28,39 +27,53 @@
         "mr-1956-index-1-1": ["1:mar#95", "1:mar#108"]
     },
 
-    "titles": {
+    "feasts": {
         "1": {
             "names": {
                 "en": [
-                    "Maria, Holy Mother of God"
+                    "Maria, Holy Mother of God",
+                    "The Motherhood of the Blessed Virgin Mary"
                 ],
                 "la": [
-                    "Maria, Sancta Dei Genetrix"
+                    "Maria, Sancta Dei Genetrix",
+                    "Maternitatem beatae Mariae Virginis"
                 ],
                 "pl": [
-                    "Najświętsza Maryja Panna, Święta Boża Rodzicielka"
+                    "Najświętsza Maryja Panna Święta Boża Rodzicielka",
+                    "Macierzyństwo błogosławionej Maryi Dziewicy"
                 ]
             },
 
             "data-links": {
                 "mr-2004-index": ["2:mar#143"],
                 "mr-2004": ["1:ian/1#1"],
-                "alias-from": ["feasts/maternitatem"]
+                "mr-1956-index-1-1": ["2:mar#108"],
+                "mr-1956-index-2": ["1:fes#68"],
+                "mr-1956": ["1:oct/11#1"]
             }
         },
 
         "2": {
             "names": {
                 "en": [
+                    "Assumption of Mary",
                     "Assumed Holy Mary"
                 ],
+                "la": [
+                    "Assumptio Beatae Mariae Virginis"
+                ],
                 "pl": [
+                    "Wniebowzięcie Najświętszej Maryi Panny",
                     "Najświętsza Maryja Panna Wniebowzięta"
                 ]
             },
 
             "data-links": {
-                "alias-to": ["feasts/assumptio"]
+                "mr-2004-index": ["3:mar#143"],
+                "mr-2004": ["1:aug/15#1"],
+                "mr-1956-index-1-1": ["2:mar#95"],
+                "mr-1956-index-2": ["1:ass#1"],
+                "mr-1956": ["1:aug/15#1"]
             }
         }
     }

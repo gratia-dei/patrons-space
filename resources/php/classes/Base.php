@@ -8,15 +8,12 @@ abstract class Base
     private $json;
     private $path;
 
-    protected const PATRON_TITLES_PATH = 'titles/';
+    protected const PATRON_FEASTS_PATH = 'feasts/';
 
     protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
     protected const DATA_FILE_EXTENSION = '.json';
 
     protected const LANG_VARIABLE_PREFIX = 'lang-';
-
-    protected const DATA_LINK_ALIAS_FROM = 'alias-from';
-    protected const DATA_LINK_ALIAS_TO = 'alias-to';
 
     public function __construct()
     {
@@ -148,18 +145,6 @@ abstract class Base
         $recordId = (int) $matches['record_id'];
 
         return [$linkId, $path, $recordId];
-    }
-
-    protected function getDataLinkAliasElements(string $link): ?array
-    {
-        if (!preg_match("/^(?'path'[^# ]+)([#](?'record_id'[1-9][0-9]*))?$/", $link, $matches)) {
-            return null;
-        }
-
-        $path = $matches['path'];
-        $recordId = (int) ($matches['record_id'] ?? 0);
-
-        return [$path, $recordId];
     }
 
     protected function getTextTags(string $text): array

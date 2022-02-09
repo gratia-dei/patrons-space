@@ -49,84 +49,50 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
         $tableTitle = $translatedName;
         $tableContent = '';
         foreach ($this->pathData as $aliasPath => $aliasData) {
-            if ($aliasPath === self::DATA_LINK_ALIAS_FROM || $aliasPath === self::DATA_LINK_ALIAS_TO) {
-                $listTitle = self::VARIABLE_NAME_SIGN . self::LANG_VARIABLE_PREFIX . $aliasPath . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN . ':';
-                $listContent = '';
+            $mainPath = $this->getPathToRedirect($aliasPath);
 
-                foreach ($aliasData as $link) {
-                    $linkData = $this->getDataLinkAliasElements($link);
-                    if (is_null($linkData)) {
-                        continue;
-                    }
-                    list($pathAlias, $recordId) = $linkData;
-
-                    $mainPath = $this->getPathToRedirect($pathAlias);
-
-                    $recordName = self::RECORD_PATH_NAME;
-                    $recordTitle = $this->getTranslatedNameForPath($recordName, $mainPath);
-                    if ($recordId > 0) {
-                        $recordIdLink = $this->getActiveBreadcrumbsLink($mainPath, $recordId);
-                        $recordTitle .= ' | ' . self::RECORD_NAME . ": $recordIdLink";
-                    }
-                    $recordContent = '';
-
-                    $variables = [
-                        'record-title' => $recordTitle,
-                        'record-content' => $recordContent,
-                        'visibility-class' => self::VISIBILITY_STYLE_CLASS_INVISIBLE,
-                    ];
-                    $listContent .= $this->getReplacedContent($recordContentItem, $variables);
-
-                    $foundAnyRecord = true;
+            $contentBlockClass = null;
+            foreach ($contentBlockRouting as $routingPath => $classForPath) {
+                if (strpos($mainPath, $routingPath) === 0) {
+                    $contentBlockClass = $classForPath;
+                    break;
                 }
-            } else {
-                $mainPath = $this->getPathToRedirect($aliasPath);
+            }
 
-                $contentBlockClass = null;
-                foreach ($contentBlockRouting as $routingPath => $classForPath) {
-                    if (strpos($mainPath, $routingPath) === 0) {
-                        $contentBlockClass = $classForPath;
-                        break;
-                    }
-                }
+            $listName = self::LIST_PATH_NAME;
+            $listTitle = $this->getTranslatedNameForPath($listName, $mainPath);
+            $listContent = '';
 
-                $listName = self::LIST_PATH_NAME;
-                $listTitle = $this->getTranslatedNameForPath($listName, $mainPath);
-                $listContent = '';
+            if (is_null($contentBlockClass)) {
+                continue;
+            }
 
-                if (is_null($contentBlockClass)) {
+            foreach ($aliasData as $link) {
+                $recordNumber++;
+
+                $linkData = $this->getDataLinkElements($link);
+                if (is_null($linkData)) {
                     continue;
                 }
+                list($linkId, $subPathAlias, $recordId) = $linkData;
 
-                foreach ($aliasData as $link) {
-                    $recordNumber++;
+                $fullPath = $this->getPathToRedirect($mainPath . $subPathAlias);
 
-                    $linkData = $this->getDataLinkElements($link);
-                    if (is_null($linkData)) {
-                        continue;
-                    }
-                    list($linkId, $subPathAlias, $recordId) = $linkData;
+                $recordName = self::RECORD_PATH_NAME;
+                $recordTitle = $this->getTranslatedNameForPath($recordName, $fullPath, $mainPath);
+                $recordIdLink = $this->getActiveBreadcrumbsLink($fullPath, $recordId);
+                $recordContent = (new $contentBlockClass())->prepare($fullPath)->getRecordContent($recordId);
 
-                    $fullPath = $this->getPathToRedirect($mainPath . $subPathAlias);
+                $recordContent = preg_replace('/ id="([0-9]+)"/U', ' id="record_' . $recordNumber . '"', $recordContent);
+                $recordContent = str_replace(self::RECORD_ACTIVENESS_CLASS_ACTIVE, self::RECORD_ACTIVENESS_CLASS_INACTIVE, $recordContent);
 
-                    $recordName = self::RECORD_PATH_NAME;
-                    $recordTitle = $this->getTranslatedNameForPath($recordName, $fullPath, $mainPath);
-                    $recordIdLink = $this->getActiveBreadcrumbsLink($fullPath, $recordId);
-                    $recordContent = (new $contentBlockClass())->prepare($fullPath)->getRecordContent($recordId);
+                $variables = [
+                    'record-title' => "$recordTitle | " . self::RECORD_NAME . ": $recordIdLink",
+                    'record-content' => $recordContent,
+                ];
+                $listContent .= $this->getReplacedContent($recordContentItem, $variables);
 
-                    $recordContent = preg_replace('/ id="([0-9]+)"/U', ' id="record_' . $recordNumber . '"', $recordContent);
-                    $recordContent = str_replace(self::RECORD_ACTIVENESS_CLASS_ACTIVE, self::RECORD_ACTIVENESS_CLASS_INACTIVE, $recordContent);
-
-
-                    $variables = [
-                        'record-title' => "$recordTitle | " . self::RECORD_NAME . ": $recordIdLink",
-                        'record-content' => $recordContent,
-                        'visibility-class' => self::VISIBILITY_STYLE_CLASS_VISIBLE,
-                    ];
-                    $listContent .= $this->getReplacedContent($recordContentItem, $variables);
-
-                    $foundAnyRecord = true;
-                }
+                $foundAnyRecord = true;
             }
 
             $variables = [

@@ -1,5 +1,11 @@
 {
-    "alphonsus": {
+    "1": {
+        "arc": "מרים",
+        "en": "Mary, mother of Jesus",
+        "la": "Maria, mater Iesu",
+        "pl": "Najświętsza Maryja Panna"
+    },
+    "2": {
         "it": "Alfonso Maria de' Liguori",
         "en": "Alphonsus Maria de Liguori",
         "la": "Alphonsus Maria a Ligorio",

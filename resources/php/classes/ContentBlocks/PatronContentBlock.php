@@ -3,12 +3,12 @@
 class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 {
     private const NAMES_INDEX = 'names';
-    private const TITLES_INDEX = 'titles';
+    private const FEASTS_INDEX = 'feasts';
 
     private const TRANSLATED_INDEXES = [
         self::NAMES_INDEX,
     ];
-    private const TITLES_TRANSLATED_INDEXES = [
+    private const FEASTS_TRANSLATED_INDEXES = [
         self::NAMES_INDEX,
     ];
 
@@ -64,7 +64,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName);
 
         $titleItemsContent = '';
-        foreach ($fileData[self::TITLES_INDEX] ?? [] as $recordId => $recordData) {
+        foreach ($fileData[self::FEASTS_INDEX] ?? [] as $recordId => $recordData) {
             $titleItemsContent .= $this->getRecordContent($recordId);
         }
         $variables['title-items'] = $titleItemsContent;
@@ -79,14 +79,14 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $result = '';
 
         $titleRecordContent = $this->titleRecordContent;
-        $titleRow = $this->fileData[self::TITLES_INDEX][$recordId] ?? [];
+        $titleRow = $this->fileData[self::FEASTS_INDEX][$recordId] ?? [];
 
         $variables = [];
         $variables['record-id'] = $recordId;
         $variables['record-activeness-class'] = $this->getRecordActivenessClass($recordId);
 
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . $this->getPreparedTranslationRecordKey(self::NAMES_INDEX, $recordId) . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
-        $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName, self::PATRON_TITLES_PATH . $recordId);
+        $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName, self::PATRON_FEASTS_PATH . $recordId);
 
         return $this->getReplacedContent($titleRecordContent, $variables);
 
@@ -103,9 +103,9 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
             }
         }
 
-        foreach ($data[self::TITLES_INDEX] ?? [] as $recordId => $recordData) {
+        foreach ($data[self::FEASTS_INDEX] ?? [] as $recordId => $recordData) {
             foreach ($recordData as $key => $values) {
-                if (in_array($key, self::TITLES_TRANSLATED_INDEXES)) {
+                if (in_array($key, self::FEASTS_TRANSLATED_INDEXES)) {
                     $preparedKey = $this->getPreparedTranslationRecordKey($key, $recordId);
                     $result[$preparedKey] = $values;
                 }

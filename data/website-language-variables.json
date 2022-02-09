@@ -5,16 +5,6 @@
         "pl": "po"
     },
 
-    "lang-alias-from": {
-        "en": "related from",
-        "pl": "dowiązane z"
-    },
-
-    "lang-alias-to": {
-        "en": "related to",
-        "pl": "dotyczy"
-    },
-
     "lang-around": {
         "en": "around",
         "la": "circa",
