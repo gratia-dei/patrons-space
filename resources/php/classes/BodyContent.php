@@ -9,10 +9,6 @@ class BodyContent extends Content
     private const ACTIVE_LANGUAGE_CLASS = 'active';
 
     private const PATH_TITLE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-path' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
-    private const BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS = [
-        'dates',
-        'files',
-    ];
 
     private $mainContentRouter;
     private $breadcrumbsContentBlock;
@@ -126,7 +122,8 @@ class BodyContent extends Content
     private function getBreadcrumbsContent(string $requestPath): string
     {
         $showDataElement = true;
-        foreach (self::BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS as $path) {
+        $breadcrumbsHideDataElementPaths = $this->breadcrumbsContentBlock->getHideDataElementPaths();
+        foreach ($breadcrumbsHideDataElementPaths as $path => $isActive) {
             if (mb_strpos("$requestPath/", "/$path/") === 0) {
                 $showDataElement = false;
             }

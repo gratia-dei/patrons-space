@@ -45,6 +45,11 @@
         "pl": "kononizacja"
     },
 
+    "lang-cards": {
+        "en": "cards",
+        "pl": "karty"
+    },
+
     "lang-ceremonially-adverb": {
         "en": "ceremonially",
         "pl": "ceremonialnie"
@@ -64,6 +69,11 @@
     "lang-data": {
         "en": "service data",
         "pl": "dane serwisu"
+    },
+
+    "lang-dates": {
+        "en": "dates",
+        "pl": "daty"
     },
 
     "lang-date-of-birth": {
@@ -95,6 +105,11 @@
     "lang-error-other": {
         "en": "An unexpected error has occured!",
         "pl": "Wystąpił nieoczekiwany błąd!"
+    },
+
+    "lang-files": {
+        "en": "files",
+        "pl": "pliki"
     },
 
     "lang-invalid-location": {

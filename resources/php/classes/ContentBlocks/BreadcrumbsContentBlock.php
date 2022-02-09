@@ -11,6 +11,12 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
     private const MAIN_PAGE_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-main-page' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
     private const DATA_VARIABLE = self::VARIABLE_NAME_SIGN . 'lang-data' . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
 
+    private const BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS = [
+        'cards' => true,
+        'dates' => false,
+        'files' => false,
+    ];
+
     private GlobalVariables $globalVariables;
 
     private bool $showDataElement = false;
@@ -24,6 +30,11 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
         parent::__construct();
 
         $this->globalVariables = GlobalVariables::getInstance();
+    }
+
+    public function getHideDataElementPaths(): array
+    {
+        return self::BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS;
     }
 
     public function getPathWithContext(string $fullPath, string $contextPath = ''): string
@@ -175,6 +186,7 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
     {
         $result = [];
 
+        $found = false;
         $globalVariables = $this->globalVariables;
         $names = $globalVariables->get(self::GLOBAL_VARIABLES_KEY_NAME);
 
@@ -198,6 +210,14 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
 
             $name = $this->getReplacedContent(self::VARIABLE_NAME_SIGN . $element . self::VARIABLE_NAME_SIGN, $indexVariables, true);
             $name = preg_replace('/^' . self::VARIABLE_NAME_SIGN . '(.+)' . self::VARIABLE_NAME_SIGN . '$/', '\1', $name);
+
+            if (!$found && $element === $name) {
+                $isActive = self::BREADCRUMBS_HIDE_DATA_ELEMENT_PATHS[$element] ?? null;
+                if (!is_null($isActive)) {
+                    $name = self::VARIABLE_NAME_SIGN . self::LANG_VARIABLE_PREFIX . $element . self::MODIFIER_SEPARATOR . self::MODIFIER_CAPITALIZE . self::VARIABLE_NAME_SIGN;
+                    $found = $isActive;
+                }
+            }
 
             $names[$path] = [$name, $found];
             $globalVariables->set(self::GLOBAL_VARIABLES_KEY_NAME, $names);
