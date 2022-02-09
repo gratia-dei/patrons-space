@@ -49,21 +49,24 @@ class DirectoryMainContent extends MainContent implements MainContentInterface
         $originalContent = $this->getOriginalHtmlFileContent('main-contents/directory-main-content.html');
         $itemContent = $this->getOriginalHtmlFileContent('items/directory-list-item.html');
 
+        $indexFilePath = $this->getIndexFIlePath($path, $usedGeneratedIndexFile);
+        $indexVariables = $this->getTranslatedVariables($language, $indexFilePath);
+
         $listContent = '';
         foreach ($indexData as $variableName => $itemNames) {
+            $link = $path . $variableName;
+            $name = self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN;
+            $translatedName = $this->getReplacedContent($name, $indexVariables, true);
+
             $itemVariables = [
-                'href' => $path . $variableName,
-                'name' => self::VARIABLE_NAME_SIGN . $variableName . self::VARIABLE_NAME_SIGN,
+                'href' => $this->getRecordIdPathWithNameExtension($link, $translatedName),
+                'name' => $translatedName,
             ];
             $listContent .= $this->getReplacedContent($itemContent, $itemVariables);
         }
 
-        $indexFilePath = $this->getIndexFIlePath($path, $usedGeneratedIndexFile);
-        $indexVariables = $this->getTranslatedVariables($language, $indexFilePath);
-        $translatedListContent = $this->getReplacedContent($listContent, $indexVariables, true);
-
         $mainContentVariables = [
-            'list-content' => $translatedListContent,
+            'list-content' => $listContent,
         ];
         $replacedContent = $this->getReplacedContent($originalContent, $mainContentVariables);
 

@@ -15,6 +15,9 @@ abstract class Base
 
     protected const LANG_VARIABLE_PREFIX = 'lang-';
 
+    private const RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR = '---';
+    private const RECORD_ID_NAME_EXTENSION_REMOVED_CHARACTERS = ['/', '?', '#', '.', ','];
+
     public function __construct()
     {
         $this->date = new Date();
@@ -160,5 +163,25 @@ abstract class Base
         }
 
         return $result;
+    }
+
+    protected function getRequestPathRecordIdOnly(string $requestPath): string
+    {
+        return preg_replace('~(/[0-9]+)' . self::RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR . '[^/]+~', '\1', $requestPath);
+    }
+
+    protected function getRecordIdPathWithNameExtension(string $path, string $name): string
+    {
+        $extension = $this->stripTags($name);
+        $extension = mb_strtolower($extension);
+        $extension = str_replace(self::RECORD_ID_NAME_EXTENSION_REMOVED_CHARACTERS, '', $extension);
+        $extension = str_replace(' ', '-', $extension);
+        $extension = urlencode($extension);
+
+        return preg_replace(
+            '~(/[0-9]+)([?#].*)?$~',
+            '\1' . self::RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR . $extension . '\2',
+            $path
+        );
     }
 }

@@ -130,7 +130,7 @@ class BreadcrumbsContentBlock extends ContentBlock implements ContentBlockInterf
         }
         $variables = [
             'name' => $name,
-            'link' => $link,
+            'link' => $this->getRecordIdPathWithNameExtension($link, $name),
         ];
 
         return $this->getReplacedContent($linkContent, $variables);

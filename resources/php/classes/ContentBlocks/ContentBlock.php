@@ -90,10 +90,12 @@ abstract class ContentBlock extends Content
                     $replacement = $value;
                 } else {
                     $link = $this->getLinkWithActiveRecordIdForAnchor('/' . ltrim($link, '/'));
+                    $link = $this->getRecordIdPathWithNameExtension($link, $value);
                     $replacement = '<a href="' . $link . '">' . $value . '</a>';
                 }
             } else {
                 $link = $this->getLinkWithActiveRecordIdForAnchor('/' . ltrim($link, '/'));
+                $link = $this->getRecordIdPathWithNameExtension($link, $value);
                 $replacement = '<a href="' . $link . '">' . $value . '</a>';
             }
 

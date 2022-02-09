@@ -24,8 +24,10 @@ class BodyContent extends Content
     {
         $protocol = $this->getEnvironment()->getHostProtocol();
         $domain = $this->getEnvironment()->getHostMainDomainOnly();
-        $requestPath = $this->getEnvironment()->getRequestPath();
+        $originalRequestPath = $this->getEnvironment()->getRequestPath();
         $httpStatusCode = $this->getEnvironment()->getHttpStatusCode();
+
+        $requestPath = $this->getRequestPathRecordIdOnly($originalRequestPath);
 
         $variables = [];
         if ($this->isContentOnlyMode()) {

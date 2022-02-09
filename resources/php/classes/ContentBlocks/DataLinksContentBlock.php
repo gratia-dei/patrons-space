@@ -36,7 +36,6 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
 
     public function getFullContent(string $translatedName): string
     {
-        $result = '';
         $foundAnyRecord = false;
 
         $contentBlockRouting = $this->getOriginalJsonFileContentArray('data-file-content-block-configuration.json');
