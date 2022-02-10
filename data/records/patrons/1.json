@@ -19,6 +19,12 @@
         ]
     },
 
+    "image": {
+        "page-url": "https://commons.wikimedia.org/wiki/File:Sassoferrato_-_Jungfrun_i_b%C3%B6n.jpg",
+        "file-url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Sassoferrato_-_Jungfrun_i_b%C3%B6n.jpg",
+        "attribution": "Giovanni Battista Salvi da Sassoferrato, Public domain, via Wikimedia Commons"
+    },
+
     "born": ["<-20"],
     "died": [">30"],
 

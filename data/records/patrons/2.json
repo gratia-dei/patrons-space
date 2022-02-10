@@ -18,6 +18,12 @@
         ]
     },
 
+    "image": {
+        "page-url": "https://commons.wikimedia.org/wiki/File:Liguori.jp://commons.wikimedia.org/wiki/File:Liguori.jpg",
+        "file-url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Liguori.jpg",
+        "attribution": "Unknown authorUnknown author, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons"
+    },
+
     "born": ["1696-09-27"],
     "died": ["1787-08-01"],
     "beatified": {
