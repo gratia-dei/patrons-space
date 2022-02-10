@@ -9,16 +9,16 @@ class MainContentRouter extends Content
         parent::__construct();
     }
 
-    public function getTitleAndContent(string $path, int $httpStatusCode): array
+    public function getTitleAndContent(string $path, string $originalPath, int $httpStatusCode): array
     {
-        $object = $this->getMainContentObjectForParams($path, $httpStatusCode);
+        $object = $this->getMainContentObjectForParams($path, $originalPath, $httpStatusCode);
         $title = $object->getTitle(self::TITLE_PREFIX);
         $content = $object->getContent();
 
         return [$title, $content];
     }
 
-    private function getMainContentObjectForParams(string $path, int $httpStatusCode): object
+    private function getMainContentObjectForParams(string $path, string $originalPath, int $httpStatusCode): object
     {
         $stepsData = [
             'ErrorMainContent' => $httpStatusCode,
@@ -27,7 +27,7 @@ class MainContentRouter extends Content
             'DataFileMainContent' => $path,
             'DirectoryMainContent' => $path,
             'MainPageMainContent' => $path,
-            'PathAliasRedirectionMainContent' => $path,
+            'PathAliasRedirectionMainContent' => $originalPath,
             'InvalidPathMainContent' => $path,
         ];
         foreach ($stepsData as $class => $param) {

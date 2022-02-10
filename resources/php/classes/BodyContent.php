@@ -39,7 +39,7 @@ class BodyContent extends Content
             $variables['breadcrumbs-content-block'] = $this->getBreadcrumbsContent($requestPath);
         }
 
-        list($title, $variables['content']) = $this->mainContentRouter->getTitleAndContent($requestPath, $httpStatusCode);
+        list($title, $variables['content']) = $this->mainContentRouter->getTitleAndContent($requestPath, $originalRequestPath, $httpStatusCode);
 
         $strippedTitle = $this->stripTags($title);
 

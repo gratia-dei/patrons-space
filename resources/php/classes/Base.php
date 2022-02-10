@@ -15,8 +15,15 @@ abstract class Base
 
     protected const LANG_VARIABLE_PREFIX = 'lang-';
 
-    private const RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR = '---';
-    private const RECORD_ID_NAME_EXTENSION_REMOVED_CHARACTERS = ['/', '?', '#', '.', ','];
+    private const RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR = '--';
+    private const RECORD_ID_NAME_EXTENSION_CHARACTERS_MAPPING = [
+        ' ' => '-',
+        '/' => '',
+        '?' => '',
+        '#' => '',
+        '.' => '',
+        ',' => '',
+    ];
 
     public function __construct()
     {
@@ -86,8 +93,11 @@ abstract class Base
         return $path . '/alias' . ($forGeneratedFile ? self::GENERATED_FILE_NAME_SUFFIX : '') . self::DATA_FILE_EXTENSION;
     }
 
-    protected function getPathToRedirect(string $path): string
+    protected function getPathToRedirect(string $originalPath): string
     {
+        $path = $this->getRequestPathRecordIdOnly($originalPath);
+        $nameExtension = mb_substr($originalPath, mb_strlen($path));
+
         if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
             return '';
         }
@@ -123,7 +133,13 @@ abstract class Base
         if ($wasPathChanged) {
             $path = implode('/', $pathElements);
             if ($this->dataPathExists($path) || $this->dataPathExists($path . self::DATA_FILE_EXTENSION)) {
-                return preg_replace('~[/]+~', '/', '/' . $path);
+                $result = preg_replace('~[/]+~', '/', '/' . $path);
+
+                if (preg_match('~/[0-9]+$~', $path)) {
+                    return $result . $nameExtension;
+                }
+
+                return $result;
             }
         }
 
@@ -167,15 +183,18 @@ abstract class Base
 
     protected function getRequestPathRecordIdOnly(string $requestPath): string
     {
-        return preg_replace('~(/[0-9]+)' . self::RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR . '[^/]+~', '\1', $requestPath);
+        return preg_replace('~(/[0-9]+)' . self::RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR . '[^/]*$~', '\1', $requestPath);
     }
 
     protected function getRecordIdPathWithNameExtension(string $path, string $name): string
     {
-        $extension = $this->stripTags($name);
+        $charsFrom = array_keys(self::RECORD_ID_NAME_EXTENSION_CHARACTERS_MAPPING);
+        $charsTo = array_values(self::RECORD_ID_NAME_EXTENSION_CHARACTERS_MAPPING);
+
+        $extension = $name;
+        $extension = $this->stripTags($extension);
         $extension = mb_strtolower($extension);
-        $extension = str_replace(self::RECORD_ID_NAME_EXTENSION_REMOVED_CHARACTERS, '', $extension);
-        $extension = str_replace(' ', '-', $extension);
+        $extension = str_replace($charsFrom, $charsTo, $extension);
         $extension = urlencode($extension);
 
         return preg_replace(
