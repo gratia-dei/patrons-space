@@ -20,3 +20,9 @@ main {
   border-color: black;
   border-width: 1px;
 }
+
+#ppi-test {
+  width: 1in;
+  visible: hidden;
+  padding: 0px;
+}

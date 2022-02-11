@@ -1,9 +1,15 @@
 <div id="cards-main-content">
-  #lang-comming-soon|capitalize# ...
-  <br />
-  <br />
-  <a href="" onclick="printCanvas()">#lang-print|capitalize#</a>
-  <br />
+  Form in BETA version
+  <hr />
+  Paper format: <select id="paper-format"></select>
+  | Paper orientation: <select id="paper-orientation"></select>
+  | Margin size: <select id="margin-size"></select>
+  | PPI: <select id="ppi"></select>
+  | <button onClick="buildCanvas()">Build</button>
+  | <button onClick="printCanvas()">#lang-print|capitalize#</button>
+  <hr />
   <canvas id="cards-canvas"></canvas>
+
+  <div id="ppi-test"></div>
   <script src="files/resources/js/cards.js"></script>
 </div>
