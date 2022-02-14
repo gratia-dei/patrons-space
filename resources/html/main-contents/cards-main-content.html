@@ -4,9 +4,12 @@
   Paper format: <select id="paper-format"></select>
   | Paper orientation: <select id="paper-orientation"></select>
   | Margin size: <select id="margin-size"></select>
-  | PPI: <select id="ppi"></select>
-  | <button onClick="buildCanvas()">Build</button>
-  | <button onClick="printCanvas()">#lang-print|capitalize#</button>
+  | Scale (PPI: pixels per inch): <select id="ppi"></select>
+  <br />
+  <button onClick="buildCanvas()">Rebuild</button>
+  <hr />
+  <hr />
+  <button onClick="printCanvas()">#lang-print|capitalize#</button>
   <hr />
   <canvas id="cards-canvas"></canvas>
 

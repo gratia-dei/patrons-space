@@ -30,8 +30,13 @@ const VERTICAL_PAPER_FORMATS = {
   }
 }
 
+const HIDDEN_CARD_COORDINATE = -1;
+const LINEAR_SCALE_SHORT_LINE_LENGTH = 0.5;
 const CARD_WIDTH = 63.5;
 const CARD_HEIGHT = 88;
+const CARD_MARGIN = 3;
+
+let cardsData = [];
 
 const getPaperFormatSelect = function() {
   return document.getElementById('paper-format');
@@ -163,10 +168,11 @@ const getDetectedPpi = function() {
 }
 
 const mm2px = function(milimeters) {
-  const ppi = getDetectedPpi();
+  const select = getPpiSelect();
+  const ppi = select.value;
   const pixels = milimeters * ppi / 25.4;
 
-  return Math.round(pixels);
+  return pixels;
 }
 
 const getPrintableAreaSize = function() {
@@ -217,10 +223,8 @@ const buildCanvas = function() {
   const height = mm2px(size.height);
 
   scaleCanvas(width, height);
-  clearRectangle(0, 0, width, height);
-  drawEmptyRectangle(0, 0, width, height);
-  //...add vertical and horizontal linear scale
-  //...draw cards
+  drawPreparedCanvasArea(width, height);
+  drawAllCards(width, height);
 }
 
 const scaleCanvas = function(width, height) {
@@ -228,6 +232,12 @@ const scaleCanvas = function(width, height) {
 
   canvas.width = width;
   canvas.height = height;
+}
+
+const drawPreparedCanvasArea = function(width, height) {
+  clearRectangle(0, 0, width, height);
+  drawEmptyRectangle(0, 0, width, height);
+  drawLinearScales(width, height);
 }
 
 const clearRectangle = function(x, y, width, height) {
@@ -244,18 +254,120 @@ const drawEmptyRectangle = function(x, y, width, height) {
   context.strokeRect(x, y, width, height);
 }
 
+const drawLinearScales = function(width, height) {
+  const context = getContext();
+  const milimeterPixels = mm2px(1);
+  const shortLineLength = mm2px(LINEAR_SCALE_SHORT_LINE_LENGTH);
+  const cardMargin = mm2px(CARD_MARGIN);
+
+  context.lineWidth = 1;
+  context.strokeStyle = "black";
+
+  let lineNumber = 0;
+  for (let x = cardMargin; x < width; x += milimeterPixels) {
+    const lineLength = getLinearScaleLineLength(lineNumber, shortLineLength);
+    lineNumber++;
+
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x, lineLength);
+    context.stroke();
+  }
+
+  lineNumber = 0;
+  for (let y = cardMargin; y < height; y += milimeterPixels) {
+    const lineLength = getLinearScaleLineLength(lineNumber, shortLineLength);
+    lineNumber++;
+
+    context.beginPath();
+    context.moveTo(0, y);
+    context.lineTo(lineLength, y);
+    context.stroke();
+  }
+}
+
+const getLinearScaleLineLength = function (lineNumber, shortLineLength) {
+  let multi = 1;
+
+  if (lineNumber % 10 === 0) {
+    multi = 4;
+  } else if (lineNumber % 5 === 0) {
+    multi = 2;
+  }
+
+  return multi * shortLineLength;
+}
+
 const printCanvas = function() {
   const canvas = getCanvas();
 
-  const subWindow = window.open('', '', 'width=' + screen.availWidth + ',height=' + screen.availHeight);
-  subWindow.document.open();
-  subWindow.document.write('<img src="' + canvas.toDataURL() + '">');
-  subWindow.document.addEventListener('load', function() {
-      subWindow.focus();
-      subWindow.print();
-      subWindow.document.close();
-      subWindow.close();
+  const newWindow = window.open('', '', 'width=' + screen.availWidth + ',height=' + screen.availHeight);
+  newWindow.document.open();
+  newWindow.document.write('<img src="' + canvas.toDataURL() + '">');
+  newWindow.document.addEventListener('load', function() {
+      newWindow.focus();
+      newWindow.print();
+      newWindow.document.close();
+      newWindow.close();
   }, true);
+}
+
+const drawAllCards = function(width, height) {
+  calculateCardsCoordinates(width, height);
+  //...todo generate cards forms
+  drawVisibleCards();
+}
+
+const calculateCardsCoordinates = function(areaWidth, areaHeight) {
+  const cardWidth = mm2px(CARD_WIDTH);
+  const cardHeight = mm2px(CARD_HEIGHT);
+  const cardMargin = mm2px(CARD_MARGIN);
+
+  const widthStep = cardWidth + cardMargin;
+  const heightStep = cardHeight + cardMargin;
+
+  let cardId = 0;
+  for (let x = cardMargin; x + widthStep <= areaWidth; x += widthStep) {
+    for (let y = cardMargin; y + heightStep <= areaHeight; y += heightStep) {
+      cardId++;
+      setCardIdCoordinates(cardId, x, y);
+    }
+  }
+
+  const cardsDataLength = cardsData.length;
+  for (cardId = cardId + 1; cardId < cardsDataLength; cardId++) {
+    setCardIdCoordinates(cardId, HIDDEN_CARD_COORDINATE, HIDDEN_CARD_COORDINATE);
+  }
+}
+
+const setCardIdCoordinates = function(cardId, x, y) {
+  if (cardsData[cardId] === undefined) {
+    cardsData[cardId] = {};
+  }
+
+  cardsData[cardId]['x'] = x;
+  cardsData[cardId]['y'] = y;
+}
+
+const drawVisibleCards = function() {
+  for (let cardId in cardsData) {
+    drawCard(cardId);
+  }
+}
+
+const drawCard = function(cardId) {
+  const cardData = cardsData[cardId];
+
+  const cardWidth = mm2px(CARD_WIDTH);
+  const cardHeight = mm2px(CARD_HEIGHT);
+
+  const x = cardData.x;
+  const y = cardData.y;
+  if (x === HIDDEN_CARD_COORDINATE) {
+    return;
+  }
+
+  drawEmptyRectangle(cardData.x, cardData.y, cardWidth, cardHeight);
 }
 
 buildForm();
