@@ -1,18 +1,23 @@
 <div id="cards-main-content">
-  Form in BETA version
+  Form in testing mode ...
   <hr />
-  Paper format: <select id="paper-format"></select>
-  | Paper orientation: <select id="paper-orientation"></select>
-  | Margin size: <select id="margin-size"></select>
-  | Scale (PPI: pixels per inch): <select id="ppi"></select>
-  <br />
-  <button onClick="buildCanvas()">Rebuild</button>
+  <div id="ppi-test"></div>
+  <div id="main-form">
+    Paper format: <select id="paper-format"></select>
+    | Paper orientation: <select id="paper-orientation"></select>
+    | Margin size: <select id="margin-size"></select>
+    | Scale (PPI: pixels per inch): <select id="ppi"></select>
+    <br />
+    <button onClick="buildCanvas()">Rebuild</button>
+  </div>
   <hr />
+  <div id="cards-forms">
+  </div>
   <hr />
-  <button onClick="printCanvas()">#lang-print|capitalize#</button>
+  <div id="print-form">
+    <button onClick="printCanvas()">#lang-print|capitalize#</button>
+  </div>
   <hr />
   <canvas id="cards-canvas"></canvas>
-
-  <div id="ppi-test"></div>
   <script src="files/resources/js/cards.js"></script>
 </div>

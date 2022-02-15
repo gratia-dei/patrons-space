@@ -12,7 +12,7 @@ const ALLOWED_PAPER_ORIENTATIONS = {
 };
 const ALLOWED_MARGIN_MIN_SIZE = 0;
 const ALLOWED_MARGIN_MAX_SIZE = 50;
-const ALLOWED_PPI_MIN_VALUE = 30;
+const ALLOWED_PPI_MIN_VALUE = 60;
 const ALLOWED_PPI_MAX_VALUE = 300;
 
 const VERTICAL_PAPER_FORMATS = {
@@ -30,13 +30,27 @@ const VERTICAL_PAPER_FORMATS = {
   }
 }
 
-const HIDDEN_CARD_COORDINATE = -1;
 const LINEAR_SCALE_SHORT_LINE_LENGTH = 0.5;
 const CARD_WIDTH = 63.5;
 const CARD_HEIGHT = 88;
 const CARD_MARGIN = 3;
+const CARD_ID_IDENTIFIER_TEXT_FONT_SIZE = 2;
+const CARD_ID_IDENTIFIER_TEXT_Y_CHANGE = -0.5;
+const CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY = 'Arial';
+
+const CARD_DATA_FIELD_X = 'x';
+const CARD_DATA_FIELD_Y = 'y';
+const CARD_DATA_FIELD_IS_ACTIVE = 'isActive';
+
+const CARD_FORM_ID_PREFIX = 'card-form-';
+const CARD_TYPE_ROOT_PATHS = {
+  'god': '/files/data/records',
+  'patrons': '/files/data/records'
+};
 
 let cardsData = [];
+let filesContents = {};
+let filesContentsErrors = {};
 
 const getPaperFormatSelect = function() {
   return document.getElementById('paper-format');
@@ -52,6 +66,10 @@ const getMarginSizeSelect = function() {
 
 const getPpiSelect = function() {
   return document.getElementById('ppi');
+}
+
+const getCardsFormsDiv = function() {
+  return document.getElementById('cards-forms');
 }
 
 const getPpiTestDiv = function() {
@@ -224,7 +242,11 @@ const buildCanvas = function() {
 
   scaleCanvas(width, height);
   drawPreparedCanvasArea(width, height);
-  drawAllCards(width, height);
+  calculateCardsCoordinatesAndActivity(width, height);
+  for (let cardId in cardsData) {
+    drawCard(cardId);
+  }
+  buildCardsForms();
 }
 
 const scaleCanvas = function(width, height) {
@@ -312,13 +334,7 @@ const printCanvas = function() {
   }, true);
 }
 
-const drawAllCards = function(width, height) {
-  calculateCardsCoordinates(width, height);
-  //...todo generate cards forms
-  drawVisibleCards();
-}
-
-const calculateCardsCoordinates = function(areaWidth, areaHeight) {
+const calculateCardsCoordinatesAndActivity = function(areaWidth, areaHeight) {
   const cardWidth = mm2px(CARD_WIDTH);
   const cardHeight = mm2px(CARD_HEIGHT);
   const cardMargin = mm2px(CARD_MARGIN);
@@ -327,47 +343,185 @@ const calculateCardsCoordinates = function(areaWidth, areaHeight) {
   const heightStep = cardHeight + cardMargin;
 
   let cardId = 0;
-  for (let x = cardMargin; x + widthStep <= areaWidth; x += widthStep) {
-    for (let y = cardMargin; y + heightStep <= areaHeight; y += heightStep) {
+  for (let y = cardMargin; y + heightStep <= areaHeight; y += heightStep) {
+    for (let x = cardMargin; x + widthStep <= areaWidth; x += widthStep) {
       cardId++;
-      setCardIdCoordinates(cardId, x, y);
+      setCardIdCoordinatesAndActivity(cardId, x, y);
     }
   }
 
   const cardsDataLength = cardsData.length;
   for (cardId = cardId + 1; cardId < cardsDataLength; cardId++) {
-    setCardIdCoordinates(cardId, HIDDEN_CARD_COORDINATE, HIDDEN_CARD_COORDINATE);
+    setCardIdInactivity(cardId);
   }
 }
 
-const setCardIdCoordinates = function(cardId, x, y) {
+const setCardIdCoordinatesAndActivity = function(cardId, x, y) {
   if (cardsData[cardId] === undefined) {
     cardsData[cardId] = {};
   }
 
-  cardsData[cardId]['x'] = x;
-  cardsData[cardId]['y'] = y;
+  cardsData[cardId][CARD_DATA_FIELD_IS_ACTIVE] = true;
+  cardsData[cardId][CARD_DATA_FIELD_X] = x;
+  cardsData[cardId][CARD_DATA_FIELD_Y] = y;
 }
 
-const drawVisibleCards = function() {
-  for (let cardId in cardsData) {
-    drawCard(cardId);
+const setCardIdInactivity = function(cardId) {
+  if (cardsData[cardId] === undefined) {
+    cardsData[cardId] = {};
   }
+
+  cardsData[cardId][CARD_DATA_FIELD_IS_ACTIVE] = false;
+}
+
+const drawCardIdIdentifierText = function(cardId, x, y) {
+  context = getContext();
+
+  context.font = mm2px(CARD_ID_IDENTIFIER_TEXT_FONT_SIZE) + 'px ' + CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY;
+  context.fillText(cardId + ':', x, y + mm2px(CARD_ID_IDENTIFIER_TEXT_Y_CHANGE));
 }
 
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
+  if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
+    return;
+  }
 
   const cardWidth = mm2px(CARD_WIDTH);
   const cardHeight = mm2px(CARD_HEIGHT);
 
-  const x = cardData.x;
-  const y = cardData.y;
-  if (x === HIDDEN_CARD_COORDINATE) {
-    return;
+  const x = cardData[CARD_DATA_FIELD_X];
+  const y = cardData[CARD_DATA_FIELD_Y];
+
+  drawCardIdIdentifierText(cardId, x, y);
+  drawEmptyRectangle(x, y, cardWidth, cardHeight);
+}
+
+const buildCardsForms = function() {
+  let cardsFormsDiv = getCardsFormsDiv();
+
+  for (let cardId in cardsData) {
+    const cardFormId = CARD_FORM_ID_PREFIX + cardId;
+    const cardData = cardsData[cardId];
+    const div = document.getElementById(cardFormId);
+
+    if (cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
+      if (div === null) {
+        const subDiv = document.createElement('div');
+        subDiv.id = cardFormId;
+        cardsFormsDiv.appendChild(subDiv);
+
+        buildCardFormElements(cardId);
+      }
+    } else if (div !== null) {
+      cardsFormsDiv.removeChild(div);
+    }
+  }
+}
+
+const getFileContent = async function(path) {
+  if (filesContents[path] !== undefined) {
+    return filesContents[path];
+  } else if (filesContentsErrors[path] !== undefined) {
+    throw new Error(filesContentsErrors[path]);
   }
 
-  drawEmptyRectangle(cardData.x, cardData.y, cardWidth, cardHeight);
+  let response = await fetch(path);
+  if (!response.ok) {
+    const errorMessage = 'HTTP status: ' + response.status;
+    filesContentsErrors[path] = errorMessage;
+    throw new Error(errorMessage);
+  }
+
+  const result = await response.text();
+  filesContents[path] = result;
+
+  return result;
+}
+
+const getJsonFromFile = async function(path) {
+  const content = await getFileContent(path);
+
+  return JSON.parse(content);
+}
+
+const getIndexData = async function(path) {
+  let indexData = {};
+
+  try {
+    indexData = await getJsonFromFile(path + '/index.generated.json');
+  } catch (error) {
+    try {
+      indexData = await getJsonFromFile(path + '/index.json');
+    } catch (error) {
+    }
+  }
+
+  return indexData;
+}
+
+const getHostname = function() {
+  return window.location.hostname.toLowerCase();
+}
+
+const getLanguage = function() {
+  const hostname = getHostname();
+
+  return hostname.replace(/\..*$/, '');
+}
+
+const getTranslatedName = function(data, key) {
+  const names = data[key];
+  let language = getLanguage();
+
+  if (names[language] === undefined) {
+    language = Object.keys(names)[0];
+  }
+
+  const name = names[language];
+  if (name instanceof Array) {
+    return name.shift();
+  }
+
+  return name;
+}
+
+const addSpanChildElement = function(element, text) {
+  let span = document.createElement('span');
+  span.innerHTML = text;
+  element.appendChild(span);
+}
+
+//const addSelectChildElement = function(element, id, options, selectedOption) {
+  //let select = document.createElement('select');
+  //select.id = id;
+
+  //for (let value in options) {
+    //let option = document.createElement('option');
+    //option.value = value;
+    //option.innerHTML = options[value];
+    //if (value === selectedOption) {
+      //option.selected = 'selected';
+    //}
+
+    //select.appendChild(option);
+  //}
+
+  //element.appendChild(select);
+//}
+
+const buildCardFormElements = async function(cardId) {
+  const cardFormId = CARD_FORM_ID_PREFIX + cardId;
+  const div = document.getElementById(cardFormId);
+
+  //label
+  addSpanChildElement(div, cardId + ': ');
+
+  //card path selects
+  //...todo
+
+  //card input fields
+  //...todo
 }
 
 buildForm();
