@@ -41,9 +41,14 @@ const CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY = 'Arial';
 const CARD_DATA_FIELD_X = 'x';
 const CARD_DATA_FIELD_Y = 'y';
 const CARD_DATA_FIELD_IS_ACTIVE = 'isActive';
+const CARD_DATA_FIELD_PATH = 'path';
+const CARD_DATA_FIELD_FILE_DATA = 'fileData';
+const CARD_DATA_FIELD_PARAMS = 'params';
 
+const CARD_FORM_UNSELECTED_VALUE = 0;
+const CARD_FORM_UNSELECTED_NAME = '...';
 const CARD_FORM_ID_PREFIX = 'card-form-';
-const CARD_TYPE_ROOT_PATHS = {
+const CARD_TYPES_ROOT_PATHS = {
   'god': '/files/data/records',
   'patrons': '/files/data/records'
 };
@@ -235,7 +240,7 @@ const getFormatVerticalSize = function(format) {
   };
 }
 
-const buildCanvas = function() {
+const buildCanvas = async function() {
   const size = getPrintableAreaSize();
   const width = mm2px(size.width);
   const height = mm2px(size.height);
@@ -246,7 +251,7 @@ const buildCanvas = function() {
   for (let cardId in cardsData) {
     drawCard(cardId);
   }
-  buildCardsForms();
+  await buildCardsForms();
 }
 
 const scaleCanvas = function(width, height) {
@@ -265,7 +270,7 @@ const drawPreparedCanvasArea = function(width, height) {
 const clearRectangle = function(x, y, width, height) {
   const context = getContext();
 
-  context.clearRect(0, 0, width, height);
+  context.clearRect(x, y, width, height);
 }
 
 const drawEmptyRectangle = function(x, y, width, height) {
@@ -359,6 +364,9 @@ const calculateCardsCoordinatesAndActivity = function(areaWidth, areaHeight) {
 const setCardIdCoordinatesAndActivity = function(cardId, x, y) {
   if (cardsData[cardId] === undefined) {
     cardsData[cardId] = {};
+    cardsData[cardId][CARD_DATA_FIELD_PARAMS] = {};
+    cardsData[cardId][CARD_DATA_FIELD_PATH] = '';
+    cardsData[cardId][CARD_DATA_FIELD_FILE_DATA] = {};
   }
 
   cardsData[cardId][CARD_DATA_FIELD_IS_ACTIVE] = true;
@@ -381,23 +389,7 @@ const drawCardIdIdentifierText = function(cardId, x, y) {
   context.fillText(cardId + ':', x, y + mm2px(CARD_ID_IDENTIFIER_TEXT_Y_CHANGE));
 }
 
-const drawCard = function(cardId) {
-  const cardData = cardsData[cardId];
-  if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
-    return;
-  }
-
-  const cardWidth = mm2px(CARD_WIDTH);
-  const cardHeight = mm2px(CARD_HEIGHT);
-
-  const x = cardData[CARD_DATA_FIELD_X];
-  const y = cardData[CARD_DATA_FIELD_Y];
-
-  drawCardIdIdentifierText(cardId, x, y);
-  drawEmptyRectangle(x, y, cardWidth, cardHeight);
-}
-
-const buildCardsForms = function() {
+const buildCardsForms = async function() {
   let cardsFormsDiv = getCardsFormsDiv();
 
   for (let cardId in cardsData) {
@@ -411,7 +403,7 @@ const buildCardsForms = function() {
         subDiv.id = cardFormId;
         cardsFormsDiv.appendChild(subDiv);
 
-        buildCardFormElements(cardId);
+        await rebuildCardForm(cardId);
       }
     } else if (div !== null) {
       cardsFormsDiv.removeChild(div);
@@ -492,36 +484,179 @@ const addSpanChildElement = function(element, text) {
   element.appendChild(span);
 }
 
-//const addSelectChildElement = function(element, id, options, selectedOption) {
-  //let select = document.createElement('select');
-  //select.id = id;
+const addCardFormSelectElement = function(element, id, options, selectedOption, onChangeFunction) {
+  let select = document.createElement('select');
+  select.id = id;
+  select.onchange = onChangeFunction;
 
-  //for (let value in options) {
-    //let option = document.createElement('option');
-    //option.value = value;
-    //option.innerHTML = options[value];
-    //if (value === selectedOption) {
-      //option.selected = 'selected';
-    //}
+  for (let value in options) {
+    let option = document.createElement('option');
+    option.value = value;
+    option.innerHTML = options[value];
+    if (value === selectedOption) {
+      option.selected = 'selected';
+    }
 
-    //select.appendChild(option);
-  //}
+    select.appendChild(option);
+  }
 
-  //element.appendChild(select);
-//}
+  element.appendChild(select);
+}
 
-const buildCardFormElements = async function(cardId) {
+const getCardTypeOptions = async function() {
+  let result = {};
+
+  const rootPaths = CARD_TYPES_ROOT_PATHS;
+  for (let cardType in rootPaths) {
+    const rootPath = rootPaths[cardType];
+    const indexData = await getIndexData(rootPath);
+
+    if (indexData[cardType] !== undefined) {
+      result[cardType] = getTranslatedName(indexData, cardType);
+    }
+  }
+
+  return result;
+}
+
+const getCardTypeRootPath = function(cardType) {
+  return CARD_TYPES_ROOT_PATHS[cardType];
+}
+
+const getJsonFileData = async function(filePath) {
+  let result = {};
+
+  try {
+    result = await getJsonFromFile(filePath);
+  } catch (error) {
+  }
+
+  return result;
+}
+
+const buildCardFormSelects = async function(cardId, path, contextPath, options) {
   const cardFormId = CARD_FORM_ID_PREFIX + cardId;
+  const parentElement = document.getElementById(cardFormId);
+  const stepNumber = contextPath.length + 1;
+  const selectedOption = path[stepNumber - 1];
+  const cardFormSelectId = cardFormId + '-' + stepNumber;
+
+  if (options !== {}) {
+    const onChangeFunction = function() {
+      saveCardDataPath(cardId, stepNumber);
+    }
+    addCardFormSelectElement(parentElement, cardFormSelectId, options, selectedOption, onChangeFunction);
+  }
+  if (selectedOption === undefined || options[selectedOption] === undefined) {
+    return;
+  }
+
+  contextPath.push(selectedOption);
+  const rootPath = getCardTypeRootPath(path[0]);
+  const fullContextPathString = rootPath + '/' + contextPath.join('/');
+
+  if (selectedOption !== CARD_FORM_UNSELECTED_VALUE) {
+    const fileData = await getJsonFileData(fullContextPathString + '.json');
+    if (Object.keys(fileData).length > 0) {
+      cardsData[cardId][CARD_DATA_FIELD_FILE_DATA] = fileData;
+      drawCard(cardId);
+
+      return;
+    }
+  }
+
+  const indexData = await getIndexData(fullContextPathString);
+  if (Object.keys(indexData).length === 0) {
+    cardsData[cardId][CARD_DATA_FIELD_FILE_DATA] = {};
+    drawCard(cardId);
+
+    return;
+  }
+
+  const nextOptions = {};
+  nextOptions[CARD_FORM_UNSELECTED_VALUE] = CARD_FORM_UNSELECTED_NAME;
+  for (option in indexData) {
+    nextOptions[option] = getTranslatedName(indexData, option);
+  }
+
+  await buildCardFormSelects(cardId, path, contextPath, nextOptions);
+}
+
+const rebuildCardForm = async function(cardId) {
+  const cardFormId = CARD_FORM_ID_PREFIX + cardId;
+  const cardData = cardsData[cardId];
+
+  //remove existing elements
   const div = document.getElementById(cardFormId);
+  while (div.lastChild) {
+    div.removeChild(div.lastChild);
+  }
 
   //label
   addSpanChildElement(div, cardId + ': ');
 
   //card path selects
-  //...todo
+  let path = cardData[CARD_DATA_FIELD_PATH];
+  let pathArr = path.split('/').filter(o => o);
+  const options = await getCardTypeOptions();
+  if (pathArr.length === 0) {
+    pathArr.push(Object.keys(options)[0]);
+  }
+  await buildCardFormSelects(cardId, pathArr, [], options);
 
   //card input fields
   //...todo
+}
+
+const saveCardDataPath = async function(cardId, selectId) {
+  const cardFormId = CARD_FORM_ID_PREFIX + cardId;
+
+  let pathArr = [];
+  let formId = 0;
+  while (true) {
+    formId++;
+
+    if (selectId < formId) {
+      break;
+    }
+
+    const cardFormSelectId = cardFormId + '-' + formId;
+    const element = document.getElementById(cardFormSelectId);
+    if (element === null) {
+      break;
+    }
+
+    const selectedValue = element.value;
+    if (selectedValue === CARD_FORM_UNSELECTED_VALUE) {
+      break;
+    }
+
+    pathArr.push(selectedValue);
+  }
+  cardsData[cardId][CARD_DATA_FIELD_PATH] = pathArr.join('/');
+
+  await rebuildCardForm(cardId);
+}
+
+const drawCard = function(cardId) {
+  const cardData = cardsData[cardId];
+  if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
+    return;
+  }
+
+  const cardWidth = mm2px(CARD_WIDTH);
+  const cardHeight = mm2px(CARD_HEIGHT);
+
+  const x = cardData[CARD_DATA_FIELD_X];
+  const y = cardData[CARD_DATA_FIELD_Y];
+
+  drawCardIdIdentifierText(cardId, x, y);
+  clearRectangle(x, y, cardWidth, cardHeight);
+  drawEmptyRectangle(x, y, cardWidth, cardHeight);
+
+  //todo draw card view
+  context.font = mm2px(3) + 'px Arial';
+  context.fillText('card view comming soon ...', x + 30, y + 30);
 }
 
 buildForm();
