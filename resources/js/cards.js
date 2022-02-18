@@ -465,9 +465,11 @@ const getLanguage = function() {
 const getTranslatedName = function(data, key) {
   const names = data[key];
   let language = getLanguage();
+  let nameOtherLanguageSuffix = '';
 
   if (names[language] === undefined) {
     language = Object.keys(names)[0];
+    nameOtherLanguageSuffix = ' [' + language + ']';
   }
 
   const name = names[language];
@@ -475,7 +477,7 @@ const getTranslatedName = function(data, key) {
     return name.shift();
   }
 
-  return name;
+  return name + nameOtherLanguageSuffix;
 }
 
 const addSpanChildElement = function(element, text) {
