@@ -45,7 +45,7 @@ const CARD_DATA_FIELD_PATH = 'path';
 const CARD_DATA_FIELD_FILE_DATA = 'fileData';
 const CARD_DATA_FIELD_PARAMS = 'params';
 
-const CARD_FORM_UNSELECTED_VALUE = 0;
+const CARD_FORM_UNSELECTED_VALUE = '';
 const CARD_FORM_UNSELECTED_NAME = '...';
 const CARD_FORM_ID_PREFIX = 'card-form-';
 const CARD_TYPES_ROOT_PATHS = {
@@ -104,7 +104,7 @@ const buildPaperFormatSelect = function() {
   const formats = getAllowedPaperFormats();
   const select = getPaperFormatSelect();
 
-  for (let value of formats) {
+  for (const value of formats) {
     let option = document.createElement('option');
 
     option.value = value;
@@ -120,7 +120,7 @@ const buildPaperOrientationSelect = function() {
   const orientations = ALLOWED_PAPER_ORIENTATIONS;
   const select = getPaperOrientationSelect();
 
-  for (let key in orientations) {
+  for (const key in orientations) {
     let value = orientations[key];
     let option = document.createElement('option');
 
@@ -136,7 +136,7 @@ const buildPaperOrientationSelect = function() {
 const getAllowedPaperFormats = function() {
   let result = [];
 
-  for (let type of ALLOWED_PAPER_FORMAT_TYPES) {
+  for (const type of ALLOWED_PAPER_FORMAT_TYPES) {
     for (let size = ALLOWED_PAPER_FORMAT_MIN_SIZE; size <= ALLOWED_PAPER_FORMAT_MAX_SIZE; size++) {
       result.push(type + size);
     }
@@ -248,7 +248,7 @@ const buildCanvas = async function() {
   scaleCanvas(width, height);
   drawPreparedCanvasArea(width, height);
   calculateCardsCoordinatesAndActivity(width, height);
-  for (let cardId in cardsData) {
+  for (const cardId in cardsData) {
     drawCard(cardId);
   }
   await buildCardsForms();
@@ -392,7 +392,7 @@ const drawCardIdIdentifierText = function(cardId, x, y) {
 const buildCardsForms = async function() {
   let cardsFormsDiv = getCardsFormsDiv();
 
-  for (let cardId in cardsData) {
+  for (const cardId in cardsData) {
     const cardFormId = CARD_FORM_ID_PREFIX + cardId;
     const cardData = cardsData[cardId];
     const div = document.getElementById(cardFormId);
@@ -491,30 +491,30 @@ const addCardFormSelectElement = function(element, id, options, selectedOption, 
   select.id = id;
   select.onchange = onChangeFunction;
 
-  for (let value in options) {
+  options.forEach(function(value, key) {
     let option = document.createElement('option');
-    option.value = value;
-    option.innerHTML = options[value];
-    if (value === selectedOption) {
+    option.value = key;
+    option.innerHTML = value;
+    if (key === selectedOption) {
       option.selected = 'selected';
     }
 
     select.appendChild(option);
-  }
+  });
 
   element.appendChild(select);
 }
 
 const getCardTypeOptions = async function() {
-  let result = {};
+  let result = new Map();
 
   const rootPaths = CARD_TYPES_ROOT_PATHS;
-  for (let cardType in rootPaths) {
+  for (const cardType in rootPaths) {
     const rootPath = rootPaths[cardType];
     const indexData = await getIndexData(rootPath);
 
     if (indexData[cardType] !== undefined) {
-      result[cardType] = getTranslatedName(indexData, cardType);
+      result.set(cardType, getTranslatedName(indexData, cardType));
     }
   }
 
@@ -536,6 +536,34 @@ const getJsonFileData = async function(filePath) {
   return result;
 }
 
+const prepareSelectOptions = function(options) {
+  let unselectedValue;
+  for (const key of options.keys()) {
+    const intKey = parseInt(key);
+    if (key === CARD_FORM_UNSELECTED_VALUE) {
+      unselectedValue = options.get(key);
+    } else if (intKey === 'NaN' || key.toString().length !== intKey.toString().length) {
+      return options;
+    }
+  }
+
+  if (unselectedValue !== undefined) {
+    options.delete(CARD_FORM_UNSELECTED_VALUE);
+  }
+
+  const orderedOptions = new Map([...options.entries()].sort((a, b) => a[1] > b[1]));
+  const result = new Map();
+
+  if (unselectedValue !== undefined) {
+    result.set(CARD_FORM_UNSELECTED_VALUE, unselectedValue);
+  }
+  orderedOptions.forEach(function(value, key) {
+    result.set(key.toString(), value);
+  });
+
+  return result;
+}
+
 const buildCardFormSelects = async function(cardId, path, contextPath, options) {
   const cardFormId = CARD_FORM_ID_PREFIX + cardId;
   const parentElement = document.getElementById(cardFormId);
@@ -547,9 +575,11 @@ const buildCardFormSelects = async function(cardId, path, contextPath, options) 
     const onChangeFunction = function() {
       saveCardDataPath(cardId, stepNumber);
     }
-    addCardFormSelectElement(parentElement, cardFormSelectId, options, selectedOption, onChangeFunction);
+    const preparedOptions = prepareSelectOptions(options);
+    addCardFormSelectElement(parentElement, cardFormSelectId, preparedOptions, selectedOption, onChangeFunction);
   }
-  if (selectedOption === undefined || options[selectedOption] === undefined) {
+
+  if (selectedOption === undefined || options.get(selectedOption) === undefined) {
     return;
   }
 
@@ -575,10 +605,10 @@ const buildCardFormSelects = async function(cardId, path, contextPath, options) 
     return;
   }
 
-  const nextOptions = {};
-  nextOptions[CARD_FORM_UNSELECTED_VALUE] = CARD_FORM_UNSELECTED_NAME;
-  for (option in indexData) {
-    nextOptions[option] = getTranslatedName(indexData, option);
+  const nextOptions = new Map();
+  nextOptions.set(CARD_FORM_UNSELECTED_VALUE, CARD_FORM_UNSELECTED_NAME);
+  for (const option in indexData) {
+    nextOptions.set(option, getTranslatedName(indexData, option));
   }
 
   await buildCardFormSelects(cardId, path, contextPath, nextOptions);
@@ -602,7 +632,8 @@ const rebuildCardForm = async function(cardId) {
   let pathArr = path.split('/').filter(o => o);
   const options = await getCardTypeOptions();
   if (pathArr.length === 0) {
-    pathArr.push(Object.keys(options)[0]);
+    const firstOptionsKey = options.keys().next().value;
+    pathArr.push(firstOptionsKey);
   }
   await buildCardFormSelects(cardId, pathArr, [], options);
 
