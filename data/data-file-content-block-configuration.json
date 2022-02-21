@@ -1,4 +1,5 @@
 {
+    "/records/god/": "PatronContentBlock",
     "/records/patrons/": "PatronContentBlock",
     "/sources/martyrologium-romanum-1956/martyrologium-romanum/": "RomanMartyrology1956DayElogiesContentBlock",
     "/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/": "RomanMartyrologyIndexContentBlock",

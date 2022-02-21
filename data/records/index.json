@@ -1,4 +1,9 @@
 {
+    "god": {
+        "en": "God",
+        "la": "Deus",
+        "pl": "Bóg"
+    },
     "patrons": {
         "en": "Patrons",
         "pl": "Patroni"

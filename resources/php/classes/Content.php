@@ -186,7 +186,9 @@ abstract class Content extends Base
 
                 //--- array to string modifiers:
                 case self::MODIFIER_COMMA_SEPARATED_LIST:
-                    $value = implode(', ', $value);
+                    if (is_array($value)) {
+                        $value = implode(', ', $value);
+                    }
                     break;
                 case self::MODIFIER_FIRST_ELEMENT:
                     $firstKey = array_key_first($value);

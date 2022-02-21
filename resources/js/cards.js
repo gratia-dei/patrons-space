@@ -52,6 +52,7 @@ const CARD_TYPES_ROOT_PATHS = {
   'god': '/files/data/records',
   'patrons': '/files/data/records'
 };
+const CARD_TYPE_SELECTED = 'patrons';
 
 let cardsData = [];
 let filesContents = {};
@@ -632,8 +633,7 @@ const rebuildCardForm = async function(cardId) {
   let pathArr = path.split('/').filter(o => o);
   const options = await getCardTypeOptions();
   if (pathArr.length === 0) {
-    const firstOptionsKey = options.keys().next().value;
-    pathArr.push(firstOptionsKey);
+    pathArr.push(CARD_TYPE_SELECTED);
   }
   await buildCardFormSelects(cardId, pathArr, [], options);
 

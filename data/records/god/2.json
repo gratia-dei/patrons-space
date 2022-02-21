@@ -1,0 +1,36 @@
+{
+  "names": {
+    "arc": [
+      "ܝܫܘܥ"
+    ],
+    "en": [
+      "Jesus Christ",
+      "Jesus of Nazareth",
+      "God the Son"
+    ],
+    "la": [
+      "Iesus Christus",
+      "Iesus Nazarenus",
+      "Dei Filius"
+    ],
+    "pl": [
+      "Jezus Chrystus",
+      "Jezus z Nazaretu",
+      "Syn Boży"
+    ]
+  },
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:Christ_Carrying_the_Cross_MET_DP347226.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Christ_Carrying_the_Cross_MET_DP347226.jpg",
+      "attribution": "El Greco, CC0, via Wikimedia Commons"
+    }
+  },
+
+  "born": [">-8", "<-4"],
+  "died": ["30", "33"],
+
+  "data-links": {
+  }
+}

@@ -17,6 +17,10 @@
     },
     {
         "class": "GenerateIndexFileForAllSubDirectoriesDataFilesProcedure",
+        "params": ["/records/god", "names"]
+    },
+    {
+        "class": "GenerateIndexFileForAllSubDirectoriesDataFilesProcedure",
         "params": ["/records/patrons", "names"]
     },
     {

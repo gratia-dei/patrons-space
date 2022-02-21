@@ -1,0 +1,31 @@
+{
+  "names": {
+    "en": [
+      "Holy Trinity",
+      "Trinity"
+    ],
+    "la": [
+      "Sancta Trinitas",
+      "Trinitas"
+    ],
+    "pl": [
+      "Trójca Przenajświętsza",
+      "Trójca Święta",
+      "Trójca"
+    ]
+  },
+
+  "born": ["-"],
+  "died": ["-"],
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:Lucas_Cranach_d._%C3%84._-_Trinity_-_WGA05656.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Lucas_Cranach_d._%C3%84._-_Trinity_-_WGA05656.jpg",
+      "attribution": "Lucas Cranach the Elder, Public domain, via Wikimedia Commons"
+    }
+  },
+
+  "data-links": {
+  }
+}

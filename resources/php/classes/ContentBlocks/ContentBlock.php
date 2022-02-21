@@ -24,7 +24,9 @@ abstract class ContentBlock extends Content
 
     protected function getFormattedDate(string $date): string
     {
-        if ($date === '') {
+        if ($date === '-') {
+            return self::NON_EXISTENCE;
+        } else if ($date === '?') {
             return self::UNKNOWN_SIGN;
         } else if (!preg_match('/^[<>~]?[-]?[1-9][0-9]?[0-9]?[0-9]?([-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[0-1]))?$/', $date)) {
             return self::INVALID_SIGN;
