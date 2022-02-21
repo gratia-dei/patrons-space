@@ -282,6 +282,13 @@ const drawEmptyRectangle = function(x, y, width, height) {
   context.strokeRect(x, y, width, height);
 }
 
+const drawFilledRectangle = function(x, y, width, height) {
+  const context = getContext();
+
+  context.fillStyle = "black";
+  context.fillRect(x, y, width, height);
+}
+
 const drawLinearScales = function(width, height) {
   const context = getContext();
   const milimeterPixels = mm2px(1);
@@ -362,12 +369,22 @@ const calculateCardsCoordinatesAndActivity = function(areaWidth, areaHeight) {
   }
 }
 
+const getInitialCardData = function() {
+  let result = {};
+
+  result[CARD_DATA_FIELD_IS_ACTIVE] = false;
+  result[CARD_DATA_FIELD_X] = 0;
+  result[CARD_DATA_FIELD_Y] = 0;
+  result[CARD_DATA_FIELD_PATH] = '';
+  result[CARD_DATA_FIELD_FILE_DATA] = {};
+  result[CARD_DATA_FIELD_PARAMS] = {};
+
+  return result;
+}
+
 const setCardIdCoordinatesAndActivity = function(cardId, x, y) {
   if (cardsData[cardId] === undefined) {
-    cardsData[cardId] = {};
-    cardsData[cardId][CARD_DATA_FIELD_PARAMS] = {};
-    cardsData[cardId][CARD_DATA_FIELD_PATH] = '';
-    cardsData[cardId][CARD_DATA_FIELD_FILE_DATA] = {};
+    cardsData[cardId] = getInitialCardData();
   }
 
   cardsData[cardId][CARD_DATA_FIELD_IS_ACTIVE] = true;
@@ -377,7 +394,7 @@ const setCardIdCoordinatesAndActivity = function(cardId, x, y) {
 
 const setCardIdInactivity = function(cardId) {
   if (cardsData[cardId] === undefined) {
-    cardsData[cardId] = {};
+    cardsData[cardId] = getInitialCardData();
   }
 
   cardsData[cardId][CARD_DATA_FIELD_IS_ACTIVE] = false;
@@ -600,9 +617,6 @@ const buildCardFormSelects = async function(cardId, path, contextPath, options) 
 
   const indexData = await getIndexData(fullContextPathString);
   if (Object.keys(indexData).length === 0) {
-    cardsData[cardId][CARD_DATA_FIELD_FILE_DATA] = {};
-    drawCard(cardId);
-
     return;
   }
 
@@ -671,6 +685,51 @@ const saveCardDataPath = async function(cardId, selectId) {
   await rebuildCardForm(cardId);
 }
 
+const drawCardImage = function(imageData, x, y, width, height) {
+  const imageUrl = imageData['file-url'];
+  const imageAreaTopLeftX = imageData['area-top-left-x'];
+  const imageAreaTopLeftY = imageData['area-top-left-y'];
+  const imageAreaBottomRightX = imageData['area-bottom-right-x'];
+  const imageAreaBottomRightY = imageData['area-bottom-right-y'];
+
+  const imageAreaWidth = imageAreaBottomRightX - imageAreaTopLeftX;
+  const imageAreaHeight = imageAreaBottomRightY - imageAreaTopLeftY;
+
+  const widthCoeff = width / imageAreaWidth;
+  const heightCoeff = height / imageAreaHeight;
+  let coeff = widthCoeff;
+  if (Math.abs(1 - widthCoeff) > Math.abs(1 - heightCoeff)) {
+    coeff = heightCoeff;
+  }
+
+  //fix problem with scale in greater PPI's
+  if (widthCoeff + heightCoeff >= 2) {
+    if (coeff === heightCoeff) {
+      coeff = widthCoeff;
+    } else {
+      coeff = heightCoeff;
+    }
+  }
+
+  const imageWidth = imageAreaWidth * coeff / heightCoeff;
+  const imageHeight = imageAreaHeight * coeff / widthCoeff;
+  const imageMoveX = imageWidth / 2 - imageAreaWidth / 2;
+  const imageMoveY = imageHeight / 2 - imageAreaHeight / 2;
+
+  drawFilledRectangle(x, y, width, height);
+
+  let image = new Image();
+  image.onload = function() {
+    context.drawImage(
+      image,
+      imageAreaTopLeftX - imageMoveX, imageAreaTopLeftY - imageMoveY, imageWidth, imageHeight,
+      x, y, width, height
+    );
+  }
+
+  image.src = imageUrl;
+}
+
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
   if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
@@ -682,14 +741,32 @@ const drawCard = function(cardId) {
 
   const x = cardData[CARD_DATA_FIELD_X];
   const y = cardData[CARD_DATA_FIELD_Y];
+  const data = cardData[CARD_DATA_FIELD_FILE_DATA];
 
   drawCardIdIdentifierText(cardId, x, y);
   clearRectangle(x, y, cardWidth, cardHeight);
   drawEmptyRectangle(x, y, cardWidth, cardHeight);
 
-  //todo draw card view
-  context.font = mm2px(3) + 'px Arial';
-  context.fillText('card view comming soon ...', x + 30, y + 30);
+  if (Object.keys(data).length > 0) {
+    drawFilledRectangle(x, y, cardWidth, cardHeight);
+
+    context.font = mm2px(4) + 'px Arial';
+    context.fillStyle = 'white';
+    context.fillText('card description comming soon ...', x + mm2px(2), y + mm2px(75));
+
+    //language
+    //name
+    //death
+    //attributes
+    //religious orders
+    //card owner
+    //patrons strength - only patrons
+    //patron color status
+    //QR code
+
+    //image
+    drawCardImage(data['images']['1'], x + mm2px(3), y + mm2px(3), cardWidth - mm2px(6), cardWidth - mm2px(6));
+  }
 }
 
 buildForm();

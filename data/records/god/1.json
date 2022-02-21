@@ -18,7 +18,11 @@
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Cima_da_Conegliano,_God_the_Father.jpg",
       "file-url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Cima_da_Conegliano%2C_God_the_Father.jpg",
-      "attribution": "Attributed to Giovanni Battista Cima da Conegliano, Public domain, via Wikimedia Commons"
+      "attribution": "Attributed to Giovanni Battista Cima da Conegliano, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 155,
+      "area-top-left-y": 27,
+      "area-bottom-right-x": 518,
+      "area-bottom-right-y": 346
     }
   },
 

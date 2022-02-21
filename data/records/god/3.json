@@ -16,9 +16,13 @@
 
   "images": {
     "1": {
-      "page-url": "https://commons.wikimedia.org/wiki/File:Spiritus_Sanctus.jpg",
-      "file-url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Spiritus_Sanctus.jpg",
-      "attribution": "Dnalor 01, CC BY-SA 3.0 AT <https://creativecommons.org/licenses/by-sa/3.0/at/deed.en>, via Wikimedia Commons"
+      "page-url": "https://commons.wikimedia.org/wiki/File:Vienna_Karlskirche_frescos4b.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Vienna_Karlskirche_frescos4b.jpg",
+      "attribution": "User:Manfreeed, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 24,
+      "area-top-left-y": 124,
+      "area-bottom-right-x": 273,
+      "area-bottom-right-y": 298
     }
   },
 

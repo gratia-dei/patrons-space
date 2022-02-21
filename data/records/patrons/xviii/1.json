@@ -20,9 +20,13 @@
 
   "images": {
     "1": {
-      "page-url": "https://commons.wikimedia.org/wiki/File:Liguori.jp://commons.wikimedia.org/wiki/File:Liguori.jpg",
-      "file-url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Liguori.jpg",
-      "attribution": "Unknown authorUnknown author, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons"
+      "page-url": "https://commons.wikimedia.org/wiki/File:St_Alphonsus_Liguori.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/1/19/St_Alphonsus_Liguori.jpg",
+      "attribution": "See page for author, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 26,
+      "area-top-left-y": 0,
+      "area-bottom-right-x": 167,
+      "area-bottom-right-y": 194
     }
   },
 

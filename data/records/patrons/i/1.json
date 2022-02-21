@@ -23,7 +23,11 @@
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Sassoferrato_-_Jungfrun_i_b%C3%B6n.jpg",
       "file-url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Sassoferrato_-_Jungfrun_i_b%C3%B6n.jpg",
-      "attribution": "Giovanni Battista Salvi da Sassoferrato, Public domain, via Wikimedia Commons"
+      "attribution": "Giovanni Battista Salvi da Sassoferrato, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 560,
+      "area-top-left-y": 551,
+      "area-bottom-right-x": 2800,
+      "area-bottom-right-y": 3124
     }
   },
 
