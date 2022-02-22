@@ -13,7 +13,9 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     ];
 
     private $dataLinksContentBlock;
+    private $patronGalleryContentBlock;
 
+    private $path;
     private $fileData;
     private $generatedFileData;
     private $textVariables;
@@ -21,6 +23,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     public function __construct()
     {
         $this->dataLinksContentBlock = new DataLinksContentBlock();
+        $this->patronGalleryContentBlock = new PatronGalleryContentBlock();
 
         parent::__construct();
     }
@@ -39,6 +42,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
+        $this->path = $path;
         $this->titleRecordContent = $titleRecordContent;
         $this->fileData = $fileData;
         $this->generatedFileData = $generatedFileData;
@@ -59,15 +63,16 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $variables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
         $variables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
         $variables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
+        $variables['gallery'] = $this->getGalleryContent();
 
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . self::NAMES_INDEX . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
         $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName);
 
-        $titleItemsContent = '';
+        $feastsItemsContent = '';
         foreach ($fileData[self::FEASTS_INDEX] ?? [] as $recordId => $recordData) {
-            $titleItemsContent .= $this->getRecordContent($recordId);
+            $feastsItemsContent .= $this->getRecordContent($recordId);
         }
-        $variables['title-items'] = $titleItemsContent;
+        $variables['feasts-items'] = $feastsItemsContent;
 
         $mainContent = $this->getReplacedContent($mainContent, $variables);
 
@@ -145,5 +150,14 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     private function getPreparedTranslationRecordKey(string $key, string $recordId): string
     {
         return 'record-' . $recordId . '-' . $key;
+    }
+
+    private function getGalleryContent(): string
+    {
+        return $this
+            ->patronGalleryContentBlock
+            ->prepare($this->path)
+            ->getFullContent('')
+        ;
     }
 }
