@@ -474,6 +474,10 @@ const getHostname = function() {
   return window.location.hostname.toLowerCase();
 }
 
+const getProtocol = function() {
+  return window.location.protocol;
+}
+
 const getLanguage = function() {
   const hostname = getHostname();
 
@@ -730,6 +734,28 @@ const drawCardImage = function(imageData, x, y, width, height) {
   image.src = imageUrl;
 }
 
+const drawQrCode = function(x, y, size, path) {
+  const context = getContext();
+  const divElement = document.createElement('div');
+
+  const text = getProtocol() + '//' + getHostname() + '/' + path;
+
+  const options = {
+    width: size,
+    height: size,
+    colorDark : 'white',
+    colorLight : 'black',
+    correctLevel : QRCode.CorrectLevel.H
+  };
+  let qrCode = new QRCode(divElement, options);
+  qrCode.makeCode(text);
+
+  let image = divElement.querySelector('img');
+  image.onload = function() {
+    context.drawImage(image, x, y);
+  }
+}
+
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
   if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
@@ -750,9 +776,16 @@ const drawCard = function(cardId) {
   if (Object.keys(data).length > 0) {
     drawFilledRectangle(x, y, cardWidth, cardHeight);
 
+    //image
+    drawCardImage(data['images']['1'], x + mm2px(3), y + mm2px(3), cardWidth - mm2px(6), cardWidth - mm2px(6));
+
+    //QR code
+    const qrCodeSize = mm2px(10);
+    drawQrCode(x + mm2px(3), y + cardHeight - qrCodeSize - mm2px(3), qrCodeSize, cardData[CARD_DATA_FIELD_PATH]);
+
     context.font = mm2px(4) + 'px Arial';
     context.fillStyle = 'white';
-    context.fillText('card description comming soon ...', x + mm2px(2), y + mm2px(75));
+    context.fillText('card description comming soon ...', x + mm2px(2), y + mm2px(70));
 
     //language
     //name
@@ -762,10 +795,6 @@ const drawCard = function(cardId) {
     //card owner
     //patrons strength - only patrons
     //patron color status
-    //QR code
-
-    //image
-    drawCardImage(data['images']['1'], x + mm2px(3), y + mm2px(3), cardWidth - mm2px(6), cardWidth - mm2px(6));
   }
 }
 
