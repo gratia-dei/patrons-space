@@ -30,13 +30,26 @@ const VERTICAL_PAPER_FORMATS = {
   }
 }
 
+const DEFAULT_FONT_FAMILY = 'Arial';
+const DRAW_TEXT_MATCH_FONT_SIZE_COEFF = 0.8;
+const DEFAULT_FONT_COLOR = 'white';
+
+const FONT_STYLE_NORMAL = 'normal';
+
+const TEXT_ALIGN_LEFT = 'left';
+const TEXT_ALIGN_RIGHT = 'right';
+const TEXT_ALIGN_CENTER = 'center';
+const TEXT_ALIGN_JUSTIFY = 'justify';
+
 const LINEAR_SCALE_SHORT_LINE_LENGTH = 0.5;
+
 const CARD_WIDTH = 63.5;
 const CARD_HEIGHT = 88;
 const CARD_MARGIN = 3;
+
 const CARD_ID_IDENTIFIER_TEXT_FONT_SIZE = 2;
 const CARD_ID_IDENTIFIER_TEXT_Y_CHANGE = -0.5;
-const CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY = 'Arial';
+const CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY = DEFAULT_FONT_FAMILY;
 
 const CARD_DATA_FIELD_X = 'x';
 const CARD_DATA_FIELD_Y = 'y';
@@ -53,6 +66,12 @@ const CARD_TYPES_ROOT_PATHS = {
   'patrons': '/files/data/records'
 };
 const CARD_TYPE_SELECTED = 'patrons';
+
+const CARD_BACKGROUND_COLOR = 'black';
+const CARD_IMAGE_BACKGROUND_COLOR = 'black';
+
+const FILE_DATA_IMAGES_KEY = 'images';
+const FILE_DATA_NAMES_KEY = 'names';
 
 let cardsData = [];
 let filesContents = {};
@@ -264,7 +283,7 @@ const scaleCanvas = function(width, height) {
 
 const drawPreparedCanvasArea = function(width, height) {
   clearRectangle(0, 0, width, height);
-  drawEmptyRectangle(0, 0, width, height);
+  drawEmptyRectangle(0, 0, width, height, 'black');
   drawLinearScales(width, height);
 }
 
@@ -274,18 +293,18 @@ const clearRectangle = function(x, y, width, height) {
   context.clearRect(x, y, width, height);
 }
 
-const drawEmptyRectangle = function(x, y, width, height) {
+const drawEmptyRectangle = function(x, y, width, height, color) {
   const context = getContext();
 
   context.lineWidth = 1;
-  context.strokeStyle = "black";
+  context.strokeStyle = color;
   context.strokeRect(x, y, width, height);
 }
 
-const drawFilledRectangle = function(x, y, width, height) {
+const drawFilledRectangle = function(x, y, width, height, color) {
   const context = getContext();
 
-  context.fillStyle = "black";
+  context.fillStyle = color;
   context.fillRect(x, y, width, height);
 }
 
@@ -404,6 +423,7 @@ const drawCardIdIdentifierText = function(cardId, x, y) {
   context = getContext();
 
   context.font = mm2px(CARD_ID_IDENTIFIER_TEXT_FONT_SIZE) + 'px ' + CARD_ID_IDENTIFIER_TEXT_FONT_FAMILY;
+  context.fillStyle = 'black';
   context.fillText(cardId + ':', x, y + mm2px(CARD_ID_IDENTIFIER_TEXT_Y_CHANGE));
 }
 
@@ -484,7 +504,7 @@ const getLanguage = function() {
   return hostname.replace(/\..*$/, '');
 }
 
-const getTranslatedName = function(data, key) {
+const getTranslatedNameData = function(data, key) {
   const names = data[key];
   let language = getLanguage();
   let nameOtherLanguageSuffix = '';
@@ -494,12 +514,12 @@ const getTranslatedName = function(data, key) {
     nameOtherLanguageSuffix = ' [' + language + ']';
   }
 
-  const name = names[language];
+  let name = names[language];
   if (name instanceof Array) {
-    return name.shift();
+    name = [...name].shift();
   }
 
-  return name + nameOtherLanguageSuffix;
+  return [name + nameOtherLanguageSuffix, name, language];
 }
 
 const addSpanChildElement = function(element, text) {
@@ -536,7 +556,7 @@ const getCardTypeOptions = async function() {
     const indexData = await getIndexData(rootPath);
 
     if (indexData[cardType] !== undefined) {
-      result.set(cardType, getTranslatedName(indexData, cardType));
+      result.set(cardType, getTranslatedNameData(indexData, cardType)[0]);
     }
   }
 
@@ -627,7 +647,7 @@ const buildCardFormSelects = async function(cardId, path, contextPath, options) 
   const nextOptions = new Map();
   nextOptions.set(CARD_FORM_UNSELECTED_VALUE, CARD_FORM_UNSELECTED_NAME);
   for (const option in indexData) {
-    nextOptions.set(option, getTranslatedName(indexData, option));
+    nextOptions.set(option, getTranslatedNameData(indexData, option)[0]);
   }
 
   await buildCardFormSelects(cardId, path, contextPath, nextOptions);
@@ -720,7 +740,7 @@ const drawCardImage = function(imageData, x, y, width, height) {
   const imageMoveX = imageWidth / 2 - imageAreaWidth / 2;
   const imageMoveY = imageHeight / 2 - imageAreaHeight / 2;
 
-  drawFilledRectangle(x, y, width, height);
+  drawFilledRectangle(x, y, width, height, CARD_IMAGE_BACKGROUND_COLOR);
 
   let image = new Image();
   image.onload = function() {
@@ -734,7 +754,7 @@ const drawCardImage = function(imageData, x, y, width, height) {
   image.src = imageUrl;
 }
 
-const drawQrCode = function(x, y, size, path) {
+const drawQrCode = function(path, x, y, size, darkColor, lightColor) {
   const context = getContext();
   const divElement = document.createElement('div');
 
@@ -743,8 +763,8 @@ const drawQrCode = function(x, y, size, path) {
   const options = {
     width: size,
     height: size,
-    colorDark : 'white',
-    colorLight : 'black',
+    colorDark : darkColor,
+    colorLight : lightColor,
     correctLevel : QRCode.CorrectLevel.H
   };
   let qrCode = new QRCode(divElement, options);
@@ -753,6 +773,36 @@ const drawQrCode = function(x, y, size, path) {
   let image = divElement.querySelector('img');
   image.onload = function() {
     context.drawImage(image, x, y);
+  }
+}
+
+const drawText = function(text, x, y, width, height, fontColor, fontStyle = FONT_STYLE_NORMAL, align = TEXT_ALIGN_CENTER) {
+  const context = getContext();
+
+  const fontSize = DRAW_TEXT_MATCH_FONT_SIZE_COEFF * height;
+  context.font = fontStyle + ' ' + fontSize + 'px ' + DEFAULT_FONT_FAMILY;
+  context.textAlign = 'left';
+  context.textBaseline = 'alphabetic';
+  context.fillStyle = fontColor;
+
+  const textWidth = context.measureText(text).width;
+
+  if (textWidth > width || align === TEXT_ALIGN_JUSTIFY) {
+    const scale = width / textWidth;
+
+    context.save();
+    context.translate(x, y + fontSize);
+    context.scale(scale, 1);
+    context.fillText(text, 0, 0);
+    context.restore();
+  } else {
+    let moveX = 0;
+    if (align === TEXT_ALIGN_RIGHT) {
+      moveX = width - textWidth;
+    } else if (align === TEXT_ALIGN_CENTER) {
+      moveX = (width - textWidth) / 2;
+    }
+    context.fillText(text, x + moveX, y + fontSize);
   }
 }
 
@@ -771,30 +821,73 @@ const drawCard = function(cardId) {
 
   drawCardIdIdentifierText(cardId, x, y);
   clearRectangle(x, y, cardWidth, cardHeight);
-  drawEmptyRectangle(x, y, cardWidth, cardHeight);
+  drawEmptyRectangle(x, y, cardWidth, cardHeight, 'black');
 
   if (Object.keys(data).length > 0) {
-    drawFilledRectangle(x, y, cardWidth, cardHeight);
+    const fontColor = DEFAULT_FONT_COLOR;
+    const fontStyle = FONT_STYLE_NORMAL;
+    const textAlign = TEXT_ALIGN_CENTER;
+
+    const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
+
+    const marginSize = mm2px(3);
+
+    const nameWidth = cardWidth - 2 * marginSize;
+    const nameHeight = mm2px(7);
+    const nameX = x + marginSize;
+    const nameY = y;
+    const nameColor = 'white';
+
+    const languageWidth = mm2px(3);
+    const languageHeight = mm2px(3);
+    const languageX = x + cardWidth - languageWidth - marginSize;
+    const languageY = y + nameHeight;
+    const languageColor = 'red';
+
+    const imageSize = mm2px(36);
+    const imageWidth = imageSize;
+    const imageHeight = imageSize;
+    const imageX = x + marginSize;
+    const imageY = y + nameHeight;
+
+    const qrCodeSize = mm2px(20);
+    const qrCodeX = x + cardWidth - qrCodeSize - marginSize;
+    const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
+    const qrCodeDarkColor = 'yellow';
+    const qrCodeLightColor = 'black';
+
+    //background
+    drawFilledRectangle(x, y, cardWidth, cardHeight, CARD_BACKGROUND_COLOR);
 
     //image
-    drawCardImage(data['images']['1'], x + mm2px(3), y + mm2px(3), cardWidth - mm2px(6), cardWidth - mm2px(6));
+    drawCardImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight);
 
     //QR code
-    const qrCodeSize = mm2px(10);
-    drawQrCode(x + mm2px(3), y + cardHeight - qrCodeSize - mm2px(3), qrCodeSize, cardData[CARD_DATA_FIELD_PATH]);
+    drawQrCode(cardData[CARD_DATA_FIELD_PATH], qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
 
-    context.font = mm2px(4) + 'px Arial';
-    context.fillStyle = 'white';
-    context.fillText('card description comming soon ...', x + mm2px(2), y + mm2px(70));
+    //name
+    drawText(nameData[1], nameX, nameY, nameWidth, nameHeight, nameColor, fontStyle, textAlign);
 
     //language
-    //name
+    drawText(nameData[2].toUpperCase(), languageX, languageY, languageWidth, languageHeight, languageColor, fontStyle, TEXT_ALIGN_JUSTIFY);
+
     //death
+    //...
+
     //attributes
+    //...
+
     //religious orders
+    //...
+
     //card owner
+    //...
+
     //patrons strength - only patrons
+    //...
+
     //patron color status
+    //...
   }
 }
 
