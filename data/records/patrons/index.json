@@ -3,8 +3,20 @@
         "en": "1st Century",
         "pl": "I wiek"
     },
+    "iv": {
+        "en": "4th Century",
+        "pl": "IV wiek"
+    },
+    "v": {
+        "en": "5th Century",
+        "pl": "V wiek"
+    },
     "xviii": {
         "en": "18th Century",
         "pl": "XVIII wiek"
+    },
+    "xix": {
+        "en": "19th Century",
+        "pl": "XIX wiek"
     }
 }

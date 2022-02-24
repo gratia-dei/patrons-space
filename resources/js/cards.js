@@ -838,12 +838,6 @@ const drawCard = function(cardId) {
     const nameY = y;
     const nameColor = 'white';
 
-    const languageWidth = mm2px(3);
-    const languageHeight = mm2px(3);
-    const languageX = x + cardWidth - languageWidth - marginSize;
-    const languageY = y + nameHeight;
-    const languageColor = 'red';
-
     const imageSize = mm2px(36);
     const imageWidth = imageSize;
     const imageHeight = imageSize;
@@ -855,6 +849,12 @@ const drawCard = function(cardId) {
     const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
     const qrCodeDarkColor = 'yellow';
     const qrCodeLightColor = 'black';
+
+    const languageWidth = mm2px(3);
+    const languageHeight = mm2px(3);
+    const languageX = x + cardWidth - languageWidth - marginSize;
+    const languageY = y + nameHeight + imageHeight / 3;
+    const languageColor = 'red';
 
     //background
     drawFilledRectangle(x, y, cardWidth, cardHeight, CARD_BACKGROUND_COLOR);

@@ -1,0 +1,35 @@
+{
+  "names": {
+    "la": [
+      "Augustinus Hipponensis",
+      "Aurelius Augustinus Hipponensis",
+      "Aurelius Augustinus"
+    ],
+    "en": [
+      "Augustine of Hippo"
+    ],
+    "pl": [
+      "Augustyn z Hippony",
+      "Aureliusz Augustyn z Hippony"
+    ]
+  },
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:Saint_Augustine_by_Philippe_de_Champaigne.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Saint_Augustine_by_Philippe_de_Champaigne.jpg",
+      "attribution": "Philippe de Champaigne, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 672,
+      "area-top-left-y": 457,
+      "area-bottom-right-x": 2921,
+      "area-bottom-right-y": 2286
+    }
+  },
+
+  "born": ["354-11-13"],
+  "died": ["430-08-28"],
+
+  "data-links": {
+  }
+}
+

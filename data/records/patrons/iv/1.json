@@ -1,0 +1,32 @@
+{
+  "names": {
+    "la": [
+      "Eusebius Vercellensis"
+    ],
+    "en": [
+      "Eusebius of Vercelli"
+    ],
+    "pl": [
+      "Euzebiusz z Vercelli"
+    ]
+  },
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:Eusebius_von_Vercelli.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Eusebius_von_Vercelli.jpg",
+      "attribution": "Unknown authorUnknown author, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 51,
+      "area-top-left-y": 62,
+      "area-bottom-right-x": 257,
+      "area-bottom-right-y": 275
+    }
+  },
+
+  "born": ["~283"],
+  "died": ["371-08-01"],
+
+  "data-links": {
+  }
+}
+

@@ -6,7 +6,8 @@ abstract class ContentBlock extends Content
     protected const UNKNOWN_PAGE_COLUMN_NUMBER = self::VARIABLE_NAME_SIGN . 'unknown' . self::VARIABLE_NAME_SIGN;
 
     protected const NON_EXISTENCE = self::VARIABLE_NAME_SIGN . 'lang-non-existence' . self::VARIABLE_NAME_SIGN;
-    protected const UNKNOWN_SIGN = '???';
+    protected const NON_EXISTENCE_SIGN = '-';
+    protected const UNKNOWN_SIGN = '?';
     protected const INVALID_SIGN = '!!!';
 
     protected const RECORD_ACTIVENESS_CLASS_ACTIVE = 'record-active';
@@ -24,9 +25,9 @@ abstract class ContentBlock extends Content
 
     protected function getFormattedDate(string $date): string
     {
-        if ($date === '-') {
+        if ($date === self::NON_EXISTENCE_SIGN) {
             return self::NON_EXISTENCE;
-        } else if ($date === '?') {
+        } else if ($date === self::UNKNOWN_SIGN) {
             return self::UNKNOWN_SIGN;
         } else if (!preg_match('/^[<>~]?[-]?[1-9][0-9]?[0-9]?[0-9]?([-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[0-1]))?$/', $date)) {
             return self::INVALID_SIGN;
