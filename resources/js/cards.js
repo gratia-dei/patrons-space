@@ -3,6 +3,8 @@ const DEFAULT_PAPER_ORIENTATION = 'v';
 const DEFAULT_MARGIN_SIZE = 50;
 const DEFAULT_PPI = 96;
 
+const UNKNOWN = '?';
+
 const ALLOWED_PAPER_FORMAT_TYPES = ['A', 'B', 'C'];
 const ALLOWED_PAPER_FORMAT_MIN_SIZE = 0;
 const ALLOWED_PAPER_FORMAT_MAX_SIZE = 6;
@@ -56,22 +58,30 @@ const CARD_DATA_FIELD_Y = 'y';
 const CARD_DATA_FIELD_IS_ACTIVE = 'isActive';
 const CARD_DATA_FIELD_PATH = 'path';
 const CARD_DATA_FIELD_FILE_DATA = 'fileData';
-const CARD_DATA_FIELD_PARAMS = 'params';
 
 const CARD_FORM_UNSELECTED_VALUE = '';
 const CARD_FORM_UNSELECTED_NAME = '...';
 const CARD_FORM_ID_PREFIX = 'card-form-';
+
+const CARD_TYPE_GOD = 'god';
+const CARD_TYPE_PATRONS = 'patrons';
+
 const CARD_TYPES_ROOT_PATHS = {
-  'god': '/files/data/records',
-  'patrons': '/files/data/records'
+  [CARD_TYPE_GOD]: '/files/data/records',
+  [CARD_TYPE_PATRONS]: '/files/data/records'
 };
-const CARD_TYPE_SELECTED = 'patrons';
+const CARD_TYPE_SELECTED = CARD_TYPE_PATRONS;
 
 const CARD_BACKGROUND_COLOR = 'black';
 const CARD_IMAGE_BACKGROUND_COLOR = 'black';
 
 const FILE_DATA_IMAGES_KEY = 'images';
 const FILE_DATA_NAMES_KEY = 'names';
+const FILE_DATA_DEATH_KEY = 'died';
+
+const CARD_DATA_PARAMS_FIELD_NAME = 'name';
+const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
+const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 
 let cardsData = [];
 let filesContents = {};
@@ -396,7 +406,6 @@ const getInitialCardData = function() {
   result[CARD_DATA_FIELD_Y] = 0;
   result[CARD_DATA_FIELD_PATH] = '';
   result[CARD_DATA_FIELD_FILE_DATA] = {};
-  result[CARD_DATA_FIELD_PARAMS] = {};
 
   return result;
 }
@@ -806,6 +815,54 @@ const drawText = function(text, x, y, width, height, fontColor, fontStyle = FONT
   }
 }
 
+const getDataFileParams = function(cardType, data) {
+  let result = {};
+
+  if (cardType === CARD_TYPE_PATRONS || cardType === CARD_TYPE_GOD) {
+    const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
+    result[CARD_DATA_PARAMS_FIELD_NAME] = nameData[1];
+    result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
+    result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
+  }
+
+  return result;
+}
+
+const getDeathDate = function(dates) {
+  if (dates.length === 0) {
+    return UNKNOWN;
+  } else if (dates.length === 1) {
+    return dates[0];
+  }
+
+  let showMonthAndDay = true;
+  let prevMonthAndDay = null;
+  let date;
+  for (date of dates) {
+    const monthAndDay = date.replace(/^.+(-[0-1][0-9]-[0-3][0-9])$/, '$1');
+    if (showMonthAndDay) {
+      if (monthAndDay !== date) {
+        if (prevMonthAndDay === null) {
+          prevMonthAndDay = monthAndDay;
+        } else if (prevMonthAndDay !== monthAndDay) {
+          showMonthAndDay = false;
+        }
+      } else {
+        showMonthAndDay = false;
+      }
+    }
+  }
+  if (!showMonthAndDay) {
+    date = date.replace(/^([~<>-]*[0-9]+)-.+$/, '$1');
+  }
+
+  if (!isNaN(date[0]) && !isNaN(parseInt(date[0]))) {
+    return '~' + date;
+  }
+
+  return date;
+}
+
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
   if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
@@ -824,55 +881,74 @@ const drawCard = function(cardId) {
   drawEmptyRectangle(x, y, cardWidth, cardHeight, 'black');
 
   if (Object.keys(data).length > 0) {
+    const dataPath = cardData[CARD_DATA_FIELD_PATH];
+    const cardType = dataPath.replace(/\/.*$/, '');
+
     const fontColor = DEFAULT_FONT_COLOR;
     const fontStyle = FONT_STYLE_NORMAL;
     const textAlign = TEXT_ALIGN_CENTER;
 
-    const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
+    const params = getDataFileParams(cardType, data);
 
     const marginSize = mm2px(3);
 
+    //background
+    drawFilledRectangle(x, y, cardWidth, cardHeight, CARD_BACKGROUND_COLOR);
+
+    //name
     const nameWidth = cardWidth - 2 * marginSize;
     const nameHeight = mm2px(7);
     const nameX = x + marginSize;
     const nameY = y;
     const nameColor = 'white';
+    if (params[CARD_DATA_PARAMS_FIELD_NAME] !== undefined) {
+      drawText(params[CARD_DATA_PARAMS_FIELD_NAME], nameX, nameY, nameWidth, nameHeight, nameColor, fontStyle, textAlign);
+    }
 
+    //image
     const imageSize = mm2px(36);
     const imageWidth = imageSize;
     const imageHeight = imageSize;
     const imageX = x + marginSize;
     const imageY = y + nameHeight;
+    drawCardImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight);
 
+    //QR code
     const qrCodeSize = mm2px(20);
     const qrCodeX = x + cardWidth - qrCodeSize - marginSize;
     const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
     const qrCodeDarkColor = 'yellow';
     const qrCodeLightColor = 'black';
+    drawQrCode(dataPath, qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
 
+    //language
     const languageWidth = mm2px(3);
     const languageHeight = mm2px(3);
     const languageX = x + cardWidth - languageWidth - marginSize;
     const languageY = y + nameHeight + imageHeight / 3;
     const languageColor = 'red';
+    if (params[CARD_DATA_PARAMS_FIELD_LANGUAGE] !== undefined) {
+      drawText(params[CARD_DATA_PARAMS_FIELD_LANGUAGE].toUpperCase(), languageX, languageY, languageWidth, languageHeight, languageColor, fontStyle, TEXT_ALIGN_JUSTIFY);
+    }
 
-    //background
-    drawFilledRectangle(x, y, cardWidth, cardHeight, CARD_BACKGROUND_COLOR);
-
-    //image
-    drawCardImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight);
-
-    //QR code
-    drawQrCode(cardData[CARD_DATA_FIELD_PATH], qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
-
-    //name
-    drawText(nameData[1], nameX, nameY, nameWidth, nameHeight, nameColor, fontStyle, textAlign);
-
-    //language
-    drawText(nameData[2].toUpperCase(), languageX, languageY, languageWidth, languageHeight, languageColor, fontStyle, TEXT_ALIGN_JUSTIFY);
+    //project name
+    const projectNameText = "MaritumDei.org: MyPatrons.org & Patrons.Space";
+    const projectNameWidth = cardWidth - 2 * marginSize;
+    const projectNameHeight = mm2px(4);
+    const projectNameX = x + marginSize;
+    const projectNameY = y + cardHeight - projectNameHeight;
+    const projectNameColor = 'blue';
+    drawText(projectNameText, projectNameX, projectNameY, projectNameWidth, projectNameHeight, projectNameColor, fontStyle, TEXT_ALIGN_JUSTIFY);
 
     //death
-    //...
+    const deathWidth = cardWidth;
+    const deathHeight = mm2px(7);
+    const deathX = x + marginSize;
+    const deathY = y + nameHeight + imageHeight;
+    const deathColor = 'white';
+    if (params[CARD_DATA_PARAMS_FIELD_DEATH] !== undefined) {
+      drawText(params[CARD_DATA_PARAMS_FIELD_DEATH], deathX, deathY, deathWidth, deathHeight, deathColor, fontStyle, TEXT_ALIGN_LEFT);
+    }
 
     //attributes
     //...
