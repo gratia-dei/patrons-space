@@ -1,1229 +1,1118 @@
 {
     "1": {
         "names": {
-            "pl": "Piotr",
-            "la": "Petrus"
+            "la": "Petrus",
+            "pl": "Piotr"
         },
         "pontificate": {
             "from": "33-??-??",
             "to": "64-??-??"
-
         }
     },
     "2": {
         "names": {
-            "pl": "Linus",
-            "la": "Linus"
+            "la": "Linus",
+            "pl": "Linus"
         },
         "pontificate": {
             "from": "64-??-??",
             "to": "76-??-??"
-
         }
     },
     "3": {
         "names": {
-            "pl": "Anaklet",
-            "la": "Anacletus"
+            "la": "Anacletus",
+            "pl": "Anaklet"
         },
         "pontificate": {
             "from": "76-??-??",
             "to": "88-??-??"
-
         }
     },
     "4": {
         "names": {
-            "pl": "Klemens Rzymski",
-            "la": "Clemens Romanus"
+            "la": "Clemens Romanus",
+            "pl": "Klemens Rzymski"
         },
         "pontificate": {
             "from": "88-??-??",
             "to": "97-??-??"
-
         }
     },
     "5": {
         "names": {
-            "pl": "Ewaryst",
-            "la": "Evaristus"
+            "la": "Evaristus",
+            "pl": "Ewaryst"
         },
         "pontificate": {
             "from": "97-??-??",
             "to": "105-??-??"
-
         }
     },
     "6": {
         "names": {
-            "pl": "Aleksander",
-            "la": "Alexander"
+            "la": "Alexander",
+            "pl": "Aleksander"
         },
         "pontificate": {
             "from": "105-??-??",
             "to": "115-??-??"
-
         }
     },
     "7": {
         "names": {
-            "pl": "Sykstus",
-            "la": "Xystus"
+            "la": "Xystus",
+            "pl": "Sykstus"
         },
         "pontificate": {
             "from": "115-??-??",
             "to": "125-??-??"
-
         }
     },
     "8": {
         "names": {
-            "pl": "Telesfor",
-            "la": "Telesphorus"
+            "la": "Telesphorus",
+            "pl": "Telesfor"
         },
         "pontificate": {
             "from": "125-??-??",
             "to": "136-??-??"
-
         }
     },
     "9": {
         "names": {
-            "pl": "Hygin",
-            "la": "Hyginus"
+            "la": "Hyginus",
+            "pl": "Hygin"
         },
         "pontificate": {
             "from": "136-??-??",
             "to": "140-??-??"
-
         }
     },
     "10": {
         "names": {
-            "pl": "Pius",
-            "la": "Pius"
+            "la": "Pius",
+            "pl": "Pius"
         },
         "pontificate": {
             "from": "140-??-??",
             "to": "155-??-??"
-
         }
     },
     "11": {
         "names": {
-            "pl": "Anicet",
-            "la": "Anicetus"
+            "la": "Anicetus",
+            "pl": "Anicet"
         },
         "pontificate": {
             "from": "155-??-??",
             "to": "166-??-??"
-
         }
     },
     "12": {
         "names": {
-            "pl": "Soter",
-            "la": "Soterius"
+            "la": "Soterius",
+            "pl": "Soter"
         },
         "pontificate": {
             "from": "166-??-??",
             "to": "175-??-??"
-
         }
     },
     "13": {
         "names": {
-            "pl": "Eleuteriusz",
-            "la": "Eleutherius"
+            "la": "Eleutherius",
+            "pl": "Eleuteriusz"
         },
         "pontificate": {
             "from": "175-??-??",
             "to": "189-??-??"
-
         }
     },
     "14": {
         "names": {
-            "pl": "Wiktor",
-            "la": "Victor"
+            "la": "Victor",
+            "pl": "Wiktor"
         },
         "pontificate": {
             "from": "189-??-??",
             "to": "199-??-??"
-
         }
     },
     "15": {
         "names": {
-            "pl": "Zefiryn",
-            "la": "Zephyrinus"
+            "la": "Zephyrinus",
+            "pl": "Zefiryn"
         },
         "pontificate": {
             "from": "199-??-??",
             "to": "217-??-??"
-
         }
     },
     "16": {
         "names": {
-            "pl": "Kalikst",
-            "la": "Callistus"
+            "la": "Callistus",
+            "pl": "Kalikst"
         },
         "pontificate": {
             "from": "217-??-??",
             "to": "222-??-??"
-
         }
     },
     "17": {
         "names": {
-            "pl": "Urban",
-            "la": "Urbanus"
+            "la": "Urbanus",
+            "pl": "Urban"
         },
         "pontificate": {
             "from": "222-??-??",
             "to": "230-05-23"
-
         }
     },
     "18": {
         "names": {
-            "pl": "Poncjan",
-            "la": "Pontianus"
+            "la": "Pontianus",
+            "pl": "Poncjan"
         },
         "pontificate": {
             "from": "230-07-21",
             "to": "235-09-28"
-
         }
     },
     "19": {
         "names": {
-            "pl": "Anteros",
-            "la": "Anterus"
+            "la": "Anterus",
+            "pl": "Anteros"
         },
         "pontificate": {
             "from": "235-11-21",
             "to": "236-01-03"
-
         }
     },
     "20": {
         "names": {
-            "pl": "Fabian",
-            "la": "Fabianus"
+            "la": "Fabianus",
+            "pl": "Fabian"
         },
         "pontificate": {
             "from": "236-01-10",
             "to": "250-01-20"
-
         }
     },
     "21": {
         "names": {
-            "pl": "Korneliusz",
-            "la": "Cornelius"
+            "la": "Cornelius",
+            "pl": "Korneliusz"
         },
         "pontificate": {
             "from": "251-03-??",
             "to": "253-06-??"
-
         }
     },
     "22": {
         "names": {
-            "pl": "Lucjusz",
-            "la": "Lucius"
+            "la": "Lucius",
+            "pl": "Lucjusz"
         },
         "pontificate": {
             "from": "253-06-25",
             "to": "254-03-05"
-
         }
     },
     "23": {
         "names": {
-            "pl": "Stefan",
-            "la": "Stephanus"
+            "la": "Stephanus",
+            "pl": "Stefan"
         },
         "pontificate": {
             "from": "254-05-12",
             "to": "257-08-02"
-
         }
     },
     "24": {
         "names": {
-            "pl": "Sykstus II",
-            "la": "Xystus Secundus"
+            "la": "Xystus Secundus",
+            "pl": "Sykstus II"
         },
         "pontificate": {
             "from": "257-08-30",
             "to": "258-08-06"
-
         }
     },
     "25": {
         "names": {
-            "pl": "Dionizy",
-            "la": "Dionysius"
+            "la": "Dionysius",
+            "pl": "Dionizy"
         },
         "pontificate": {
             "from": "259-07-22",
             "to": "268-12-26"
-
         }
     },
     "26": {
         "names": {
-            "pl": "Feliks",
-            "la": "Felix"
+            "la": "Felix",
+            "pl": "Feliks"
         },
         "pontificate": {
             "from": "269-01-05",
             "to": "274-12-30"
-
         }
     },
     "27": {
         "names": {
-            "pl": "Eutychian",
-            "la": "Eutychianus"
+            "la": "Eutychianus",
+            "pl": "Eutychian"
         },
         "pontificate": {
             "from": "275-01-04",
             "to": "283-12-07"
-
         }
     },
     "28": {
         "names": {
-            "pl": "Kajus",
-            "la": "Caius"
+            "la": "Caius",
+            "pl": "Kajus"
         },
         "pontificate": {
             "from": "283-12-17",
             "to": "296-04-22"
-
         }
     },
     "29": {
         "names": {
-            "pl": "Marcelin",
-            "la": "Marcellinus"
+            "la": "Marcellinus",
+            "pl": "Marcelin"
         },
         "pontificate": {
             "from": "296-06-30",
             "to": "304-10-25"
-
         }
     },
     "30": {
         "names": {
-            "pl": "Marceli",
-            "la": "Marcellus"
+            "la": "Marcellus",
+            "pl": "Marceli"
         },
         "pontificate": {
             "from": "308-05-27",
             "to": "309-01-16"
-
         }
     },
     "31": {
         "names": {
-            "pl": "Euzebiusz",
-            "la": "Eusebius"
+            "la": "Eusebius",
+            "pl": "Euzebiusz"
         },
         "pontificate": {
             "from": "309-04-18",
             "to": "310-08-17"
-
         }
     },
     "32": {
         "names": {
-            "pl": "Milcjades",
-            "la": "Miltiades"
+            "la": "Miltiades",
+            "pl": "Milcjades"
         },
         "pontificate": {
             "from": "311-07-02",
             "to": "314-01-11"
-
         }
     },
     "33": {
         "names": {
-            "pl": "Sylwester",
-            "la": "Silvester"
+            "la": "Silvester",
+            "pl": "Sylwester"
         },
         "pontificate": {
             "from": "314-01-31",
             "to": "335-12-31"
-
         }
     },
     "34": {
         "names": {
-            "pl": "Marek",
-            "la": "Marcus"
+            "la": "Marcus",
+            "pl": "Marek"
         },
         "pontificate": {
             "from": "336-01-18",
             "to": "336-10-07"
-
         }
     },
     "35": {
         "names": {
-            "pl": "Juliusz",
-            "la": "Iulius"
+            "la": "Iulius",
+            "pl": "Juliusz"
         },
         "pontificate": {
             "from": "337-02-06",
             "to": "352-04-12"
-
         }
     },
     "36": {
         "names": {
-            "pl": "Liberiusz",
-            "la": "Liberius"
+            "la": "Liberius",
+            "pl": "Liberiusz"
         },
         "pontificate": {
             "from": "352-05-17",
             "to": "366-09-24"
-
         }
     },
     "37": {
         "names": {
-            "pl": "Damazy",
-            "la": "Damasus"
+            "la": "Damasus",
+            "pl": "Damazy"
         },
         "pontificate": {
             "from": "366-10-01",
             "to": "384-12-11"
-
         }
     },
     "38": {
         "names": {
-            "pl": "Syrycjusz",
-            "la": "Siricius"
+            "la": "Siricius",
+            "pl": "Syrycjusz"
         },
         "pontificate": {
             "from": "384-12-15/22/29",
             "to": "399-11-26"
-
         }
     },
     "39": {
         "names": {
-            "pl": "Anastazy",
-            "la": "Anastasius"
+            "la": "Anastasius",
+            "pl": "Anastazy"
         },
         "pontificate": {
             "from": "399-11-27",
             "to": "401-12-19"
-
         }
     },
     "40": {
         "names": {
-            "pl": "Innocenty",
-            "la": "Innocentinus"
+            "la": "Innocentinus",
+            "pl": "Innocenty"
         },
         "pontificate": {
             "from": "401-12-22",
             "to": "417-03-12"
-
         }
     },
     "41": {
         "names": {
-            "pl": "Zozym",
-            "la": "Zosimus"
+            "la": "Zosimus",
+            "pl": "Zozym"
         },
         "pontificate": {
             "from": "417-03-18",
             "to": "418-12-26"
-
         }
     },
     "42": {
         "names": {
-            "pl": "Bonifacy",
-            "la": "Bonifacius"
+            "la": "Bonifacius",
+            "pl": "Bonifacy"
         },
         "pontificate": {
             "from": "418-12-28/29",
             "to": "422-09-04"
-
         }
     },
     "43": {
         "names": {
-            "pl": "Celestyn",
-            "la": "Coelestinus"
+            "la": "Coelestinus",
+            "pl": "Celestyn"
         },
         "pontificate": {
             "from": "422-09-10",
             "to": "432-07-27"
-
         }
     },
     "44": {
         "names": {
-            "pl": "Sykstus III",
-            "la": "Xystus Tertius"
+            "la": "Xystus Tertius",
+            "pl": "Sykstus III"
         },
         "pontificate": {
             "from": "432-07-31",
             "to": "440-08-19"
-
         }
     },
     "45": {
         "names": {
-            "pl": "Leon Wielki",
-            "la": "Leo Magnus"
+            "la": "Leo Magnus",
+            "pl": "Leon Wielki"
         },
         "pontificate": {
             "from": "440-09-29",
             "to": "461-11-10"
-
         }
     },
     "46": {
         "names": {
-            "pl": "Hilary",
-            "la": "Hilarius"
+            "la": "Hilarius",
+            "pl": "Hilary"
         },
         "pontificate": {
             "from": "461-11-19",
             "to": "468-02-29"
-
         }
     },
     "47": {
         "names": {
-            "pl": "Symplicjusz",
-            "la": "Simplicius"
+            "la": "Simplicius",
+            "pl": "Symplicjusz"
         },
         "pontificate": {
             "from": "468-03-03",
             "to": "483-03-10"
-
         }
     },
     "48": {
         "names": {
-            "pl": "Feliks III",
-            "la": "Felix Tertius"
+            "la": "Felix Tertius",
+            "pl": "Feliks III"
         },
         "pontificate": {
             "from": "483-03-13",
             "to": "491-03-01"
-
         }
     },
     "49": {
         "names": {
-            "pl": "Gelazjusz",
-            "la": "Gelasius"
+            "la": "Gelasius",
+            "pl": "Gelazjusz"
         },
         "pontificate": {
             "from": "492-03-01",
             "to": "496-11-21"
-
         }
     },
     "50": {
         "names": {
-            "pl": "Anastazy II",
-            "la": "Anastasius Secundus"
+            "la": "Anastasius Secundus",
+            "pl": "Anastazy II"
         },
         "pontificate": {
             "from": "496-11-24",
             "to": "498-11-19"
-
         }
     },
     "51": {
         "names": {
-            "pl": "Symmachus",
-            "la": "Symmachus"
+            "la": "Symmachus",
+            "pl": "Symmachus"
         },
         "pontificate": {
             "from": "498-11-22",
             "to": "514-07-19"
-
         }
     },
     "52": {
         "names": {
-            "pl": "Hormizdas",
-            "la": "Hormisdus"
+            "la": "Hormisdus",
+            "pl": "Hormizdas"
         },
         "pontificate": {
             "from": "514-07-20",
             "to": "523-08-06"
-
         }
     },
     "53": {
         "names": {
-            "pl": "Jan",
-            "la": "Ioannes"
+            "la": "Ioannes",
+            "pl": "Jan"
         },
         "pontificate": {
             "from": "523-08-13",
             "to": "526-05-18"
-
         }
     },
     "54": {
         "names": {
-            "pl": "Feliks IV",
-            "la": "Felix Quartus"
+            "la": "Felix Quartus",
+            "pl": "Feliks IV"
         },
         "pontificate": {
             "from": "526-07-12",
             "to": "530-09-22"
-
         }
     },
     "55": {
         "names": {
-            "pl": "Bonifacy II",
-            "la": "Bonifacius Secundus"
+            "la": "Bonifacius Secundus",
+            "pl": "Bonifacy II"
         },
         "pontificate": {
             "from": "530-09-22",
             "to": "532-10-17"
-
         }
     },
     "56": {
         "names": {
-            "pl": "Jan II",
-            "la": "Ioannes Secundus"
+            "la": "Ioannes Secundus",
+            "pl": "Jan II"
         },
         "pontificate": {
             "from": "533-01-02",
             "to": "535-05-08"
-
         }
     },
     "57": {
         "names": {
-            "pl": "Agapit",
-            "la": "Agapetus"
+            "la": "Agapetus",
+            "pl": "Agapit"
         },
         "pontificate": {
             "from": "535-05-13",
             "to": "536-04-22"
-
         }
     },
     "58": {
         "names": {
-            "pl": "Sylweriusz",
-            "la": "Silverius"
+            "la": "Silverius",
+            "pl": "Sylweriusz"
         },
         "pontificate": {
             "from": "536-06-01",
             "to": "537-03-??"
-
         }
     },
     "59": {
         "names": {
-            "pl": "Wigiliusz",
-            "la": "Vigilius"
+            "la": "Vigilius",
+            "pl": "Wigiliusz"
         },
         "pontificate": {
             "from": "537-03-29",
             "to": "555-06-07"
-
         }
     },
     "60": {
         "names": {
-            "pl": "Pelagiusz",
-            "la": "Pelagius"
+            "la": "Pelagius",
+            "pl": "Pelagiusz"
         },
         "pontificate": {
             "from": "556-04-16",
             "to": "561-03-04"
-
         }
     },
     "61": {
         "names": {
-            "pl": "Jan III",
-            "la": "Ioannes Tertius"
+            "la": "Ioannes Tertius",
+            "pl": "Jan III"
         },
         "pontificate": {
             "from": "561-07-17",
             "to": "574-07-13"
-
         }
     },
     "62": {
         "names": {
-            "pl": "Benedykt",
-            "la": "Benedictus"
+            "la": "Benedictus",
+            "pl": "Benedykt"
         },
         "pontificate": {
             "from": "575-06-02",
             "to": "579-07-30"
-
         }
     },
     "63": {
         "names": {
-            "pl": "Pelagiusz II",
-            "la": "Pelagius Secundus"
+            "la": "Pelagius Secundus",
+            "pl": "Pelagiusz II"
         },
         "pontificate": {
             "from": "579-11-26",
             "to": "590-02-07"
-
         }
     },
     "64": {
         "names": {
-            "pl": "Grzegorz Wielki",
-            "la": "Gregorius Magnus"
+            "la": "Gregorius Magnus",
+            "pl": "Grzegorz Wielki"
         },
         "pontificate": {
             "from": "590-09-03",
             "to": "604-03-12"
-
         }
     },
     "65": {
         "names": {
-            "pl": "Sabinian",
-            "la": "Sabinianus"
+            "la": "Sabinianus",
+            "pl": "Sabinian"
         },
         "pontificate": {
             "from": "604-09-13",
             "to": "606-02-22"
-
         }
     },
     "66": {
         "names": {
-            "pl": "Bonifacy III",
-            "la": "Bonifacius Tertius"
+            "la": "Bonifacius Tertius",
+            "pl": "Bonifacy III"
         },
         "pontificate": {
             "from": "607-02-19",
             "to": "607-11-12"
-
         }
     },
     "67": {
         "names": {
-            "pl": "Bonifacy IV",
-            "la": "Bonifacius Quartus"
+            "la": "Bonifacius Quartus",
+            "pl": "Bonifacy IV"
         },
         "pontificate": {
             "from": "608-08-26",
             "to": "615-05-08"
-
         }
     },
     "68": {
         "names": {
-            "pl": "Adeodat",
-            "la": "Adeodatus"
+            "la": "Adeodatus",
+            "pl": "Adeodat"
         },
         "pontificate": {
             "from": "615-10-19",
             "to": "618-11-08"
-
         }
     },
     "69": {
         "names": {
-            "pl": "Bonifacy V",
-            "la": "Bonifacius Quintus"
+            "la": "Bonifacius Quintus",
+            "pl": "Bonifacy V"
         },
         "pontificate": {
             "from": "619-12-23",
             "to": "625-10-25"
-
         }
     },
     "70": {
         "names": {
-            "pl": "Honoriusz",
-            "la": "Honorius"
+            "la": "Honorius",
+            "pl": "Honoriusz"
         },
         "pontificate": {
             "from": "625-10-27",
             "to": "638-10-12"
-
         }
     },
     "71": {
         "names": {
-            "pl": "Seweryn",
-            "la": "Severinus"
+            "la": "Severinus",
+            "pl": "Seweryn"
         },
         "pontificate": {
             "from": "640-05-28",
             "to": "640-08-02"
-
         }
     },
     "72": {
         "names": {
-            "pl": "Jan IV",
-            "la": "Ioannes Quartus"
+            "la": "Ioannes Quartus",
+            "pl": "Jan IV"
         },
         "pontificate": {
             "from": "640-12-24",
             "to": "642-10-12"
-
         }
     },
     "73": {
         "names": {
-            "pl": "Teodor",
-            "la": "Theodorus"
+            "la": "Theodorus",
+            "pl": "Teodor"
         },
         "pontificate": {
             "from": "642-11-24",
             "to": "649-05-??"
-
         }
     },
     "74": {
         "names": {
-            "pl": "Marcin",
-            "la": "Martinus"
+            "la": "Martinus",
+            "pl": "Marcin"
         },
         "pontificate": {
             "from": "649-07-??",
             "to": "655-09-16"
-
         }
     },
     "75": {
         "names": {
-            "pl": "Eugeniusz",
-            "la": "Eugenius"
+            "la": "Eugenius",
+            "pl": "Eugeniusz"
         },
         "pontificate": {
             "from": "655-09-16",
             "to": "657-06-02"
-
         }
     },
     "76": {
         "names": {
-            "pl": "Witalian",
-            "la": "Vitalianus"
+            "la": "Vitalianus",
+            "pl": "Witalian"
         },
         "pontificate": {
             "from": "657-06-30",
             "to": "672-01-27"
-
         }
     },
     "77": {
         "names": {
-            "pl": "Adeodat II",
-            "la": "Adeodatus Secundus"
+            "la": "Adeodatus Secundus",
+            "pl": "Adeodat II"
         },
         "pontificate": {
             "from": "672-04-11",
             "to": "676-06-17"
-
         }
     },
     "78": {
         "names": {
-            "pl": "Donus",
-            "la": "Donus"
+            "la": "Donus",
+            "pl": "Donus"
         },
         "pontificate": {
             "from": "676-11-02",
             "to": "678-04-11"
-
         }
     },
     "79": {
         "names": {
-            "pl": "Agaton",
-            "la": "Agatho"
+            "la": "Agatho",
+            "pl": "Agaton"
         },
         "pontificate": {
             "from": "678-06-27",
             "to": "681-01-10"
-
         }
     },
     "80": {
         "names": {
-            "pl": "Leon II",
-            "la": "Leo Secundus"
+            "la": "Leo Secundus",
+            "pl": "Leon II"
         },
         "pontificate": {
             "from": "682-08-17",
             "to": "683-07-03"
-
         }
     },
     "81": {
         "names": {
-            "pl": "Benedykt II",
-            "la": "Benedictus Secundus"
+            "la": "Benedictus Secundus",
+            "pl": "Benedykt II"
         },
         "pontificate": {
             "from": "684-06-26",
             "to": "685-05-08"
-
         }
     },
     "82": {
         "names": {
-            "pl": "Jan V",
-            "la": "Ioannes Quintus"
+            "la": "Ioannes Quintus",
+            "pl": "Jan V"
         },
         "pontificate": {
             "from": "685-07-23",
             "to": "686-08-02"
-
         }
     },
     "83": {
         "names": {
-            "pl": "Konon",
-            "la": "Conon"
+            "la": "Conon",
+            "pl": "Konon"
         },
         "pontificate": {
             "from": "686-10-21",
             "to": "687-09-21"
-
         }
     },
     "84": {
         "names": {
-            "pl": "Sergiusz",
-            "la": "Sergius"
+            "la": "Sergius",
+            "pl": "Sergiusz"
         },
         "pontificate": {
             "from": "687-12-15",
             "to": "701-09-09"
-
         }
     },
     "85": {
         "names": {
-            "pl": "Jan VI",
-            "la": "Ioannes Sextus"
+            "la": "Ioannes Sextus",
+            "pl": "Jan VI"
         },
         "pontificate": {
             "from": "701-10-30",
             "to": "705-01-11"
-
         }
     },
     "86": {
         "names": {
-            "pl": "Jan VII",
-            "la": "Ioannes Septimus"
+            "la": "Ioannes Septimus",
+            "pl": "Jan VII"
         },
         "pontificate": {
             "from": "705-03-01",
             "to": "707-10-18"
-
         }
     },
     "87": {
         "names": {
-            "pl": "Syzyniusz",
-            "la": "Sisinnus"
+            "la": "Sisinnus",
+            "pl": "Syzyniusz"
         },
         "pontificate": {
             "from": "708-01-15",
             "to": "708-02-04"
-
         }
     },
     "88": {
         "names": {
-            "pl": "Konstantyn",
-            "la": "Constantinus"
+            "la": "Constantinus",
+            "pl": "Konstantyn"
         },
         "pontificate": {
             "from": "708-03-25",
             "to": "715-04-09"
-
         }
     },
     "89": {
         "names": {
-            "pl": "Grzegorz II",
-            "la": "Gregirius Secundus"
+            "la": "Gregirius Secundus",
+            "pl": "Grzegorz II"
         },
         "pontificate": {
             "from": "715-05-19",
             "to": "731-02-11"
-
         }
     },
     "90": {
         "names": {
-            "pl": "Grzegorz III",
-            "la": "Gregorius Tertius"
+            "la": "Gregorius Tertius",
+            "pl": "Grzegorz III"
         },
         "pontificate": {
             "from": "731-03-18",
             "to": "741-11-28"
-
         }
     },
     "91": {
         "names": {
-            "pl": "Zachariasz",
-            "la": "Zacharias"
+            "la": "Zacharias",
+            "pl": "Zachariasz"
         },
         "pontificate": {
             "from": "741-12-10",
             "to": "752-03-22"
-
         }
     },
     "92": {
         "names": {
-            "pl": "Stefan II",
-            "la": "Stephanus Secundus"
+            "la": "Stephanus Secundus",
+            "pl": "Stefan II"
         },
         "pontificate": {
             "from": "752-03-26",
             "to": "757-04-26"
-
         }
     },
     "93": {
         "names": {
-            "pl": "Paweł",
-            "la": "Paulus"
+            "la": "Paulus",
+            "pl": "Paweł"
         },
         "pontificate": {
             "from": "757-05-29",
             "to": "767-06-26"
-
         }
     },
     "94": {
         "names": {
-            "pl": "Stefan III",
-            "la": "Staphanus Tertius"
+            "la": "Staphanus Tertius",
+            "pl": "Stefan III"
         },
         "pontificate": {
             "from": "768-08-01/07",
             "to": "772-01-24"
-
         }
     },
     "95": {
         "names": {
-            "pl": "Hadrian",
-            "la": "Hadrianus"
+            "la": "Hadrianus",
+            "pl": "Hadrian"
         },
         "pontificate": {
             "from": "772-02-01/09",
             "to": "795-12-25"
-
         }
     },
     "96": {
         "names": {
-            "pl": "Leon III",
-            "la": "Leo Tertius"
+            "la": "Leo Tertius",
+            "pl": "Leon III"
         },
         "pontificate": {
             "from": "795-12-26/27",
             "to": "816-06-12"
-
         }
     },
     "97": {
         "names": {
-            "pl": "Stefan IV",
-            "la": "Staphanus Quartus"
+            "la": "Staphanus Quartus",
+            "pl": "Stefan IV"
         },
         "pontificate": {
             "from": "816-06-22",
             "to": "817-01-24"
-
         }
     },
     "98": {
         "names": {
-            "pl": "Paschalis",
-            "la": "Paschalis"
+            "la": "Paschalis",
+            "pl": "Paschalis"
         },
         "pontificate": {
             "from": "817-01-25",
             "to": "824-02-11"
-
         }
     },
     "99": {
         "names": {
-            "pl": "Eugeniusz II",
-            "la": "Eugenius Secundus"
+            "la": "Eugenius Secundus",
+            "pl": "Eugeniusz II"
         },
         "pontificate": {
             "from": "824-02/03/04/05-??",
             "to": "827-08-??"
-
         }
     },
     "100": {
         "names": {
-            "pl": "Walentyn",
-            "la": "Valentinus"
+            "la": "Valentinus",
+            "pl": "Walentyn"
         },
         "pontificate": {
             "from": "827-08-??",
             "to": "827-09-??"
-
         }
     },
     "101": {
         "names": {
-            "pl": "Grzegorz IV",
-            "la": "Gregosius Quartus"
+            "la": "Gregosius Quartus",
+            "pl": "Grzegorz IV"
         },
         "pontificate": {
             "from": "827-??-??",
             "to": "844-01-??"
-
         }
     },
     "102": {
         "names": {
-            "pl": "Sergiusz II",
-            "la": "Sergius Secundus"
+            "la": "Sergius Secundus",
+            "pl": "Sergiusz II"
         },
         "pontificate": {
             "from": "844-01-??",
             "to": "847-01-27"
-
         }
     },
     "103": {
         "names": {
-            "pl": "Leon IV",
-            "la": "Leo Quartus"
+            "la": "Leo Quartus",
+            "pl": "Leon IV"
         },
         "pontificate": {
             "from": "847-04-10",
             "to": "855-07-17"
-
         }
     },
     "104": {
         "names": {
-            "pl": "Benedykt III",
-            "la": "Benedictus Tertius"
+            "la": "Benedictus Tertius",
+            "pl": "Benedykt III"
         },
         "pontificate": {
             "from": "855-09-29",
             "to": "858-04-17"
-
         }
     },
     "105": {
         "names": {
-            "pl": "Mikołaj Wielki",
-            "la": "Nicolaus Magnus"
+            "la": "Nicolaus Magnus",
+            "pl": "Mikołaj Wielki"
         },
         "pontificate": {
             "from": "858-04-24",
             "to": "867-11-13"
-
         }
     },
     "106": {
         "names": {
-            "pl": "Hadrian II",
-            "la": "Hadrianus Secundus"
+            "la": "Hadrianus Secundus",
+            "pl": "Hadrian II"
         },
         "pontificate": {
             "from": "867-12-14",
             "to": "872-12-14"
-
         }
     },
     "107": {
         "names": {
-            "pl": "Jan VIII",
-            "la": "Ioannes Octavus"
+            "la": "Ioannes Octavus",
+            "pl": "Jan VIII"
         },
         "pontificate": {
             "from": "872-12-14",
             "to": "882-12-16"
-
         }
     },
     "108": {
         "names": {
-            "pl": "Maryn",
-            "la": "Marinus"
+            "la": "Marinus",
+            "pl": "Maryn"
         },
         "pontificate": {
             "from": "882-12-16",
             "to": "884-05-15"
-
         }
     },
     "109": {
         "names": {
-            "pl": "Hadrian III",
-            "la": "Hadrianus Tertius"
+            "la": "Hadrianus Tertius",
+            "pl": "Hadrian III"
         },
         "pontificate": {
             "from": "884-05-17",
             "to": "885-09-??"
-
         }
     },
     "110": {
         "names": {
-            "pl": "Stefan V",
-            "la": "Stephanus Quintus"
+            "la": "Stephanus Quintus",
+            "pl": "Stefan V"
         },
         "pontificate": {
             "from": "885-09-??",
             "to": "891-09-14"
-
         }
     },
     "111": {
         "names": {
-            "pl": "Formozus",
-            "la": "Formosus"
+            "la": "Formosus",
+            "pl": "Formozus"
         },
         "pontificate": {
             "from": "891-10-06",
             "to": "896-04-04"
-
         }
     },
     "112": {
         "names": {
-            "pl": "Bonifacy VI",
-            "la": "Bonifacius Sextus"
+            "la": "Bonifacius Sextus",
+            "pl": "Bonifacy VI"
         },
         "pontificate": {
             "from": "896-04-??"
@@ -1231,30 +1120,28 @@
     },
     "113": {
         "names": {
-            "pl": "Stefan VI",
-            "la": "Stephanus Sextus"
+            "la": "Stephanus Sextus",
+            "pl": "Stefan VI"
         },
         "pontificate": {
             "from": "896-05-??",
             "to": "897-08-??"
-
         }
     },
     "114": {
         "names": {
-            "pl": "Roman",
-            "la": "Romanus"
+            "la": "Romanus",
+            "pl": "Roman"
         },
         "pontificate": {
             "from": "897-08-??",
             "to": "897-11-??"
-
         }
     },
     "115": {
         "names": {
-            "pl": "Teodor II",
-            "la": "Theodorus Secundus"
+            "la": "Theodorus Secundus",
+            "pl": "Teodor II"
         },
         "pontificate": {
             "from": "897-12-??"
@@ -1262,1658 +1149,1508 @@
     },
     "116": {
         "names": {
-            "pl": "Jan IX",
-            "la": "Ioannes Nonus"
+            "la": "Ioannes Nonus",
+            "pl": "Jan IX"
         },
         "pontificate": {
             "from": "898-01-??",
             "to": "900-01-??"
-
         }
     },
     "117": {
         "names": {
-            "pl": "Benedykt IV",
-            "la": "Banadictus Quartus"
+            "la": "Banadictus Quartus",
+            "pl": "Benedykt IV"
         },
         "pontificate": {
             "from": "900-01/02-??",
             "to": "903-07-??"
-
         }
     },
     "118": {
         "names": {
-            "pl": "Leon V",
-            "la": "Leo Quintus"
+            "la": "Leo Quintus",
+            "pl": "Leon V"
         },
         "pontificate": {
             "from": "903-07-??",
             "to": "903-09-??"
-
         }
     },
     "119": {
         "names": {
-            "pl": "Sergiusz III",
-            "la": "Sergius Tertius"
+            "la": "Sergius Tertius",
+            "pl": "Sergiusz III"
         },
         "pontificate": {
             "from": "904-01-29",
             "to": "911-04-14"
-
         }
     },
     "120": {
         "names": {
-            "pl": "Anastazy III",
-            "la": "Anastasius Tertius"
+            "la": "Anastasius Tertius",
+            "pl": "Anastazy III"
         },
         "pontificate": {
             "from": "911-04-??",
             "to": "913-06-??"
-
         }
     },
     "121": {
         "names": {
-            "pl": "Lando",
-            "la": "Lando"
+            "la": "Lando",
+            "pl": "Lando"
         },
         "pontificate": {
             "from": "913-07-??",
             "to": "914-02-??"
-
         }
     },
     "122": {
         "names": {
-            "pl": "Jan X",
-            "la": "Ioannes Decimus"
+            "la": "Ioannes Decimus",
+            "pl": "Jan X"
         },
         "pontificate": {
             "from": "914-03-??",
             "to": "928-03-??"
-
         }
     },
     "123": {
         "names": {
-            "pl": "Leon VI",
-            "la": "Leo Sextus"
+            "la": "Leo Sextus",
+            "pl": "Leon VI"
         },
         "pontificate": {
             "from": "928-05-??",
             "to": "928-12-??"
-
         }
     },
     "124": {
         "names": {
-            "pl": "Stefan VII",
-            "la": "Stephanus Septimus"
+            "la": "Stephanus Septimus",
+            "pl": "Stefan VII"
         },
         "pontificate": {
             "from": "928-12-??",
             "to": "931-02-??"
-
         }
     },
     "125": {
         "names": {
-            "pl": "Jan XI",
-            "la": "Ioannes Undecimus"
+            "la": "Ioannes Undecimus",
+            "pl": "Jan XI"
         },
         "pontificate": {
             "from": "931-02/03-??",
             "to": "935-12-??"
-
         }
     },
     "126": {
         "names": {
-            "pl": "Leon VII OSB",
-            "la": "Leo Septimus"
+            "la": "Leo Septimus",
+            "pl": "Leon VII OSB"
         },
         "pontificate": {
             "from": "936-01-03",
             "to": "939-07-13"
-
         }
     },
     "127": {
         "names": {
-            "pl": "Stefan VIII",
-            "la": "Stephanus Octavus"
+            "la": "Stephanus Octavus",
+            "pl": "Stefan VIII"
         },
         "pontificate": {
             "from": "939-07-14",
             "to": "942-10-??"
-
         }
     },
     "128": {
         "names": {
-            "pl": "Maryn II",
-            "la": "Marinus Secundus"
+            "la": "Marinus Secundus",
+            "pl": "Maryn II"
         },
         "pontificate": {
             "from": "942-10-30",
             "to": "946-05-??"
-
         }
     },
     "129": {
         "names": {
-            "pl": "Agapit II",
-            "la": "Agapetus Secundus"
+            "la": "Agapetus Secundus",
+            "pl": "Agapit II"
         },
         "pontificate": {
             "from": "946-05-10",
             "to": "955-12-??"
-
         }
     },
     "130": {
         "names": {
-            "pl": "Jan XII",
-            "la": "Ioannes Duodecimus"
+            "la": "Ioannes Duodecimus",
+            "pl": "Jan XII"
         },
         "pontificate": {
             "from": "955-12-16",
             "to": "964-05-14"
-
         }
     },
     "131": {
         "names": {
-            "pl": "Leon VIII",
-            "la": "Leo Octavus"
+            "la": "Leo Octavus",
+            "pl": "Leon VIII"
         },
         "pontificate": {
             "from": "963-12-04/06",
             "to": "965-03-01"
-
         }
     },
     "132": {
         "names": {
-            "pl": "Benedykt V",
-            "la": "Benedictus Quintus"
+            "la": "Benedictus Quintus",
+            "pl": "Benedykt V"
         },
         "pontificate": {
             "from": "964-05-22",
             "to": "965-07-04"
-
         }
     },
     "133": {
         "names": {
-            "pl": "Jan XIII",
-            "la": "Ioannes Tertius Decimus"
+            "la": "Ioannes Tertius Decimus",
+            "pl": "Jan XIII"
         },
         "pontificate": {
             "from": "965-10-01",
             "to": "972-09-06"
-
         }
     },
     "134": {
         "names": {
-            "pl": "Benedykt VI",
-            "la": "Benedictus Sextus"
+            "la": "Benedictus Sextus",
+            "pl": "Benedykt VI"
         },
         "pontificate": {
             "from": "973-01-19",
             "to": "974-06-??"
-
         }
     },
     "135": {
         "names": {
-            "pl": "Benedykt VII",
-            "la": "Benedictus Septimus"
+            "la": "Benedictus Septimus",
+            "pl": "Benedykt VII"
         },
         "pontificate": {
             "from": "974-10-??",
             "to": "983-07-10"
-
         }
     },
     "136": {
         "names": {
-            "pl": "Jan XIV",
-            "la": "Ioannes Quartus Decimus"
+            "la": "Ioannes Quartus Decimus",
+            "pl": "Jan XIV"
         },
         "pontificate": {
             "from": "983-12-??",
             "to": "984-08-20"
-
         }
     },
     "137": {
         "names": {
-            "pl": "Jan XV",
-            "la": "Ioannes Quintus Decimus"
+            "la": "Ioannes Quintus Decimus",
+            "pl": "Jan XV"
         },
         "pontificate": {
             "from": "985-08-??",
             "to": "996-03-??"
-
         }
     },
     "138": {
         "names": {
-            "pl": "Grzegorz V",
-            "la": "Gregorius Quintus"
+            "la": "Gregorius Quintus",
+            "pl": "Grzegorz V"
         },
         "pontificate": {
             "from": "996-05-03",
             "to": "999-02-18"
-
         }
     },
     "139": {
         "names": {
-            "pl": "Sylwester II",
-            "la": "Silvester Secundus"
+            "la": "Silvester Secundus",
+            "pl": "Sylwester II"
         },
         "pontificate": {
             "from": "999-04-02",
             "to": "1003-05-12"
-
         }
     },
     "140": {
         "names": {
-            "pl": "Jan XVII",
-            "la": "Ioannes Septimus Decimus"
+            "la": "Ioannes Septimus Decimus",
+            "pl": "Jan XVII"
         },
         "pontificate": {
             "from": "1003-06-??",
             "to": "1003-11-??"
-
         }
     },
     "141": {
         "names": {
-            "pl": "Jan XVIII",
-            "la": "Ioannes Duodevicesimus"
+            "la": "Ioannes Duodevicesimus",
+            "pl": "Jan XVIII"
         },
         "pontificate": {
             "from": "1004-01-??",
             "to": "1009-07-??"
-
         }
     },
     "142": {
         "names": {
-            "pl": "Sergiusz IV",
-            "la": "Sergius Quartus"
+            "la": "Sergius Quartus",
+            "pl": "Sergiusz IV"
         },
         "pontificate": {
             "from": "1009-07-31",
             "to": "1012-05-12"
-
         }
     },
     "143": {
         "names": {
-            "pl": "Benedykt VIII",
-            "la": "Benedictus Octavus"
+            "la": "Benedictus Octavus",
+            "pl": "Benedykt VIII"
         },
         "pontificate": {
             "from": "1012-05-18",
             "to": "1024-04-09"
-
         }
     },
     "144": {
         "names": {
-            "pl": "Jan XIX",
-            "la": "Ioannes Undevicesimus"
+            "la": "Ioannes Undevicesimus",
+            "pl": "Jan XIX"
         },
         "pontificate": {
             "from": "1024-04/05-12",
             "to": "1032-??-??"
-
         }
     },
     "145": {
         "names": {
-            "pl": "Benedykt IX",
-            "la": "Benedictus Nonus"
+            "la": "Benedictus Nonus",
+            "pl": "Benedykt IX"
         },
         "pontificate": {
             "from": "1032-10-??",
             "to": "1044-09-??"
-
         }
     },
     "146": {
         "names": {
-            "pl": "Sylwester III",
-            "la": "Silvester Tertius"
+            "la": "Silvester Tertius",
+            "pl": "Sylwester III"
         },
         "pontificate": {
             "from": "1045-01-20",
             "to": "1045-03-10"
-
         }
     },
     "147": {
         "names": {
-            "pl": "Benedykt IX",
-            "la": "Benedictus Nonus"
+            "la": "Benedictus Nonus",
+            "pl": "Benedykt IX"
         },
         "pontificate": {
             "from": "1045-04-10",
             "to": "1045-05-01"
-
         }
     },
     "148": {
         "names": {
-            "pl": "Grzegorz VI",
-            "la": "Gregorius Sextus"
+            "la": "Gregorius Sextus",
+            "pl": "Grzegorz VI"
         },
         "pontificate": {
             "from": "1045-05-05",
             "to": "1046-12-20"
-
         }
     },
     "149": {
         "names": {
-            "pl": "Klemens II",
-            "la": "Clemens Secundus"
+            "la": "Clemens Secundus",
+            "pl": "Klemens II"
         },
         "pontificate": {
             "from": "1046-12-25",
             "to": "1047-10-09"
-
         }
     },
     "150": {
         "names": {
-            "pl": "Benedykt IX",
-            "la": "Benedictus Nonus"
+            "la": "Benedictus Nonus",
+            "pl": "Benedykt IX"
         },
         "pontificate": {
             "from": "1047-11-08",
             "to": "1048-07-17"
-
         }
     },
     "151": {
         "names": {
-            "pl": "Damazy II",
-            "la": "Damasus Secundus"
+            "la": "Damasus Secundus",
+            "pl": "Damazy II"
         },
         "pontificate": {
             "from": "1048-07-17",
             "to": "1048-08-09"
-
         }
     },
     "152": {
         "names": {
-            "pl": "Leon IX",
-            "la": "Leo Nonus"
+            "la": "Leo Nonus",
+            "pl": "Leon IX"
         },
         "pontificate": {
             "from": "1049-02-12",
             "to": "1054-04-19"
-
         }
     },
     "153": {
         "names": {
-            "pl": "Wiktor II",
-            "la": "Victor Secundus"
+            "la": "Victor Secundus",
+            "pl": "Wiktor II"
         },
         "pontificate": {
             "from": "1055-04-13",
             "to": "1057-07-28"
-
         }
     },
     "154": {
         "names": {
-            "pl": "Stefan IX",
-            "la": "Stephanus Nonus"
+            "la": "Stephanus Nonus",
+            "pl": "Stefan IX"
         },
         "pontificate": {
             "from": "1057-08-03",
             "to": "1058-03-29"
-
         }
     },
     "155": {
         "names": {
-            "pl": "Mikołaj II",
-            "la": "Nicolaus Secundus"
+            "la": "Nicolaus Secundus",
+            "pl": "Mikołaj II"
         },
         "pontificate": {
             "from": "1058-12-06",
             "to": "1061-07-27"
-
         }
     },
     "156": {
         "names": {
-            "pl": "Aleksander II",
-            "la": "Alexander Secundus"
+            "la": "Alexander Secundus",
+            "pl": "Aleksander II"
         },
         "pontificate": {
             "from": "1061-10-01",
             "to": "1073-04-21"
-
         }
     },
     "157": {
         "names": {
-            "pl": "Grzegorz VII",
-            "la": "Gregorius Septimus"
+            "la": "Gregorius Septimus",
+            "pl": "Grzegorz VII"
         },
         "pontificate": {
             "from": "1073-04-22",
             "to": "1085-05-25"
-
         }
     },
     "158": {
         "names": {
-            "pl": "Wiktor III",
-            "la": "Victor Tertius"
+            "la": "Victor Tertius",
+            "pl": "Wiktor III"
         },
         "pontificate": {
             "from": "1086-05-24",
             "to": "1087-09-16"
-
         }
     },
     "159": {
         "names": {
-            "pl": "Urban II",
-            "la": "Urbanus Secundus"
+            "la": "Urbanus Secundus",
+            "pl": "Urban II"
         },
         "pontificate": {
             "from": "1088-03-12",
             "to": "1099-07-29"
-
         }
     },
     "160": {
         "names": {
-            "pl": "Paschalis II",
-            "la": "Paschalius Secundus"
+            "la": "Paschalius Secundus",
+            "pl": "Paschalis II"
         },
         "pontificate": {
             "from": "1099-08-13",
             "to": "1118-01-21"
-
         }
     },
     "161": {
         "names": {
-            "pl": "Gelazjusz II",
-            "la": "Gelasius Secundus"
+            "la": "Gelasius Secundus",
+            "pl": "Gelazjusz II"
         },
         "pontificate": {
             "from": "1118-01-24",
             "to": "1119-01-29"
-
         }
     },
     "162": {
         "names": {
-            "pl": "Kalikst II",
-            "la": "Callistus Secundus"
+            "la": "Callistus Secundus",
+            "pl": "Kalikst II"
         },
         "pontificate": {
             "from": "1119-02-02",
             "to": "1124-12-13"
-
         }
     },
     "163": {
         "names": {
-            "pl": "Honoriusz II",
-            "la": "Honorius Secundus"
+            "la": "Honorius Secundus",
+            "pl": "Honoriusz II"
         },
         "pontificate": {
             "from": "1124-12-21",
             "to": "1130-02-13"
-
         }
     },
     "164": {
         "names": {
-            "pl": "Innocenty II",
-            "la": "Innocentius Secundus"
+            "la": "Innocentius Secundus",
+            "pl": "Innocenty II"
         },
         "pontificate": {
             "from": "1130-02-14",
             "to": "1143-01-25"
-
         }
     },
     "165": {
         "names": {
-            "pl": "Celestyn II",
-            "la": "Coelestinus Secundus"
+            "la": "Coelestinus Secundus",
+            "pl": "Celestyn II"
         },
         "pontificate": {
             "from": "1143-09-26",
             "to": "1144-03-08"
-
         }
     },
     "166": {
         "names": {
-            "pl": "Lucjusz II",
-            "la": "Lucius Secundus"
+            "la": "Lucius Secundus",
+            "pl": "Lucjusz II"
         },
         "pontificate": {
             "from": "1144-03-12",
             "to": "1145-02-15"
-
         }
     },
     "167": {
         "names": {
-            "pl": "Eugeniusz III",
-            "la": "Eugenius Tertius"
+            "la": "Eugenius Tertius",
+            "pl": "Eugeniusz III"
         },
         "pontificate": {
             "from": "1145-02-15",
             "to": "1153-07-08"
-
         }
     },
     "168": {
         "names": {
-            "pl": "Anastazy IV",
-            "la": "Anastasius Quartus"
+            "la": "Anastasius Quartus",
+            "pl": "Anastazy IV"
         },
         "pontificate": {
             "from": "1153-07-12",
             "to": "1154-12-03"
-
         }
     },
     "169": {
         "names": {
-            "pl": "Hadrian IV",
-            "la": "Hadrianus Quartus"
+            "la": "Hadrianus Quartus",
+            "pl": "Hadrian IV"
         },
         "pontificate": {
             "from": "1154-12-04/05",
             "to": "1159-09-01"
-
         }
     },
     "170": {
         "names": {
-            "pl": "Aleksander III",
-            "la": "Alexander Tertius"
+            "la": "Alexander Tertius",
+            "pl": "Aleksander III"
         },
         "pontificate": {
             "from": "1159-09-07",
             "to": "1181-08-30"
-
         }
     },
     "171": {
         "names": {
-            "pl": "Lucjusz III",
-            "la": "Lucius Tertius"
+            "la": "Lucius Tertius",
+            "pl": "Lucjusz III"
         },
         "pontificate": {
             "from": "1181-09-01",
             "to": "1185-09-25"
-
         }
     },
     "172": {
         "names": {
-            "pl": "Urban III",
-            "la": "Urbanus Tertius"
+            "la": "Urbanus Tertius",
+            "pl": "Urban III"
         },
         "pontificate": {
             "from": "1185-11-25",
             "to": "1187-10-20"
-
         }
     },
     "173": {
         "names": {
-            "pl": "Grzegorz VIII",
-            "la": "Gregorius Octavus"
+            "la": "Gregorius Octavus",
+            "pl": "Grzegorz VIII"
         },
         "pontificate": {
             "from": "1187-10-21",
             "to": "1187-12-17"
-
         }
     },
     "174": {
         "names": {
-            "pl": "Klemens III",
-            "la": "Clemens Tertius"
+            "la": "Clemens Tertius",
+            "pl": "Klemens III"
         },
         "pontificate": {
             "from": "1187-12-19",
             "to": "1191-03-20"
-
         }
     },
     "175": {
         "names": {
-            "pl": "Celestyn III",
-            "la": "Coelestinus Tertius"
+            "la": "Coelestinus Tertius",
+            "pl": "Celestyn III"
         },
         "pontificate": {
             "from": "1191-03-21",
             "to": "1198-01-08"
-
         }
     },
     "176": {
         "names": {
-            "pl": "Innocenty III",
-            "la": "Innocentius Tertius"
+            "la": "Innocentius Tertius",
+            "pl": "Innocenty III"
         },
         "pontificate": {
             "from": "1198-01-08",
             "to": "1216-07-16"
-
         }
     },
     "177": {
         "names": {
-            "pl": "Honoriusz III",
-            "la": "Honorius Tertius"
+            "la": "Honorius Tertius",
+            "pl": "Honoriusz III"
         },
         "pontificate": {
             "from": "1216-07-18",
             "to": "1227-03-18"
-
         }
     },
     "178": {
         "names": {
-            "pl": "Grzegorz IX",
-            "la": "Gregorius Nonus"
+            "la": "Gregorius Nonus",
+            "pl": "Grzegorz IX"
         },
         "pontificate": {
             "from": "1227-03-19",
             "to": "1241-08-22"
-
         }
     },
     "179": {
         "names": {
-            "pl": "Celestyn IV",
-            "la": "Coelestinus Quartus"
+            "la": "Coelestinus Quartus",
+            "pl": "Celestyn IV"
         },
         "pontificate": {
             "from": "1241-10-22",
             "to": "1241-11-10"
-
         }
     },
     "180": {
         "names": {
-            "pl": "Innocenty IV",
-            "la": "Innocentius Quartus"
+            "la": "Innocentius Quartus",
+            "pl": "Innocenty IV"
         },
         "pontificate": {
             "from": "1243-06-25",
             "to": "1254-12-07"
-
         }
     },
     "181": {
         "names": {
-            "pl": "Aleksander IV",
-            "la": "Alexander Quartus"
+            "la": "Alexander Quartus",
+            "pl": "Aleksander IV"
         },
         "pontificate": {
             "from": "1254-12-12",
             "to": "1261-05-25"
-
         }
     },
     "182": {
         "names": {
-            "pl": "Urban IV",
-            "la": "Urbanus Quartus"
+            "la": "Urbanus Quartus",
+            "pl": "Urban IV"
         },
         "pontificate": {
             "from": "1261-08-29",
             "to": "1264-10-02"
-
         }
     },
     "183": {
         "names": {
-            "pl": "Klemens IV",
-            "la": "Clemens Quartus"
+            "la": "Clemens Quartus",
+            "pl": "Klemens IV"
         },
         "pontificate": {
             "from": "1265-02-05",
             "to": "1268-11-29"
-
         }
     },
     "184": {
         "names": {
-            "pl": "Grzegorz X",
-            "la": "Gregorius Decimus"
+            "la": "Gregorius Decimus",
+            "pl": "Grzegorz X"
         },
         "pontificate": {
             "from": "1271-09-01",
             "to": "1276-01-10"
-
         }
     },
     "185": {
         "names": {
-            "pl": "Innocenty V",
-            "la": "Innocentius Quintus"
+            "la": "Innocentius Quintus",
+            "pl": "Innocenty V"
         },
         "pontificate": {
             "from": "1276-01-21",
             "to": "1276-06-22"
-
         }
     },
     "186": {
         "names": {
-            "pl": "Hadrian V",
-            "la": "Hadrianus Quintus"
+            "la": "Hadrianus Quintus",
+            "pl": "Hadrian V"
         },
         "pontificate": {
             "from": "1276-07-11",
             "to": "1276-08-18"
-
         }
     },
     "187": {
         "names": {
-            "pl": "Jan XXI",
-            "la": "Ioannes Vicesimus Primus"
+            "la": "Ioannes Vicesimus Primus",
+            "pl": "Jan XXI"
         },
         "pontificate": {
             "from": "1276-09-08",
             "to": "1277-05-20"
-
         }
     },
     "188": {
         "names": {
-            "pl": "Mikołaj III",
-            "la": "Nicolaus Tertius"
+            "la": "Nicolaus Tertius",
+            "pl": "Mikołaj III"
         },
         "pontificate": {
             "from": "1277-10-25",
             "to": "1280-08-22"
-
         }
     },
     "189": {
         "names": {
-            "pl": "Marcin IV",
-            "la": "Martinus Quartus"
+            "la": "Martinus Quartus",
+            "pl": "Marcin IV"
         },
         "pontificate": {
             "from": "1281-02-22",
             "to": "1285-03-28"
-
         }
     },
     "190": {
         "names": {
-            "pl": "Honoriusz IV",
-            "la": "Honorius Quartus"
+            "la": "Honorius Quartus",
+            "pl": "Honoriusz IV"
         },
         "pontificate": {
             "from": "1285-04-02",
             "to": "1287-04-03"
-
         }
     },
     "191": {
         "names": {
-            "pl": "Mikołaj IV",
-            "la": "Nicolaus Quartus"
+            "la": "Nicolaus Quartus",
+            "pl": "Mikołaj IV"
         },
         "pontificate": {
             "from": "1288-02-22",
             "to": "1292-04-04"
-
         }
     },
     "192": {
         "names": {
-            "pl": "Celestyn V",
-            "la": "Coelestinus Quintus"
+            "la": "Coelestinus Quintus",
+            "pl": "Celestyn V"
         },
         "pontificate": {
             "from": "1294-07-05",
             "to": "1294-12-13"
-
         }
     },
     "193": {
         "names": {
-            "pl": "Bonifacy VIII",
-            "la": "Bonifacius Octavus"
+            "la": "Bonifacius Octavus",
+            "pl": "Bonifacy VIII"
         },
         "pontificate": {
             "from": "1294-12-24",
             "to": "1303-10-11"
-
         }
     },
     "194": {
         "names": {
-            "pl": "Benedykt XI",
-            "la": "Benedictus Undecimus"
+            "la": "Benedictus Undecimus",
+            "pl": "Benedykt XI"
         },
         "pontificate": {
             "from": "1303-10-22",
             "to": "1304-07-07"
-
         }
     },
     "195": {
         "names": {
-            "pl": "Klemens V",
-            "la": "Clemens Quintus"
+            "la": "Clemens Quintus",
+            "pl": "Klemens V"
         },
         "pontificate": {
             "from": "1305-06-05",
             "to": "1314-04-20"
-
         }
     },
     "196": {
         "names": {
-            "pl": "Jan XXII",
-            "la": "Ioannes Vicesimus Secundus"
+            "la": "Ioannes Vicesimus Secundus",
+            "pl": "Jan XXII"
         },
         "pontificate": {
             "from": "1316-08-07",
             "to": "1334-12-04"
-
         }
     },
     "197": {
         "names": {
-            "pl": "Benedykt XII",
-            "la": "Benedictus Duodecimus"
+            "la": "Benedictus Duodecimus",
+            "pl": "Benedykt XII"
         },
         "pontificate": {
             "from": "1334-12-20",
             "to": "1342-04-25"
-
         }
     },
     "198": {
         "names": {
-            "pl": "Klemens VI",
-            "la": "Clemens Sextus"
+            "la": "Clemens Sextus",
+            "pl": "Klemens VI"
         },
         "pontificate": {
             "from": "1342-05-07",
             "to": "1352-12-06"
-
         }
     },
     "199": {
         "names": {
-            "pl": "Innocenty VI",
-            "la": "Innocentius Sextus"
+            "la": "Innocentius Sextus",
+            "pl": "Innocenty VI"
         },
         "pontificate": {
             "from": "1352-12-18",
             "to": "1362-09-12"
-
         }
     },
     "200": {
         "names": {
-            "pl": "Urban V",
-            "la": "Urbanus Quintus"
+            "la": "Urbanus Quintus",
+            "pl": "Urban V"
         },
         "pontificate": {
             "from": "1362-09-28",
             "to": "1370-12-19"
-
         }
     },
     "201": {
         "names": {
-            "pl": "Grzegorz XI",
-            "la": "Gregorius Undecimus"
+            "la": "Gregorius Undecimus",
+            "pl": "Grzegorz XI"
         },
         "pontificate": {
             "from": "1370-12-30",
             "to": "1378-03-27"
-
         }
     },
     "202": {
         "names": {
-            "pl": "Urban VI",
-            "la": "Urbanus Sextus"
+            "la": "Urbanus Sextus",
+            "pl": "Urban VI"
         },
         "pontificate": {
             "from": "1378-04-08",
             "to": "1389-10-15"
-
         }
     },
     "203": {
         "names": {
-            "pl": "Bonifacy IX",
-            "la": "Bonifacius Nonus"
+            "la": "Bonifacius Nonus",
+            "pl": "Bonifacy IX"
         },
         "pontificate": {
             "from": "1389-11-02",
             "to": "1404-10-01"
-
         }
     },
     "204": {
         "names": {
-            "pl": "Innocenty VII",
-            "la": "Innocentius Septimus"
+            "la": "Innocentius Septimus",
+            "pl": "Innocenty VII"
         },
         "pontificate": {
             "from": "1404-10-17",
             "to": "1406-11-06"
-
         }
     },
     "205": {
         "names": {
-            "pl": "Grzegorz XII",
-            "la": "Gregorius Duodecimus"
+            "la": "Gregorius Duodecimus",
+            "pl": "Grzegorz XII"
         },
         "pontificate": {
             "from": "1406-11-30",
             "to": "1415-07-04"
-
         }
     },
     "206": {
         "names": {
-            "pl": "Marcin V",
-            "la": "Martinus Quintus"
+            "la": "Martinus Quintus",
+            "pl": "Marcin V"
         },
         "pontificate": {
             "from": "1417-11-11",
             "to": "1431-02-20"
-
         }
     },
     "207": {
         "names": {
-            "pl": "Eugeniusz IV",
-            "la": "Eugenius Quartus"
+            "la": "Eugenius Quartus",
+            "pl": "Eugeniusz IV"
         },
         "pontificate": {
             "from": "1431-03-03",
             "to": "1447-02-23"
-
         }
     },
     "208": {
         "names": {
-            "pl": "Mikołaj V",
-            "la": "Nicolaus Quintus"
+            "la": "Nicolaus Quintus",
+            "pl": "Mikołaj V"
         },
         "pontificate": {
             "from": "1447-03-06",
             "to": "1455-03-24"
-
         }
     },
     "209": {
         "names": {
-            "pl": "Kalikst III",
-            "la": "Callistus Tertius"
+            "la": "Callistus Tertius",
+            "pl": "Kalikst III"
         },
         "pontificate": {
             "from": "1455-04-08",
             "to": "1458-08-06"
-
         }
     },
     "210": {
         "names": {
-            "pl": "Pius II",
-            "la": "Pius Secundus"
+            "la": "Pius Secundus",
+            "pl": "Pius II"
         },
         "pontificate": {
             "from": "1458-08-19",
             "to": "1464-08-15"
-
         }
     },
     "211": {
         "names": {
-            "pl": "Paweł II",
-            "la": "Paulus Secundus"
+            "la": "Paulus Secundus",
+            "pl": "Paweł II"
         },
         "pontificate": {
             "from": "1464-08-30",
             "to": "1471-07-26"
-
         }
     },
     "212": {
         "names": {
-            "pl": "Sykstus IV",
-            "la": "Xystus Quartus"
+            "la": "Xystus Quartus",
+            "pl": "Sykstus IV"
         },
         "pontificate": {
             "from": "1471-08-09",
             "to": "1484-08-12"
-
         }
     },
     "213": {
         "names": {
-            "pl": "Innocenty VIII",
-            "la": "Innocentius Octavus"
+            "la": "Innocentius Octavus",
+            "pl": "Innocenty VIII"
         },
         "pontificate": {
             "from": "1484-08-29",
             "to": "1492-07-25"
-
         }
     },
     "214": {
         "names": {
-            "pl": "Aleksander VI",
-            "la": "Alexander Sextus"
+            "la": "Alexander Sextus",
+            "pl": "Aleksander VI"
         },
         "pontificate": {
             "from": "1492-08-11",
             "to": "1503-08-18"
-
         }
     },
     "215": {
         "names": {
-            "pl": "Pius III",
-            "la": "Pius Tertius"
+            "la": "Pius Tertius",
+            "pl": "Pius III"
         },
         "pontificate": {
             "from": "1503-09-22",
             "to": "1503-10-18"
-
         }
     },
     "216": {
         "names": {
-            "pl": "Juliusz II",
-            "la": "Iulius Secundus"
+            "la": "Iulius Secundus",
+            "pl": "Juliusz II"
         },
         "pontificate": {
             "from": "1503-11-01",
             "to": "1513-02-21"
-
         }
     },
     "217": {
         "names": {
-            "pl": "Leon X",
-            "la": "Leo Decimus"
+            "la": "Leo Decimus",
+            "pl": "Leon X"
         },
         "pontificate": {
             "from": "1513-03-11",
             "to": "1521-12-01"
-
         }
     },
     "218": {
         "names": {
-            "pl": "Hadrian VI",
-            "la": "Hadrianus Sextus"
+            "la": "Hadrianus Sextus",
+            "pl": "Hadrian VI"
         },
         "pontificate": {
             "from": "1522-01-09",
             "to": "1523-09-14"
-
         }
     },
     "219": {
         "names": {
-            "pl": "Klemens VII",
-            "la": "Clemens Septimus"
+            "la": "Clemens Septimus",
+            "pl": "Klemens VII"
         },
         "pontificate": {
             "from": "1523-11-19",
             "to": "1534-09-25"
-
         }
     },
     "220": {
         "names": {
-            "pl": "Paweł III",
-            "la": "Paulus Tertius"
+            "la": "Paulus Tertius",
+            "pl": "Paweł III"
         },
         "pontificate": {
             "from": "1534-10-13",
             "to": "1549-11-10"
-
         }
     },
     "221": {
         "names": {
-            "pl": "Juliusz III",
-            "la": "Iulius Tertius"
+            "la": "Iulius Tertius",
+            "pl": "Juliusz III"
         },
         "pontificate": {
             "from": "1550-02-07",
             "to": "1555-03-23"
-
         }
     },
     "222": {
         "names": {
-            "pl": "Marceli II",
-            "la": "Marcellus Secundus"
+            "la": "Marcellus Secundus",
+            "pl": "Marceli II"
         },
         "pontificate": {
             "from": "1555-04-09",
             "to": "1555-05-01"
-
         }
     },
     "223": {
         "names": {
-            "pl": "Paweł IV",
-            "la": "Paulus Quartus"
+            "la": "Paulus Quartus",
+            "pl": "Paweł IV"
         },
         "pontificate": {
             "from": "1555-05-23",
             "to": "1559-08-18"
-
         }
     },
     "224": {
         "names": {
-            "pl": "Pius IV",
-            "la": "Pius Quartus"
+            "la": "Pius Quartus",
+            "pl": "Pius IV"
         },
         "pontificate": {
             "from": "1559-12-25",
             "to": "1565-12-09"
-
         }
     },
     "225": {
         "names": {
-            "pl": "Pius V",
-            "la": "Pius Quintus"
+            "la": "Pius Quintus",
+            "pl": "Pius V"
         },
         "pontificate": {
             "from": "1566-01-07",
             "to": "1572-05-01"
-
         }
     },
     "226": {
         "names": {
-            "pl": "Grzegorz XIII",
-            "la": "Gregorius Tertius Decimus"
+            "la": "Gregorius Tertius Decimus",
+            "pl": "Grzegorz XIII"
         },
         "pontificate": {
             "from": "1572-05-13",
             "to": "1585-04-10"
-
         }
     },
     "227": {
         "names": {
-            "pl": "Sykstus V",
-            "la": "Xystus Quintus"
+            "la": "Xystus Quintus",
+            "pl": "Sykstus V"
         },
         "pontificate": {
             "from": "1585-04-24",
             "to": "1590-08-27"
-
         }
     },
     "228": {
         "names": {
-            "pl": "Urban VII",
-            "la": "Urbanus Septimus"
+            "la": "Urbanus Septimus",
+            "pl": "Urban VII"
         },
         "pontificate": {
             "from": "1590-09-15",
             "to": "1590-09-27"
-
         }
     },
     "229": {
         "names": {
-            "pl": "Grzegorz XIV",
-            "la": "Gregorius Quartus Decimus"
+            "la": "Gregorius Quartus Decimus",
+            "pl": "Grzegorz XIV"
         },
         "pontificate": {
             "from": "1590-12-05",
             "to": "1591-10-16"
-
         }
     },
     "230": {
         "names": {
-            "pl": "Innocenty IX",
-            "la": "Innocentius Nonus"
+            "la": "Innocentius Nonus",
+            "pl": "Innocenty IX"
         },
         "pontificate": {
             "from": "1591-10-29",
             "to": "1591-12-30"
-
         }
     },
     "231": {
         "names": {
-            "pl": "Klemens VIII",
-            "la": "Clemens Octavus"
+            "la": "Clemens Octavus",
+            "pl": "Klemens VIII"
         },
         "pontificate": {
             "from": "1592-01-30",
             "to": "1605-03-05"
-
         }
     },
     "232": {
         "names": {
-            "pl": "Leon XI",
-            "la": "Leo Undecimus"
+            "la": "Leo Undecimus",
+            "pl": "Leon XI"
         },
         "pontificate": {
             "from": "1605-04-01",
             "to": "1605-04-27"
-
         }
     },
     "233": {
         "names": {
-            "pl": "Paweł V",
-            "la": "Paulus Quintus"
+            "la": "Paulus Quintus",
+            "pl": "Paweł V"
         },
         "pontificate": {
             "from": "1605-05-16",
             "to": "1621-01-28"
-
         }
     },
     "234": {
         "names": {
-            "pl": "Grzegorz XV",
-            "la": "Gregorius Quintus Decimus"
+            "la": "Gregorius Quintus Decimus",
+            "pl": "Grzegorz XV"
         },
         "pontificate": {
             "from": "1621-02-09",
             "to": "1623-07-08"
-
         }
     },
     "235": {
         "names": {
-            "pl": "Urban VIII",
-            "la": "Urbanus Octavus"
+            "la": "Urbanus Octavus",
+            "pl": "Urban VIII"
         },
         "pontificate": {
             "from": "1623-08-06",
             "to": "1644-07-29"
-
         }
     },
     "236": {
         "names": {
-            "pl": "Innocenty X",
-            "la": "Innocentius Decimus"
+            "la": "Innocentius Decimus",
+            "pl": "Innocenty X"
         },
         "pontificate": {
             "from": "1644-09-15",
             "to": "1655-01-07"
-
         }
     },
     "237": {
         "names": {
-            "pl": "Aleksander VII",
-            "la": "Alexander Septimus"
+            "la": "Alexander Septimus",
+            "pl": "Aleksander VII"
         },
         "pontificate": {
             "from": "1655-04-07",
             "to": "1667-05-22"
-
         }
     },
     "238": {
         "names": {
-            "pl": "Klemens IX",
-            "la": "Clemens Nonus"
+            "la": "Clemens Nonus",
+            "pl": "Klemens IX"
         },
         "pontificate": {
             "from": "1667-06-20",
             "to": "1669-12-09"
-
         }
     },
     "239": {
         "names": {
-            "pl": "Klemens X",
-            "la": "Clemens Decimus"
+            "la": "Clemens Decimus",
+            "pl": "Klemens X"
         },
         "pontificate": {
             "from": "1670-04-29",
             "to": "1676-07-22"
-
         }
     },
     "240": {
         "names": {
-            "pl": "Innocenty XI",
-            "la": "Innocentius Undecimus"
+            "la": "Innocentius Undecimus",
+            "pl": "Innocenty XI"
         },
         "pontificate": {
             "from": "1676-09-21",
             "to": "1689-08-12"
-
         }
     },
     "241": {
         "names": {
-            "pl": "Aleksander VIII",
-            "la": "Alexander Octavus"
+            "la": "Alexander Octavus",
+            "pl": "Aleksander VIII"
         },
         "pontificate": {
             "from": "1689-10-06",
             "to": "1691-02-01"
-
         }
     },
     "242": {
         "names": {
-            "pl": "Innocenty XII",
-            "la": "Innocentius Duodecimus"
+            "la": "Innocentius Duodecimus",
+            "pl": "Innocenty XII"
         },
         "pontificate": {
             "from": "1691-07-12",
             "to": "1700-09-27"
-
         }
     },
     "243": {
         "names": {
-            "pl": "Klemens XI",
-            "la": "Clemens Undecimus"
+            "la": "Clemens Undecimus",
+            "pl": "Klemens XI"
         },
         "pontificate": {
             "from": "1700-11-23",
             "to": "1721-03-19"
-
         }
     },
     "244": {
         "names": {
-            "pl": "Innocenty XIII",
-            "la": "Innocentius Tertius Decimus"
+            "la": "Innocentius Tertius Decimus",
+            "pl": "Innocenty XIII"
         },
         "pontificate": {
             "from": "1721-05-08",
             "to": "1724-03-07"
-
         }
     },
     "245": {
         "names": {
-            "pl": "Benedykt XIII",
-            "la": "Benedictus Tertius Decimus"
+            "la": "Benedictus Tertius Decimus",
+            "pl": "Benedykt XIII"
         },
         "pontificate": {
             "from": "1724-05-29",
             "to": "1730-02-21"
-
         }
     },
     "246": {
         "names": {
-            "pl": "Klemens XII",
-            "la": "Clemens Duodecimus"
+            "la": "Clemens Duodecimus",
+            "pl": "Klemens XII"
         },
         "pontificate": {
             "from": "1730-07-12",
             "to": "1740-02-06"
-
         }
     },
     "247": {
         "names": {
-            "pl": "Benedykt XIV",
-            "la": "Benedictus Quartus Decimus"
+            "la": "Benedictus Quartus Decimus",
+            "pl": "Benedykt XIV"
         },
         "pontificate": {
             "from": "1740-08-17",
             "to": "1758-05-03"
-
         }
     },
     "248": {
         "names": {
-            "pl": "Klemens XIII",
-            "la": "Clemens Tertius Decimus"
+            "la": "Clemens Tertius Decimus",
+            "pl": "Klemens XIII"
         },
         "pontificate": {
             "from": "1758-07-06",
             "to": "1769-02-02"
-
         }
     },
     "249": {
         "names": {
-            "pl": "Klemens XIV",
-            "la": "Clemens Quartus Decimus"
+            "la": "Clemens Quartus Decimus",
+            "pl": "Klemens XIV"
         },
         "pontificate": {
             "from": "1769-05-19",
             "to": "1774-09-22"
-
         }
     },
     "250": {
         "names": {
-            "pl": "Pius VI",
-            "la": "Pius Sextus"
+            "la": "Pius Sextus",
+            "pl": "Pius VI"
         },
         "pontificate": {
             "from": "1775-02-15",
             "to": "1799-08-29"
-
         }
     },
     "251": {
         "names": {
-            "pl": "Pius VII",
-            "la": "Pius Septimus"
+            "la": "Pius Septimus",
+            "pl": "Pius VII"
         },
         "pontificate": {
             "from": "1800-03-14",
             "to": "1823-08-20"
-
         }
     },
     "252": {
         "names": {
-            "pl": "Leon XII",
-            "la": "Leo Duodecimus"
+            "la": "Leo Duodecimus",
+            "pl": "Leon XII"
         },
         "pontificate": {
             "from": "1823-09-28",
             "to": "1829-02-10"
-
         }
     },
     "253": {
         "names": {
-            "pl": "Pius VIII",
-            "la": "Pius Octavus"
+            "la": "Pius Octavus",
+            "pl": "Pius VIII"
         },
         "pontificate": {
             "from": "1829-03-31",
             "to": "1830-11-30"
-
         }
     },
     "254": {
         "names": {
-            "pl": "Grzegorz XVI",
-            "la": "Gregorius Sextus Decimus"
+            "la": "Gregorius Sextus Decimus",
+            "pl": "Grzegorz XVI"
         },
         "pontificate": {
             "from": "1831-02-02",
             "to": "1846-06-01"
-
         }
     },
     "255": {
         "names": {
-            "pl": "Pius IX",
-            "la": "Pius Nonus"
+            "la": "Pius Nonus",
+            "pl": "Pius IX"
         },
         "pontificate": {
             "from": "1846-06-16",
             "to": "1878-02-07"
-
         }
     },
     "256": {
         "names": {
-            "pl": "Leon XIII",
-            "la": "Leo Tertius Decimus"
+            "la": "Leo Tertius Decimus",
+            "pl": "Leon XIII"
         },
         "pontificate": {
             "from": "1878-02-20",
             "to": "1903-07-20"
-
         }
     },
     "257": {
         "names": {
-            "pl": "Pius X",
-            "la": "Pius Decimus"
+            "la": "Pius Decimus",
+            "pl": "Pius X"
         },
         "pontificate": {
             "from": "1903-08-04",
             "to": "1914-08-20"
-
         }
     },
     "258": {
         "names": {
-            "pl": "Benedykt XV",
-            "la": "Benedictus Quintus Decimus"
+            "la": "Benedictus Quintus Decimus",
+            "pl": "Benedykt XV"
         },
         "pontificate": {
             "from": "1914-09-03",
             "to": "1922-01-22"
-
         }
     },
     "259": {
         "names": {
-            "pl": "Pius XI",
-            "la": "Pius Undecimus"
+            "la": "Pius Undecimus",
+            "pl": "Pius XI"
         },
         "pontificate": {
             "from": "1922-02-06",
             "to": "1939-02-10"
-
         }
     },
     "260": {
         "names": {
-            "pl": "Pius XII",
-            "la": "Pius Duodecimus"
+            "la": "Pius Duodecimus",
+            "pl": "Pius XII"
         },
         "pontificate": {
             "from": "1939-03-02",
             "to": "1958-10-09"
-
         }
     },
     "261": {
         "names": {
-            "pl": "Jan XXIII",
-            "la": "Ioannes Vicesimus Tertius"
+            "la": "Ioannes Vicesimus Tertius",
+            "pl": "Jan XXIII"
         },
         "pontificate": {
             "from": "1958-10-28",
             "to": "1963-06-03"
-
         }
     },
     "262": {
         "names": {
-            "pl": "Paweł VI",
-            "la": "Paulus Sextus"
+            "la": "Paulus Sextus",
+            "pl": "Paweł VI"
         },
         "pontificate": {
             "from": "1963-06-21",
             "to": "1978-08-06"
-
         }
     },
     "263": {
         "names": {
-            "pl": "Jan Paweł I",
-            "la": "Ioannes Paulus Primus"
+            "la": "Ioannes Paulus Primus",
+            "pl": "Jan Paweł I"
         },
         "pontificate": {
             "from": "1978-08-26",
             "to": "1978-09-28"
-
         }
     },
     "264": {
         "names": {
-            "pl": "Jan Paweł II",
-            "la": "Ioannes Paulus Secundus"
+            "la": "Ioannes Paulus Secundus",
+            "pl": "Jan Paweł II"
         },
         "pontificate": {
             "from": "1978-10-16",
             "to": "2005-04-02"
-
         }
     },
     "265": {
         "names": {
-            "pl": "Benedykt XVI",
-            "la": "Benedictus Sextus Decimus"
+            "la": "Benedictus Sextus Decimus",
+            "pl": "Benedykt XVI"
         },
         "pontificate": {
             "from": "2005-04-19",
             "to": "2013-02-28"
-
         }
     },
     "266": {
         "names": {
-            "pl": "Franciszek",
-            "la": "Franciscus"
+            "la": "Franciscus",
+            "pl": "Franciszek"
         },
         "pontificate": {
             "from": "2013-03-13"

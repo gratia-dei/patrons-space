@@ -1,4 +1,9 @@
 {
+    "categories": {
+        "en": "Categories",
+        "la": "Categoriae",
+        "pl": "Kategorie"
+    },
     "god": {
         "en": "God",
         "la": "Deus",

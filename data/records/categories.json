@@ -1,0 +1,273 @@
+{
+    "god": {
+        "names": {
+            "en": "God",
+            "la": "Deus",
+            "pl": "Bóg"
+        },
+        "image": ""
+    },
+
+    "angel": {
+        "names": {
+            "en": "angel",
+            "la": "angelus",
+            "pl": "anioł"
+        },
+        "image": ""
+    },
+
+    "male": {
+        "names": {
+            "en": "male",
+            "la": "vir",
+            "pl": "mężczyzna"
+        },
+        "image": ""
+    },
+
+    "female": {
+        "names": {
+            "en": "female",
+            "la": "femina",
+            "pl": "kobieta"
+        },
+        "image": ""
+    },
+
+    "group": {
+        "names": {
+            "en": "group",
+            "la": "grex",
+            "pl": "grupa"
+        },
+        "image": ""
+    },
+
+    "mather-of-god": {
+        "names": {
+            "en": "Mather of God",
+            "la": "Mater Dei",
+            "pl": "Matka Boża"
+        },
+        "image": ""
+    },
+
+    "martyr": {
+        "names": {
+            "en": "martyr",
+            "la": "martyr",
+            "pl": "męczennik"
+        },
+        "female-equivalent-names": {
+            "en": "martyress",
+            "pl": "męczennica"
+        },
+        "image": ""
+    },
+
+    "virgin": {
+        "names": {
+            "en": "virgin",
+            "la": "virgo",
+            "pl": "dziewica"
+        },
+        "image": ""
+    },
+
+    "apostle": {
+        "names": {
+            "en": "apostle",
+            "la": "apostolus",
+            "pl": "apostoł"
+        },
+        "image": ""
+    },
+
+    "evangelist": {
+        "names": {
+            "en": "evangelist",
+            "la": "evangelista",
+            "pl": "ewangelista"
+        },
+        "image": ""
+    },
+
+    "widow": {
+        "names": {
+            "en": "widow",
+            "la": "vidua",
+            "pl": "wdowa"
+        },
+        "image": ""
+    },
+
+    "patriarch": {
+        "names": {
+            "en": "patriarch",
+            "la": "patriarcha",
+            "pl": "patriarcha"
+        },
+        "image": ""
+    },
+
+    "prophet": {
+        "names": {
+            "en": "prophet",
+            "la": "propheta",
+            "pl": "prorok"
+        },
+        "image": ""
+    },
+
+    "confessor": {
+        "names": {
+            "en": "confessor",
+            "la": "confessor",
+            "pl": "wyznawca"
+        },
+        "image": ""
+    },
+
+    "hermit": {
+        "names": {
+            "en": "hermit",
+            "la": "anachoreta",
+            "pl": "pustelnik"
+        },
+        "female-equivalent-names": {
+            "en": "hermitess",
+            "pl": "pustelnica"
+        },
+        "image": ""
+    },
+
+    "tertiary": {
+        "names": {
+            "en": "tertiary",
+            "la": "tertiarius",
+            "pl": "tercjarz"
+        },
+        "female-equivalent-names": {
+            "en": "tertiary",
+            "la": "tertiarius",
+            "pl": "tercjarka"
+        },
+        "image": ""
+    },
+
+    "abbot": {
+        "names": {
+            "en": "abbot",
+            "la": "abbas",
+            "pl": "opat"
+        },
+        "female-equivalent-names": {
+            "en": "abbess",
+            "la": "abbatissa",
+            "pl": "ksieni"
+        },
+        "image": ""
+    },
+
+    "religious": {
+        "names": {
+            "en": "religious",
+            "la": "religiosus",
+            "pl": "zakonnik"
+        },
+        "female-equivalent-names": {
+            "en": "religious",
+            "la": "religiosa",
+            "pl": "zakonnica"
+        },
+        "image": ""
+    },
+
+    "doctor-of-the-church": {
+        "names": {
+            "en": "doctor of the Church",
+            "la": "doctor Ecclesiae",
+            "pl": "doktor Kościoła"
+        },
+        "image": ""
+    },
+
+    "pope": {
+        "names": {
+            "en": "pope",
+            "la": "papa",
+            "pl": "papież"
+        },
+        "image": ""
+    },
+
+    "bishop": {
+        "names": {
+            "en": "bishop",
+            "la": "episcopus",
+            "pl": "biskup"
+        },
+        "image": ""
+    },
+
+    "presbyter": {
+        "names": {
+            "en": "presbyter",
+            "la": "prezbyter",
+            "pl": "prezbiter"
+        },
+        "image": ""
+    },
+
+    "deacon": {
+        "names": {
+            "en": "deacon",
+            "la": "diaconus",
+            "pl": "diakon"
+        },
+        "image": ""
+    },
+
+    "emperor": {
+        "names": {
+            "en": "emperor",
+            "la": "imperator",
+            "pl": "cesarz"
+        },
+        "female-equivalent-names": {
+            "en": "empress",
+            "la": "imperatrix",
+            "pl": "cesarzowa"
+        },
+        "image": ""
+    },
+
+    "king": {
+        "names": {
+            "en": "king",
+            "la": "rex",
+            "pl": "król"
+        },
+        "female-equivalent-names": {
+            "en": "queen",
+            "la": "regina",
+            "pl": "królowa"
+        },
+        "image": ""
+    },
+
+    "prince": {
+        "names": {
+            "en": "prince",
+            "la": "princeps",
+            "pl": "książę"
+        },
+        "female-equivalent-names": {
+            "en": "princess",
+            "la": "principissa",
+            "pl": "księżna"
+        },
+        "image": ""
+    }
+}
