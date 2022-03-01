@@ -18,6 +18,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     private $path;
     private $fileData;
     private $generatedFileData;
+    private $feastRecordContent;
     private $textVariables;
 
     public function __construct()
@@ -30,7 +31,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function prepare(string $path): ContentBlock
     {
-        $titleRecordContent = $this->getOriginalHtmlFileContent('items/patron-title-record-item.html');
+        $feastRecordContent = $this->getOriginalHtmlFileContent('items/patron-feast-record-item.html');
 
         $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
@@ -43,7 +44,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         $this->path = $path;
-        $this->titleRecordContent = $titleRecordContent;
+        $this->feastRecordContent = $feastRecordContent;
         $this->fileData = $fileData;
         $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
@@ -81,10 +82,8 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function getRecordContent(string $recordId): string
     {
-        $result = '';
-
-        $titleRecordContent = $this->titleRecordContent;
-        $titleRow = $this->fileData[self::FEASTS_INDEX][$recordId] ?? [];
+        $feastRecordContent = $this->feastRecordContent;
+        $feastRow = $this->fileData[self::FEASTS_INDEX][$recordId] ?? [];
 
         $variables = [];
         $variables['record-id'] = $recordId;
@@ -93,9 +92,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . $this->getPreparedTranslationRecordKey(self::NAMES_INDEX, $recordId) . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
         $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName, self::PATRON_FEASTS_PATH . $recordId);
 
-        return $this->getReplacedContent($titleRecordContent, $variables);
-
-        return $result;
+        return $this->getReplacedContent($feastRecordContent, $variables);
     }
 
     private function getPreparedTranslations(array $data): array

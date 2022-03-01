@@ -1,273 +1,377 @@
 {
     "god": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/god.png",
+        "name": {
             "en": "God",
             "la": "Deus",
             "pl": "Bóg"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "angel": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/angel.png",
+        "name": {
             "en": "angel",
             "la": "angelus",
             "pl": "anioł"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "male": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/male.png",
+        "name": {
             "en": "male",
             "la": "vir",
             "pl": "mężczyzna"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "female": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/female.png",
+        "name": {
             "en": "female",
             "la": "femina",
             "pl": "kobieta"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "group": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/group.png",
+        "name": {
             "en": "group",
             "la": "grex",
             "pl": "grupa"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
-    "mather-of-god": {
-        "names": {
-            "en": "Mather of God",
+    "mother-of-god": {
+        "icon": "/files/resources/images/png/categories-icons/mother-of-god.png",
+        "name": {
+            "en": "Mother of God",
             "la": "Mater Dei",
             "pl": "Matka Boża"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "martyr": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/martyr.png",
+        "name": {
             "en": "martyr",
             "la": "martyr",
             "pl": "męczennik"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "martyress",
             "pl": "męczennica"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "virgin": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/virgin.png",
+        "name": {
             "en": "virgin",
             "la": "virgo",
             "pl": "dziewica"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "apostle": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/apostle.png",
+        "name": {
             "en": "apostle",
             "la": "apostolus",
             "pl": "apostoł"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "evangelist": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/evangelist.png",
+        "name": {
             "en": "evangelist",
             "la": "evangelista",
             "pl": "ewangelista"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "widow": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/widow.png",
+        "name": {
             "en": "widow",
             "la": "vidua",
             "pl": "wdowa"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "patriarch": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/patriarch.png",
+        "name": {
             "en": "patriarch",
             "la": "patriarcha",
             "pl": "patriarcha"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "prophet": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/prophet.png",
+        "name": {
             "en": "prophet",
             "la": "propheta",
             "pl": "prorok"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "confessor": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/confessor.png",
+        "name": {
             "en": "confessor",
             "la": "confessor",
             "pl": "wyznawca"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "hermit": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/hermit.png",
+        "name": {
             "en": "hermit",
             "la": "anachoreta",
             "pl": "pustelnik"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "hermitess",
             "pl": "pustelnica"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "tertiary": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/tertiary.png",
+        "name": {
             "en": "tertiary",
             "la": "tertiarius",
             "pl": "tercjarz"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "tertiary",
             "la": "tertiarius",
             "pl": "tercjarka"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "abbot": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/abbot.png",
+        "name": {
             "en": "abbot",
             "la": "abbas",
             "pl": "opat"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "abbess",
             "la": "abbatissa",
             "pl": "ksieni"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "religious": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/religious.png",
+        "name": {
             "en": "religious",
             "la": "religiosus",
             "pl": "zakonnik"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "religious",
             "la": "religiosa",
             "pl": "zakonnica"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "doctor-of-the-church": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/doctor-of-the-church.png",
+        "name": {
             "en": "doctor of the Church",
             "la": "doctor Ecclesiae",
             "pl": "doktor Kościoła"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "pope": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/pope.png",
+        "name": {
             "en": "pope",
             "la": "papa",
             "pl": "papież"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "bishop": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/bishop.png",
+        "name": {
             "en": "bishop",
             "la": "episcopus",
             "pl": "biskup"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "presbyter": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/presbyter.png",
+        "name": {
             "en": "presbyter",
             "la": "prezbyter",
             "pl": "prezbiter"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "deacon": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/deacon.png",
+        "name": {
             "en": "deacon",
             "la": "diaconus",
             "pl": "diakon"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "emperor": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/emperor.png",
+        "name": {
             "en": "emperor",
             "la": "imperator",
             "pl": "cesarz"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "empress",
             "la": "imperatrix",
             "pl": "cesarzowa"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "king": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/king.png",
+        "name": {
             "en": "king",
             "la": "rex",
             "pl": "król"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "queen",
             "la": "regina",
             "pl": "królowa"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     },
 
     "prince": {
-        "names": {
+        "icon": "/files/resources/images/png/categories-icons/prince.png",
+        "name": {
             "en": "prince",
             "la": "princeps",
             "pl": "książę"
         },
-        "female-equivalent-names": {
+        "female-equivalent-name": {
             "en": "princess",
             "la": "principissa",
             "pl": "księżna"
         },
-        "image": ""
+        "description": {
+            "en": "description comming soon ...",
+            "pl": "opis pojawi się wkrótce ..."
+        }
     }
 }

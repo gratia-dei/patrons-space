@@ -1,4 +1,5 @@
 {
+    "/records/categories/": "CategoriesContentBlock",
     "/records/god/": "PatronContentBlock",
     "/records/patrons/": "PatronContentBlock",
     "/sources/martyrologium-romanum-1956/martyrologium-romanum/": "RomanMartyrology1956DayElogiesContentBlock",
