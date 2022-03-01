@@ -60,6 +60,7 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
 
         $variables = [];
         $variables['record-id'] = $recordId;
+        $variables['record-activeness-class'] = $this->getRecordActivenessClass($recordId);
         $variables['pope-name'] = $name;
         $variables['pope-description'] = $description;
 
