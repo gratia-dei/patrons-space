@@ -19,6 +19,11 @@
     ]
   },
 
+  "born": ["<-20"],
+  "died": [">30"],
+
+  "categories": ["mother-of-god", "female", "virgin", "widow"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Sassoferrato_-_Jungfrun_i_b%C3%B6n.jpg",
@@ -30,9 +35,6 @@
       "area-bottom-right-y": 3124
     }
   },
-
-  "born": ["<-20"],
-  "died": [">30"],
 
   "data-links": {
     "mr-2004-index": ["1:mar#143"],

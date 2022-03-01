@@ -20,6 +20,8 @@
     ]
   },
 
+  "categories": ["god", "male", "martyr"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Christ_Carrying_the_Cross_MET_DP347226.jpg",

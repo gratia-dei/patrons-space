@@ -18,6 +18,8 @@
   "born": ["-"],
   "died": ["-"],
 
+  "categories": ["god"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Lucas_Cranach_d._%C3%84._-_Trinity_-_WGA05656.jpg",

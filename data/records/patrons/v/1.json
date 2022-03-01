@@ -14,6 +14,11 @@
     ]
   },
 
+  "born": ["354-11-13"],
+  "died": ["430-08-28"],
+
+  "categories": ["male", "doctor-of-the-church", "bishop" ],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Saint_Augustine_by_Philippe_de_Champaigne.jpg",
@@ -25,9 +30,6 @@
       "area-bottom-right-y": 2286
     }
   },
-
-  "born": ["354-11-13"],
-  "died": ["430-08-28"],
 
   "data-links": {
   }

@@ -16,18 +16,6 @@
     ]
   },
 
-  "images": {
-    "1": {
-      "page-url": "https://commons.wikimedia.org/wiki/File:Johnvianney.jpg",
-      "file-url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Johnvianney.jpg",
-      "attribution": "http://www.catholic-forum.com/saints/stj18039.htm, Public domain, via Wikimedia Commons",
-      "area-top-left-x": 0,
-      "area-top-left-y": 0,
-      "area-bottom-right-x": 142,
-      "area-bottom-right-y": 126
-    }
-  },
-
   "born": ["1786-05-08"],
   "died": ["1859-08-04"],
 
@@ -38,6 +26,20 @@
   "canonized": {
     "type": "ceremonially",
     "date": "1925-05-31"
+  },
+
+  "categories": ["male", "confessor", "presbyter"],
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:Johnvianney.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Johnvianney.jpg",
+      "attribution": "http://www.catholic-forum.com/saints/stj18039.htm, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 0,
+      "area-top-left-y": 0,
+      "area-bottom-right-x": 142,
+      "area-bottom-right-y": 126
+    }
   },
 
   "data-links": {

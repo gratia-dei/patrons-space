@@ -11,6 +11,11 @@
     ]
   },
 
+  "born": ["~283"],
+  "died": ["371-08-01"],
+
+  "categories": ["male", "martyr", "bishop"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Eusebius_von_Vercelli.jpg",
@@ -22,9 +27,6 @@
       "area-bottom-right-y": 275
     }
   },
-
-  "born": ["~283"],
-  "died": ["371-08-01"],
 
   "data-links": {
   }

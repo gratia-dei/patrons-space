@@ -18,6 +18,20 @@
     ]
   },
 
+  "born": ["1696-09-27"],
+  "died": ["1787-08-01"],
+
+  "beatified": {
+    "type": "ceremonially",
+    "date": "1816-09-15"
+  },
+  "canonized": {
+    "type": "ceremonially",
+    "date": "1839-05-26"
+  },
+
+  "categories": ["male", "bishop", "doctor-of-the-church", "religious"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:St_Alphonsus_Liguori.jpg",
@@ -28,17 +42,6 @@
       "area-bottom-right-x": 167,
       "area-bottom-right-y": 194
     }
-  },
-
-  "born": ["1696-09-27"],
-  "died": ["1787-08-01"],
-  "beatified": {
-    "type": "ceremonially",
-    "date": "1816-09-15"
-  },
-  "canonized": {
-    "type": "ceremonially",
-    "date": "1839-05-26"
   },
 
   "data-links": {

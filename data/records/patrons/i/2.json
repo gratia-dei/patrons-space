@@ -11,6 +11,10 @@
     ]
   },
 
+  "died": ["<100"],
+
+  "categories": ["female"],
+
   "images": {
     "1": {
       "page-url": "https://commons.wikimedia.org/wiki/File:Lidia.jpg",
@@ -22,8 +26,6 @@
       "area-bottom-right-y": 129
     }
   },
-
-  "died": ["<100"],
 
   "data-links": {
   }
