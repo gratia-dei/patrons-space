@@ -3,6 +3,7 @@
 class GenerateDataLinkFilesProcedure extends Procedure
 {
     private const LANGUAGE_CODE_PATTERN = '/^[a-z][a-z][a-z]?$/';
+    private const POSSIBLE_NAME_INDEX = 'name';
 
     private $generatedFilesData = [];
 
@@ -57,7 +58,11 @@ class GenerateDataLinkFilesProcedure extends Procedure
                     }
                     list($linkId, $dstFilePathAlias, $recordId) = $linkData;
 
-                    $dstPathAlias = "$dstDirPathAlias/$dstFilePathAlias";
+                    if ($dstFilePathAlias === '') {
+                        $dstPathAlias = $dstDirPathAlias;
+                    } else {
+                        $dstPathAlias = "$dstDirPathAlias/$dstFilePathAlias";
+                    }
                     $dstPath = $this->getPathToRedirect($dstPathAlias);
                     $anchor = str_replace(self::PATRON_FEASTS_PATH, '#', $fieldPath);
 
@@ -71,7 +76,7 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     $staticFileData = $this->getOriginalJsonFileContentArray($staticFilePath);
                     if (!isset($this->generatedFilesData[$generatedFileFullPath][$recordId])) {
-                        $recordData = $staticFileData[$recordId] ?? null;
+                        $recordData = $staticFileData[$recordId][self::POSSIBLE_NAME_INDEX] ?? $staticFileData[$recordId] ?? null;
                         if (is_null($recordData)) {
                             $this->error("cannot find static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
                         }

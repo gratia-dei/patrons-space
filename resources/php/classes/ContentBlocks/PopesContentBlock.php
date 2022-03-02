@@ -11,6 +11,7 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
 
     private $popeItemContent;
     private $fileData;
+    private $generatedFileData;
     private $textVariables;
 
     public function prepare(string $path): ContentBlock
@@ -20,12 +21,16 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
         $filePath = $this->getDataFileSuffix($path);
         $fileData = $this->getOriginalJsonFileContentArray($filePath);
 
-        $translations = $this->getPreparedTranslations($fileData);
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
+        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
+
+        $translations = $this->getPreparedTranslations($fileData, $generatedFileData);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         $this->popeItemContent = $popeItemContent;
         $this->fileData = $fileData;
+        $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
 
         return $this;
@@ -69,14 +74,16 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
         return $this->getReplacedContent($content, $textVariables, true);
     }
 
-    private function getPreparedTranslations(array $data): array
+    private function getPreparedTranslations(array $data, array $aliases): array
     {
         $result = [];
 
-        foreach ($data as $pope => $popeData) {
-            foreach ($popeData as $key => $values) {
-                if (in_array($key, self::TRANSLATED_INDEXES)) {
-                    $result["$pope-$key"] = $values;
+        foreach ($data as $key => $popeData) {
+            foreach ($popeData as $field => $values) {
+                if (in_array($field, self::TRANSLATED_INDEXES)) {
+                    foreach ($values as $language => $text) {
+                        $result["$key-$field"][$language] = $this->getTextWithSpecialLinks($text, $aliases[$key] ?? []);
+                    }
                 }
             }
         }

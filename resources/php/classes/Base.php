@@ -155,7 +155,7 @@ abstract class Base
 
     protected function getDataLinkElements(string $link): ?array
     {
-        if (!preg_match("/^(?'link_id'[1-9][0-9]*)[:](?'path'[^# ]+)[#](?'record_id'[1-9][0-9]*)$/", $link, $matches)) {
+        if (!preg_match("/^(?'link_id'[1-9][0-9]*)[:](?'path'[^# ]*)[#](?'record_id'[1-9][0-9]*)$/", $link, $matches)) {
             return null;
         }
 

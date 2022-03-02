@@ -52,7 +52,10 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
 
             $contentBlockClass = null;
             foreach ($contentBlockRouting as $routingPath => $classForPath) {
-                if (strpos($mainPath, $routingPath) === 0) {
+                if (
+                    strpos($mainPath, $routingPath) === 0
+                    || $mainPath . '/' === $routingPath
+                ) {
                     $contentBlockClass = $classForPath;
                     break;
                 }
@@ -75,7 +78,15 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
                 }
                 list($linkId, $subPathAlias, $recordId) = $linkData;
 
+                if($subPathAlias === '') {
+                    $subPathAlias = basename($mainPath);
+                    $mainPath = dirname($mainPath) . '/';
+                }
+
                 $fullPath = $this->getPathToRedirect($mainPath . $subPathAlias);
+                if ($fullPath === '') {
+                    $fullPath = $mainPath . $subPathAlias;
+                }
 
                 $recordName = self::RECORD_PATH_NAME;
                 $recordTitle = $this->getTranslatedNameForPath($recordName, $fullPath, $mainPath);
