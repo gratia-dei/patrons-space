@@ -78,10 +78,15 @@ const CARD_IMAGE_BACKGROUND_COLOR = 'black';
 const FILE_DATA_IMAGES_KEY = 'images';
 const FILE_DATA_NAMES_KEY = 'names';
 const FILE_DATA_DEATH_KEY = 'died';
+const FILE_DATA_CATEGORIES_KEY = 'categories';
 
 const CARD_DATA_PARAMS_FIELD_NAME = 'name';
 const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
 const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
+const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
+
+const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
+const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
 let cardsData = [];
 let filesContents = {};
@@ -823,6 +828,7 @@ const getDataFileParams = function(cardType, data) {
     result[CARD_DATA_PARAMS_FIELD_NAME] = nameData[1];
     result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
     result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
+    result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY];
   }
 
   return result;
@@ -861,6 +867,21 @@ const getDeathDate = function(dates) {
   }
 
   return date;
+}
+
+const drawCategoryIcon = function(category, x, y, size) {
+    let image = new Image();
+    image.onload = function() {
+      context.drawImage(image, x, y, size, size);
+    }
+    image.src = CATEGORY_ICONS_URL + category + CATEGORY_ICONS_FILENAME_EXTENSION;
+}
+
+const drawCategoriesIcons = function(categories, x, y, size) {
+  for (const category of categories) {
+    drawCategoryIcon(category, x, y, size);
+    x += size;
+  }
 }
 
 const drawCard = function(cardId) {
@@ -950,8 +971,11 @@ const drawCard = function(cardId) {
       drawText(params[CARD_DATA_PARAMS_FIELD_DEATH], deathX, deathY, deathWidth, deathHeight, deathColor, fontStyle, TEXT_ALIGN_LEFT);
     }
 
-    //attributes
-    //...
+    //categories
+    const categoriesSize = mm2px(5);
+    const categoriesX = x + marginSize;
+    const categoriesY = y + nameHeight + imageHeight + deathHeight;
+    drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesSize);
 
     //religious orders
     //...
