@@ -118,6 +118,10 @@ const getPpiTestDiv = function() {
   return document.getElementById('ppi-test');
 }
 
+const getCardOwnerInputValue = function() {
+  return document.getElementById('card-owner').value;
+}
+
 const getCanvas = function() {
   return document.getElementById('cards-canvas');
 }
@@ -907,6 +911,7 @@ const drawCard = function(cardId) {
   if (Object.keys(data).length > 0) {
     const dataPath = cardData[CARD_DATA_FIELD_PATH];
     const cardType = dataPath.replace(/\/.*$/, '');
+    const cardOwner = getCardOwnerInputValue();
 
     const fontColor = DEFAULT_FONT_COLOR;
     const fontStyle = FONT_STYLE_NORMAL;
@@ -965,7 +970,7 @@ const drawCard = function(cardId) {
     drawText(projectNameText, projectNameX, projectNameY, projectNameWidth, projectNameHeight, projectNameColor, fontStyle, TEXT_ALIGN_JUSTIFY);
 
     //death
-    const deathWidth = cardWidth;
+    const deathWidth = cardWidth - 2 * marginSize;
     const deathHeight = mm2px(7);
     const deathX = x + marginSize;
     const deathY = y + nameHeight + imageHeight;
@@ -991,7 +996,13 @@ const drawCard = function(cardId) {
     }
 
     //card owner
-    //...
+    const cardOwnerWidth = cardWidth - 2 * marginSize;
+    const cardOwnerHeight = mm2px(7);
+    const cardOwnerX = x + marginSize;
+    const cardOwnerY = orderY + orderHeight;
+    const cardOwnerColor = 'black';
+    drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
+    drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
 
     //patrons strength - only patrons
     //...
