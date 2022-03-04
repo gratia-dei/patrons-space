@@ -79,11 +79,13 @@ const FILE_DATA_IMAGES_KEY = 'images';
 const FILE_DATA_NAMES_KEY = 'names';
 const FILE_DATA_DEATH_KEY = 'died';
 const FILE_DATA_CATEGORIES_KEY = 'categories';
+const FILE_DATA_ORDER_KEY = 'order';
 
 const CARD_DATA_PARAMS_FIELD_NAME = 'name';
 const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
 const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
+const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
 
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
 const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
@@ -829,6 +831,7 @@ const getDataFileParams = function(cardType, data) {
     result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
     result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
     result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY];
+    result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY];
   }
 
   return result;
@@ -977,8 +980,15 @@ const drawCard = function(cardId) {
     const categoriesY = y + nameHeight + imageHeight + deathHeight;
     drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesSize);
 
-    //religious orders
-    //...
+    //order
+    const orderWidth = cardWidth / 2;
+    const orderHeight = mm2px(7);
+    const orderX = x + marginSize;
+    const orderY = categoriesY + categoriesSize;
+    const orderColor = 'yellow';
+    if (params[CARD_DATA_PARAMS_FIELD_ORDER] !== undefined) {
+      drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
+    }
 
     //card owner
     //...
