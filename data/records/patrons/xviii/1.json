@@ -31,6 +31,7 @@
   },
 
   "categories": ["male", "bishop", "doctor-of-the-church", "religious"],
+  "order": ["CSsR"],
 
   "images": {
     "1": {

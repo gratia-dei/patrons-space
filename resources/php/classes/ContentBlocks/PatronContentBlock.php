@@ -14,6 +14,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     private $dataLinksContentBlock;
     private $patronGalleryContentBlock;
+    private $categoriesContentBlock;
 
     private $path;
     private $fileData;
@@ -25,6 +26,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     {
         $this->dataLinksContentBlock = new DataLinksContentBlock();
         $this->patronGalleryContentBlock = new PatronGalleryContentBlock();
+        $this->categoriesContentBlock = new CategoriesContentBlock();
 
         parent::__construct();
     }
@@ -64,6 +66,8 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
         $variables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
         $variables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
         $variables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
+        $variables['order'] = empty($fileData['order'] ?? []) ? self::NON_EXISTENCE : $fileData['order'];
+        $variables['categories'] = $this->getCategoriesList($fileData['categories'] ?? []);
         $variables['gallery'] = $this->getGalleryContent();
 
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . self::NAMES_INDEX . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
@@ -155,6 +159,15 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
             ->patronGalleryContentBlock
             ->prepare($this->path)
             ->getFullContent('')
+        ;
+    }
+
+    private function getCategoriesList(array $categories): array
+    {
+        return $this
+            ->categoriesContentBlock
+            ->prepare()
+            ->getListContent($categories)
         ;
     }
 }

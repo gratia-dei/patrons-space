@@ -40,6 +40,12 @@
         "pl": "karty"
     },
 
+    "lang-categories": {
+        "en": "categories",
+        "la": "categoriae",
+        "pl": "kategorie"
+    },
+
     "lang-ceremonially-adverb": {
         "en": "ceremonially",
         "pl": "ceremonialnie"
@@ -145,6 +151,12 @@
     "lang-non-existence": {
         "en": "non-existence",
         "pl": "brak"
+    },
+
+    "lang-order": {
+        "en": "order",
+        "la": "ordo",
+        "pl": "zakon"
     },
 
     "lang-original": {

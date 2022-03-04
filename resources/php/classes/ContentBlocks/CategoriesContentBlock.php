@@ -2,6 +2,10 @@
 
 class CategoriesContentBlock extends ContentBlock implements ContentBlockInterface
 {
+    private const CATEGORIES_PATH = '/records/categories';
+
+    private const CATEGORY_FEMALE = 'female';
+
     private const NAME_INDEX = 'name';
     private const FEMALE_EQUIVALENT_NAME_INDEX = 'female-equivalent-name';
     private const DESCRIPTION_INDEX = 'description';
@@ -17,7 +21,7 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
     private $fileData;
     private $textVariables;
 
-    public function prepare(string $path): ContentBlock
+    public function prepare(string $path = self::CATEGORIES_PATH): ContentBlock
     {
         $categoryItemContent = $this->getOriginalHtmlFileContent('items/category-item.html');
 
@@ -74,6 +78,35 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
         $content = $this->getReplacedContent($categoryItemContent, $variables);
 
         return $this->getReplacedContent($content, $textVariables, true);
+    }
+
+    public function getListContent(array $categories): array
+    {
+        $result = [];
+
+        $fileData = $this->fileData;
+        $textVariables = $this->textVariables;
+
+        $itemContent = $this->getOriginalHtmlFileContent('items/categories-list-item.html');
+
+        foreach ($categories as $category) {
+            $categoryRow = $fileData[$category] ?? [];
+
+            $name = self::VARIABLE_NAME_SIGN . $category . '-' . self::NAME_INDEX . self::VARIABLE_NAME_SIGN;
+            if (in_array(self::CATEGORY_FEMALE, $categories) && isset($categoryRow[self::FEMALE_EQUIVALENT_NAME_INDEX])) {
+                $name = self::VARIABLE_NAME_SIGN . $category . '-' . self::FEMALE_EQUIVALENT_NAME_INDEX . self::VARIABLE_NAME_SIGN;
+            }
+
+            $variables = [];
+            $variables['category-name'] = $name;
+            $variables['category-icon-src'] = $categoryRow[self::ICON_INDEX] ?? '';
+
+            $content = $this->getReplacedContent($itemContent, $variables);
+
+            $result[] = $this->getReplacedContent($content, $textVariables, true);
+        }
+
+        return $result;
     }
 
     private function getPreparedTranslations(array $data): array
