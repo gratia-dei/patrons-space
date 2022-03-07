@@ -90,6 +90,16 @@ const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
 const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
+const STATUS_COLOR_RED = '#F43545';
+const STATUS_COLOR_ORANGE = '#FA8901';
+const STATUS_COLOR_YELLOW = '#FAD717';
+const STATUS_COLOR_GREEN = '#00BA71';
+const STATUS_COLOR_BLUE = '#00C2DE';
+const STATUS_COLOR_INDIGO = '#00418D';
+const STATUS_COLOR_VIOLET = '#5F2879';
+const STATUS_COLOR_WHITE = '#FFFFFF';
+
+
 let cardsData = [];
 let filesContents = {};
 let filesContentsErrors = {};
@@ -314,19 +324,56 @@ const clearRectangle = function(x, y, width, height) {
   context.clearRect(x, y, width, height);
 }
 
-const drawEmptyRectangle = function(x, y, width, height, color) {
+const drawEmptyRectangle = function(x, y, width, height, borderColor) {
   const context = getContext();
 
   context.lineWidth = 1;
-  context.strokeStyle = color;
+  context.strokeStyle = borderColor;
   context.strokeRect(x, y, width, height);
 }
 
-const drawFilledRectangle = function(x, y, width, height, color) {
+const drawFilledRectangle = function(x, y, width, height, backgroundColor) {
   const context = getContext();
 
-  context.fillStyle = color;
+  context.fillStyle = backgroundColor;
   context.fillRect(x, y, width, height);
+}
+
+const drawBorderedAndFilledTriangle = function(x, y, size, borderColor, backgroundColor) {
+  const context = getContext();
+
+  const h = size * Math.sqrt(2) / 2;
+
+  context.beginPath();
+  context.moveTo(x, y + h);
+  context.lineTo(x + size, y + h);
+  context.lineTo(x + size / 2, y);
+  context.closePath();
+
+  context.lineWidth = 1;
+  context.strokeStyle = borderColor;
+  context.stroke();
+
+  context.fillStyle = backgroundColor;
+  context.fill();
+}
+
+const drawBorderedAndFilledTetragon = function(x1, y1, x2, y2, x3, y3, x4, y4, borderColor, backgroundColor) {
+  const context = getContext();
+
+  context.beginPath();
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.lineTo(x3, y3);
+  context.lineTo(x4, y4);
+  context.closePath();
+
+  context.lineWidth = 1;
+  context.strokeStyle = borderColor;
+  context.stroke();
+
+  context.fillStyle = backgroundColor;
+  context.fill();
 }
 
 const drawLinearScales = function(width, height) {
@@ -891,6 +938,81 @@ const drawCategoriesIcons = function(categories, x, y, size) {
   }
 }
 
+const drawGodTriangle = function(x, y, size) {
+  drawBorderedAndFilledTriangle(x, y, size, 'black', 'white');
+}
+
+const drawStatusTriangle = function(x, y, size) {
+  const height = size * Math.sqrt(2) / 2;
+
+  const smallTriangleCoeff = 1/4;
+  const whiteTriangleMoveCoeff = 1/2;
+
+  const smallTriangleSize = size * smallTriangleCoeff;
+  const smallTriangleHeight = height * smallTriangleCoeff;
+
+  const mediumTriangleHeight = height - 1.5 * smallTriangleHeight;
+  const mediumTriangleSize = mediumTriangleHeight * Math.sqrt(2);
+
+  const mediumTriangleTopX = x + size / 2;
+  const mediumTriangleTopY = y + smallTriangleHeight;
+  const mediumTriangleLeftX = mediumTriangleTopX - mediumTriangleSize / 2;
+  const mediumTriangleLeftY = y + height - smallTriangleHeight / 2;
+  const mediumTriangleRightX = mediumTriangleTopX + mediumTriangleSize / 2;
+  const mediumTriangleRightY = mediumTriangleLeftY;
+
+  const whiteTriangleY = y + smallTriangleHeight + smallTriangleHeight * whiteTriangleMoveCoeff;
+
+  drawBorderedAndFilledTriangle(x, y, size, 'white', 'black');
+
+  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, y, smallTriangleSize, 'black', STATUS_COLOR_YELLOW);
+  drawBorderedAndFilledTriangle(x, y + height - smallTriangleHeight , smallTriangleSize, 'black', STATUS_COLOR_BLUE);
+  drawBorderedAndFilledTriangle(x + size - smallTriangleSize, y + height - smallTriangleHeight , smallTriangleSize, 'black', STATUS_COLOR_RED);
+
+  drawBorderedAndFilledTetragon(
+    mediumTriangleTopX,
+    mediumTriangleTopY,
+    mediumTriangleLeftX,
+    mediumTriangleLeftY,
+    x + smallTriangleSize / 2,
+    y + height - smallTriangleHeight,
+    mediumTriangleTopX - smallTriangleSize / 2,
+    mediumTriangleTopY,
+    'black',
+    STATUS_COLOR_GREEN
+  );
+
+  drawBorderedAndFilledTetragon(
+    mediumTriangleTopX,
+    mediumTriangleTopY,
+    mediumTriangleRightX,
+    mediumTriangleRightY,
+    x + size - smallTriangleSize / 2,
+    y + height - smallTriangleHeight,
+    mediumTriangleTopX + smallTriangleSize / 2,
+    mediumTriangleTopY,
+    'black',
+    STATUS_COLOR_ORANGE
+  );
+
+  drawBorderedAndFilledTetragon(
+    mediumTriangleLeftX,
+    mediumTriangleLeftY,
+    mediumTriangleRightX,
+    mediumTriangleRightY,
+    x + size - smallTriangleSize,
+    y + height,
+    x + smallTriangleSize,
+    y + height,
+    'black',
+    STATUS_COLOR_VIOLET
+  );
+
+  drawBorderedAndFilledTriangle(x + size / 2 - mediumTriangleSize / 2, y + smallTriangleHeight, mediumTriangleSize, 'black', STATUS_COLOR_INDIGO);
+
+  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, whiteTriangleY, smallTriangleSize, 'black', STATUS_COLOR_WHITE);
+}
+
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
   if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
@@ -1004,8 +1126,15 @@ const drawCard = function(cardId) {
     drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
     drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
 
-    //patrons strength - only patrons
-    //...
+    //God symbol or patrons strength
+    const triangleSize = mm2px(20);
+    const triangleX = x + marginSize;
+    const triangleY = cardOwnerY + cardOwnerHeight;
+    if (cardType === CARD_TYPE_GOD) {
+      drawGodTriangle(triangleX, triangleY, triangleSize);
+    } else if (cardType === CARD_TYPE_PATRONS) {
+      drawStatusTriangle(triangleX, triangleY, triangleSize);
+    }
 
     //patron color status
     //...
