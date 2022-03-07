@@ -90,6 +90,7 @@ const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
 const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
+const STATUS_COLOR_BORDER = '#000000';
 const STATUS_COLOR_RED = '#F43545';
 const STATUS_COLOR_ORANGE = '#FA8901';
 const STATUS_COLOR_YELLOW = '#FAD717';
@@ -339,10 +340,14 @@ const drawFilledRectangle = function(x, y, width, height, backgroundColor) {
   context.fillRect(x, y, width, height);
 }
 
+const getTriangleHeight = function(size) {
+  return Math.sqrt(3 / 4 * size * size);
+}
+
 const drawBorderedAndFilledTriangle = function(x, y, size, borderColor, backgroundColor) {
   const context = getContext();
 
-  const h = size * Math.sqrt(2) / 2;
+  const h = getTriangleHeight(size);
 
   context.beginPath();
   context.moveTo(x, y + h);
@@ -374,6 +379,14 @@ const drawBorderedAndFilledTetragon = function(x1, y1, x2, y2, x3, y3, x4, y4, b
 
   context.fillStyle = backgroundColor;
   context.fill();
+}
+
+const drawEmptyCircle = function(x, y, r, borderColor) {
+  context.beginPath();
+  context.lineWidth = 1;
+  context.strokeStyle = borderColor;
+  context.arc(x, y, r, 0, 2 * Math.PI);
+  context.stroke();
 }
 
 const drawLinearScales = function(width, height) {
@@ -943,16 +956,17 @@ const drawGodTriangle = function(x, y, size) {
 }
 
 const drawStatusTriangle = function(x, y, size) {
-  const height = size * Math.sqrt(2) / 2;
+  const height = getTriangleHeight(size);
 
-  const smallTriangleCoeff = 1/4;
-  const whiteTriangleMoveCoeff = 1/2;
+  const smallTriangleCoeff = 1/3.3;
+  const circleSizeCoeff = 1/21;
+  const circleSize = size * circleSizeCoeff;
 
   const smallTriangleSize = size * smallTriangleCoeff;
   const smallTriangleHeight = height * smallTriangleCoeff;
 
   const mediumTriangleHeight = height - 1.5 * smallTriangleHeight;
-  const mediumTriangleSize = mediumTriangleHeight * Math.sqrt(2);
+  const mediumTriangleSize = size - 1.5 * smallTriangleSize;
 
   const mediumTriangleTopX = x + size / 2;
   const mediumTriangleTopY = y + smallTriangleHeight;
@@ -961,56 +975,40 @@ const drawStatusTriangle = function(x, y, size) {
   const mediumTriangleRightX = mediumTriangleTopX + mediumTriangleSize / 2;
   const mediumTriangleRightY = mediumTriangleLeftY;
 
-  const whiteTriangleY = y + smallTriangleHeight + smallTriangleHeight * whiteTriangleMoveCoeff;
+  const whiteTriangleY = mediumTriangleLeftY - 1.5 * smallTriangleHeight;
 
-  drawBorderedAndFilledTriangle(x, y, size, 'white', 'black');
+  drawBorderedAndFilledTriangle(x, y, size, 'white', STATUS_COLOR_BORDER);
 
-  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, y, smallTriangleSize, 'black', STATUS_COLOR_YELLOW);
-  drawBorderedAndFilledTriangle(x, y + height - smallTriangleHeight , smallTriangleSize, 'black', STATUS_COLOR_BLUE);
-  drawBorderedAndFilledTriangle(x + size - smallTriangleSize, y + height - smallTriangleHeight , smallTriangleSize, 'black', STATUS_COLOR_RED);
+  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, y, smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_YELLOW);
+  drawBorderedAndFilledTriangle(x, y + height - smallTriangleHeight , smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_BLUE);
+  drawBorderedAndFilledTriangle(x + size - smallTriangleSize, y + height - smallTriangleHeight , smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_RED);
 
   drawBorderedAndFilledTetragon(
-    mediumTriangleTopX,
-    mediumTriangleTopY,
-    mediumTriangleLeftX,
-    mediumTriangleLeftY,
-    x + smallTriangleSize / 2,
-    y + height - smallTriangleHeight,
-    mediumTriangleTopX - smallTriangleSize / 2,
-    mediumTriangleTopY,
-    'black',
-    STATUS_COLOR_GREEN
+    mediumTriangleTopX, mediumTriangleTopY,
+    mediumTriangleLeftX, mediumTriangleLeftY,
+    x + smallTriangleSize / 2, y + height - smallTriangleHeight,
+    mediumTriangleTopX - smallTriangleSize / 2, mediumTriangleTopY,
+    STATUS_COLOR_BORDER, STATUS_COLOR_GREEN
   );
 
   drawBorderedAndFilledTetragon(
-    mediumTriangleTopX,
-    mediumTriangleTopY,
-    mediumTriangleRightX,
-    mediumTriangleRightY,
-    x + size - smallTriangleSize / 2,
-    y + height - smallTriangleHeight,
-    mediumTriangleTopX + smallTriangleSize / 2,
-    mediumTriangleTopY,
-    'black',
-    STATUS_COLOR_ORANGE
+    mediumTriangleTopX, mediumTriangleTopY,
+    mediumTriangleRightX, mediumTriangleRightY,
+    x + size - smallTriangleSize / 2, y + height - smallTriangleHeight,
+    mediumTriangleTopX + smallTriangleSize / 2, mediumTriangleTopY,
+    STATUS_COLOR_BORDER, STATUS_COLOR_ORANGE
   );
 
   drawBorderedAndFilledTetragon(
-    mediumTriangleLeftX,
-    mediumTriangleLeftY,
-    mediumTriangleRightX,
-    mediumTriangleRightY,
-    x + size - smallTriangleSize,
-    y + height,
-    x + smallTriangleSize,
-    y + height,
-    'black',
-    STATUS_COLOR_VIOLET
+    mediumTriangleLeftX, mediumTriangleLeftY,
+    mediumTriangleRightX, mediumTriangleRightY,
+    x + size - smallTriangleSize, y + height,
+    x + smallTriangleSize, y + height,
+    STATUS_COLOR_BORDER, STATUS_COLOR_VIOLET
   );
 
-  drawBorderedAndFilledTriangle(x + size / 2 - mediumTriangleSize / 2, y + smallTriangleHeight, mediumTriangleSize, 'black', STATUS_COLOR_INDIGO);
-
-  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, whiteTriangleY, smallTriangleSize, 'black', STATUS_COLOR_WHITE);
+  drawBorderedAndFilledTriangle(mediumTriangleTopX - mediumTriangleSize / 2, mediumTriangleTopY, mediumTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_INDIGO);
+  drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, whiteTriangleY, smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_WHITE);
 }
 
 const drawCard = function(cardId) {
@@ -1127,7 +1125,7 @@ const drawCard = function(cardId) {
     drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
 
     //God symbol or patrons strength
-    const triangleSize = mm2px(20);
+    const triangleSize = mm2px(18);
     const triangleX = x + marginSize;
     const triangleY = cardOwnerY + cardOwnerHeight;
     if (cardType === CARD_TYPE_GOD) {
