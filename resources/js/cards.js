@@ -91,6 +91,7 @@ const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
 const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
 const STATUS_COLOR_BORDER = '#000000';
+const STATUS_COLOR_CIRCLE = '#DDDDDD';
 const STATUS_COLOR_RED = '#F43545';
 const STATUS_COLOR_ORANGE = '#FA8901';
 const STATUS_COLOR_YELLOW = '#FAD717';
@@ -381,12 +382,15 @@ const drawBorderedAndFilledTetragon = function(x1, y1, x2, y2, x3, y3, x4, y4, b
   context.fill();
 }
 
-const drawEmptyCircle = function(x, y, r, borderColor) {
+const drawBorderedAndFilledCircle = function(x, y, r, borderColor, backgroundColor) {
   context.beginPath();
   context.lineWidth = 1;
   context.strokeStyle = borderColor;
   context.arc(x, y, r, 0, 2 * Math.PI);
   context.stroke();
+
+  context.fillStyle = backgroundColor;
+  context.fill();
 }
 
 const drawLinearScales = function(width, height) {
@@ -1015,23 +1019,23 @@ const drawStatusTriangle = function(x, y, size) {
   drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, whiteTriangleY, smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_WHITE);
 
   //yellow circle
-  drawEmptyCircle(x + size / 2, y + smallTriangleHeight / 2 , circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size / 2, y + smallTriangleHeight / 2 , circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
   //blue circle
-  drawEmptyCircle(x + smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
   //red circle
-  drawEmptyCircle(x + size - smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size - smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
 
   //violet circle
-  drawEmptyCircle(x + size / 2, y + height - smallTriangleHeight / 4 , circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size / 2, y + height - smallTriangleHeight / 4 , circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
   //green circle
-  drawEmptyCircle(x + smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
   //orange circle
-  drawEmptyCircle(x + size - smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size - smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
 
   //indigo circle
-  drawEmptyCircle(x + size / 2, y + height - smallTriangleHeight * 3 / 4, circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size / 2, y + height - smallTriangleHeight * 3 / 4, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
   //white circle
-  drawEmptyCircle(x + size / 2, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
+  drawBorderedAndFilledCircle(x + size / 2, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
 }
 
 const drawCard = function(cardId) {
