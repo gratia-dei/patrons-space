@@ -958,7 +958,7 @@ const drawGodTriangle = function(x, y, size) {
 const drawStatusTriangle = function(x, y, size) {
   const height = getTriangleHeight(size);
 
-  const smallTriangleCoeff = 1/3.3;
+  const smallTriangleCoeff = 1/3.25;
   const circleSizeCoeff = 1/21;
   const circleSize = size * circleSizeCoeff;
 
@@ -975,6 +975,7 @@ const drawStatusTriangle = function(x, y, size) {
   const mediumTriangleRightX = mediumTriangleTopX + mediumTriangleSize / 2;
   const mediumTriangleRightY = mediumTriangleLeftY;
 
+  const smallSideTrianglesCircleMoveX = smallTriangleSize / 2.7;
   const whiteTriangleY = mediumTriangleLeftY - 1.5 * smallTriangleHeight;
 
   drawBorderedAndFilledTriangle(x, y, size, 'white', STATUS_COLOR_BORDER);
@@ -983,6 +984,7 @@ const drawStatusTriangle = function(x, y, size) {
   drawBorderedAndFilledTriangle(x, y + height - smallTriangleHeight , smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_BLUE);
   drawBorderedAndFilledTriangle(x + size - smallTriangleSize, y + height - smallTriangleHeight , smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_RED);
 
+  //green tetragon
   drawBorderedAndFilledTetragon(
     mediumTriangleTopX, mediumTriangleTopY,
     mediumTriangleLeftX, mediumTriangleLeftY,
@@ -990,7 +992,7 @@ const drawStatusTriangle = function(x, y, size) {
     mediumTriangleTopX - smallTriangleSize / 2, mediumTriangleTopY,
     STATUS_COLOR_BORDER, STATUS_COLOR_GREEN
   );
-
+  //orange tetragon
   drawBorderedAndFilledTetragon(
     mediumTriangleTopX, mediumTriangleTopY,
     mediumTriangleRightX, mediumTriangleRightY,
@@ -998,7 +1000,7 @@ const drawStatusTriangle = function(x, y, size) {
     mediumTriangleTopX + smallTriangleSize / 2, mediumTriangleTopY,
     STATUS_COLOR_BORDER, STATUS_COLOR_ORANGE
   );
-
+  //violet tetragon
   drawBorderedAndFilledTetragon(
     mediumTriangleLeftX, mediumTriangleLeftY,
     mediumTriangleRightX, mediumTriangleRightY,
@@ -1007,8 +1009,29 @@ const drawStatusTriangle = function(x, y, size) {
     STATUS_COLOR_BORDER, STATUS_COLOR_VIOLET
   );
 
+  //indigo triangle
   drawBorderedAndFilledTriangle(mediumTriangleTopX - mediumTriangleSize / 2, mediumTriangleTopY, mediumTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_INDIGO);
+  //white triangle
   drawBorderedAndFilledTriangle(x + size / 2 - smallTriangleSize / 2, whiteTriangleY, smallTriangleSize, STATUS_COLOR_BORDER, STATUS_COLOR_WHITE);
+
+  //yellow circle
+  drawEmptyCircle(x + size / 2, y + smallTriangleHeight / 2 , circleSize, STATUS_COLOR_BORDER);
+  //blue circle
+  drawEmptyCircle(x + smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER);
+  //red circle
+  drawEmptyCircle(x + size - smallSideTrianglesCircleMoveX, y + height - smallTriangleHeight * 1 / 4 , circleSize, STATUS_COLOR_BORDER);
+
+  //violet circle
+  drawEmptyCircle(x + size / 2, y + height - smallTriangleHeight / 4 , circleSize, STATUS_COLOR_BORDER);
+  //green circle
+  drawEmptyCircle(x + smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
+  //orange circle
+  drawEmptyCircle(x + size - smallTriangleSize, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
+
+  //indigo circle
+  drawEmptyCircle(x + size / 2, y + height - smallTriangleHeight * 3 / 4, circleSize, STATUS_COLOR_BORDER);
+  //white circle
+  drawEmptyCircle(x + size / 2, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER);
 }
 
 const drawCard = function(cardId) {
@@ -1115,24 +1138,24 @@ const drawCard = function(cardId) {
       drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
     }
 
-    //card owner
-    const cardOwnerWidth = cardWidth - 2 * marginSize;
-    const cardOwnerHeight = mm2px(7);
-    const cardOwnerX = x + marginSize;
-    const cardOwnerY = orderY + orderHeight;
-    const cardOwnerColor = 'black';
-    drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
-    drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
-
     //God symbol or patrons strength
-    const triangleSize = mm2px(18);
-    const triangleX = x + marginSize;
-    const triangleY = cardOwnerY + cardOwnerHeight;
+    const triangleSize = mm2px(30);
+    const triangleX = x + cardWidth - marginSize - triangleSize;
+    const triangleY = qrCodeY + qrCodeSize;
     if (cardType === CARD_TYPE_GOD) {
       drawGodTriangle(triangleX, triangleY, triangleSize);
     } else if (cardType === CARD_TYPE_PATRONS) {
       drawStatusTriangle(triangleX, triangleY, triangleSize);
     }
+
+    //card owner
+    const cardOwnerWidth = cardWidth - 2 * marginSize;
+    const cardOwnerHeight = mm2px(7);
+    const cardOwnerX = x + marginSize;
+    const cardOwnerY = triangleY + triangleSize;
+    const cardOwnerColor = 'black';
+    drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
+    drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
 
     //patron color status
     //...
