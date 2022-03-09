@@ -102,7 +102,7 @@ const STATUS_COLOR_INDIGO = '#00418D';
 const STATUS_COLOR_VIOLET = '#5F2879';
 const STATUS_COLOR_WHITE = '#FFFFFF';
 
-const PATRON_RANK_BORDER_COLOR = '#EEEEEE';
+const PATRON_RANK_BORDER_COLOR = '#BBBBBB';
 const PATRON_RANK_ROWS = 10;
 const PATRON_RANK_COLUMNS = PATRON_RANK_ROWS;
 
@@ -853,7 +853,7 @@ const drawQrCode = function(path, x, y, size, darkColor, lightColor) {
     height: size,
     colorDark : darkColor,
     colorLight : lightColor,
-    correctLevel : QRCode.CorrectLevel.H
+    correctLevel : QRCode.CorrectLevel.L
   };
   let qrCode = new QRCode(divElement, options);
   qrCode.makeCode(text);
