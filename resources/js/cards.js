@@ -87,6 +87,7 @@ const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
 const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
 
+const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
 const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
@@ -101,6 +102,9 @@ const STATUS_COLOR_INDIGO = '#00418D';
 const STATUS_COLOR_VIOLET = '#5F2879';
 const STATUS_COLOR_WHITE = '#FFFFFF';
 
+const PATRON_RANK_BORDER_COLOR = '#EEEEEE';
+const PATRON_RANK_ROWS = 10;
+const PATRON_RANK_COLUMNS = PATRON_RANK_ROWS;
 
 let cardsData = [];
 let filesContents = {};
@@ -956,7 +960,16 @@ const drawCategoriesIcons = function(categories, x, y, size) {
 }
 
 const drawGodTriangle = function(x, y, size) {
-  drawBorderedAndFilledTriangle(x, y, size, 'black', 'white');
+  const context = getContext();
+
+  //drawBorderedAndFilledTriangle(x, y, size, 'black', 'white');
+
+  let image = new Image();
+  image.onload = function() {
+    context.drawImage(image, x, y, size, size);
+  }
+
+  image.src = TRINITY_SYMBOL_URL;
 }
 
 const drawStatusTriangle = function(x, y, size) {
@@ -1038,6 +1051,18 @@ const drawStatusTriangle = function(x, y, size) {
   drawBorderedAndFilledCircle(x + size / 2, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
 }
 
+const drawPatronRank = function(x, y, width, height) {
+  const columnSize = width / PATRON_RANK_COLUMNS;
+  const rowSize = height / PATRON_RANK_ROWS;
+
+  drawFilledRectangle(x, y, width, height, 'white');
+  for (let row = 0; row < PATRON_RANK_ROWS; row++) {
+    for (let column = 0; column < PATRON_RANK_COLUMNS; column++) {
+      drawEmptyRectangle(x + column * columnSize, y + row * rowSize, columnSize, rowSize, PATRON_RANK_BORDER_COLOR);
+    }
+  }
+}
+
 const drawCard = function(cardId) {
   const cardData = cardsData[cardId];
   if (!cardData[CARD_DATA_FIELD_IS_ACTIVE]) {
@@ -1093,8 +1118,8 @@ const drawCard = function(cardId) {
     const qrCodeSize = mm2px(20);
     const qrCodeX = x + cardWidth - qrCodeSize - marginSize;
     const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
-    const qrCodeDarkColor = 'yellow';
-    const qrCodeLightColor = 'black';
+    const qrCodeDarkColor = 'black';
+    const qrCodeLightColor = 'white';
     drawQrCode(dataPath, qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
 
     //language
@@ -1108,12 +1133,12 @@ const drawCard = function(cardId) {
     }
 
     //project name
-    const projectNameText = "MaritumDei.org: MyPatrons.org & Patrons.Space";
+    const projectNameText = "Meritum Dei's My Patrons & Patrons Space";
     const projectNameWidth = cardWidth - 2 * marginSize;
     const projectNameHeight = mm2px(4);
     const projectNameX = x + marginSize;
     const projectNameY = y + cardHeight - projectNameHeight;
-    const projectNameColor = 'blue';
+    const projectNameColor = 'yellow';
     drawText(projectNameText, projectNameX, projectNameY, projectNameWidth, projectNameHeight, projectNameColor, fontStyle, TEXT_ALIGN_JUSTIFY);
 
     //death
@@ -1142,7 +1167,7 @@ const drawCard = function(cardId) {
       drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
     }
 
-    //God symbol or patrons strength
+    //God symbol or patron status
     const triangleSize = mm2px(30);
     const triangleX = x + cardWidth - marginSize - triangleSize;
     const triangleY = qrCodeY + qrCodeSize;
@@ -1152,17 +1177,24 @@ const drawCard = function(cardId) {
       drawStatusTriangle(triangleX, triangleY, triangleSize);
     }
 
+    //patron rank
+    const rankWidth = mm2px(20);
+    const rankHeight = rankWidth;
+    const rankX = x + marginSize;
+    const rankY = orderY + orderHeight;
+    drawPatronRank(rankX, rankY, rankWidth, rankHeight);
+
     //card owner
-    const cardOwnerWidth = cardWidth - 2 * marginSize;
+    const cardOwnerWidth = (cardWidth + marginSize) / 2;
     const cardOwnerHeight = mm2px(7);
-    const cardOwnerX = x + marginSize;
+    const cardOwnerX = x + cardWidth / 2 - marginSize;
     const cardOwnerY = triangleY + triangleSize;
     const cardOwnerColor = 'black';
     drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
     drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
 
-    //patron color status
-    //...
+    //favourite patron
+    //???
   }
 }
 
