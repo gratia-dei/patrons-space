@@ -57,7 +57,9 @@ const CARD_DATA_FIELD_X = 'x';
 const CARD_DATA_FIELD_Y = 'y';
 const CARD_DATA_FIELD_IS_ACTIVE = 'isActive';
 const CARD_DATA_FIELD_PATH = 'path';
+const CARD_DATA_FIELD_REFRESHED_PARAMS_PATH = 'refreshedParamsPath';
 const CARD_DATA_FIELD_FILE_DATA = 'fileData';
+const CARD_DATA_FIELD_PARAMS = 'params';
 
 const CARD_FORM_UNSELECTED_VALUE = '';
 const CARD_FORM_UNSELECTED_NAME = '...';
@@ -83,9 +85,11 @@ const FILE_DATA_ORDER_KEY = 'order';
 
 const CARD_DATA_PARAMS_FIELD_NAME = 'name';
 const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
+const CARD_DATA_PARAMS_FIELD_IMAGES_DATA = 'imagesData';
 const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
 const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
+const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'cardOwner';
 
 const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
@@ -501,7 +505,9 @@ const getInitialCardData = function() {
   result[CARD_DATA_FIELD_X] = 0;
   result[CARD_DATA_FIELD_Y] = 0;
   result[CARD_DATA_FIELD_PATH] = '';
+  result[CARD_DATA_FIELD_REFRESHED_PARAMS_PATH] = '';
   result[CARD_DATA_FIELD_FILE_DATA] = {};
+  result[CARD_DATA_FIELD_PARAMS] = {};
 
   return result;
 }
@@ -916,12 +922,16 @@ const getDataFileParams = function(cardType, data) {
   let result = {};
 
   if (cardType === CARD_TYPE_PATRONS || cardType === CARD_TYPE_GOD) {
+    const cardOwner = getCardOwnerInputValue();
     const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
+
     result[CARD_DATA_PARAMS_FIELD_NAME] = nameData[1];
     result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
+    result[CARD_DATA_PARAMS_FIELD_IMAGES_DATA] = data[FILE_DATA_IMAGES_KEY];
     result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
     result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY];
     result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY];
+    result[CARD_DATA_PARAMS_FIELD_CARD_OWNER] = cardOwner;
   }
 
   return result;
@@ -1109,14 +1119,20 @@ const drawCard = function(cardId) {
 
   if (Object.keys(data).length > 0) {
     const dataPath = cardData[CARD_DATA_FIELD_PATH];
+    const refreshedParamsPath = cardData[CARD_DATA_FIELD_REFRESHED_PARAMS_PATH];
     const cardType = dataPath.replace(/\/.*$/, '');
-    const cardOwner = getCardOwnerInputValue();
 
     const fontColor = DEFAULT_FONT_COLOR;
     const fontStyle = FONT_STYLE_NORMAL;
     const textAlign = TEXT_ALIGN_CENTER;
 
-    const params = getDataFileParams(cardType, data);
+    let params = cardData[CARD_DATA_FIELD_PARAMS];
+    if (refreshedParamsPath !== dataPath) {
+      params = getDataFileParams(cardType, data);
+      cardData[CARD_DATA_FIELD_REFRESHED_PARAMS_PATH] = dataPath;
+      cardData[CARD_DATA_FIELD_PARAMS] = params;
+      cardsData[cardId] = cardData;
+    }
 
     const marginSize = mm2px(3);
 
@@ -1139,7 +1155,7 @@ const drawCard = function(cardId) {
       const imageHeight = imageSize;
       const imageX = x + marginSize;
       const imageY = y + nameHeight;
-      drawImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight, function() {
+      drawImage(params[CARD_DATA_PARAMS_FIELD_IMAGES_DATA]['1'], imageX, imageY, imageWidth, imageHeight, function() {
       });
 
       //QR code
@@ -1219,7 +1235,7 @@ const drawCard = function(cardId) {
       const cardOwnerY = triangleY + triangleSize;
       const cardOwnerColor = 'black';
       drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
-      drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
+      drawText(params[CARD_DATA_PARAMS_FIELD_CARD_OWNER], cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
     });
   }
 }
