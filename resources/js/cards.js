@@ -103,8 +103,25 @@ const STATUS_COLOR_VIOLET = '#5F2879';
 const STATUS_COLOR_WHITE = '#FFFFFF';
 
 const PATRON_RANK_BORDER_COLOR = '#BBBBBB';
+const PATRON_RANK_CELL_SIZE = 2;
 const PATRON_RANK_ROWS = 10;
-const PATRON_RANK_COLUMNS = PATRON_RANK_ROWS;
+const PATRON_RANK_COLUMNS = 10;
+
+const IMAGE_DATA_FIELD_FILE_URL = 'file-url';
+const IMAGE_DATA_FIELD_AREA_TOP_LEFT_X = 'area-top-left-x';
+const IMAGE_DATA_FIELD_AREA_TOP_LEFT_Y = 'area-top-left-y';
+const IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X = 'area-bottom-right-x';
+const IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y = 'area-bottom-right-y';
+const CARD_TYPE_BACKGROUND_IMAGES = {
+  [CARD_TYPE_PATRONS]: {
+    [IMAGE_DATA_FIELD_FILE_URL]: '-add-background-file-url-here-',
+    [IMAGE_DATA_FIELD_AREA_TOP_LEFT_X]: 0,
+    [IMAGE_DATA_FIELD_AREA_TOP_LEFT_Y]: 0,
+    [IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X]: 100,
+    [IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y]: 100,
+  }
+};
+CARD_TYPE_BACKGROUND_IMAGES[CARD_TYPE_GOD] = CARD_TYPE_BACKGROUND_IMAGES[CARD_TYPE_PATRONS];
 
 let cardsData = [];
 let filesContents = {};
@@ -797,12 +814,12 @@ const saveCardDataPath = async function(cardId, selectId) {
   await rebuildCardForm(cardId);
 }
 
-const drawCardImage = function(imageData, x, y, width, height) {
-  const imageUrl = imageData['file-url'];
-  const imageAreaTopLeftX = imageData['area-top-left-x'];
-  const imageAreaTopLeftY = imageData['area-top-left-y'];
-  const imageAreaBottomRightX = imageData['area-bottom-right-x'];
-  const imageAreaBottomRightY = imageData['area-bottom-right-y'];
+const drawImage = function(imageData, x, y, width, height, onLoadFunction) {
+  const imageUrl = imageData[IMAGE_DATA_FIELD_FILE_URL];
+  const imageAreaTopLeftX = imageData[IMAGE_DATA_FIELD_AREA_TOP_LEFT_X];
+  const imageAreaTopLeftY = imageData[IMAGE_DATA_FIELD_AREA_TOP_LEFT_Y];
+  const imageAreaBottomRightX = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X];
+  const imageAreaBottomRightY = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y];
 
   const imageAreaWidth = imageAreaBottomRightX - imageAreaTopLeftX;
   const imageAreaHeight = imageAreaBottomRightY - imageAreaTopLeftY;
@@ -837,6 +854,7 @@ const drawCardImage = function(imageData, x, y, width, height) {
       imageAreaTopLeftX - imageMoveX, imageAreaTopLeftY - imageMoveY, imageWidth, imageHeight,
       x, y, width, height
     );
+    onLoadFunction();
   }
 
   image.src = imageUrl;
@@ -1051,16 +1069,25 @@ const drawStatusTriangle = function(x, y, size) {
   drawBorderedAndFilledCircle(x + size / 2, whiteTriangleY + smallTriangleHeight / 2, circleSize, STATUS_COLOR_BORDER, STATUS_COLOR_CIRCLE);
 }
 
-const drawPatronRank = function(x, y, width, height) {
-  const columnSize = width / PATRON_RANK_COLUMNS;
-  const rowSize = height / PATRON_RANK_ROWS;
+const drawPatronRank = function(x, y, width, height, columns, rows) {
+  const columnSize = width / columns;
+  const rowSize = height / rows;
 
   drawFilledRectangle(x, y, width, height, 'white');
-  for (let row = 0; row < PATRON_RANK_ROWS; row++) {
-    for (let column = 0; column < PATRON_RANK_COLUMNS; column++) {
+  for (let row = 0; row < rows; row++) {
+    for (let column = 0; column < columns; column++) {
       drawEmptyRectangle(x + column * columnSize, y + row * rowSize, columnSize, rowSize, PATRON_RANK_BORDER_COLOR);
     }
   }
+}
+
+const drawCardBackground = function(x, y, width, height, cardType, onLoadFunction) {
+  const imageData = CARD_TYPE_BACKGROUND_IMAGES[cardType];
+
+  drawFilledRectangle(x, y, width, height, CARD_BACKGROUND_COLOR);
+
+  //drawImage(imageData, x, y, width, height, onLoadFunction);
+  onLoadFunction();
 }
 
 const drawCard = function(cardId) {
@@ -1094,107 +1121,106 @@ const drawCard = function(cardId) {
     const marginSize = mm2px(3);
 
     //background
-    drawFilledRectangle(x, y, cardWidth, cardHeight, CARD_BACKGROUND_COLOR);
+    drawCardBackground(x, y, cardWidth, cardHeight, cardType, function() {
 
-    //name
-    const nameWidth = cardWidth - 2 * marginSize;
-    const nameHeight = mm2px(7);
-    const nameX = x + marginSize;
-    const nameY = y;
-    const nameColor = 'white';
-    if (params[CARD_DATA_PARAMS_FIELD_NAME] !== undefined) {
-      drawText(params[CARD_DATA_PARAMS_FIELD_NAME], nameX, nameY, nameWidth, nameHeight, nameColor, fontStyle, textAlign);
-    }
+      //name
+      const nameWidth = cardWidth - 2 * marginSize;
+      const nameHeight = mm2px(7);
+      const nameX = x + marginSize;
+      const nameY = y;
+      const nameColor = 'white';
+      if (params[CARD_DATA_PARAMS_FIELD_NAME] !== undefined) {
+        drawText(params[CARD_DATA_PARAMS_FIELD_NAME], nameX, nameY, nameWidth, nameHeight, nameColor, fontStyle, textAlign);
+      }
 
-    //image
-    const imageSize = mm2px(36);
-    const imageWidth = imageSize;
-    const imageHeight = imageSize;
-    const imageX = x + marginSize;
-    const imageY = y + nameHeight;
-    drawCardImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight);
+      //image
+      const imageSize = mm2px(36);
+      const imageWidth = imageSize;
+      const imageHeight = imageSize;
+      const imageX = x + marginSize;
+      const imageY = y + nameHeight;
+      drawImage(data[FILE_DATA_IMAGES_KEY]['1'], imageX, imageY, imageWidth, imageHeight, function() {
+      });
 
-    //QR code
-    const qrCodeSize = mm2px(20);
-    const qrCodeX = x + cardWidth - qrCodeSize - marginSize;
-    const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
-    const qrCodeDarkColor = 'black';
-    const qrCodeLightColor = 'white';
-    drawQrCode(dataPath, qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
+      //QR code
+      const qrCodeSize = mm2px(20);
+      const qrCodeX = x + cardWidth - qrCodeSize - marginSize;
+      const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
+      const qrCodeDarkColor = 'black';
+      const qrCodeLightColor = 'white';
+      drawQrCode(dataPath, qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
 
-    //language
-    const languageWidth = mm2px(3);
-    const languageHeight = mm2px(3);
-    const languageX = x + cardWidth - languageWidth - marginSize;
-    const languageY = y + nameHeight + imageHeight / 3;
-    const languageColor = 'red';
-    if (params[CARD_DATA_PARAMS_FIELD_LANGUAGE] !== undefined) {
-      drawText(params[CARD_DATA_PARAMS_FIELD_LANGUAGE].toUpperCase(), languageX, languageY, languageWidth, languageHeight, languageColor, fontStyle, TEXT_ALIGN_JUSTIFY);
-    }
+      //language
+      const languageWidth = mm2px(3);
+      const languageHeight = mm2px(3);
+      const languageX = x + cardWidth - languageWidth - marginSize;
+      const languageY = y + nameHeight + imageHeight / 3;
+      const languageColor = 'red';
+      if (params[CARD_DATA_PARAMS_FIELD_LANGUAGE] !== undefined) {
+        drawText(params[CARD_DATA_PARAMS_FIELD_LANGUAGE].toUpperCase(), languageX, languageY, languageWidth, languageHeight, languageColor, fontStyle, TEXT_ALIGN_JUSTIFY);
+      }
 
-    //project name
-    const projectNameText = "Meritum Dei's My Patrons & Patrons Space";
-    const projectNameWidth = cardWidth - 2 * marginSize;
-    const projectNameHeight = mm2px(4);
-    const projectNameX = x + marginSize;
-    const projectNameY = y + cardHeight - projectNameHeight;
-    const projectNameColor = 'yellow';
-    drawText(projectNameText, projectNameX, projectNameY, projectNameWidth, projectNameHeight, projectNameColor, fontStyle, TEXT_ALIGN_JUSTIFY);
+      //project name
+      const projectNameText = "Meritum Dei's My Patrons & Patrons Space";
+      const projectNameWidth = cardWidth - 2 * marginSize;
+      const projectNameHeight = mm2px(4);
+      const projectNameX = x + marginSize;
+      const projectNameY = y + cardHeight - projectNameHeight;
+      const projectNameColor = 'yellow';
+      drawText(projectNameText, projectNameX, projectNameY, projectNameWidth, projectNameHeight, projectNameColor, fontStyle, TEXT_ALIGN_JUSTIFY);
 
-    //death
-    const deathWidth = cardWidth - 2 * marginSize;
-    const deathHeight = mm2px(7);
-    const deathX = x + marginSize;
-    const deathY = y + nameHeight + imageHeight;
-    const deathColor = 'white';
-    if (params[CARD_DATA_PARAMS_FIELD_DEATH] !== undefined) {
-      drawText(params[CARD_DATA_PARAMS_FIELD_DEATH], deathX, deathY, deathWidth, deathHeight, deathColor, fontStyle, TEXT_ALIGN_LEFT);
-    }
+      //death
+      const deathWidth = cardWidth - 2 * marginSize;
+      const deathHeight = mm2px(7);
+      const deathX = x + marginSize;
+      const deathY = y + nameHeight + imageHeight;
+      const deathColor = 'white';
+      if (params[CARD_DATA_PARAMS_FIELD_DEATH] !== undefined) {
+        drawText(params[CARD_DATA_PARAMS_FIELD_DEATH], deathX, deathY, deathWidth, deathHeight, deathColor, fontStyle, TEXT_ALIGN_LEFT);
+      }
 
-    //categories
-    const categoriesSize = mm2px(5);
-    const categoriesX = x + marginSize;
-    const categoriesY = y + nameHeight + imageHeight + deathHeight;
-    drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesSize);
+      //categories
+      const categoriesSize = mm2px(5);
+      const categoriesX = x + marginSize;
+      const categoriesY = y + nameHeight + imageHeight + deathHeight;
+      drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesSize);
 
-    //order
-    const orderWidth = cardWidth / 2;
-    const orderHeight = mm2px(7);
-    const orderX = x + marginSize;
-    const orderY = categoriesY + categoriesSize;
-    const orderColor = 'yellow';
-    if (params[CARD_DATA_PARAMS_FIELD_ORDER] !== undefined) {
-      drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
-    }
+      //order
+      const orderWidth = cardWidth / 2;
+      const orderHeight = mm2px(7);
+      const orderX = x + marginSize;
+      const orderY = categoriesY + categoriesSize;
+      const orderColor = 'yellow';
+      if (params[CARD_DATA_PARAMS_FIELD_ORDER] !== undefined) {
+        drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
+      }
 
-    //God symbol or patron status
-    const triangleSize = mm2px(30);
-    const triangleX = x + cardWidth - marginSize - triangleSize;
-    const triangleY = qrCodeY + qrCodeSize;
-    if (cardType === CARD_TYPE_GOD) {
-      drawGodTriangle(triangleX, triangleY, triangleSize);
-    } else if (cardType === CARD_TYPE_PATRONS) {
-      drawStatusTriangle(triangleX, triangleY, triangleSize);
-    }
+      //God symbol or patron status
+      const triangleSize = mm2px(30);
+      const triangleX = x + cardWidth - marginSize - triangleSize;
+      const triangleY = qrCodeY + qrCodeSize;
+      if (cardType === CARD_TYPE_GOD) {
+        drawGodTriangle(triangleX, triangleY, triangleSize);
+      } else if (cardType === CARD_TYPE_PATRONS) {
+        drawStatusTriangle(triangleX, triangleY, triangleSize);
+      }
 
-    //patron rank
-    const rankWidth = mm2px(20);
-    const rankHeight = rankWidth;
-    const rankX = x + marginSize;
-    const rankY = orderY + orderHeight;
-    drawPatronRank(rankX, rankY, rankWidth, rankHeight);
+      //patron rank
+      const rankWidth = mm2px(PATRON_RANK_COLUMNS * PATRON_RANK_CELL_SIZE);
+      const rankHeight = mm2px(PATRON_RANK_ROWS * PATRON_RANK_CELL_SIZE);
+      const rankX = x + marginSize;
+      const rankY = orderY + orderHeight;
+      drawPatronRank(rankX, rankY, rankWidth, rankHeight, PATRON_RANK_COLUMNS, PATRON_RANK_ROWS);
 
-    //card owner
-    const cardOwnerWidth = (cardWidth + marginSize) / 2;
-    const cardOwnerHeight = mm2px(7);
-    const cardOwnerX = x + cardWidth / 2 - marginSize;
-    const cardOwnerY = triangleY + triangleSize;
-    const cardOwnerColor = 'black';
-    drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
-    drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
-
-    //favourite patron
-    //???
+      //card owner
+      const cardOwnerWidth = (cardWidth + marginSize) / 2;
+      const cardOwnerHeight = mm2px(7);
+      const cardOwnerX = x + cardWidth / 2 - marginSize;
+      const cardOwnerY = triangleY + triangleSize;
+      const cardOwnerColor = 'black';
+      drawFilledRectangle(cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, 'white');
+      drawText(cardOwner, cardOwnerX, cardOwnerY, cardOwnerWidth, cardOwnerHeight, cardOwnerColor, fontStyle, TEXT_ALIGN_CENTER);
+    });
   }
 }
 
