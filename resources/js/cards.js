@@ -85,7 +85,11 @@ const FILE_DATA_ORDER_KEY = 'order';
 
 const CARD_DATA_PARAMS_FIELD_NAME = 'name';
 const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
-const CARD_DATA_PARAMS_FIELD_IMAGES_DATA = 'imagesData';
+const CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL = 'imageFileUrl';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X = 'imageAreaTopLeftX';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y = 'imageAreaTopLeftY';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X = 'imageAreaBottomRightX';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y = 'imageAreaBottomRightY';
 const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
 const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
@@ -633,10 +637,36 @@ const getTranslatedNameData = function(data, key) {
   return [name + nameOtherLanguageSuffix, name, language];
 }
 
+const addBrChildElement = function(element) {
+  let br = document.createElement('br');
+  element.appendChild(br);
+}
+
 const addSpanChildElement = function(element, text) {
   let span = document.createElement('span');
   span.innerHTML = text;
   element.appendChild(span);
+}
+
+const addInputChildElement = function(element, name, value) {
+  let input = document.createElement('input');
+  input.name = name;
+  input.value = value;
+  element.appendChild(input);
+}
+
+const addInputFieldsFormDivChildElement = function(element, cardId, cardDataParams) {
+  let div = document.createElement('div');
+  div.id = 'card-form-inputs-' + cardId;
+  div.style = 'display:none';
+
+  for (const field in cardDataParams) {
+    addBrChildElement(div);
+    addSpanChildElement(div, field + ': ');
+    addInputChildElement(div, field, cardDataParams[field]);
+  }
+
+  element.appendChild(div);
 }
 
 const addCardFormSelectElement = function(element, id, options, selectedOption, onChangeFunction) {
@@ -787,7 +817,7 @@ const rebuildCardForm = async function(cardId) {
   await buildCardFormSelects(cardId, pathArr, [], options);
 
   //card input fields
-  //...todo
+  addInputFieldsFormDivChildElement(div, cardId, cardData[CARD_DATA_FIELD_PARAMS]);
 }
 
 const saveCardDataPath = async function(cardId, selectId) {
@@ -924,13 +954,18 @@ const getDataFileParams = function(cardType, data) {
   if (cardType === CARD_TYPE_PATRONS || cardType === CARD_TYPE_GOD) {
     const cardOwner = getCardOwnerInputValue();
     const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
+    const imageData = data[FILE_DATA_IMAGES_KEY]['1'];
 
     result[CARD_DATA_PARAMS_FIELD_NAME] = nameData[1];
     result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
-    result[CARD_DATA_PARAMS_FIELD_IMAGES_DATA] = data[FILE_DATA_IMAGES_KEY];
+    result[CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL] = imageData[IMAGE_DATA_FIELD_FILE_URL];
+    result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X] = imageData[IMAGE_DATA_FIELD_AREA_TOP_LEFT_X];
+    result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y] = imageData[IMAGE_DATA_FIELD_AREA_TOP_LEFT_Y];
+    result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X] = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X];
+    result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y] = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y];
     result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
-    result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY];
-    result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY];
+    result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY] ? data[FILE_DATA_CATEGORIES_KEY].join(',') : '';
+    result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY] ? data[FILE_DATA_ORDER_KEY].join(',') : '';
     result[CARD_DATA_PARAMS_FIELD_CARD_OWNER] = cardOwner;
   }
 
@@ -1155,7 +1190,14 @@ const drawCard = function(cardId) {
       const imageHeight = imageSize;
       const imageX = x + marginSize;
       const imageY = y + nameHeight;
-      drawImage(params[CARD_DATA_PARAMS_FIELD_IMAGES_DATA]['1'], imageX, imageY, imageWidth, imageHeight, function() {
+      const imageData = {
+        [IMAGE_DATA_FIELD_FILE_URL]: params[CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL],
+        [IMAGE_DATA_FIELD_AREA_TOP_LEFT_X]: params[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X],
+        [IMAGE_DATA_FIELD_AREA_TOP_LEFT_Y]: params[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y],
+        [IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X]: params[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X],
+        [IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y]: params[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y]
+      }
+      drawImage(imageData, imageX, imageY, imageWidth, imageHeight, function() {
       });
 
       //QR code
@@ -1199,7 +1241,7 @@ const drawCard = function(cardId) {
       const categoriesSize = mm2px(5);
       const categoriesX = x + marginSize;
       const categoriesY = y + nameHeight + imageHeight + deathHeight;
-      drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesSize);
+      drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES].split(','), categoriesX, categoriesY, categoriesSize);
 
       //order
       const orderWidth = cardWidth / 2;
@@ -1208,7 +1250,7 @@ const drawCard = function(cardId) {
       const orderY = categoriesY + categoriesSize;
       const orderColor = 'yellow';
       if (params[CARD_DATA_PARAMS_FIELD_ORDER] !== undefined) {
-        drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].join(', '), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
+        drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].replace(/,([^ ])/g, ', $1'), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);
       }
 
       //God symbol or patron status
