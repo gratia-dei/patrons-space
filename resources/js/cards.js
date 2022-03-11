@@ -64,6 +64,7 @@ const CARD_DATA_FIELD_PARAMS = 'params';
 const CARD_FORM_UNSELECTED_VALUE = '';
 const CARD_FORM_UNSELECTED_NAME = '...';
 const CARD_FORM_ID_PREFIX = 'card-form-';
+const CARD_FORM_INPUTS_DIV_ID_PREFIX = 'card-form-inputs-';
 
 const CARD_TYPE_GOD = 'god';
 const CARD_TYPE_PATRONS = 'patrons';
@@ -85,16 +86,16 @@ const FILE_DATA_ORDER_KEY = 'order';
 
 const CARD_DATA_PARAMS_FIELD_NAME = 'name';
 const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
-const CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL = 'imageFileUrl';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X = 'imageAreaTopLeftX';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y = 'imageAreaTopLeftY';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X = 'imageAreaBottomRightX';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y = 'imageAreaBottomRightY';
+const CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL = 'image-file-url';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X = 'image-area-top-left-x';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y = 'image-area-top-left-y';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X = 'image-area-bottom-right-x';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y = 'image-area-bottom-right-y';
 const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
 const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
-const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'cardOwner';
-const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'qrCodeUrl';
+const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'card-owner';
+const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'qr-code-url';
 
 const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
@@ -638,6 +639,11 @@ const getTranslatedNameData = function(data, key) {
   return [name + nameOtherLanguageSuffix, name, language];
 }
 
+const addHrChildElement = function(element) {
+  let hr = document.createElement('hr');
+  element.appendChild(hr);
+}
+
 const addBrChildElement = function(element) {
   let br = document.createElement('br');
   element.appendChild(br);
@@ -656,16 +662,34 @@ const addInputChildElement = function(element, name, value) {
   element.appendChild(input);
 }
 
+const addButtonChildElement = function(element, name, onClickFunction) {
+  let button = document.createElement('button');
+  button.onclick = onClickFunction;
+  button.innerHTML = name;
+  element.appendChild(button);
+}
+
 const addInputFieldsFormDivChildElement = function(element, cardId, cardDataParams) {
+  const divId = CARD_FORM_INPUTS_DIV_ID_PREFIX + cardId;
+
   let div = document.createElement('div');
-  div.id = 'card-form-inputs-' + cardId;
+  div.id = divId;
   div.style = 'display:none';
 
+  addButtonChildElement(div, 'Hide values', function() {
+    document.getElementById(divId).style = 'display:none';
+  });
   for (const field in cardDataParams) {
     addBrChildElement(div);
     addSpanChildElement(div, field + ': ');
     addInputChildElement(div, field, cardDataParams[field]);
   }
+  addBrChildElement(div);
+  addButtonChildElement(div, 'Refresh values', function() {
+    saveInputValuesIntoCardParams(cardId);
+    drawCard(cardId);
+  });
+  addHrChildElement(div);
 
   element.appendChild(div);
 }
@@ -818,7 +842,21 @@ const rebuildCardForm = async function(cardId) {
   await buildCardFormSelects(cardId, pathArr, [], options);
 
   //card input fields
+  addSpanChildElement(div, '&nbsp;&nbsp;&nbsp;');
+  addButtonChildElement(div, 'Edit values', function() {
+    const divId = CARD_FORM_INPUTS_DIV_ID_PREFIX + cardId;
+    document.getElementById(divId).style = '';
+  });
   addInputFieldsFormDivChildElement(div, cardId, cardData[CARD_DATA_FIELD_PARAMS]);
+}
+
+const saveInputValuesIntoCardParams = function(cardId) {
+  const div = document.getElementById(CARD_FORM_INPUTS_DIV_ID_PREFIX + cardId);
+  for (const child of div.childNodes) {
+    if (child.tagName === 'INPUT') {
+      cardsData[cardId][CARD_DATA_FIELD_PARAMS][child.name] = child.value;
+    }
+  }
 }
 
 const saveCardDataPath = async function(cardId, selectId) {
