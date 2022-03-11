@@ -94,6 +94,7 @@ const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
 const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
 const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
 const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'cardOwner';
+const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'qrCodeUrl';
 
 const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
@@ -896,11 +897,9 @@ const drawImage = function(imageData, x, y, width, height, onLoadFunction) {
   image.src = imageUrl;
 }
 
-const drawQrCode = function(path, x, y, size, darkColor, lightColor) {
+const drawQrCode = function(url, x, y, size, darkColor, lightColor) {
   const context = getContext();
   const divElement = document.createElement('div');
-
-  const text = getProtocol() + '//' + getHostname() + '/' + path;
 
   const options = {
     width: size,
@@ -910,7 +909,7 @@ const drawQrCode = function(path, x, y, size, darkColor, lightColor) {
     correctLevel : QRCode.CorrectLevel.L
   };
   let qrCode = new QRCode(divElement, options);
-  qrCode.makeCode(text);
+  qrCode.makeCode(url);
 
   let image = divElement.querySelector('img');
   image.onload = function() {
@@ -948,13 +947,14 @@ const drawText = function(text, x, y, width, height, fontColor, fontStyle = FONT
   }
 }
 
-const getDataFileParams = function(cardType, data) {
+const getDataFileParams = function(cardType, data, dataPath) {
   let result = {};
 
   if (cardType === CARD_TYPE_PATRONS || cardType === CARD_TYPE_GOD) {
     const cardOwner = getCardOwnerInputValue();
     const nameData = getTranslatedNameData(data, FILE_DATA_NAMES_KEY);
     const imageData = data[FILE_DATA_IMAGES_KEY]['1'];
+    const qrCodeUrl = getProtocol() + '//' + getHostname() + '/' + dataPath;
 
     result[CARD_DATA_PARAMS_FIELD_NAME] = nameData[1];
     result[CARD_DATA_PARAMS_FIELD_LANGUAGE] = nameData[2];
@@ -967,6 +967,7 @@ const getDataFileParams = function(cardType, data) {
     result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY] ? data[FILE_DATA_CATEGORIES_KEY].join(',') : '';
     result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY] ? data[FILE_DATA_ORDER_KEY].join(',') : '';
     result[CARD_DATA_PARAMS_FIELD_CARD_OWNER] = cardOwner;
+    result[CARD_DATA_PARAMS_FIELD_QR_CODE_URL] = qrCodeUrl;
   }
 
   return result;
@@ -1163,7 +1164,7 @@ const drawCard = function(cardId) {
 
     let params = cardData[CARD_DATA_FIELD_PARAMS];
     if (refreshedParamsPath !== dataPath) {
-      params = getDataFileParams(cardType, data);
+      params = getDataFileParams(cardType, data, dataPath);
       cardData[CARD_DATA_FIELD_REFRESHED_PARAMS_PATH] = dataPath;
       cardData[CARD_DATA_FIELD_PARAMS] = params;
       cardsData[cardId] = cardData;
@@ -1206,7 +1207,7 @@ const drawCard = function(cardId) {
       const qrCodeY = y + nameHeight + imageHeight - qrCodeSize;
       const qrCodeDarkColor = 'black';
       const qrCodeLightColor = 'white';
-      drawQrCode(dataPath, qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
+      drawQrCode(params[CARD_DATA_PARAMS_FIELD_QR_CODE_URL], qrCodeX, qrCodeY, qrCodeSize, qrCodeDarkColor, qrCodeLightColor);
 
       //language
       const languageWidth = mm2px(3);
