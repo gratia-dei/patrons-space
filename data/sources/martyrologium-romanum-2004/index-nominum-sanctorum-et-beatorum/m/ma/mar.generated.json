@@ -1,7 +1,9 @@
 {
-    "143": {
-        "1": "records/patrons/i/1",
-        "2": "records/patrons/i/1#1",
-        "3": "records/patrons/i/1#2"
+    "data-links": {
+        "143": {
+            "1": "records/patrons/i/1",
+            "2": "records/patrons/i/1#1",
+            "3": "records/patrons/i/1#2"
+        }
     }
 }

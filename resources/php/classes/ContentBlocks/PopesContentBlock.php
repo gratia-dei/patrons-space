@@ -82,7 +82,7 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
             foreach ($popeData as $field => $values) {
                 if (in_array($field, self::TRANSLATED_INDEXES)) {
                     foreach ($values as $language => $text) {
-                        $result["$key-$field"][$language] = $this->getTextWithSpecialLinks($text, $aliases[$key] ?? []);
+                        $result["$key-$field"][$language] = $this->getTextWithSpecialLinks($text, $aliases[self::DATA_LINKS_GENERATED_FILES_INDEX][$key] ?? []);
                     }
                 }
             }

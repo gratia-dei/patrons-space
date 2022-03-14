@@ -44,7 +44,8 @@ class GenerateDataLinkFilesProcedure extends Procedure
         }
         $this->checkGeneratedFilesData();
 
-        $this->saveGeneratedFiles($this->generatedFilesData);
+        $indexedGeneratedFilesData = $this->getIndexedGeneratedFilesData($this->generatedFilesData);
+        $this->saveGeneratedFiles($indexedGeneratedFilesData);
     }
 
     private function addDataLinks(array $data, string $sourceFilePath): void
@@ -129,6 +130,17 @@ class GenerateDataLinkFilesProcedure extends Procedure
             } else if (is_array($value)) {
                 $result = $this->getFileDataLinks($value, $fieldName, $result, trim("$path/$field", '/'));
             }
+        }
+
+        return $result;
+    }
+
+    private function getIndexedGeneratedFilesData(array $generatedFilesData): array
+    {
+        $result = [];
+
+        foreach ($generatedFilesData as $generatedFilePath => $data) {
+            $result[$generatedFilePath][self::DATA_LINKS_GENERATED_FILES_INDEX] = $data;
         }
 
         return $result;

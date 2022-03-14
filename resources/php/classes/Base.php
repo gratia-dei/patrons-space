@@ -15,6 +15,8 @@ abstract class Base
 
     protected const LANG_VARIABLE_PREFIX = 'lang-';
 
+    protected const DATA_LINKS_GENERATED_FILES_INDEX = 'data-links';
+
     private const RECORD_ID_WITH_NAME_EXTENSION_SEPARATOR = '--';
     private const RECORD_ID_NAME_EXTENSION_CHARACTERS_MAPPING = [
         ' ' => '-',

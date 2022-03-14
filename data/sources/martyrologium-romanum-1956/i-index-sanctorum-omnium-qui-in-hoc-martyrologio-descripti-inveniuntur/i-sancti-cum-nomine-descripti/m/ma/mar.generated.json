@@ -1,10 +1,12 @@
 {
-    "95": {
-        "1": "records/patrons/i/1",
-        "2": "records/patrons/i/1#2"
-    },
-    "108": {
-        "1": "records/patrons/i/1",
-        "2": "records/patrons/i/1#1"
+    "data-links": {
+        "95": {
+            "1": "records/patrons/i/1",
+            "2": "records/patrons/i/1#2"
+        },
+        "108": {
+            "1": "records/patrons/i/1",
+            "2": "records/patrons/i/1#1"
+        }
     }
 }
