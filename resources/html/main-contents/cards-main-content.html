@@ -1,25 +1,23 @@
 <div id="cards-main-content">
-  Form in testing mode ...
-  <hr />
   <div id="ppi-test"></div>
   <div id="main-form">
-    Paper format: <select id="paper-format"></select>
-    | Paper orientation: <select id="paper-orientation"></select>
-    | Margin size: <select id="margin-size"></select>
-    | Scale (PPI: pixels per inch): <select id="ppi"></select>
+    #lang-paper-format|capitalize#: <select id="paper-format"></select>
+    | #lang-paper-orientation|capitalize#: <select id="paper-orientation"></select>
+    | #lang-margin-size|capitalize#: <select id="margin-size"></select>
+    | #lang-ppi-scale|capitalize#: <select id="ppi"></select>
     <br />
-    <button onClick="buildCanvas()">Rebuild</button>
+    <button onClick="buildCanvas()">#lang-rebuild-page|capitalize#</button>
   </div>
   <hr />
   <div id="card-owner-form">
-    Card owner: <input id="card-owner" type="text" />
+    #lang-card-owner|capitalize#: <input id="card-owner" type="text" />
   </div>
   <hr />
   <div id="cards-forms">
   </div>
   <hr />
   <div id="print-form">
-    <button onClick="printCanvas()">#lang-print|capitalize#</button>
+    <button onClick="printCanvas()">#lang-print-page|capitalize#</button>
   </div>
   <hr />
   <canvas id="cards-canvas"></canvas>

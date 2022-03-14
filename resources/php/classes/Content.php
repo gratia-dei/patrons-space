@@ -175,7 +175,7 @@ abstract class Content extends Base
                 //--- string to string modifiers:
                 case self::MODIFIER_CAPITALIZE:
                     $value = mb_strtoupper(mb_substr($value, 0, 1, self::ENCODING), self::ENCODING)
-                        . mb_strtolower(mb_substr($value, 1, mb_strlen($value), self::ENCODING), self::ENCODING);
+                        . mb_substr($value, 1, mb_strlen($value), self::ENCODING);
                     break;
                 case self::MODIFIER_CAPITALIZE_ALL:
                     $value = mb_convert_case($value, MB_CASE_TITLE, self::ENCODING);

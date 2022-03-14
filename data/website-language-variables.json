@@ -123,6 +123,11 @@
         "pl": "ukryj pola"
     },
 
+    "lang-horizontal": {
+        "en": "horizontal",
+        "pl": "poziomy"
+    },
+
     "lang-image-area-bottom-right-x": {
         "en": "image selected area bottom right X",
         "pl": "dolny prawy X wybranego obszaru obrazu"
@@ -183,6 +188,11 @@
         "pl": "strona główna"
     },
 
+    "lang-margin-size": {
+        "en": "margin size",
+        "pl": "rozmiar marginesu"
+    },
+
     "lang-my-patrons-for-today": {
         "en": "My Patrons for today",
         "pl": "Moi Patroni na dziś"
@@ -222,6 +232,16 @@
         "pl": "strona"
     },
 
+    "lang-paper-format": {
+        "en": "paper format",
+        "pl": "format papieru"
+    },
+
+    "lang-paper-orientation": {
+        "en": "paper orientation",
+        "pl": "układ papieru"
+    },
+
     "lang-parent-directory": {
         "en": "parent directory",
         "pl": "katalog nadrzędny"
@@ -237,14 +257,24 @@
         "pl": "pozycja"
     },
 
-    "lang-print": {
-        "en": "print",
-        "pl": "drukuj"
+    "lang-ppi-scale": {
+        "en": "scale (PPI: pixels per inch)",
+        "pl": "skala (PPI: piksele na cal)"
+    },
+
+    "lang-print-page": {
+        "en": "print page",
+        "pl": "drukuj stronę"
     },
 
     "lang-qr-code-url": {
         "en": "QR code URL",
         "pl": "URL kodu QR"
+    },
+
+    "lang-rebuild-page": {
+        "en": "rebuild page",
+        "pl": "przebuduj stronę"
     },
 
     "lang-refresh-fields": {
@@ -276,5 +306,10 @@
         "en": "sources",
         "la": "fontes",
         "pl": "źródła"
+    },
+
+    "lang-vertical": {
+        "en": "vertical",
+        "pl": "pionowy"
     }
 }

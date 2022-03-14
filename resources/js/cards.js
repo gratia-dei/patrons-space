@@ -9,8 +9,8 @@ const ALLOWED_PAPER_FORMAT_TYPES = ['A', 'B', 'C'];
 const ALLOWED_PAPER_FORMAT_MIN_SIZE = 0;
 const ALLOWED_PAPER_FORMAT_MAX_SIZE = 6;
 const ALLOWED_PAPER_ORIENTATIONS = {
-  'v': 'vertical',
-  'h': 'horizontal'
+  'v': 'lang-vertical',
+  'h': 'lang-horizontal'
 };
 const ALLOWED_MARGIN_MIN_SIZE = 0;
 const ALLOWED_MARGIN_MAX_SIZE = 50;
@@ -219,7 +219,7 @@ const buildPaperOrientationSelect = function() {
     let option = document.createElement('option');
 
     option.value = key;
-    option.innerHTML = value;
+    option.innerHTML = getLanguageVariable(value);
     if (key === DEFAULT_PAPER_ORIENTATION) {
       option.selected = 'selected';
     }
