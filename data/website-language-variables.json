@@ -35,6 +35,11 @@
         "pl": "kononizacja"
     },
 
+    "lang-card-owner": {
+        "en": "card owner",
+        "pl": "właściciel karty"
+    },
+
     "lang-cards": {
         "en": "cards",
         "pl": "karty"
@@ -84,6 +89,11 @@
         "pl": "data śmierci"
     },
 
+    "lang-edit-fields": {
+        "en": "edit fields",
+        "pl": "edytuj pola"
+    },
+
     "lang-email-to-us": {
         "en": "mailto:patrons.space@mypatrons.org"
     },
@@ -106,6 +116,36 @@
     "lang-files": {
         "en": "files",
         "pl": "pliki"
+    },
+
+    "lang-hide-fields": {
+        "en": "hide fields",
+        "pl": "ukryj pola"
+    },
+
+    "lang-image-area-bottom-right-x": {
+        "en": "image selected area bottom right X",
+        "pl": "dolny prawy X wybranego obszaru obrazu"
+    },
+
+    "lang-image-area-bottom-right-y": {
+        "en": "image selected area bottom right Y",
+        "pl": "dolny prawy Y wybranego obszaru obrazu"
+    },
+
+    "lang-image-area-top-left-x": {
+        "en": "image selected area top left X",
+        "pl": "górny lewy X wybranego obszaru obrazu"
+    },
+
+    "lang-image-area-top-left-y": {
+        "en": "image selected area top left Y",
+        "pl": "górny lewy Y wybranego obszaru obrazu"
+    },
+
+    "lang-image-file-url": {
+        "en": "image file URL",
+        "pl": "URL pliku z obrazem"
     },
 
     "lang-invalid-location": {
@@ -153,6 +193,12 @@
         "pl": "brak"
     },
 
+    "lang-name": {
+        "en": "name",
+        "la": "nomen",
+        "pl": "nazwa"
+    },
+
     "lang-order": {
         "en": "order",
         "la": "ordo",
@@ -194,6 +240,16 @@
     "lang-print": {
         "en": "print",
         "pl": "drukuj"
+    },
+
+    "lang-qr-code-url": {
+        "en": "QR code URL",
+        "pl": "URL kodu QR"
+    },
+
+    "lang-refresh-fields": {
+        "en": "refresh fields",
+        "pl": "odśwież pola"
     },
 
     "lang-resource": {

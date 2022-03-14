@@ -84,18 +84,18 @@ const FILE_DATA_DEATH_KEY = 'died';
 const FILE_DATA_CATEGORIES_KEY = 'categories';
 const FILE_DATA_ORDER_KEY = 'order';
 
-const CARD_DATA_PARAMS_FIELD_NAME = 'name';
-const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'language';
-const CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL = 'image-file-url';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X = 'image-area-top-left-x';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y = 'image-area-top-left-y';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X = 'image-area-bottom-right-x';
-const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y = 'image-area-bottom-right-y';
-const CARD_DATA_PARAMS_FIELD_DEATH = 'death';
-const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'categories';
-const CARD_DATA_PARAMS_FIELD_ORDER = 'order';
-const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'card-owner';
-const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'qr-code-url';
+const CARD_DATA_PARAMS_FIELD_NAME = 'lang-name';
+const CARD_DATA_PARAMS_FIELD_LANGUAGE = 'lang-language';
+const CARD_DATA_PARAMS_FIELD_IMAGE_FILE_URL = 'lang-image-file-url';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_X = 'lang-image-area-top-left-x';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_TOP_LEFT_Y = 'lang-image-area-top-left-y';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X = 'lang-image-area-bottom-right-x';
+const CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y = 'lang-image-area-bottom-right-y';
+const CARD_DATA_PARAMS_FIELD_DEATH = 'lang-date-of-death';
+const CARD_DATA_PARAMS_FIELD_CATEGORIES = 'lang-categories';
+const CARD_DATA_PARAMS_FIELD_ORDER = 'lang-order';
+const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'lang-card-owner';
+const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'lang-qr-code-url';
 
 const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
 const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
@@ -133,6 +133,15 @@ const CARD_TYPE_BACKGROUND_IMAGES = {
 };
 CARD_TYPE_BACKGROUND_IMAGES[CARD_TYPE_GOD] = CARD_TYPE_BACKGROUND_IMAGES[CARD_TYPE_PATRONS];
 
+CSS_INVISIBLE = 'display: none';
+
+LANGUAGE_JSON_FILE = '/files/data/website-language-variables.json';
+LANGUAGE_MISSING_VARIABLE_SIGN = '!!!';
+LANGUAGE_VARIABLE_EDIT_BUTTON = 'lang-edit-fields';
+LANGUAGE_VARIABLE_HIDE_BUTTON = 'lang-hide-fields';
+LANGUAGE_VARIABLE_REFRESH_BUTTON = 'lang-refresh-fields';
+
+let languageVariables = {};
 let cardsData = [];
 let filesContents = {};
 let filesContentsErrors = {};
@@ -175,7 +184,8 @@ const getContext = function() {
   return canvas.getContext('2d');
 }
 
-const buildForm = function() {
+const buildForm = async function() {
+  languageVariables = await getJsonFromFile(LANGUAGE_JSON_FILE);
   buildPaperFormatSelect();
   buildPaperOrientationSelect();
   buildMarginSizeSelect();
@@ -621,6 +631,39 @@ const getLanguage = function() {
   return hostname.replace(/\..*$/, '');
 }
 
+const getLanguageVariable = function(variable, capitalize) {
+  let result = LANGUAGE_MISSING_VARIABLE_SIGN;
+
+  const variableTranslations = languageVariables[variable];
+  if (variableTranslations === undefined) {
+    return result;
+  }
+
+  let language = getLanguage();
+  let translation = variableTranslations[language];
+  let foundLanguageTranslation = true;
+
+  if (translation === undefined) {
+    foundLanguageTranslation = false;
+    for (language in variableTranslations) {
+      result = variableTranslations[language];
+      break;
+    }
+  } else {
+    result = translation;
+  }
+
+  if (capitalize) {
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+  }
+
+  if (!foundLanguageTranslation) {
+    result += ' [' + language + ']';
+  }
+
+  return result;
+}
+
 const getTranslatedNameData = function(data, key) {
   const names = data[key];
   let language = getLanguage();
@@ -674,18 +717,18 @@ const addInputFieldsFormDivChildElement = function(element, cardId, cardDataPara
 
   let div = document.createElement('div');
   div.id = divId;
-  div.style = 'display:none';
+  div.style = CSS_INVISIBLE;
 
-  addButtonChildElement(div, 'Hide values', function() {
-    document.getElementById(divId).style = 'display:none';
+  addButtonChildElement(div, getLanguageVariable(LANGUAGE_VARIABLE_HIDE_BUTTON, true), function() {
+    document.getElementById(divId).style = CSS_INVISIBLE;
   });
   for (const field in cardDataParams) {
     addBrChildElement(div);
-    addSpanChildElement(div, field + ': ');
+    addSpanChildElement(div, getLanguageVariable(field, true) + ': ');
     addInputChildElement(div, field, cardDataParams[field]);
   }
   addBrChildElement(div);
-  addButtonChildElement(div, 'Refresh values', function() {
+  addButtonChildElement(div, getLanguageVariable(LANGUAGE_VARIABLE_REFRESH_BUTTON, true), function() {
     saveInputValuesIntoCardParams(cardId);
     drawCard(cardId);
   });
@@ -843,7 +886,7 @@ const rebuildCardForm = async function(cardId) {
 
   //card input fields
   addSpanChildElement(div, '&nbsp;&nbsp;&nbsp;');
-  addButtonChildElement(div, 'Edit values', function() {
+  addButtonChildElement(div, getLanguageVariable(LANGUAGE_VARIABLE_EDIT_BUTTON, true), function() {
     const divId = CARD_FORM_INPUTS_DIV_ID_PREFIX + cardId;
     document.getElementById(divId).style = '';
   });
