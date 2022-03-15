@@ -25,10 +25,9 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
     {
         $categoryItemContent = $this->getOriginalHtmlFileContent('items/category-item.html');
 
-        $filePath = $this->getDataFileSuffix($path);
-        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+        $fileData = $this->getConsolidatedDataFilesArray($path);
 
-        $translations = $this->getPreparedTranslations($fileData);
+        $translations = $this->getPreparedTranslations($fileData[self::MAIN_FILE_DATA_INDEX] ?? []);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
@@ -49,7 +48,7 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
         $variables['categories-title'] = $translatedName;
 
         $categoryItemsContent = '';
-        foreach ($fileData ?? [] as $recordId => $recordData) {
+        foreach ($fileData[self::MAIN_FILE_DATA_INDEX] ?? [] as $recordId => $recordData) {
             $categoryItemsContent .= $this->getRecordContent($recordId);
         }
         $variables['category-items'] = $categoryItemsContent;
@@ -60,7 +59,7 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
     public function getRecordContent(string $recordId): string
     {
         $categoryItemContent = $this->categoryItemContent;
-        $categoryRow = $this->fileData[$recordId] ?? [];
+        $categoryRow = $this->fileData[self::MAIN_FILE_DATA_INDEX][$recordId] ?? [];
         $textVariables = $this->textVariables;
 
         $name = self::VARIABLE_NAME_SIGN . $recordId . '-' . self::NAME_INDEX . self::VARIABLE_NAME_SIGN;
@@ -90,7 +89,7 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
         $itemContent = $this->getOriginalHtmlFileContent('items/categories-list-item.html');
 
         foreach ($categories as $category) {
-            $categoryRow = $fileData[$category] ?? [];
+            $categoryRow = $fileData[self::MAIN_FILE_DATA_INDEX][$category] ?? [];
 
             $name = self::VARIABLE_NAME_SIGN . $category . '-' . self::NAME_INDEX . self::VARIABLE_NAME_SIGN;
             if (in_array(self::CATEGORY_FEMALE, $categories) && isset($categoryRow[self::FEMALE_EQUIVALENT_NAME_INDEX])) {

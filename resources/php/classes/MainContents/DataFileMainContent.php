@@ -4,16 +4,14 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 {
     private $path;
     private $fileNameTranslated;
-    private $fileData;
-    private $generatedFileData;
     private $contentBlockClass;
 
     public function configure(string $path): bool
     {
         $directoryPath = dirname($path);
 
-        $filePath = $path . self::DATA_FILE_EXTENSION;
-        $generatedFilePath = $path . self::GENERATED_FILE_NAME_SUFFIX . self::DATA_FILE_EXTENSION;
+        $filePath = $this->getDataFileSuffix($path);
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
 
         if (in_array($filePath, [
             $this->getIndexFilePath($directoryPath),
@@ -22,8 +20,6 @@ class DataFileMainContent extends MainContent implements MainContentInterface
             return false;
         }
 
-        $fileData = $this->getOriginalJsonFileContentArray($filePath);
-        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
         if (!$this->dataPathExists($filePath) && !$this->dataPathExists($generatedFilePath)) {
             return false;
         }
@@ -54,8 +50,6 @@ class DataFileMainContent extends MainContent implements MainContentInterface
 
         $this->path = $path;
         $this->fileNameTranslated = $this->getFileNameTranslated($path, $indexVariables);
-        $this->fileData = $fileData;
-        $this->generatedFileData = $generatedFileData;
         $this->contentBlockClass = $contentBlockClass;
 
         return true;

@@ -2,6 +2,8 @@
 
 abstract class Content extends Base
 {
+    protected const MAIN_FILE_DATA_INDEX = 'main-data';
+
     protected const ENCODING = 'UTF-8';
 
     protected const VARIABLE_NAME_SIGN = '#';
@@ -203,5 +205,22 @@ abstract class Content extends Base
         }
 
         return $value;
+    }
+
+    protected function getConsolidatedDataFilesArray(string $path): array
+    {
+        $result = [];
+
+        $staticFilePath = $this->getDataFileSuffix($path);
+        $staticFileData = $this->getOriginalJsonFileContentArray($staticFilePath);
+        $result[self::MAIN_FILE_DATA_INDEX] = $this->getOriginalJsonFileContentArray($staticFilePath);
+
+        $generatedFilePath = $this->getGeneratedFileSuffix($path);
+        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
+        foreach ($generatedFileData as $index => $data) {
+            $result[$index] = $data;
+        }
+
+        return $result;
     }
 }
