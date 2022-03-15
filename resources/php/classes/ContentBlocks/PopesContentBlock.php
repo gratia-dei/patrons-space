@@ -24,7 +24,7 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
         $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
-        $translations = $this->getPreparedTranslations($fileData, $generatedFileData);
+        $translations = $this->getPreparedTranslations($fileData, $generatedFileData[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? []);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
@@ -82,7 +82,7 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
             foreach ($popeData as $field => $values) {
                 if (in_array($field, self::TRANSLATED_INDEXES)) {
                     foreach ($values as $language => $text) {
-                        $result["$key-$field"][$language] = $this->getTextWithSpecialLinks($text, $aliases[self::DATA_LINKS_GENERATED_FILES_INDEX][$key] ?? []);
+                        $result["$key-$field"][$language] = $this->getTextWithSpecialLinks($text, $aliases[$key] ?? []);
                     }
                 }
             }

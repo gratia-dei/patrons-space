@@ -25,7 +25,7 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
         $generatedFilePath = $this->getGeneratedFileSuffix($path);
         $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
 
-        $translations = $this->getRecordTranslations($fileData, $generatedFileData);
+        $translations = $this->getRecordTranslations($fileData, $generatedFileData[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? []);
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
@@ -104,7 +104,7 @@ class RomanMartyrology1956DayElogiesContentBlock extends ContentBlock implements
 
             $result[self::VAR_PREFIX . $key] = $values;
             foreach ($values as $language => $text) {
-                $text = $this->getTextWithSpecialLinks($text, $aliases[self::DATA_LINKS_GENERATED_FILES_INDEX][$key] ?? []);
+                $text = $this->getTextWithSpecialLinks($text, $aliases[$key] ?? []);
 
                 $result[self::VAR_PREFIX . $key][$language] = $text;
                 $result[self::VAR_PREFIX . $key . self::VAR_FIRST_CHARACTER_ONLY_SUFFIX][$language] = mb_substr($text, 0, 1, self::ENCODING);
