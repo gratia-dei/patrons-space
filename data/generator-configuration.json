@@ -30,5 +30,13 @@
     {
         "class": "GenerateDataLinkFilesProcedure",
         "params": ["/records/patrons", "data-links"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["/sources/martyrologium-romanum-2004/martyrologium-romanum", "/my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["/sources/martyrologium-romanum-1956/martyrologium-romanum", "/my-patrons-immovable"]
     }
 ]

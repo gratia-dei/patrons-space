@@ -45,10 +45,10 @@ class Procedure extends Base
         return ($bytesSaved > 0);
     }
 
-    protected function saveGeneratedFiles(array $generatedFilesData): void
+    protected function saveGeneratedFiles(array $generatedFilesData, bool $ignoreExistingFiles = false): void
     {
         foreach ($generatedFilesData as $path => $content) {
-            if ($this->getFile()->exists($path)) {
+            if (!$ignoreExistingFiles && $this->getFile()->exists($path)) {
                 $this->error("Try to create existing generated file '$path'");
             } else if (!$this->setJsonFileContentFromArray($path, $content)) {
                 $this->error("Write file error for path '$path'");
