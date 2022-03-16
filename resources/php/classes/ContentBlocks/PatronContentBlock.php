@@ -17,8 +17,6 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     private $categoriesContentBlock;
 
     private $path;
-    private $fileData;
-    private $generatedFileData;
     private $feastRecordContent;
     private $textVariables;
 
@@ -35,20 +33,14 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     {
         $feastRecordContent = $this->getOriginalHtmlFileContent('items/patron-feast-record-item.html');
 
-        $filePath = $this->getDataFileSuffix($path);
-        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+        $this->prapareConsolidatedDataFilesArray($path);
 
-        $generatedFilePath = $this->getGeneratedFileSuffix($path);
-        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
-
-        $translations = $this->getPreparedTranslations($fileData);
+        $translations = $this->getPreparedTranslations($this->getMainFileData());
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         $this->path = $path;
         $this->feastRecordContent = $feastRecordContent;
-        $this->fileData = $fileData;
-        $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
 
         return $this;
@@ -57,24 +49,23 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     public function getFullContent(string $translatedName): string
     {
         $mainContent = $this->getOriginalHtmlFileContent('content-blocks/patron-content-block.html');
-
-        $fileData = $this->fileData;
+        $mainFileData = $this->getMainFileData();
         $textVariables = $this->textVariables;
 
         $variables = [];
-        $variables['date-of-birth'] = $this->getFormattedDates($fileData['born'] ?? self::UNKNOWN_SIGN);
-        $variables['date-of-death'] = $this->getFormattedDates($fileData['died'] ?? self::UNKNOWN_SIGN);
-        $variables['beatification'] = $this->getDateWithType($fileData['beatified'] ?? []);
-        $variables['canonization'] = $this->getDateWithType($fileData['canonized'] ?? []);
-        $variables['order'] = empty($fileData['order'] ?? []) ? self::NON_EXISTENCE : $fileData['order'];
-        $variables['categories'] = $this->getCategoriesList($fileData['categories'] ?? []);
+        $variables['date-of-birth'] = $this->getFormattedDates($mainFileData['born'] ?? self::UNKNOWN_SIGN);
+        $variables['date-of-death'] = $this->getFormattedDates($mainFileData['died'] ?? self::UNKNOWN_SIGN);
+        $variables['beatification'] = $this->getDateWithType($mainFileData['beatified'] ?? []);
+        $variables['canonization'] = $this->getDateWithType($mainFileData['canonized'] ?? []);
+        $variables['order'] = empty($mainFileData['order'] ?? []) ? self::NON_EXISTENCE : $mainFileData['order'];
+        $variables['categories'] = $this->getCategoriesList($mainFileData['categories'] ?? []);
         $variables['gallery'] = $this->getGalleryContent();
 
         $dataLinksTableName = self::VARIABLE_NAME_SIGN . self::NAMES_INDEX . self::MODIFIER_SEPARATOR . self::MODIFIER_FIRST_ELEMENT . self::VARIABLE_NAME_SIGN;
         $variables['data-links-content-block'] = $this->getDataLinksContent($dataLinksTableName);
 
         $feastsItemsContent = '';
-        foreach ($fileData[self::FEASTS_INDEX] ?? [] as $recordId => $recordData) {
+        foreach ($mainFileData[self::FEASTS_INDEX] ?? [] as $recordId => $recordData) {
             $feastsItemsContent .= $this->getRecordContent($recordId);
         }
         $variables['feasts-items'] = $feastsItemsContent;
@@ -86,8 +77,9 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function getRecordContent(string $recordId): string
     {
+        $mainFileData = $this->getMainFileData();
         $feastRecordContent = $this->feastRecordContent;
-        $feastRow = $this->fileData[self::FEASTS_INDEX][$recordId] ?? [];
+        $feastRow = $mainFileData[self::FEASTS_INDEX][$recordId] ?? [];
 
         $variables = [];
         $variables['record-id'] = $recordId;
@@ -125,7 +117,7 @@ class PatronContentBlock extends ContentBlock implements ContentBlockInterface
     {
         return $this
             ->dataLinksContentBlock
-            ->setData($this->fileData)
+            ->setData($this->getMainFileData())
             ->prepare($path)
             ->getFullContent($tableName)
         ;

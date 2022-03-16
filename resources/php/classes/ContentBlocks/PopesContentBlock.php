@@ -10,27 +10,22 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
     ];
 
     private $popeItemContent;
-    private $fileData;
-    private $generatedFileData;
     private $textVariables;
 
     public function prepare(string $path): ContentBlock
     {
         $popeItemContent = $this->getOriginalHtmlFileContent('items/pope-item.html');
 
-        $filePath = $this->getDataFileSuffix($path);
-        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+        $this->prapareConsolidatedDataFilesArray($path);
 
-        $generatedFilePath = $this->getGeneratedFileSuffix($path);
-        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
-
-        $translations = $this->getPreparedTranslations($fileData, $generatedFileData[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? []);
+        $translations = $this->getPreparedTranslations(
+            $this->getMainFileData(),
+            $this->getDataLinksFileData()
+        );
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         $this->popeItemContent = $popeItemContent;
-        $this->fileData = $fileData;
-        $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
 
         return $this;
@@ -39,14 +34,13 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
     public function getFullContent(string $translatedName): string
     {
         $mainContent = $this->getOriginalHtmlFileContent('content-blocks/popes-content-block.html');
-
-        $fileData = $this->fileData;
+        $mainFileData = $this->getMainFileData();
 
         $variables = [];
         $variables['popes-title'] = $translatedName;
 
         $popeItemsContent = '';
-        foreach ($fileData ?? [] as $recordId => $recordData) {
+        foreach ($mainFileData as $recordId => $recordData) {
             $popeItemsContent .= $this->getRecordContent($recordId);
         }
         $variables['popes-items'] = $popeItemsContent;
@@ -56,8 +50,10 @@ class PopesContentBlock extends ContentBlock implements ContentBlockInterface
 
     public function getRecordContent(string $recordId): string
     {
+        $mainFileData = $this->getMainFileData();
+
         $popeItemContent = $this->popeItemContent;
-        $popeRow = $this->fileData[$recordId] ?? [];
+        $popeRow = $mainFileData[$recordId] ?? [];
         $textVariables = $this->textVariables;
 
         $name = self::VARIABLE_NAME_SIGN . $recordId . '-' . self::NAME_INDEX . self::VARIABLE_NAME_SIGN;

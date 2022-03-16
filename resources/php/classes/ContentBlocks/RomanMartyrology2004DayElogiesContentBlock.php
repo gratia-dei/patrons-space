@@ -13,8 +13,6 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
 
     private $importantRecordContent;
     private $normalRecordContent;
-    private $fileData;
-    private $generatedFileData;
     private $textVariables;
 
     public function prepare(string $path): ContentBlock
@@ -22,20 +20,17 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
         $importantRecordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-day-elogy-important-item.html');
         $normalRecordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-day-elogy-normal-item.html');
 
-        $filePath = $this->getDataFileSuffix($path);
-        $fileData = $this->getOriginalJsonFileContentArray($filePath);
+        $this->prapareConsolidatedDataFilesArray($path);
 
-        $generatedFilePath = $this->getGeneratedFileSuffix($path);
-        $generatedFileData = $this->getOriginalJsonFileContentArray($generatedFilePath);
-
-        $translations = $this->getRecordTranslations($fileData, $generatedFileData[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? []);
+        $translations = $this->getRecordTranslations(
+            $this->getMainFileData(),
+            $this->getDataLinksFileData()
+        );
         $language = $this->getLanguage();
         $textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         $this->importantRecordContent = $importantRecordContent;
         $this->normalRecordContent = $normalRecordContent;
-        $this->fileData = $fileData;
-        $this->generatedFileData = $generatedFileData;
         $this->textVariables = $textVariables;
 
         return $this;
@@ -45,12 +40,13 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
     {
         $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-day-elogies-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');
+        $mainFileData = $this->getMainFileData();
 
         $prevPageNumber = null;
         $pageNumber = self::UNKNOWN_PAGE_NUMBER;
 
         $elogiesContent = '';
-        foreach ($this->fileData as $recordId => $recordData) {
+        foreach ($mainFileData as $recordId => $recordData) {
             $page = $recordData[self::PAGE_INDEX] ?? null;
 
             if (!is_null($page)) {
@@ -89,7 +85,8 @@ class RomanMartyrology2004DayElogiesContentBlock extends ContentBlock implements
 
     public function getRecordContent(string $recordId): string
     {
-        $recordType = $this->fileData[$recordId][self::MARK_INDEX] ?? '';
+        $mainFileData = $this->getMainFileData();
+        $recordType = $mainFileData[$recordId][self::MARK_INDEX] ?? '';
 
         $variables = [
             'record-id' => $recordId,

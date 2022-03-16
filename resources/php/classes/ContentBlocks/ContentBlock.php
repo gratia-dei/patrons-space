@@ -23,6 +23,8 @@ abstract class ContentBlock extends Content
         '/[~]/' => self::VARIABLE_NAME_SIGN . 'lang-around' . self::VARIABLE_NAME_SIGN . ' ',
     ];
 
+    private $fileData;
+
     protected function getFormattedDate(string $date): string
     {
         if ($date === self::NON_EXISTENCE_SIGN) {
@@ -106,5 +108,22 @@ abstract class ContentBlock extends Content
         }
 
         return $text;
+    }
+
+    protected function prapareConsolidatedDataFilesArray(string $path): self
+    {
+        $this->fileData = $this->getConsolidatedDataFilesArray($path);
+
+        return $this;
+    }
+
+    protected function getMainFileData(): array
+    {
+        return $this->fileData[self::MAIN_FILE_DATA_INDEX] ?? [];
+    }
+
+    protected function getDataLinksFileData(): array
+    {
+        return $this->fileData[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? [];
     }
 }
