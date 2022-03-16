@@ -1,4 +1,4 @@
 {
     "my-patrons": "DateMyPatronsFullContentBlock",
-    "my-patrons-and-feasts": "DateMyPatronsFullContentBlock"
+    "my-patrons-without-movable-feasts": "DateMyPatronsWithoutMovableFeastsContentBlock"
 }
