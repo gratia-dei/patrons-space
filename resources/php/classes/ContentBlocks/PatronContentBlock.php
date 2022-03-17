@@ -2,8 +2,8 @@
 
 class PatronContentBlock extends ContentBlock implements ContentBlockInterface
 {
-    private const NAMES_INDEX = 'names';
-    private const FEASTS_INDEX = 'feasts';
+    private const NAMES_INDEX = self::PATRON_NAMES_INDEX;
+    private const FEASTS_INDEX = self::PATRON_FEASTS_INDEX;
 
     private const TRANSLATED_INDEXES = [
         self::NAMES_INDEX,

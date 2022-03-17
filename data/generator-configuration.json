@@ -33,10 +33,34 @@
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["/sources/martyrologium-romanum-2004/martyrologium-romanum", "/my-patrons-immovable"]
+        "params": ["mr-2004", "dates-tree", "/sources/martyrologium-romanum-2004/martyrologium-romanum", "/generated/dates-my-patrons-immovable"]
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["/sources/martyrologium-romanum-1956/martyrologium-romanum", "/my-patrons-immovable"]
+        "params": ["mr-1956", "dates-tree", "/sources/martyrologium-romanum-1956/martyrologium-romanum", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["mr-1956-variations", "dates-tree", "/sources/martyrologium-romanum-1956/variationes-in-martyrologio-romano/variationes/martyrologium-romanum", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["records-god", "records-tree", "/records/god", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["records-patrons", "records-tree", "/records/patrons", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["mr-2004-movable", "dates-file", "/sources/martyrologium-romanum-2004/elogia-pro-celebrationibus-mobilibus", "/generated/dates-my-patrons-movable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["mr-1956-movable", "dates-file", "/sources/martyrologium-romanum-1956/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["mr-1956-variations-movable", "dates-file", "/sources/martyrologium-romanum-1956/variationes-in-martyrologio-romano/variationes/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
     }
 ]

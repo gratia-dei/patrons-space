@@ -8,7 +8,9 @@ abstract class Base
     private $json;
     private $path;
 
-    protected const PATRON_FEASTS_PATH = 'feasts/';
+    protected const PATRON_NAMES_INDEX = 'names';
+    protected const PATRON_FEASTS_INDEX = 'feasts';
+    protected const PATRON_FEASTS_PATH = self::PATRON_FEASTS_INDEX . '/';
 
     protected const GENERATED_FILE_NAME_SUFFIX = '.generated';
     protected const DATA_FILE_EXTENSION = '.json';

@@ -1,0 +1,80 @@
+{
+    "01-01": {
+        "records/patrons/i/1#1": {
+            "name": {
+                "en": "Maria, Holy Mother of God (Mary, mother of Jesus)",
+                "la": "Maria, Sancta Dei Genetrix (Maria Virgo)",
+                "pl": "Najświętsza Maryja Panna Święta Boża Rodzicielka (Najświętsza Maryja Panna)"
+            },
+            "sources": {
+                "mr-2004": {
+                    "1": true
+                }
+            }
+        }
+    },
+    "08-01": {
+        "records/patrons/xviii/1": {
+            "name": {
+                "it": "Alfonso Maria de' Liguori",
+                "en": "Alphonsus Maria de Liguori",
+                "la": "Alphonsus Maria a Ligorio",
+                "pl": "Alfons Maria de Liguori"
+            },
+            "sources": {
+                "mr-2004": {
+                    "1": true
+                },
+                "mr-1956": {
+                    "4": true
+                }
+            }
+        }
+    },
+    "08-02": {
+        "records/patrons/xviii/1": {
+            "name": {
+                "it": "Alfonso Maria de' Liguori",
+                "en": "Alphonsus Maria de Liguori",
+                "la": "Alphonsus Maria a Ligorio",
+                "pl": "Alfons Maria de Liguori"
+            },
+            "sources": {
+                "mr-1956": {
+                    "1": true
+                }
+            }
+        }
+    },
+    "08-15": {
+        "records/patrons/i/1#2": {
+            "name": {
+                "en": "Assumption of Mary (Mary, mother of Jesus)",
+                "la": "Assumptio Beatae Mariae Virginis (Maria Virgo)",
+                "pl": "Wniebowzięcie Najświętszej Maryi Panny (Najświętsza Maryja Panna)"
+            },
+            "sources": {
+                "mr-2004": {
+                    "1": true
+                },
+                "mr-1956": {
+                    "1": true
+                }
+            }
+        }
+    },
+    "10-11": {
+        "records/patrons/i/1#1": {
+            "name": {
+                "en": "Maria, Holy Mother of God (Mary, mother of Jesus)",
+                "la": "Maria, Sancta Dei Genetrix (Maria Virgo)",
+                "pl": "Najświętsza Maryja Panna Święta Boża Rodzicielka (Najświętsza Maryja Panna)"
+            },
+            "sources": {
+                "mr-1956": {
+                    "1": true
+                }
+            }
+        }
+    }
+}
