@@ -1,18 +1,27 @@
 <div id="my-patrons-full-content-block">
-  <font size="5">#lang-patrons-and-feasts-for-day-full-list#: <b>#date#</b></font>
-  <hr />
-  #lang-comming-soon# ...
+  <font size="5">#lang-patrons-and-feasts-for-day-full-list|capitalize#: <b>#date#</b></font>
 
-  <!--<div class="my-top-patrons-section">-->
-    <!--<b>#lang-roman-martyrology#:</b>-->
-    <!--<ul>-->
-<!--#top-patrons-list#-->
-    <!--</ul>-->
-  <!--</div>-->
-  <!--<hr />-->
-  <!--<div class="my-top-patrons-section">-->
-    <!--<b>#lang-liturgical-calendar#:</b>-->
-    <!--<br />-->
-<!--#lang-liturgical-calendar-my-patrons-info#-->
-  <!--</div>-->
+  <hr />
+  <div class="my-patrons-section">
+    <b>#lang-patrons-and-feasts-list|capitalize#:</b>
+    <font size="2" color="gray">#lang-patrons-and-feasts-full-list-sources-info#</font>
+    <ul>
+#patrons-list#
+    </ul>
+  </div>
+
+  <div class="my-patrons-section">
+    <b>#lang-liturgical-calendar|capitalize#:</b>
+    <font size="2" color="gray">#lang-liturgical-calendar-my-patrons-info#</a></font>
+  </div>
+
+  <div class="my-patrons-section">
+    <b>#lang-canonization-or-beatification-date|capitalize#:</b>
+    <font size="2" color="gray">#lang-canonization-or-beatification-date-my-patrons-info#</a></font>
+  </div>
+
+  <div class="my-patrons-section">
+    <b>#lang-parish-festival|capitalize#:</b>
+    <font size="2" color="gray">#lang-parish-festival-my-patrons-info#</a></font>
+  </div>
 </div>

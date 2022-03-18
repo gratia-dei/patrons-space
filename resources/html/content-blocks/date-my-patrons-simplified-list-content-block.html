@@ -1,5 +1,12 @@
 <div id="my-patrons-simplified-list-content-block">
-  <font size="5">#lang-patrons-and-feasts-for-day-simplified-list#: <b>#date#</b></font>
+  <font size="5">#lang-patrons-and-feasts-for-day-simplified-list|capitalize#: <b>#date#</b></font>
   <hr />
-  #lang-comming-soon# ...
+
+  <div class="my-patrons-section">
+    <b>#lang-patrons-and-feasts-list|capitalize#:</b>
+    <font size="2" color="gray">#lang-patrons-and-feasts-simplified-list-sources-info#</font>
+    <ul>
+#patrons-list#
+    </ul>
+  </div>
 </div>

@@ -35,6 +35,16 @@
         "pl": "kononizacja"
     },
 
+    "lang-canonization-or-beatification-date": {
+        "en": "canonization or beatification date",
+        "pl": "data kononizacji lub beatyfikacji"
+    },
+
+    "lang-canonization-or-beatification-date-my-patrons-info": {
+        "en": "you can invite the patron, who is canonized or beatified today.",
+        "pl": "możesz zaprosić patrona, który jest dzisiaj kononizowany lub beatyfikowany."
+    },
+
     "lang-card-owner": {
         "en": "card owner",
         "pl": "właściciel karty"
@@ -174,13 +184,13 @@
     },
 
     "lang-liturgical-calendar": {
-        "en": "Liturgical calendar",
-        "pl": "Kalendarz liturgiczny"
+        "en": "liturgical calendar",
+        "pl": "kalendarz liturgiczny"
     },
 
     "lang-liturgical-calendar-my-patrons-info": {
-        "en": "You can also invite the patron announced at the Mass you attend, based on valid liturgical calendar.",
-        "pl": "Możesz także zaprosić patrona ogłoszonego na Mszy św. w której uczestniczysz, na podstawie obowiązującego kalendarza liturgicznego."
+        "en": "you can invite the patron announced at the Mass you attend, based on valid liturgical calendar.",
+        "pl": "możesz zaprosić patrona ogłoszonego na Mszy św. w której uczestniczysz, na podstawie obowiązującego kalendarza liturgicznego."
     },
 
     "lang-location": {
@@ -252,19 +262,44 @@
         "pl": "katalog nadrzędny"
     },
 
+    "lang-parish-festival": {
+        "en": "parish festival",
+        "pl": "odpust parafialny"
+    },
+
+    "lang-parish-festival-my-patrons-info": {
+        "en": "you can invite the patron announced at the Parish festival Mass you attend.",
+        "pl": "możesz zaprosić patrona ogłoszonego na sumie odpustowej w której uczestniczysz."
+    },
+
     "lang-path": {
         "en": "path",
         "pl": "ścieżka"
     },
 
     "lang-patrons-and-feasts-for-day-full-list": {
-        "en": "Full list of patrons and feasts for day",
-        "pl": "Pełna lista patronów i świąt dla dnia"
+        "en": "full list of patrons and feasts for day",
+        "pl": "pełna lista patronów i świąt dla dnia"
     },
 
     "lang-patrons-and-feasts-for-day-simplified-list": {
-        "en": "Simplified list of patrons and feasts for day",
-        "pl": "Uproszczona lista patronów i świąt dla dnia"
+        "en": "simplified list of patrons and feasts for day",
+        "pl": "uproszczona lista patronów i świąt dla dnia"
+    },
+
+    "lang-patrons-and-feasts-list": {
+        "en": "patrons and feasts list (still in the process of being filled)",
+        "pl": "lista patronów i świąt (w trakcie uzupełniania)"
+    },
+
+    "lang-patrons-and-feasts-full-list-sources-info": {
+        "en": "you can invite the patron based on all elogies from 2004 and 1956 Roman Martyrology (also with 1960 variations) and also reliable anniversaries of the patron's death and memorial.",
+        "pl": "możesz zaprosić patrona bazując na wszystkich elogiach Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960), a także wiarygodnych dniach rocznic śmierci i wspomnienia patrona."
+    },
+
+    "lang-patrons-and-feasts-simplified-list-sources-info": {
+        "en": "you can invite the patron based on elogies (without movable feasts) from 2004 and 1956 Roman Martyrology (also with 1960 variations) and also reliable anniversaries of the patron's death and memorial.",
+        "pl": "możesz zaprosić patrona bazując na elogiach (bez świąt ruchomych) Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960), a także wiarygodnych dniach rocznic śmierci i wspomnienia patrona."
     },
 
     "lang-position": {
@@ -300,12 +335,6 @@
     "lang-resource": {
         "en": "resource",
         "pl": "zasób"
-    },
-
-    "lang-roman-martyrology": {
-        "en": "Roman Martyrology",
-        "la": "Martyrologium Romanum",
-        "pl": "Martyrologium Rzymskie"
     },
 
     "lang-service-name": {

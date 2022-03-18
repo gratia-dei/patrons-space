@@ -42,7 +42,7 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     {
         $mainContent = $this->mainTemplate;
 
-        //$patronsListContent = '';
+        $patronsListContent = self::VARIABLE_NAME_SIGN . 'lang-comming-soon' . self::VARIABLE_NAME_SIGN;
         //$recordIds = array_keys($this->dayData);
         //foreach ($recordIds as $recordId) {
             //$patronsListContent .= $this->getRecordContent($recordId);
@@ -50,7 +50,7 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
 
         $variables = [
             'date' => $this->date,
-            //'top-patrons-list' => $patronsListContent,
+            'patrons-list' => $patronsListContent,
         ];
 
         return $this->getReplacedContent($mainContent, $variables);
