@@ -6,27 +6,35 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     protected const MOVABLE_FILE_PATH = 'generated/dates-my-patrons-movable';
 
     protected $date;
-    protected $immovableFileData = [];
-    protected $movableFileData = [];
+    protected $rows;
     protected $mainTemplate;
     protected $itemTemplate;
+    protected $textVariables;
 
     final public function prepare(string $date): ContentBlock
     {
         $this->date = $date;
+        $this->setOtherProperties($date);
         $this->itemTemplate = $this->getOriginalHtmlFileContent('items/dates-patron-item.html');
-        $this->setOtherProperties();
+
+        $translations = $this->getRecordTranslations($this->rows);
+        $language = $this->getLanguage();
+        $this->textVariables = $this->getTranslatedVariablesForLangData($language, $translations);
 
         return $this;
     }
 
-    protected function setOtherProperties(): void
+    protected function setOtherProperties(string $date): void
     {
-        $immovableFilePath = $this->getGeneratedFileSuffix(self::IMMOVABLE_FILE_PATH);
-        $this->immovableFileData = $this->getOriginalJsonFileContentArray($immovableFilePath);
-
         $movableFilePath = $this->getGeneratedFileSuffix(self::MOVABLE_FILE_PATH);
-        $this->movableFileData = $this->getOriginalJsonFileContentArray($movableFilePath);
+        $movableFileData = $this->getOriginalJsonFileContentArray($movableFilePath);
+        $movableRows = $this->getMovableRows($date, $movableFileData);
+
+        $immovableFilePath = $this->getGeneratedFileSuffix(self::IMMOVABLE_FILE_PATH);
+        $immovableFileData = $this->getOriginalJsonFileContentArray($immovableFilePath);
+        $immovableRows = $this->getImmovableRows($date, $immovableFileData);
+
+        $this->rows = array_merge($movableRows, $immovableRows);
 
         $this->mainTemplate = $this->getOriginalHtmlFileContent('content-blocks/date-my-patrons-full-content-block.html');
     }
@@ -34,29 +42,63 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     final public function getFullContent(string $translatedName): string
     {
         $mainContent = $this->mainTemplate;
+        $textVariables = $this->textVariables;
 
-        $patronsListContent = self::VARIABLE_NAME_SIGN . 'lang-comming-soon' . self::VARIABLE_NAME_SIGN;
-
-        //$dateWithoutYear = substr($date, 5);
-        //$recordIds = array_keys($this->dayData);
-        //foreach ($recordIds as $recordId) {
-            //$patronsListContent .= $this->getRecordContent($recordId);
-        //}
+        $patronsListContent = '';
+        foreach ($this->rows as $patronUrl => $recordData) {
+            $patronsListContent .= $this->getRecordContent($patronUrl);
+        }
 
         $variables = [
             'date' => $this->date,
             'patrons-list' => $patronsListContent,
         ];
 
-        return $this->getReplacedContent($mainContent, $variables);
+        $content = $this->getReplacedContent($mainContent, $variables);
+
+        return $this->getReplacedContent($content, $textVariables, true);
     }
 
-    final public function getRecordContent(string $recordId): string
+    final public function getRecordContent(string $patronUrl): string
     {
-        //$variables = [
-            //'name' => $this->dayData[$recordId],
-        //];
+        $data = $this->data[$patronUrl] ?? [];
 
-        //return $this->getReplacedContent($this->itemContent, $variables);
+        $variables = [
+            'href' => '/' . $patronUrl,
+            'name' => self::VARIABLE_NAME_SIGN . $this->getLanguageVariableName($patronUrl) . self::VARIABLE_NAME_SIGN,
+        ];
+
+        return $this->getReplacedContent($this->itemTemplate, $variables);
+    }
+
+    protected function getImmovableRows(string $date, array $fileData): array
+    {
+        $dateWithoutYear = substr($date, 5);
+
+        return $fileData[$dateWithoutYear] ?? [];
+    }
+
+    protected function getMovableRows(string $date, array $fileData): array
+    {
+        //...todo later
+
+        return [];
+    }
+
+    private function getLanguageVariableName(string $patronUrl): string
+    {
+        return str_replace(['/', '#'], '-', $patronUrl);
+    }
+
+    private function getRecordTranslations(array $data): array
+    {
+        $result = [];
+
+        foreach ($data as $patronUrl => $recordData) {
+            $variableName = $this->getLanguageVariableName($patronUrl);
+            $result[$variableName] = $recordData[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] ?? [];
+        }
+
+        return $result;
     }
 }

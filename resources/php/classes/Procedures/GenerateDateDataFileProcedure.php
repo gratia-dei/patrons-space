@@ -2,9 +2,6 @@
 
 class GenerateDateDataFileProcedure extends Procedure
 {
-    private const PATRON_RECORD_NAME_INDEX = 'name';
-    private const PATRON_RECORD_SOURCES_INDEX = 'sources';
-
     private const RECORDS_TREE_MODE = 'records-tree';
     private const DATES_TREE_MODE = 'dates-tree';
     private const DATES_FILE_MODE = 'dates-file';
@@ -41,10 +38,10 @@ class GenerateDateDataFileProcedure extends Procedure
     {
         $data = &$this->dstFileData[$alias][$patronUrl];
 
-        if (empty($data[self::PATRON_RECORD_NAME_INDEX] ?? [])) {
-            $data[self::PATRON_RECORD_NAME_INDEX] = $this->getPatronNamesArray($patronUrl);
+        if (empty($data[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] ?? [])) {
+            $data[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] = $this->getPatronNamesArray($patronUrl);
         }
-        $data[self::PATRON_RECORD_SOURCES_INDEX][$sourceId][$recordId] = true;
+        $data[self::DATES_DATA_PATRON_RECORD_SOURCES_INDEX][$sourceId][$recordId] = true;
     }
 
     private function getPatronNamesArray(string $patronUrl): array
