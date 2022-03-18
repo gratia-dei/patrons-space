@@ -118,6 +118,11 @@
         "pl": "pliki"
     },
 
+    "lang-full-list": {
+        "en": "full list",
+        "pl": "lista pełna"
+    },
+
     "lang-hide-fields": {
         "en": "hide fields",
         "pl": "ukryj pola"
@@ -257,8 +262,8 @@
         "pl": "Pełna lista patronów i świąt dla dnia"
     },
 
-    "lang-patrons-and-feasts-for-day-simple-list": {
-        "en": "Simple list of patrons and feasts for day",
+    "lang-patrons-and-feasts-for-day-simplified-list": {
+        "en": "Simplified list of patrons and feasts for day",
         "pl": "Uproszczona lista patronów i świąt dla dnia"
     },
 
@@ -305,6 +310,11 @@
 
     "lang-service-name": {
         "en": "Patrons Space"
+    },
+
+    "lang-simplified-list": {
+        "en": "simplified list",
+        "pl": "lista uproszczona"
     },
 
     "lang-sources": {
