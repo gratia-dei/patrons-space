@@ -199,8 +199,8 @@
     },
 
     "lang-my-patrons-for-today": {
-        "en": "My Patrons for today",
-        "pl": "Moi Patroni na dziś"
+        "en": "<a href=\"http://en.mypatrons.org/about-my-patrons\">My Patrons</a> for today",
+        "pl": "<a href=\"http://pl.mypatrons.org/jak-wybrac-patrona-lub-swieto-na-dany-dzien-roku\">Moi Patroni</a> na dziś"
     },
 
     "lang-non-existence": {
