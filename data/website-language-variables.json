@@ -189,8 +189,8 @@
     },
 
     "lang-liturgical-calendar-my-patrons-info": {
-        "en": "you can invite the patron announced at the Mass you attend, based on valid liturgical calendar.",
-        "pl": "możesz zaprosić patrona ogłoszonego na Mszy św. w której uczestniczysz, na podstawie obowiązującego kalendarza liturgicznego."
+        "en": "you can invite the patron and discover the feast announced at the Mass you attend, based on valid liturgical calendar.",
+        "pl": "możesz zaprosić patrona i odkrywać święto ogłoszone na Mszy św. w której uczestniczysz, na podstawie obowiązującego kalendarza liturgicznego."
     },
 
     "lang-location": {
@@ -268,8 +268,8 @@
     },
 
     "lang-parish-festival-my-patrons-info": {
-        "en": "you can invite the patron announced at the Parish festival Mass you attend.",
-        "pl": "możesz zaprosić patrona ogłoszonego na sumie odpustowej w której uczestniczysz."
+        "en": "you can invite the patron or discover the feast announced at the Parish festival Mass you attend.",
+        "pl": "możesz zaprosić patrona lub odkryć święto ogłoszone na sumie odpustowej w której uczestniczysz."
     },
 
     "lang-path": {
@@ -293,13 +293,13 @@
     },
 
     "lang-patrons-and-feasts-full-list-sources-info": {
-        "en": "you can invite the patron based on all elogies from 2004 and 1956 Roman Martyrology (also with 1960 variations) and also reliable anniversaries of the patron's death and memorial.",
-        "pl": "możesz zaprosić patrona bazując na wszystkich elogiach Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960), a także wiarygodnych dniach rocznic śmierci i wspomnienia patrona."
+        "en": "you can invite the patron or discover feasts based on all elogies from 2004 and 1956 Roman Martyrology (also with 1960 variations) and reliable anniversaries of deaths and memorials of patrons and feasts.",
+        "pl": "możesz zaprosić patrona i odkrywać święta bazując na wszystkich elogiach Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960) i na wiarygodnych dniach rocznic śmierci i wspomnień patronów i świąt."
     },
 
     "lang-patrons-and-feasts-simplified-list-sources-info": {
-        "en": "you can invite the patron based on elogies (without movable feasts) from 2004 and 1956 Roman Martyrology (also with 1960 variations) and also reliable anniversaries of the patron's death and memorial.",
-        "pl": "możesz zaprosić patrona bazując na elogiach (bez świąt ruchomych) Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960), a także wiarygodnych dniach rocznic śmierci i wspomnienia patrona."
+        "en": "you can invite the patron and discover feasts based on elogies (without movable feasts) from 2004 and 1956 Roman Martyrology (also with 1960 variations) and reliable anniversaries of deaths and memorials of patrons and feasts.",
+        "pl": "możesz zaprosić patrona i odkrywać święta bazując na elogiach (bez świąt ruchomych) Martyrologium Rzymskiego z 2004 i 1956 roku (także ze zmianami z 1960) i na wiarygodnych dniach rocznic śmierci i wspomnień patronów i świąt."
     },
 
     "lang-position": {

@@ -2,7 +2,7 @@
 
 class DateMyPatronsSimplifiedListContentBlock extends DateMyPatronsFullContentBlock implements ContentBlockInterface
 {
-    protected function setProperties(): void
+    protected function setOtherProperties(): void
     {
         $immovableFilePath = $this->getGeneratedFileSuffix(self::IMMOVABLE_FILE_PATH);
         $this->immovableFileData = $this->getOriginalJsonFileContentArray($immovableFilePath);

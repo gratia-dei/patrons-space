@@ -11,23 +11,16 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     protected $mainTemplate;
     protected $itemTemplate;
 
-    //protected $dayData;
-
     final public function prepare(string $date): ContentBlock
     {
-        $this->setProperties();
-
-        //$dateWithoutYear = substr($date, 5);
-
         $this->date = $date;
         $this->itemTemplate = $this->getOriginalHtmlFileContent('items/dates-patron-item.html');
-
-        //$this->dayData = $fileData[$dateWithoutYear] ?? [];
+        $this->setOtherProperties();
 
         return $this;
     }
 
-    protected function setProperties(): void
+    protected function setOtherProperties(): void
     {
         $immovableFilePath = $this->getGeneratedFileSuffix(self::IMMOVABLE_FILE_PATH);
         $this->immovableFileData = $this->getOriginalJsonFileContentArray($immovableFilePath);
@@ -43,6 +36,8 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
         $mainContent = $this->mainTemplate;
 
         $patronsListContent = self::VARIABLE_NAME_SIGN . 'lang-comming-soon' . self::VARIABLE_NAME_SIGN;
+
+        //$dateWithoutYear = substr($date, 5);
         //$recordIds = array_keys($this->dayData);
         //foreach ($recordIds as $recordId) {
             //$patronsListContent .= $this->getRecordContent($recordId);
