@@ -62,7 +62,7 @@ class GenerateDateDataFileProcedure extends Procedure
                 foreach ($data[self::PATRON_FEASTS_INDEX][$feastId][self::PATRON_NAMES_INDEX] ?? [] as $language => $values) {
                     $value = $values[0];
                     if (isset($mainNames[$language])) {
-                        $value .= ' (' . $mainNames[$language] . ')';
+                        $value = $mainNames[$language] . ' (' . $value . ')';
                     }
                     $result[$language] = $value;
                 }

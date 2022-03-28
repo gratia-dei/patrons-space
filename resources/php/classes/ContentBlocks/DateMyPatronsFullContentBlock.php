@@ -2,6 +2,8 @@
 
 class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlockInterface
 {
+    private const DATE_SOURCE_LANGUAGE_VARIABLE_PREFIX = 'lang-date-source-';
+
     protected const IMMOVABLE_FILE_PATH = 'generated/dates-my-patrons-immovable';
     protected const MOVABLE_FILE_PATH = 'generated/dates-my-patrons-movable';
 
@@ -60,8 +62,6 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     {
         $textVariables = $this->textVariables;
 
-        $data = $this->data[$patronUrl] ?? [];
-
         $name = self::VARIABLE_NAME_SIGN . $this->getLanguageVariableName($patronUrl) . self::VARIABLE_NAME_SIGN;
         $name = $this->getReplacedContent($name, $textVariables, true);
 
@@ -72,6 +72,7 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
         $variables = [
             'href' => $link,
             'name' => $name,
+            'sources' => $this->getSources($patronUrl),
         ];
 
         return $this->getReplacedContent($this->itemTemplate, $variables);
@@ -103,6 +104,18 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
         foreach ($data as $patronUrl => $recordData) {
             $variableName = $this->getLanguageVariableName($patronUrl);
             $result[$variableName] = $recordData[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] ?? [];
+        }
+
+        return $result;
+    }
+
+    private function getSources(string $patronUrl): array
+    {
+        $result = [];
+
+        $sources = array_keys($this->rows[$patronUrl][self::DATES_DATA_PATRON_RECORD_SOURCES_INDEX] ?? []);
+        foreach ($sources as $source) {
+            $result[] = self::VARIABLE_NAME_SIGN . self::DATE_SOURCE_LANGUAGE_VARIABLE_PREFIX . $source . self::VARIABLE_NAME_SIGN;
         }
 
         return $result;

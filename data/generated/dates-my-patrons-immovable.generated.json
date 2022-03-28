@@ -2,9 +2,9 @@
     "01-01": {
         "records/patrons/i/1#1": {
             "name": {
-                "en": "Maria, Holy Mother of God (Mary, mother of Jesus)",
-                "la": "Maria, Sancta Dei Genetrix (Maria Virgo)",
-                "pl": "Najświętsza Maryja Panna Święta Boża Rodzicielka (Najświętsza Maryja Panna)"
+                "en": "Mary, mother of Jesus (Maria, Holy Mother of God)",
+                "la": "Maria Virgo (Maria, Sancta Dei Genetrix)",
+                "pl": "Najświętsza Maryja Panna (Najświętsza Maryja Panna Święta Boża Rodzicielka)"
             },
             "sources": {
                 "mr-2004": {
@@ -49,9 +49,9 @@
     "08-15": {
         "records/patrons/i/1#2": {
             "name": {
-                "en": "Assumption of Mary (Mary, mother of Jesus)",
-                "la": "Assumptio Beatae Mariae Virginis (Maria Virgo)",
-                "pl": "Wniebowzięcie Najświętszej Maryi Panny (Najświętsza Maryja Panna)"
+                "en": "Mary, mother of Jesus (Assumption of Mary)",
+                "la": "Maria Virgo (Assumptio Beatae Mariae Virginis)",
+                "pl": "Najświętsza Maryja Panna (Wniebowzięcie Najświętszej Maryi Panny)"
             },
             "sources": {
                 "mr-2004": {
@@ -66,9 +66,9 @@
     "10-11": {
         "records/patrons/i/1#1": {
             "name": {
-                "en": "Maria, Holy Mother of God (Mary, mother of Jesus)",
-                "la": "Maria, Sancta Dei Genetrix (Maria Virgo)",
-                "pl": "Najświętsza Maryja Panna Święta Boża Rodzicielka (Najświętsza Maryja Panna)"
+                "en": "Mary, mother of Jesus (Maria, Holy Mother of God)",
+                "la": "Maria Virgo (Maria, Sancta Dei Genetrix)",
+                "pl": "Najświętsza Maryja Panna (Najświętsza Maryja Panna Święta Boża Rodzicielka)"
             },
             "sources": {
                 "mr-1956": {

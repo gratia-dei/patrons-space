@@ -82,11 +82,6 @@
         "pl": "dane serwisu"
     },
 
-    "lang-dates": {
-        "en": "dates",
-        "pl": "daty"
-    },
-
     "lang-date-of-birth": {
         "en": "date of birth",
         "la": "diem natalis",
@@ -97,6 +92,23 @@
         "en": "date of death",
         "la": "diem mortis",
         "pl": "data śmierci"
+    },
+
+    "lang-dates": {
+        "en": "dates",
+        "pl": "daty"
+    },
+
+    "lang-date-source-mr-1956": {
+        "en": "Roman Martyrology (1956)",
+        "la": "Martyrologium Romanum (1956)",
+        "pl": "Martyrologium Rzymskie (1956)"
+    },
+
+    "lang-date-source-mr-2004": {
+        "en": "Roman Martyrology (2004)",
+        "la": "Martyrologium Romanum (2004)",
+        "pl": "Martyrologium Rzymskie (2004)"
     },
 
     "lang-edit-fields": {
