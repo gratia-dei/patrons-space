@@ -42,7 +42,6 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
     final public function getFullContent(string $translatedName): string
     {
         $mainContent = $this->mainTemplate;
-        $textVariables = $this->textVariables;
 
         $patronsListContent = '';
         foreach ($this->rows as $patronUrl => $recordData) {
@@ -54,18 +53,25 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
             'patrons-list' => $patronsListContent,
         ];
 
-        $content = $this->getReplacedContent($mainContent, $variables);
-
-        return $this->getReplacedContent($content, $textVariables, true);
+        return $this->getReplacedContent($mainContent, $variables);
     }
 
     final public function getRecordContent(string $patronUrl): string
     {
+        $textVariables = $this->textVariables;
+
         $data = $this->data[$patronUrl] ?? [];
 
+        $name = self::VARIABLE_NAME_SIGN . $this->getLanguageVariableName($patronUrl) . self::VARIABLE_NAME_SIGN;
+        $name = $this->getReplacedContent($name, $textVariables, true);
+
+        $link = '/' . $patronUrl;
+        $link = $this->getLinkWithActiveRecordIdForAnchor($link);
+        $link = $this->getRecordIdPathWithNameExtension($link, $name);
+
         $variables = [
-            'href' => '/' . $patronUrl,
-            'name' => self::VARIABLE_NAME_SIGN . $this->getLanguageVariableName($patronUrl) . self::VARIABLE_NAME_SIGN,
+            'href' => $link,
+            'name' => $name,
         ];
 
         return $this->getReplacedContent($this->itemTemplate, $variables);
