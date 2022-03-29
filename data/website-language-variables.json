@@ -111,6 +111,16 @@
         "pl": "Martyrologium Rzymskie (2004)"
     },
 
+    "lang-date-source-other-memorial-days": {
+        "en": "other memorial days",
+        "pl": "inne dni wspomnienia"
+    },
+
+    "lang-date-source-reliable-death-anniversary": {
+        "en": "reliable death anniversary",
+        "pl": "wiarygodna rocznica śmierci"
+    },
+
     "lang-edit-fields": {
         "en": "edit fields",
         "pl": "edytuj pola"
@@ -245,6 +255,11 @@
     "lang-original": {
         "en": "original",
         "pl": "oryginalny"
+    },
+
+    "lang-other-memorial-days": {
+        "en": "other memorial days",
+        "pl": "inne dni wspomnienia"
     },
 
     "lang-page-column-number": {

@@ -10,6 +10,8 @@ abstract class Base
 
     protected const PATRON_NAMES_INDEX = 'names';
     protected const PATRON_FEASTS_INDEX = 'feasts';
+    protected const PATRON_DIED_INDEX = 'died';
+    protected const PATRON_MENTIONED_INDEX = 'also-mentioned';
     protected const PATRON_FEASTS_PATH = self::PATRON_FEASTS_INDEX . '/';
 
     protected const DATES_DATA_PATRON_RECORD_NAME_INDEX = 'name';

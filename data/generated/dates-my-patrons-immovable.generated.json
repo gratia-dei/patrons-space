@@ -7,9 +7,7 @@
                 "pl": "Najświętsza Maryja Panna (Najświętsza Maryja Panna Święta Boża Rodzicielka)"
             },
             "sources": {
-                "mr-2004": {
-                    "1": true
-                }
+                "mr-2004": true
             }
         }
     },
@@ -22,12 +20,19 @@
                 "pl": "Alfons Maria de Liguori"
             },
             "sources": {
-                "mr-2004": {
-                    "1": true
-                },
-                "mr-1956": {
-                    "4": true
-                }
+                "mr-2004": true,
+                "mr-1956": true,
+                "reliable-death-anniversary": true
+            }
+        },
+        "records/patrons/iv/1": {
+            "name": {
+                "la": "Eusebius Vercellensis",
+                "en": "Eusebius of Vercelli",
+                "pl": "Euzebiusz z Vercelli"
+            },
+            "sources": {
+                "reliable-death-anniversary": true
             }
         }
     },
@@ -40,9 +45,20 @@
                 "pl": "Alfons Maria de Liguori"
             },
             "sources": {
-                "mr-1956": {
-                    "1": true
-                }
+                "mr-1956": true
+            }
+        }
+    },
+    "08-04": {
+        "records/patrons/xix/1": {
+            "name": {
+                "fr": "Jean-Marie Vianney",
+                "en": "John Vianney",
+                "la": "Ioannes Maria Vianney",
+                "pl": "Jan Maria Vianney"
+            },
+            "sources": {
+                "reliable-death-anniversary": true
             }
         }
     },
@@ -54,12 +70,20 @@
                 "pl": "Najświętsza Maryja Panna (Wniebowzięcie Najświętszej Maryi Panny)"
             },
             "sources": {
-                "mr-2004": {
-                    "1": true
-                },
-                "mr-1956": {
-                    "1": true
-                }
+                "mr-2004": true,
+                "mr-1956": true
+            }
+        }
+    },
+    "08-28": {
+        "records/patrons/v/1": {
+            "name": {
+                "la": "Augustinus Hipponensis",
+                "en": "Augustine of Hippo",
+                "pl": "Augustyn z Hippony"
+            },
+            "sources": {
+                "reliable-death-anniversary": true
             }
         }
     },
@@ -71,9 +95,7 @@
                 "pl": "Najświętsza Maryja Panna (Najświętsza Maryja Panna Święta Boża Rodzicielka)"
             },
             "sources": {
-                "mr-1956": {
-                    "1": true
-                }
+                "mr-1956": true
             }
         }
     }

@@ -55,6 +55,21 @@ abstract class ContentBlock extends Content
         return $dates;
     }
 
+    protected function getFormattedMonthsWithDays(array $monthsWithDays)
+    {
+        $result = [];
+
+        foreach ($monthsWithDays as $monthWithDay) {
+            if ($this->getDate()->isValidMonthWithDay($monthWithDay)) {
+                $result[] = substr($this->getFormattedDate("2000-$monthWithDay"), 0, 6);
+            } else {
+                $result[] = self::INVALID_SIGN;
+            }
+        }
+
+        return $result === [] ? self::NON_EXISTENCE : $result;
+    }
+
     protected function getRecordActivenessClass(string $recordId): string
     {
         $activeRecordId = $this->getActiveRecordId();

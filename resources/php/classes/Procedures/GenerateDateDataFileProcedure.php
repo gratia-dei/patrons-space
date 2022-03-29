@@ -11,6 +11,15 @@ class GenerateDateDataFileProcedure extends Procedure
         '/^(0[1-9]|[1-2][0-9]|3[0-1])$/', //day
     ];
 
+    private const RECORD_TREE_SOURCE_FIELDS = [
+        'reliable-death-anniversary' => self::PATRON_DIED_INDEX,
+        'other-memorial-days' => self::PATRON_MENTIONED_INDEX,
+    ];
+    private const RECORD_TREE_METHODS = [
+        'reliable-death-anniversary' => 'getDeathMonthWithDay',
+        'other-memorial-days' => 'getMentionedMonthsWithDays',
+    ];
+
     private $dstFileData;
 
     public function run(string $sourceId, string $mode, string $srcPath, string $dstFilePath): void
@@ -21,7 +30,7 @@ class GenerateDateDataFileProcedure extends Procedure
         $this->dstFileData = $this->getOriginalJsonFileContentArrayForFullPath($fullDstFilePathWithExtension);
 
         if ($mode === self::RECORDS_TREE_MODE) {
-            $this->processRecordsTreeMode($sourceId, $fullSrcPath);
+            $this->processRecordsTreeMode($sourceId, $fullSrcPath, ltrim($srcPath, '/'));
         } else if ($mode === self::DATES_TREE_MODE) {
             $this->processDatesTreeMode($sourceId, $fullSrcPath);
         } else if ($mode === self::DATES_FILE_MODE) {
@@ -34,14 +43,14 @@ class GenerateDateDataFileProcedure extends Procedure
         $this->saveGeneratedFiles([$fullDstFilePathWithExtension => $this->dstFileData], true);
     }
 
-    private function addToFileData(string $alias, string $patronUrl, string $sourceId, string $recordId): void
+    private function addToFileData(string $alias, string $patronUrl, string $sourceId): void
     {
         $data = &$this->dstFileData[$alias][$patronUrl];
 
         if (empty($data[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] ?? [])) {
             $data[self::DATES_DATA_PATRON_RECORD_NAME_INDEX] = $this->getPatronNamesArray($patronUrl);
         }
-        $data[self::DATES_DATA_PATRON_RECORD_SOURCES_INDEX][$sourceId][$recordId] = true;
+        $data[self::DATES_DATA_PATRON_RECORD_SOURCES_INDEX][$sourceId] = true;
     }
 
     private function getPatronNamesArray(string $patronUrl): array
@@ -116,7 +125,7 @@ class GenerateDateDataFileProcedure extends Procedure
 
             foreach ($fileData as $recordId => $recordData) {
                 foreach ($recordData as $patronUrl) {
-                    $this->addToFileData($alias, $patronUrl, $sourceId, $recordId);
+                    $this->addToFileData($alias, $patronUrl, $sourceId);
                 }
             }
         }
@@ -149,5 +158,82 @@ class GenerateDateDataFileProcedure extends Procedure
         }
 
         return $aliases;
+    }
+
+    private function processRecordsTreeMode(string $sourceId, string $fullSrcPath, string $patronUrlRootPath): void
+    {
+        $paths = $this->getPathTree($fullSrcPath);
+        foreach ($paths as $path => $isDirectory) {
+            if ($isDirectory) {
+                continue;
+            }
+
+            $fileName = basename($path);
+            $fileNameWithoutExtension = explode('.', $fileName)[0] ?? '';
+            $subPath = ltrim(mb_substr($path, mb_strlen($fullSrcPath)), '/');
+            $patronUrl = dirname("$patronUrlRootPath/$subPath") . "/$fileNameWithoutExtension";
+
+            if (!preg_match('/^[0-9]+$/', $fileNameWithoutExtension)) {
+                continue;
+            }
+
+            $sourceField = self::RECORD_TREE_SOURCE_FIELDS[$sourceId] ?? null;
+            if (is_null($sourceField)) {
+                $this->error("record tree source field not defined for source ID '$sourceId'");
+            }
+
+            $method = self::RECORD_TREE_METHODS[$sourceId] ?? null;
+            if (is_null($method)) {
+                $this->error("record tree method not defined for source ID '$sourceId'");
+            }
+
+            $fileData = $this->getOriginalJsonFileContentArrayForFullPath($path) ?? [];
+
+            $monthsWithDays = $this->$method($fileData[$sourceField] ?? []);
+            foreach ($monthsWithDays as $monthWithDay) {
+                $this->addToFileData($monthWithDay, $patronUrl, $sourceId);
+            }
+        }
+    }
+
+    private function getDeathMonthWithDay(array $dates): array
+    {
+        $showMonthAndDay = true;
+        $prevMonthAndDay = null;
+
+        foreach ($dates as $date) {
+            $monthAndDay = preg_replace('/^.+(-[0-1][0-9]-[0-3][0-9])$/', '\\1', $date);
+
+            if ($showMonthAndDay) {
+                if ($monthAndDay !== $date) {
+                    if ($prevMonthAndDay === null) {
+                        $prevMonthAndDay = $monthAndDay;
+                    } else if ($prevMonthAndDay !== $monthAndDay) {
+                        $showMonthAndDay = false;
+                    }
+                } else {
+                    $showMonthAndDay = false;
+                }
+            }
+        }
+
+        if (!$showMonthAndDay || is_null($prevMonthAndDay)) {
+            return [];
+        }
+
+        return [ltrim($prevMonthAndDay, '-')];
+    }
+
+    private function getMentionedMonthsWithDays(array $days): array
+    {
+        $result = [];
+
+        foreach ($days as $day) {
+            if ($this->getDate()->isValidMonthWithDay($day)) {
+                $result[] = $day;
+            }
+        }
+
+        return $result;
     }
 }

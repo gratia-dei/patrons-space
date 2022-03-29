@@ -45,11 +45,19 @@
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["records-god", "records-tree", "/records/god", "/generated/dates-my-patrons-immovable"]
+        "params": ["reliable-death-anniversary", "records-tree", "/records/god", "/generated/dates-my-patrons-immovable"]
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["records-patrons", "records-tree", "/records/patrons", "/generated/dates-my-patrons-immovable"]
+        "params": ["reliable-death-anniversary", "records-tree", "/records/patrons", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["other-memorial-days", "records-tree", "/records/god", "/generated/dates-my-patrons-immovable"]
+    },
+    {
+        "class": "GenerateDateDataFileProcedure",
+        "params": ["other-memorial-days", "records-tree", "/records/patrons", "/generated/dates-my-patrons-immovable"]
     },
     {
         "class": "GenerateDateDataFileProcedure",
