@@ -1,6 +1,6 @@
 <?php
 
-class RomanMartyrology1956MovableFeastsContentBlock extends ContentBlock implements ContentBlockInterface
+class RomanMartyrology2004MovableFeastsContentBlock extends ContentBlock implements ContentBlockInterface
 {
     private const PAGE_INDEX = 'page';
     private const BASE_INDEX = 'base';
@@ -13,7 +13,7 @@ class RomanMartyrology1956MovableFeastsContentBlock extends ContentBlock impleme
 
     public function prepare(string $path): ContentBlock
     {
-        $recordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-1956-movable-feast-item.html');
+        $recordContent = $this->getOriginalHtmlFileContent('items/roman-martyrology-2004-movable-feast-item.html');
 
         $this->prapareConsolidatedDataFilesArray($path);
 
@@ -32,7 +32,7 @@ class RomanMartyrology1956MovableFeastsContentBlock extends ContentBlock impleme
 
     public function getFullContent(string $translatedName): string
     {
-        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-1956-movable-feasts-content-block.html');
+        $contentBlockContent = $this->getOriginalHtmlFileContent('content-blocks/roman-martyrology-2004-movable-feasts-content-block.html');
         $pageHeaderContent = $this->getOriginalHtmlFileContent('items/page-header-item.html');
         $mainFileData = $this->getMainFileData();
 
