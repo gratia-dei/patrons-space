@@ -3,7 +3,7 @@
         "page": "CIII",
         "base": "",
         "move": 0,
-        "la": "Sabbato ante Dominicam primam Adventes[/]Domínica prima Advéntes Dómini nostri Jesu Christi."
+        "la": "Sabbato ante Dominicam primam Adventes[/]Domínica prima Advéntus Dómini nostri Jesu Christi."
     },
 
     "2": {
@@ -22,7 +22,7 @@
         "page": "CIV",
         "base": "",
         "move": 0,
-        "la": "Sabbato ante Dominicam Saptuagesimæ[/]Dominíca Septuagésimæ, in qua depónitur Cánticum Dómini « Allelúja »."
+        "la": "Sabbato ante Dominicam Saptuagesimæ[/]Domínica Septuagésimæ, in qua depónitur Cánticum Dómini « Allelúja »."
     },
 
     "5": {
@@ -34,13 +34,13 @@
     "6": {
         "base": "",
         "move": 0,
-        "la": "Sabbato ante Deominicam Passionis[/]Domínica Passiónis."
+        "la": "Sabbato ante Dominicam Passionis[/]Domínica Passiónis."
     },
 
     "7": {
         "base": "",
         "move": 0,
-        "la": "Feria quinta post Dominicam Passionis[/]Festum Septem Dolórum beatísimæ Vírginis Maríæ."
+        "la": "Feria quinta post Dominicam Passionis[/]Festum Septem Dolórum beatíssimæ Vírginis Maríæ."
     },
 
     "8": {
@@ -58,7 +58,7 @@
     "10": {
         "base": "",
         "move": 0,
-        "la": "In die Festo Pachæ antequam legantur Kalendæ, vel Nonæ, vel Idus[/]Hac die, quam fecit Dóminus, Solémnitas solemnitátum, et Pascha nostrum: Resurréctio Salvatóris nostri Jesu Christi secúndum carnem.[/]Deinde pronuntiantur Kalendæ, aut Nonæ, aus Idus, necnon quantitas Lunæ et Martyrologium sequentis diei."
+        "la": "In die Festo Pachæ antequam legantur Kalendæ, vel Nonæ, vel Idus[/]Hac die, quam fecit Dóminus, Solémnitas solemnitátum, et Pascha nostrum: Resurréctio Salvatóris nostri Jesu Christi secúndum carnem.[/]Deinde pronuntiantur Kalendæ, aut Nonæ, aut Idus, necnon quantitas Lunæ et Martyrologium sequentis diei."
     },
 
     "11": {

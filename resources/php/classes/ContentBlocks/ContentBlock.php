@@ -14,6 +14,9 @@ abstract class ContentBlock extends Content
     protected const RECORD_ACTIVENESS_CLASS_INACTIVE = 'record-inactive';
 
     private const EMPTY_TEXT_SPECIAL_TAG = '[...]';
+    private const NEWLINE_SPECIAL_TAG = '[/]';
+
+    private const NEWLINE_SPECIAL_TAG_REPLACEMENT = '<br />';
 
     private const DATE_REPLACES = [
         '/^([<>~])?([-]?[0-9]*)[-]([0-9][0-9])[-]([0-9][0-9])$/' => '\1\4.\3.\2',
@@ -87,6 +90,8 @@ abstract class ContentBlock extends Content
         if ($text === '') {
             return self::EMPTY_TEXT_SPECIAL_TAG;
         }
+
+        $text = str_replace(self::NEWLINE_SPECIAL_TAG, self::NEWLINE_SPECIAL_TAG_REPLACEMENT, $text);
 
         $textTags = $this->getTextTags($text);
         foreach ($textTags as list($tag, $link, $value)) {
