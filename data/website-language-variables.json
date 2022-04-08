@@ -126,10 +126,6 @@
         "pl": "edytuj pola"
     },
 
-    "lang-email-to-us": {
-        "en": "mailto:patrons.space@mypatrons.org"
-    },
-
     "lang-error-forbidden": {
         "en": "You don't have permission to access this resource!",
         "pl": "Nie masz dostępu do tego zasobu!"
@@ -371,12 +367,6 @@
     "lang-simplified-list": {
         "en": "simplified list",
         "pl": "lista uproszczona"
-    },
-
-    "lang-sources": {
-        "en": "sources",
-        "la": "fontes",
-        "pl": "źródła"
     },
 
     "lang-vertical": {
