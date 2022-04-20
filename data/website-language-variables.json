@@ -198,7 +198,7 @@
     },
 
     "lang-link-to-source": {
-        "en": "http://source.patrons.space"
+        "en": "https://source.patrons.space"
     },
 
     "lang-liturgical-calendar": {
@@ -227,8 +227,8 @@
     },
 
     "lang-my-patrons-for-today": {
-        "en": "<a href=\"http://en.mypatrons.org/about-my-patrons\">My Patrons</a> for today",
-        "pl": "<a href=\"http://pl.mypatrons.org/jak-wybrac-patrona-lub-swieto-na-dany-dzien-roku\">Moi Patroni</a> na dziś"
+        "en": "<a href=\"https://en.mypatrons.org/about-my-patrons\">My Patrons</a> for today",
+        "pl": "<a href=\"https://pl.mypatrons.org/jak-wybrac-patrona-lub-swieto-na-dany-dzien-roku\">Moi Patroni</a> na dziś"
     },
 
     "lang-non-existence": {

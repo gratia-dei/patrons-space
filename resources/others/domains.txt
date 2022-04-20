@@ -1,3 +1,0 @@
-patrons.space -> ip
-*.patrons.space -> ip
-source.patrons.space -> https://github.com/gratia-dei/patrons-space
