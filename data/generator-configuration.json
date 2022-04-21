@@ -25,11 +25,7 @@
     },
     {
         "class": "GenerateDataLinkFilesProcedure",
-        "params": ["/records/god", "data-links"]
-    },
-    {
-        "class": "GenerateDataLinkFilesProcedure",
-        "params": ["/records/patrons", "data-links"]
+        "params": [["/records/god", "/records/patrons"], "data-links"]
     },
     {
         "class": "GenerateDateDataFileProcedure",

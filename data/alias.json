@@ -5,9 +5,11 @@
     "popes": "/records/popes",
     "mr-2004": "/sources/martyrologium-romanum-2004/martyrologium-romanum/",
     "mr-2004-index": "/sources/martyrologium-romanum-2004/index-nominum-sanctorum-et-beatorum/",
+    "mr-2004-movable": "/sources/martyrologium-romanum-2004/elogia-pro-celebrationibus-mobilibus",
     "mr-1956": "/sources/martyrologium-romanum-1956/martyrologium-romanum/",
     "mr-1956-index-1-1": "/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/i-sancti-cum-nomine-descripti/",
     "mr-1956-index-1-2": "/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/ii-sancti-sine-nomine-commemorati/",
     "mr-1956-index-1-3": "/sources/martyrologium-romanum-1956/i-index-sanctorum-omnium-qui-in-hoc-martyrologio-descripti-inveniuntur/iii-sancti-obiter-nominati/",
-    "mr-1956-index-2": "/sources/martyrologium-romanum-1956/ii-index-festorum-quae-non-sunt-sanctorum-natalitia-et-officiorum-quae-elogio-sunt-decorata/"
+    "mr-1956-index-2": "/sources/martyrologium-romanum-1956/ii-index-festorum-quae-non-sunt-sanctorum-natalitia-et-officiorum-quae-elogio-sunt-decorata/",
+    "mr-1956-movable": "/sources/martyrologium-romanum-1956/elogia-festorum-et-officiorum-mobilium"
 }

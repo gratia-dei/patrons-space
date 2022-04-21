@@ -7,11 +7,15 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
     private $generatedFilesData = [];
 
-    public function run(string $dataPath, string $fieldName): void
+    public function run(array $dataPaths, string $fieldName): void
     {
-        $rootPath = $this->getFullDataPath($dataPath);
+        $paths = [];
+        foreach ($dataPaths as $dataPath) {
+            $rootPath = $this->getFullDataPath($dataPath);
 
-        $paths = $this->getPathTree($rootPath);
+            $paths = array_merge($paths, $this->getPathTree($rootPath));
+        }
+
         foreach ($paths as $sourceFileFullPath => $isDirectory) {
             if ($isDirectory) {
                 continue;
@@ -140,6 +144,10 @@ class GenerateDataLinkFilesProcedure extends Procedure
         $result = [];
 
         foreach ($generatedFilesData as $generatedFilePath => $data) {
+            //$readData = $this->getOriginalJsonFileContentArrayForFullPath($generatedFilePath);
+            //var_dump($generatedFilePath);
+            //print_r($readData);
+            //print_r($data);
             $result[$generatedFilePath][self::DATA_LINKS_GENERATED_FILES_INDEX] = $data;
         }
 

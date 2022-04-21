@@ -3,13 +3,13 @@
         "page": 35,
         "base": "",
         "move": 0,
-        "la": "Dominica I Adventus[/]Domínica prima Advéntus Dómini nostri Iesu Christi, quo témpore primus Dei Fílii advéntus inter hómines recólitur  ac simul secúndus eius advéntus in fine témporum exspectátur."
+        "la": "Dominica I Adventus[/][1|Domínica prima Advéntus Dómini nostri Iesu Christi], quo témpore primus Dei Fílii advéntus inter hómines recólitur  ac simul secúndus eius advéntus in fine témporum exspectátur."
     },
 
     "2": {
         "base": "",
         "move": 0,
-        "la": "Dominica quæ occurit infra octavam Nativitatis Domini vel, ea deficiente, die 29 decembris[/]Festum Sanctæ Famíliæ Iesu, Maríæ et Ioseph, ex qua christiánis famíliis sanctíssima proponúntur exémpla et opportúna invocántur auxília."
+        "la": "Dominica quæ occurit infra octavam Nativitatis Domini vel, ea deficiente, die 29 decembris[/][1|Festum Sanctæ Famíliæ Iesu], [2|Maríæ] et [3|Ioseph], ex qua christiánis famíliis sanctíssima proponúntur exémpla et opportúna invocántur auxília."
     },
 
     "3": {
@@ -39,7 +39,11 @@
 
     "7": {
         "base": "",
-        "move": 0,
+        "move": {
+            "1": 0,
+            "2": 0,
+            "3": 0
+        },
         "la": "Feria V Hebdomadæ sanctæ, feria VI in Passione Domini et Sabbato sancto[/]Lectio Martyrologii omittitur."
     },
 

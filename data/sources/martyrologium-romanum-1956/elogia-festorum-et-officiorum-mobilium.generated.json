@@ -1,0 +1,15 @@
+{
+    "data-links": {
+        "1": {
+            "1": "records/god/2#1"
+        },
+        "2": {
+            "1": "records/god/2#2"
+        },
+        "3": {
+            "2": "records/patrons/i/1#4",
+            "3": "records/patrons/i/3#1",
+            "1": "records/god/2#3"
+        }
+    }
+}
