@@ -7,6 +7,7 @@ abstract class Base
     private $file;
     private $json;
     private $path;
+    private $movableFeastBase;
 
     protected const PATRON_NAMES_INDEX = 'names';
     protected const PATRON_FEASTS_INDEX = 'feasts';
@@ -41,6 +42,7 @@ abstract class Base
         $this->file = new File();
         $this->json = new Json();
         $this->path = new Path();
+        $this->movableFeastBase = new MovableFeastBase();
     }
 
     protected function getDate(): Date
@@ -66,6 +68,11 @@ abstract class Base
     protected function getPath(): Path
     {
         return $this->path;
+    }
+
+    protected function getMovableFeastBase(): MovableFeastBase
+    {
+        return $this->movableFeastBase;
     }
 
     protected function getOriginalJsonFileContentArrayForFullPath(string $jsonFilePath): array

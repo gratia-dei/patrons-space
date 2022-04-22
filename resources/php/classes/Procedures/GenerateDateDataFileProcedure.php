@@ -4,7 +4,10 @@ class GenerateDateDataFileProcedure extends Procedure
 {
     private const RECORDS_TREE_MODE = 'records-tree';
     private const DATES_TREE_MODE = 'dates-tree';
-    private const DATES_FILE_MODE = 'dates-file';
+    private const MOVABLE_DATES_FILE_MODE = 'movable-dates-file';
+
+    private const MOVABLE_DATES_FILE_BASE_INDEX = 'base';
+    private const MOVABLE_DATES_FILE_MOVE_INDEX = 'move';
 
     private const DATES_TREE_PATH_ELEMENTS_ALIASES_PATTERN = [
         '/^(0[1-9]|1[0-2])$/', //month
@@ -33,8 +36,8 @@ class GenerateDateDataFileProcedure extends Procedure
             $this->processRecordsTreeMode($sourceId, $fullSrcPath, ltrim($srcPath, '/'));
         } else if ($mode === self::DATES_TREE_MODE) {
             $this->processDatesTreeMode($sourceId, $fullSrcPath);
-        } else if ($mode === self::DATES_FILE_MODE) {
-            $this->processDatesFileMode($sourceId, $fullSrcPath);
+        } else if ($mode === self::MOVABLE_DATES_FILE_MODE) {
+            $this->processMovableDatesFileMode($sourceId, $fullSrcPath);
         } else {
             $this->error("unknown generate date data file procedure mode '$mode'");
         }
@@ -235,5 +238,55 @@ class GenerateDateDataFileProcedure extends Procedure
         }
 
         return $result;
+    }
+
+    private function processMovableDatesFileMode(string $sourceId, string $srcPath): void
+    {
+        $staticFilePath = $this->getDataFileSuffix($srcPath);
+        $staticFileData = $this->getOriginalJsonFileContentArrayForFullPath($staticFilePath);
+
+        $generatedFilePath = $this->getGeneratedFileSuffix($srcPath);
+        $generatedFileData = $this->getOriginalJsonFileContentArrayForFullPath($generatedFilePath)[self::DATA_LINKS_GENERATED_FILES_INDEX] ?? [];
+
+        foreach ($staticFileData as $key => $staticRow) {
+            $base = $staticRow[self::MOVABLE_DATES_FILE_BASE_INDEX] ?? null;
+            $move = $staticRow[self::MOVABLE_DATES_FILE_MOVE_INDEX] ?? null;
+
+            if (!is_string($base)) {
+                $this->error("base index must be string for key '$key' in source '$sourceId'");
+            } else if (!is_int($move) && !is_array($move)) {
+                $this->error("move index must be single integer or array of integers for key '$key' in source '$sourceId'");
+            }
+            if (is_int($move)) {
+                $move = [$move];
+            }
+
+            $currentYearBaseMethodValue = $this->getMovableFeastBase()->$base(date('Y'));
+            if (!preg_match('/^[0-9][0-9]-[0-9][0-9]$/', $currentYearBaseMethodValue)) {
+                $this->error("invalid base method '$base' result '$currentYearBaseMethodValue' for key '$key' in source '$sourceId'");
+            }
+
+            $patronsLinks = $generatedFileData[$key] ?? [];
+            ksort($patronsLinks);
+
+            foreach ($move as $moveId => $moveDays) {
+                if (!is_int($moveId)) {
+                    $this->error("each move index key must be integer for key '$key' in source '$sourceId'");
+                } else if (!is_int($moveDays)) {
+                    $this->error("each move index days value must be integer for key '$key' in source '$sourceId'");
+                }
+                if ($moveId !== 0) {
+                    if (isset($patronsLinks[$moveId])) {
+                        $patronsLinks = [$moveId => $patronsLinks[$moveId]];
+                    } else {
+                        $patronsLinks = [];
+                    }
+                }
+
+                foreach ($patronsLinks as $patronUrl) {
+                    $this->addToFileData("$base|$moveDays", $patronUrl, $sourceId);
+                }
+            }
+        }
     }
 }

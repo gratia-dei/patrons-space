@@ -1,0 +1,105 @@
+{
+    "get1956HolyFamilyFeastDate|0": {
+        "records/god/2#3": {
+            "name": {
+                "la": "Iesus Christus (Sancta Familia)",
+                "pl": "Jezus Chrystus (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        },
+        "records/patrons/i/1#4": {
+            "name": {
+                "la": "Maria Virgo (Sancta Familia)",
+                "pl": "Najświętsza Maryja Panna (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        },
+        "records/patrons/i/3#1": {
+            "name": {
+                "la": "Iosephus (Sancta Familia)",
+                "pl": "Józef z Nazaretu (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "get1956TheMostHolyNameOfJesusFeastDate|0": {
+        "records/god/2#2": {
+            "name": {
+                "la": "Iesus Christus (Sanctissimum Nomen Iesus)",
+                "pl": "Jezus Chrystus (Najświętsze Imię Jezus)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "get2004BaptismOfJesusFeastDate|0": {
+        "records/god/2#4": {
+            "name": {
+                "la": "Iesus Christus (Baptismus Domini)",
+                "pl": "Jezus Chrystus (Chrzest Pański)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "get2004HolyFamilyFeastDate|0": {
+        "records/god/2#3": {
+            "name": {
+                "la": "Iesus Christus (Sancta Familia)",
+                "pl": "Jezus Chrystus (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        },
+        "records/patrons/i/1#4": {
+            "name": {
+                "la": "Maria Virgo (Sancta Familia)",
+                "pl": "Najświętsza Maryja Panna (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        },
+        "records/patrons/i/3#1": {
+            "name": {
+                "la": "Iosephus (Sancta Familia)",
+                "pl": "Józef z Nazaretu (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getFirstSundayOfAdventDate|0": {
+        "records/god/2#1": {
+            "name": {
+                "la": "Iesus Christus (Dominica prima Adventus)",
+                "pl": "Jezus Chrystus (Pierwsza Niedziela Adwentu)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-70": {
+        "records/god/2#5": {
+            "name": {
+                "la": "Iesus Christus (Dominica Septuagesimæ)",
+                "pl": "Jezus Chrystus (Niedziela Siedemdziesiątnicy)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    }
+}

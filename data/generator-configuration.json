@@ -57,14 +57,14 @@
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["mr-2004-movable", "dates-file", "/sources/martyrologium-romanum-2004/elogia-pro-celebrationibus-mobilibus", "/generated/dates-my-patrons-movable"]
+        "params": ["mr-2004-movable", "movable-dates-file", "/sources/martyrologium-romanum-2004/elogia-pro-celebrationibus-mobilibus", "/generated/dates-my-patrons-movable"]
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["mr-1956-movable", "dates-file", "/sources/martyrologium-romanum-1956/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
+        "params": ["mr-1956-movable", "movable-dates-file", "/sources/martyrologium-romanum-1956/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
     },
     {
         "class": "GenerateDateDataFileProcedure",
-        "params": ["mr-1956-variations-movable", "dates-file", "/sources/martyrologium-romanum-1956/variationes-in-martyrologio-romano/variationes/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
+        "params": ["mr-1956-variations-movable", "movable-dates-file", "/sources/martyrologium-romanum-1956/variationes-in-martyrologio-romano/variationes/elogia-festorum-et-officiorum-mobilium", "/generated/dates-my-patrons-movable"]
     }
 ]
