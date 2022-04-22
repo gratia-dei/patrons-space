@@ -1,155 +1,155 @@
 {
     "1": {
         "page": "CIII",
-        "base": "",
+        "base": "getFirstSundayOfAdventDate",
         "move": 0,
         "la": "Sabbato ante Dominicam primam Adventes[/][1|Domínica prima Advéntus Dómini nostri Jesu Christi]."
     },
 
     "2": {
-        "base": "",
+        "base": "get1956TheMostHolyNameOfJesusFeastDate",
         "move": 0,
         "la": "Sabbato ante Dominicam quæ occurrere potest a die 2 ad 5 Januarii inclusive et, ea deficiente, die 1 Januarii[/][1|Festum sanctíssimi Nóminis Jesu]."
     },
 
     "3": {
-        "base": "",
+        "base": "get1956HolyFamilyFeastDate",
         "move": 0,
         "la": "Sabbato ante Dominicam quæ occurrere potest a die 7 ad 12 Januarii inclusive et, ea deficiente, in Feria Officium sanctæ Familiæ proxime antecedenti[/][1|Festum sanctæ Famíliæ Jesu], [2|Maríæ], [3|Joseph]; ex qua Christiánis famíliis sanctísima proponúntur exémpla, et opportúna invocántur auxília."
     },
 
     "4": {
         "page": "CIV",
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -70,
         "la": "Sabbato ante Dominicam Septuagesimæ[/][1|Domínica Septuagésimæ], in qua depónitur Cánticum Dómini « Allelúja »."
     },
 
     "5": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -47,
         "la": "Feria tertia post Dominicam Quinquagesimæ[/]Dies Cínerum, et inítium jejúnii sacratíssimæ Quadragésimæ."
     },
 
     "6": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -42,
         "la": "Sabbato ante Dominicam Passionis[/]Domínica Passiónis."
     },
 
     "7": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -37,
         "la": "Feria quinta post Dominicam Passionis[/]Festum Septem Dolórum beatíssimæ Vírginis Maríæ."
     },
 
     "8": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -7,
         "la": "Sabbato ante Dominicam Palmarum[/]Domínica Palmárum quando Dóminus noster Jesus Christus, juxta Zacharíæ prophetíam, sedens super pullum ásinæ, Hierosólymam intrávit; cui turba cum ramis palmárum óbviam venit."
     },
 
     "9": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": -3,
         "la": "Feria quarta Majoris Hebdomadæ[/]Cœna Domínica, quando Christus Jesus, prídie quam pro nostra salúte crugcifigerétur, mystéria Córporis et Sánguinis sui Discípulis trádidit celebránda."
     },
 
     "10": {
-        "base": "",
+        "base": "getResurrectionFeastDate",
         "move": 0,
         "la": "In die Festo Paschæ antequam legantur Kalendæ, vel Nonæ, vel Idus[/]Hac die, quam fecit Dóminus, Solémnitas solemnitátum, et Pascha nostrum: Resurréctio Salvatóris nostri Jesu Christi secúndum carnem.[/]Deinde pronuntiantur Kalendæ, aut Nonæ, aut Idus, necnon quantitas Lunæ et Martyrologium sequentis diei."
     },
 
     "11": {
-        "base": "",
+        "base": "get1956TheGreaterLitaniesInTheChurchOfSaintPeterDate",
         "move": 0,
         "la": "Feria secunda infra Octavam Paschæ quoties ipsum Pascha in diem 25 Aprilis inciderit[/]Romæ Litaníæ majóres ad sanctum Patrum."
     },
 
     "12": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 7,
         "la": "Sabbato infra Octavam Paschæ[/]Domínica in Albis in Octáva Paschæ."
     },
 
     "13": {
         "page": "CV",
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 36,
         "la": "Dominica quinta post Pascha[/]Romæ Litaníæ minóres ad sanctam Maríam Majórem."
     },
 
     "14": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 37,
         "la": "Feria secunda Rogationum[/]Romæ Litaníæ minóres ad sanctum Joánnem in Lateráno."
     },
 
     "15": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 38,
         "la": "Feria tertia Rogationum[/]Vigília Ascensiónis Dómini nostri Jesu Christi.[/]Romæ Litaníæ minóres ad sanctum Petrum."
     },
 
     "16": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 39,
         "la": "In Vigilia Ascensionis Domini[/]In monte Olivéti Ascénsio Dómini nostri Jesu Christi."
     },
 
     "17": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 47,
         "la": "Feria quarta infra Octavam Ascensionis Domini[/]Octáva Ascensiónis Dómini nostri Jesu Christi."
     },
 
     "18": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 48,
         "la": "Feria sexta post Octavam Ascensionis Domini[/]Vigília Pentecóstes."
     },
 
     "19": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 49,
         "la": "In Vigilia Pentecostes[/]Dies Pentecóstes, quando Spíritus Sanctus Hierosólymis super Discípulos ígneis linguis advénit."
     },
 
     "20": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 56,
         "la": "Sabbato infra Octavam Pentecostes[/]Festum sacratíssimæ et indivíduæ Trinitátis, et Octáva Pentecóstes."
     },
 
     "21": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 60,
         "la": "Feria quarta post Octavam Pentecostes[/]Festum sanctíssimi Córporis Christi."
     },
 
     "22": {
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 68,
         "la": "Feria quarta infra Octavam sanctissimi Corporis Christi[/]Octáva sanctíssimi Córporis Christi."
     },
 
     "23": {
         "page": "CV",
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 69,
         "la": "Feria quinta in Octava sanctissimi Corporis Christi[/]Festum sacratíssimi Cordis Jesu."
     },
 
     "24": {
         "page": "CVI",
-        "base": "",
-        "move": 0,
+        "base": "getResurrectionFeastDate",
+        "move": 77,
         "la": "Feria quinta infra Octavam sacratissimi Cordis Jesu[/]Octáva sacratíssimi Cordis Jesu."
     },
 
     "25": {
-        "base": "",
+        "base": "get1956JesusTheKingFeastDate",
         "move": 0,
         "la": "Sabbato ante Dominicam quæ occurrere potest a die 25 et 31 Octobris inclusive[/]Festum Dómini nostri Jesu Christi Regis."
     }
