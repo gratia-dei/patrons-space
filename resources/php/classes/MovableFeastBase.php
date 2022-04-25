@@ -6,12 +6,14 @@ class MovableFeastBase
 
     private const MISSING_DATE = '00-00';
 
+    private $date;
     private $path;
     private $file;
     private $json;
 
     public function __construct()
     {
+        $this->date = new Date();
         $this->path = new Path();
         $this->file = new File();
         $this->json = new Json();
@@ -19,9 +21,16 @@ class MovableFeastBase
 
     public function get1956HolyFamilyFeastDate(int $year): string
     {
-        //...
+        $jan7 = "$year-01-07";
+        $weekDay = (int) date('w', strtotime($jan7));
 
-        return self::MISSING_DATE;
+        if ($weekDay === 0) {
+            $weekDay = 7;
+        }
+
+        $date = $this->date->getDateMovedByDays($jan7, 7 - $weekDay);
+
+        return substr($date, 5);
     }
 
     public function get1956JesusTheKingFeastDate(int $year): string
@@ -33,9 +42,17 @@ class MovableFeastBase
 
     public function get1956TheMostHolyNameOfJesusFeastDate(int $year): string
     {
-        //...
+        $jan2 = "$year-01-02";
+        $weekDay = (int) date('w', strtotime($jan2));
 
-        return self::MISSING_DATE;
+        $moveDays = 0;
+        if ($weekDay >= 4 && $weekDay <= 6) {
+            $moveDays = 7 - $weekDay;
+        }
+
+        $date = $this->date->getDateMovedByDays($jan2, $moveDays);
+
+        return substr($date, 5);
     }
 
     public function get1956TheGreaterLitaniesInTheChurchOfSaintPeterDate(int $year): string
@@ -61,9 +78,16 @@ class MovableFeastBase
 
     public function getFirstSundayOfAdventDate(int $year): string
     {
-        //...
+        $dec25 = "$year-12-25";
+        $weekDay = (int) date('w', strtotime($dec25));
 
-        return self::MISSING_DATE;
+        if ($weekDay === 0) {
+            $weekDay = 7;
+        }
+
+        $date = $this->date->getDateMovedByDays($dec25, -4 * 7 + (7 - $weekDay));
+
+        return substr($date, 5);
     }
 
     public function getResurrectionFeastDate(int $year): string
