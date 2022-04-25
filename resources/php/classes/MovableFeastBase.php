@@ -64,16 +64,29 @@ class MovableFeastBase
 
     public function get2004BaptismOfJesusFeastDate(int $year): string
     {
-        //...
+        $jan6 = "$year-01-06";
+        $weekDay = (int) date('w', strtotime($jan6));
 
-        return self::MISSING_DATE;
+        $date = $this->date->getDateMovedByDays($jan6, 7 - $weekDay);
+
+        return substr($date, 5);
     }
 
     public function get2004HolyFamilyFeastDate(int $year): string
     {
-        //...
+        $dec29 = "$year-12-29";
+        $weekDay = (int) date('w', strtotime($dec29));
 
-        return self::MISSING_DATE;
+        $moveDays = 0;
+        if ($weekDay === 4 || $weekDay === 5) {
+            $moveDays = $weekDay - 3;
+        } else if ($weekDay >= 1 && $weekDay <= 3) {
+            $moveDays = -$weekDay;
+        }
+
+        $date = $this->date->getDateMovedByDays($dec29, $moveDays);
+
+        return substr($date, 5);
     }
 
     public function getFirstSundayOfAdventDate(int $year): string
