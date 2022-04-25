@@ -105,10 +105,20 @@
         "pl": "Martyrologium Rzymskie (1956)"
     },
 
+    "lang-date-source-mr-1956-movable": {
+        "en": "Roman Martyrology (1956: movable feasts)",
+        "pl": "Martyrologium Rzymskie (1956: święta ruchome)"
+    },
+
     "lang-date-source-mr-2004": {
         "en": "Roman Martyrology (2004)",
         "la": "Martyrologium Romanum (2004)",
         "pl": "Martyrologium Rzymskie (2004)"
+    },
+
+    "lang-date-source-mr-2004-movable": {
+        "en": "Roman Martyrology (2004: movable feasts)",
+        "pl": "Martyrologium Rzymskie (2004: święta ruchome)"
     },
 
     "lang-date-source-other-memorial-days": {

@@ -45,4 +45,11 @@ class Date
 
         return true;
     }
+
+    public function getDateMovedByDays(string $date, int $moveDays): string
+    {
+        $dateTime = strtotime("$date 00:00:00");
+
+        return date('Y-m-d', $dateTime + $moveDays * 24 * 60 * 60);
+    }
 }

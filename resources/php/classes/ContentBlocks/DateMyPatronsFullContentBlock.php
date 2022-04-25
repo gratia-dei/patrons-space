@@ -36,8 +36,12 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
         $immovableFileData = $this->getOriginalJsonFileContentArray($immovableFilePath);
         $immovableRows = $this->getImmovableRows($date, $immovableFileData);
 
-        $this->rows = array_merge($movableRows, $immovableRows);
+        $rows = $movableRows;
+        foreach ($immovableRows as $patronUrl => $patronData) {
+            $rows = $this->addPatronToList($rows, $patronUrl, $patronData);
+        }
 
+        $this->rows = $rows;
         $this->mainTemplate = $this->getOriginalHtmlFileContent('content-blocks/date-my-patrons-full-content-block.html');
     }
 
@@ -87,9 +91,44 @@ class DateMyPatronsFullContentBlock extends ContentBlock implements ContentBlock
 
     protected function getMovableRows(string $date, array $fileData): array
     {
-        //...todo later
+        $result = [];
 
-        return [];
+        $year = (int) substr($date, 0, 4);
+
+        $methodResults = [];
+        foreach ($fileData as $methodWithMoveDays => $feastData) {
+            $methodWithMoveDaysArr = explode('|', $methodWithMoveDays);
+            $method = $methodWithMoveDaysArr[0];
+            $moveDays = $methodWithMoveDaysArr[1];
+
+            if (!isset($methodResults[$method])) {
+                $methodResults[$method] = $this->getMovableFeastBase()->$method($year);
+            }
+            $methodResult = $methodResults[$method];
+            if (!$this->getDate()->isValidMonthWithDay($methodResult)) {
+                continue;
+            }
+
+            $feastDate = $this->getDate()->getDateMovedByDays("$year-$methodResult", $moveDays);
+            if ($feastDate === $date) {
+                foreach ($feastData as $patronUrl => $patronData) {
+                    $result = $this->addPatronToList($result, $patronUrl, $patronData);
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    private function addPatronToList(array $data, string $patronUrl, array $patronData): array
+    {
+        foreach ($patronData as $index => $indexData) {
+            foreach ($indexData as $key => $value) {
+                $data[$patronUrl][$index][$key] = $value;
+            }
+        }
+
+        return $data;
     }
 
     private function getLanguageVariableName(string $patronUrl): string
