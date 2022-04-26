@@ -275,15 +275,17 @@ class GenerateDateDataFileProcedure extends Procedure
                 } else if (!is_int($moveDays)) {
                     $this->error("each move index days value must be integer for key '$key' in source '$sourceId'");
                 }
+
+                $moveIdPatronsLinks = $patronsLinks;
                 if ($moveId !== 0) {
                     if (isset($patronsLinks[$moveId])) {
-                        $patronsLinks = [$moveId => $patronsLinks[$moveId]];
+                        $moveIdPatronsLinks = [$moveId => $patronsLinks[$moveId]];
                     } else {
-                        $patronsLinks = [];
+                        $moveIdPatronsLinks = [];
                     }
                 }
 
-                foreach ($patronsLinks as $patronUrl) {
+                foreach ($moveIdPatronsLinks as $patronUrl) {
                     $this->addToFileData("$base|$moveDays", $patronUrl, $sourceId);
                 }
             }

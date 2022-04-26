@@ -183,10 +183,53 @@
       }
     },
 
+    "10": {
+      "names": {
+        "la": [
+          "Feria quinta Hebdomadae sanctae"
+        ],
+        "pl": [
+          "Wielki Czwartek"
+        ]
+      },
 
+      "data-links": {
+        "mr-2004-movable": ["1:#7"],
+        "mr-1956-movable": ["1:#9"]
+      }
+    },
 
+    "11": {
+      "names": {
+        "la": [
+          "feria sexta in Passione Domini"
+        ],
+        "pl": [
+          "Wielki Piątek"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["2:#7"]
+      }
+    },
 
     "12": {
+      "names": {
+        "la": [
+          "Sabbato sancto"
+        ],
+        "pl": [
+          "Wielka Sobota"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["3:#7"]
+      }
+    },
+
+    "13": {
       "names": {
         "la": [
           "Resurrectio Iesu Christi"

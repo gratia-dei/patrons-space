@@ -91,6 +91,40 @@
             }
         }
     },
+    "getResurrectionFeastDate|-1": {
+        "records/god/2#12": {
+            "name": {
+                "la": "Iesus Christus (Sabbato sancto)",
+                "pl": "Jezus Chrystus (Wielka Sobota)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-2": {
+        "records/god/2#11": {
+            "name": {
+                "la": "Iesus Christus (feria sexta in Passione Domini)",
+                "pl": "Jezus Chrystus (Wielki Piątek)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-3": {
+        "records/god/2#10": {
+            "name": {
+                "la": "Iesus Christus (Feria quinta Hebdomadae sanctae)",
+                "pl": "Jezus Chrystus (Wielki Czwartek)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
     "getResurrectionFeastDate|-37": {
         "records/patrons/i/1#5": {
             "name": {
@@ -159,7 +193,7 @@
         }
     },
     "getResurrectionFeastDate|0": {
-        "records/god/2#12": {
+        "records/god/2#13": {
             "name": {
                 "la": "Iesus Christus (Resurrectio Iesu Christi)",
                 "pl": "Jezus Chrystus (Zmartwychwstanie Jezusa Chrystusa)"
