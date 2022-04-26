@@ -48,8 +48,10 @@ class Date
 
     public function getDateMovedByDays(string $date, int $moveDays): string
     {
-        $dateTime = strtotime("$date 00:00:00");
+        $dateObj = new DateTime("$date 00:00:00", new DateTimeZone('UTC'));
+        $interval = DateInterval::createFromDateString($moveDays . ' day');
+        $dateObjMoved = $dateObj->add($interval);
 
-        return date('Y-m-d', $dateTime + $moveDays * 24 * 60 * 60);
+        return $dateObjMoved->format('Y-m-d');
     }
 }

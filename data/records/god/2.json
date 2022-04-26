@@ -116,6 +116,90 @@
       "data-links": {
         "mr-1956-movable": ["1:#4"]
       }
+    },
+
+    "6": {
+      "names": {
+        "en": [
+          "Ash Wednesday"
+        ],
+        "la": [
+          "Dies Cinerum"
+        ],
+        "pl": [
+          "Środa Popielcowa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#4"],
+        "mr-1956-movable": ["1:#5"]
+      }
+    },
+
+    "7": {
+      "names": {
+        "la": [
+          "Dominica Passionis"
+        ],
+        "pl": [
+          "Niedziela Męki Pańskiej"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#6"]
+      }
+    },
+
+    "8": {
+      "names": {
+        "la": [
+          "Dominica prima in Quadragesima"
+        ],
+        "pl": [
+          "Pierwsza Niedziela Wielkiego Postu"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#5"]
+      }
+    },
+
+    "9": {
+      "names": {
+        "la": [
+          "Dominica Palmarum"
+        ],
+        "pl": [
+          "Niedziela Palmowa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#6"],
+        "mr-1956-movable": ["1:#8"]
+      }
+    },
+
+
+
+
+    "12": {
+      "names": {
+        "la": [
+          "Resurrectio Iesu Christi"
+        ],
+        "pl": [
+          "Zmartwychwstanie Jezusa Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#8"],
+        "mr-1956-movable": ["1:#10"]
+      }
     }
   }
 }

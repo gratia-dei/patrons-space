@@ -91,13 +91,81 @@
             }
         }
     },
-    "getResurrectionFeastDate|-62": {
+    "getResurrectionFeastDate|-37": {
+        "records/patrons/i/1#5": {
+            "name": {
+                "la": "Maria Virgo (Septem Dolores beatissimae Vírginis Mariae)",
+                "pl": "Najświętsza Maryja Panna (Siedem Boleści Najświętszej Maryi Panny)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-42": {
+        "records/god/2#8": {
+            "name": {
+                "la": "Iesus Christus (Dominica prima in Quadragesima)",
+                "pl": "Jezus Chrystus (Pierwsza Niedziela Wielkiego Postu)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        },
+        "records/god/2#7": {
+            "name": {
+                "la": "Iesus Christus (Dominica Passionis)",
+                "pl": "Jezus Chrystus (Niedziela Męki Pańskiej)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-46": {
+        "records/god/2#6": {
+            "name": {
+                "en": "Jesus Christ (Ash Wednesday)",
+                "la": "Iesus Christus (Dies Cinerum)",
+                "pl": "Jezus Chrystus (Środa Popielcowa)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-63": {
         "records/god/2#5": {
             "name": {
                 "la": "Iesus Christus (Dominica Septuagesimæ)",
                 "pl": "Jezus Chrystus (Niedziela Siedemdziesiątnicy)"
             },
             "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|-7": {
+        "records/god/2#9": {
+            "name": {
+                "la": "Iesus Christus (Dominica Palmarum)",
+                "pl": "Jezus Chrystus (Niedziela Palmowa)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|0": {
+        "records/god/2#12": {
+            "name": {
+                "la": "Iesus Christus (Resurrectio Iesu Christi)",
+                "pl": "Jezus Chrystus (Zmartwychwstanie Jezusa Chrystusa)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
                 "mr-1956-movable": true
             }
         }

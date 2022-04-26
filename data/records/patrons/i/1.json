@@ -119,6 +119,21 @@
         "mr-2004-movable": ["2:#2"],
         "mr-1956-movable": ["2:#3"]
       }
+    },
+
+    "5": {
+      "names": {
+        "la": [
+          "Septem Dolores beatissimae Vírginis Mariae"
+        ],
+        "pl": [
+          "Siedem Boleści Najświętszej Maryi Panny"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#7"]
+      }
     }
   }
 }

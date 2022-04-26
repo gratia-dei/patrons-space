@@ -20,21 +20,21 @@
 
     "4": {
         "base": "getResurrectionFeastDate",
-        "move": -47,
-        "la": "Feria IV Cinerum[/]Dies Cínerum et inítium sacratíssimæ Quadragésimæ: ecce advéniunt dies pæniténtiæ ad rediménda peccáta, ad salvándas ánimas; ecce tempus acceptábile, quo ad montem sanctum Páschatis ascénditur."
+        "move": -46,
+        "la": "Feria IV Cinerum[/][1|Dies Cínerum] et inítium sacratíssimæ Quadragésimæ: ecce advéniunt dies pæniténtiæ ad rediménda peccáta, ad salvándas ánimas; ecce tempus acceptábile, quo ad montem sanctum Páschatis ascénditur."
     },
 
     "5": {
         "base": "getResurrectionFeastDate",
         "move": -42,
-        "la": "Dominica I Quadragesimæ[/]Domínica prima in Quadragésima, qua, Dómino nostro Iesu Christo exémplum præbénte, exóritur venerábile sacraméntum ánnuæ observatiónis quadragesimális."
+        "la": "Dominica I Quadragesimæ[/][1|Domínica prima in Quadragésima], qua, Dómino nostro Iesu Christo exémplum præbénte, exóritur venerábile sacraméntum ánnuæ observatiónis quadragesimális."
     },
 
     "6": {
         "page": 36,
         "base": "getResurrectionFeastDate",
         "move": -7,
-        "la": "Dominica in Palmis de Passione Domini[/]Domínica in Palmis de Passióne Dómini, quando Dóminus noster Iesus Christus, iuxta Zacharíæ prophetíam, sedens super pullum ásinæ, Hierosólymam intrávit, cui turba cum ramis palmárum óbviam venit."
+        "la": "Dominica in Palmis de Passione Domini[/][1|Domínica in Palmis de Passióne Dómini], quando Dóminus noster Iesus Christus, iuxta Zacharíæ prophetíam, sedens super pullum ásinæ, Hierosólymam intrávit, cui turba cum ramis palmárum óbviam venit."
     },
 
     "7": {
@@ -50,7 +50,7 @@
     "8": {
         "base": "getResurrectionFeastDate",
         "move": 0,
-        "la": "Dominica Paschæ in Resurrectione Domini[/]Hac, die, quam fecit Dóminus, sollémnitas sollemnitátum et Pascha notrum: Resurréctio Salvatóris nostri Iesu Christi secúndum carnem.[/]Deinde pronuntiatur mentio diei sequentis ac mensis, et leguntur elogia diei sequentis."
+        "la": "Dominica Paschæ in Resurrectione Domini[/]Hac, die, quam fecit Dóminus, sollémnitas sollemnitátum et Pascha notrum: [1|Resurréctio Salvatóris nostri Iesu Christi] secúndum carnem.[/]Deinde pronuntiatur mentio diei sequentis ac mensis, et leguntur elogia diei sequentis."
     },
 
     "9": {

@@ -21,32 +21,32 @@
     "4": {
         "page": "CIV",
         "base": "getResurrectionFeastDate",
-        "move": -62,
+        "move": -63,
         "la": "Sabbato ante Dominicam Septuagesimæ[/][1|Domínica Septuagésimæ], in qua depónitur Cánticum Dómini « Allelúja »."
     },
 
     "5": {
         "base": "getResurrectionFeastDate",
-        "move": -47,
-        "la": "Feria tertia post Dominicam Quinquagesimæ[/]Dies Cínerum, et inítium jejúnii sacratíssimæ Quadragésimæ."
+        "move": -46,
+        "la": "Feria tertia post Dominicam Quinquagesimæ[/][1|Dies Cínerum], et inítium jejúnii sacratíssimæ Quadragésimæ."
     },
 
     "6": {
         "base": "getResurrectionFeastDate",
         "move": -42,
-        "la": "Sabbato ante Dominicam Passionis[/]Domínica Passiónis."
+        "la": "Sabbato ante Dominicam Passionis[/][1|Domínica Passiónis]."
     },
 
     "7": {
         "base": "getResurrectionFeastDate",
         "move": -37,
-        "la": "Feria quinta post Dominicam Passionis[/]Festum Septem Dolórum beatíssimæ Vírginis Maríæ."
+        "la": "Feria quinta post Dominicam Passionis[/][1|Festum Septem Dolórum beatíssimæ Vírginis Maríæ]."
     },
 
     "8": {
         "base": "getResurrectionFeastDate",
         "move": -7,
-        "la": "Sabbato ante Dominicam Palmarum[/]Domínica Palmárum quando Dóminus noster Jesus Christus, juxta Zacharíæ prophetíam, sedens super pullum ásinæ, Hierosólymam intrávit; cui turba cum ramis palmárum óbviam venit."
+        "la": "Sabbato ante Dominicam Palmarum[/][1|Domínica Palmárum] quando Dóminus noster Jesus Christus, juxta Zacharíæ prophetíam, sedens super pullum ásinæ, Hierosólymam intrávit; cui turba cum ramis palmárum óbviam venit."
     },
 
     "9": {
@@ -58,7 +58,7 @@
     "10": {
         "base": "getResurrectionFeastDate",
         "move": 0,
-        "la": "In die Festo Paschæ antequam legantur Kalendæ, vel Nonæ, vel Idus[/]Hac die, quam fecit Dóminus, Solémnitas solemnitátum, et Pascha nostrum: Resurréctio Salvatóris nostri Jesu Christi secúndum carnem.[/]Deinde pronuntiantur Kalendæ, aut Nonæ, aut Idus, necnon quantitas Lunæ et Martyrologium sequentis diei."
+        "la": "In die Festo Paschæ antequam legantur Kalendæ, vel Nonæ, vel Idus[/]Hac die, quam fecit Dóminus, Solémnitas solemnitátum, et Pascha nostrum: [1|Resurréctio Salvatóris nostri Jesu Christi] secúndum carnem.[/]Deinde pronuntiantur Kalendæ, aut Nonæ, aut Idus, necnon quantitas Lunæ et Martyrologium sequentis diei."
     },
 
     "11": {
