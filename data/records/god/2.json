@@ -258,6 +258,52 @@
       "data-links": {
         "mr-1956-movable": ["1:#12"]
       }
+    },
+
+    "15": {
+      "names": {
+        "la": [
+          "Vigilia Ascensionis Iesu Christi"
+        ],
+        "pl": [
+          "Wigilia Wniebowstąpienia Jezusa Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#15"]
+      }
+    },
+
+    "16": {
+      "names": {
+        "la": [
+          "Ascénsio Iesu Christi"
+        ],
+        "pl": [
+          "Wniebowstąpienie Jezusa Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#9"],
+        "mr-1956-movable": ["1:#16"]
+      }
+    },
+
+    "17": {
+      "names": {
+        "la": [
+          "Octava Ascensionis Iesu Christi"
+        ],
+        "pl": [
+          "Oktawa Wniebowstąpienia Jezusa Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#17"]
+      }
     }
   }
 }

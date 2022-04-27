@@ -1301,7 +1301,7 @@ const drawCard = function(cardId) {
       }
 
       //project name
-      const projectNameText = "Meritum Dei's My Patrons & Patrons Space";
+      const projectNameText = "Gratia Dei's My Patrons & Patrons Space";
       const projectNameWidth = cardWidth - 2 * marginSize;
       const projectNameHeight = mm2px(4);
       const projectNameX = x + marginSize;

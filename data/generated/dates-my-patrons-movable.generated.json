@@ -218,8 +218,116 @@
     "getResurrectionFeastDate|36": {
         "records/patrons/i/1#6": {
             "name": {
-                "la": "Maria Virgo (Romae Litaniae minores ad sanctam Maraam Majorem)",
+                "la": "Maria Virgo (Romae Litaniae minores ad sanctam Mariam Majorem)",
                 "pl": "Najświętsza Maryja Panna (Rzymska mała procesja błagalna do świętej Maryi Większej)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|37": {
+        "records/patrons/i/5#1": {
+            "name": {
+                "la": "Ioannes Evangelista (Romae Litaniae minores ad sanctum Joannem in Laterano)",
+                "pl": "Jan Ewangelista (Rzymska mała procesja błagalna do świętego Jana na Lateranie)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|38": {
+        "records/god/2#15": {
+            "name": {
+                "la": "Iesus Christus (Vigilia Ascensionis Iesu Christi)",
+                "pl": "Jezus Chrystus (Wigilia Wniebowstąpienia Jezusa Chrystusa)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        },
+        "records/patrons/i/4#2": {
+            "name": {
+                "la": "Petrus (Romae Litaníae minores ad sanctum Petrum)",
+                "pl": "Piotr Apostoł (Rzymska mała procesja błagalna do świętego Piotra)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|39": {
+        "records/god/2#16": {
+            "name": {
+                "la": "Iesus Christus (Ascénsio Iesu Christi)",
+                "pl": "Jezus Chrystus (Wniebowstąpienie Jezusa Chrystusa)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|42": {
+        "records/god/2#16": {
+            "name": {
+                "la": "Iesus Christus (Ascénsio Iesu Christi)",
+                "pl": "Jezus Chrystus (Wniebowstąpienie Jezusa Chrystusa)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|46": {
+        "records/god/2#17": {
+            "name": {
+                "la": "Iesus Christus (Octava Ascensionis Iesu Christi)",
+                "pl": "Jezus Chrystus (Oktawa Wniebowstąpienia Jezusa Chrystusa)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|48": {
+        "records/god/3#1": {
+            "name": {
+                "la": "Spiritus Sanctus (Vigilia Pentecostes)",
+                "pl": "Duch Święty (Wigilia Zesłania Ducha Świętego)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|49": {
+        "records/god/3#2": {
+            "name": {
+                "la": "Spiritus Sanctus (Dies Pentecostes)",
+                "pl": "Duch Święty (Zesłanie Ducha Świętego)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|56": {
+        "records/god/123#1": {
+            "name": {
+                "la": "Sancta Trinitas (Sollemnitas sacratissimae et indivíduae Trinitatis)",
+                "pl": "Trójca Przenajświętsza (Uroczystość Trójcy Przenajświętszej)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        },
+        "records/god/3#3": {
+            "name": {
+                "la": "Spiritus Sanctus (Octava Pentecostes)",
+                "pl": "Duch Święty (Oktawa Zesłania Ducha Świętego)"
             },
             "sources": {
                 "mr-1956-movable": true

@@ -33,5 +33,23 @@
   },
 
   "data-links": {
+  },
+
+  "feasts": {
+    "1": {
+      "names": {
+        "la": [
+          "Sollemnitas sacratissimae et indivíduae Trinitatis"
+        ],
+        "pl": [
+          "Uroczystość Trójcy Przenajświętszej"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#11"],
+        "mr-1956-movable": ["1:#20"]
+      }
+    }
   }
 }

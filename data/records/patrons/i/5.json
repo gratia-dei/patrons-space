@@ -1,0 +1,53 @@
+{
+  "names": {
+    "la": [
+      "Ioannes Evangelista",
+      "Ioannes Apostolus"
+    ],
+    "en": [
+      "John the Evangelist",
+      "John the Apostle"
+    ],
+    "pl": [
+      "Jan Ewangelista",
+      "Jan Apostoł",
+      "Jan Teolog"
+    ]
+  },
+
+  "died": ["~100"],
+
+  "categories": ["male", "evangelist", "apostle"],
+
+  "images": {
+    "1": {
+      "page-url": "https://commons.wikimedia.org/wiki/File:GRM_Inv._J-3182.jpg",
+      "file-url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/GRM_Inv._J-3182.jpg",
+      "attribution": "Vladimir Borovikovsky, Public domain, via Wikimedia Commons",
+      "area-top-left-x": 0,
+      "area-top-left-y": 0,
+      "area-bottom-right-x": 1956,
+      "area-bottom-right-y": 1956
+    }
+  },
+
+  "data-links": {
+  },
+
+  "feasts": {
+    "1": {
+      "names": {
+        "la": [
+          "Romae Litaniae minores ad sanctum Joannem in Laterano"
+        ],
+        "pl": [
+          "Rzymska mała procesja błagalna do świętego Jana na Lateranie"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#14"]
+      }
+    }
+  }
+}

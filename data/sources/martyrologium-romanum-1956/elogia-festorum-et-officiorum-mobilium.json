@@ -83,43 +83,43 @@
     "14": {
         "base": "getResurrectionFeastDate",
         "move": 37,
-        "la": "Feria secunda Rogationum[/]Romæ Litaníæ minóres ad sanctum Joánnem in Lateráno."
+        "la": "Feria secunda Rogationum[/][1|Romæ Litaníæ minóres ad sanctum Joánnem in Lateráno]."
     },
 
     "15": {
         "base": "getResurrectionFeastDate",
         "move": 38,
-        "la": "Feria tertia Rogationum[/]Vigília Ascensiónis Dómini nostri Jesu Christi.[/]Romæ Litaníæ minóres ad sanctum Petrum."
+        "la": "Feria tertia Rogationum[/][1|Vigília Ascensiónis Dómini nostri Jesu Christi].[/][2|Romæ Litaníæ minóres ad sanctum Petrum]."
     },
 
     "16": {
         "base": "getResurrectionFeastDate",
         "move": 39,
-        "la": "In Vigilia Ascensionis Domini[/]In monte Olivéti Ascénsio Dómini nostri Jesu Christi."
+        "la": "In Vigilia Ascensionis Domini[/]In monte Olivéti [1|Ascénsio Dómini nostri Jesu Christi]."
     },
 
     "17": {
         "base": "getResurrectionFeastDate",
-        "move": 47,
-        "la": "Feria quarta infra Octavam Ascensionis Domini[/]Octáva Ascensiónis Dómini nostri Jesu Christi."
+        "move": 46,
+        "la": "Feria quarta infra Octavam Ascensionis Domini[/][1|Octáva Ascensiónis Dómini nostri Jesu Christi]."
     },
 
     "18": {
         "base": "getResurrectionFeastDate",
         "move": 48,
-        "la": "Feria sexta post Octavam Ascensionis Domini[/]Vigília Pentecóstes."
+        "la": "Feria sexta post Octavam Ascensionis Domini[/][1|Vigília Pentecóstes]."
     },
 
     "19": {
         "base": "getResurrectionFeastDate",
         "move": 49,
-        "la": "In Vigilia Pentecostes[/]Dies Pentecóstes, quando Spíritus Sanctus Hierosólymis super Discípulos ígneis linguis advénit."
+        "la": "In Vigilia Pentecostes[/][1|Dies Pentecóstes], quando Spíritus Sanctus Hierosólymis super Discípulos ígneis linguis advénit."
     },
 
     "20": {
         "base": "getResurrectionFeastDate",
         "move": 56,
-        "la": "Sabbato infra Octavam Pentecostes[/]Festum sacratíssimæ et indivíduæ Trinitátis, et Octáva Pentecóstes."
+        "la": "Sabbato infra Octavam Pentecostes[/][1|Festum sacratíssimæ et indivíduæ Trinitátis], et [2|Octáva Pentecóstes]"
     },
 
     "21": {

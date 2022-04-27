@@ -20,5 +20,10 @@
         "la": "Petrus",
         "en": "Peter",
         "pl": "Piotr Apostoł"
+    },
+    "5": {
+        "la": "Ioannes Evangelista",
+        "en": "John the Evangelist",
+        "pl": "Jan Ewangelista"
     }
 }

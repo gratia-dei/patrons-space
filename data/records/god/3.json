@@ -29,5 +29,54 @@
   },
 
   "data-links": {
+  },
+
+  "feasts": {
+    "1": {
+      "names": {
+        "la": [
+          "Vigilia Pentecostes"
+        ],
+        "pl": [
+          "Wigilia Zesłania Ducha Świętego",
+          "Wigilia Pięćdziesiątnicy"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#18"]
+      }
+    },
+
+    "2": {
+      "names": {
+        "la": [
+          "Dies Pentecostes"
+        ],
+        "pl": [
+          "Zesłanie Ducha Świętego"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#10"],
+        "mr-1956-movable": ["1:#19"]
+      }
+    },
+
+    "3": {
+      "names": {
+        "la": [
+          "Octava Pentecostes"
+        ],
+        "pl": [
+          "Oktawa Zesłania Ducha Świętego"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["2:#20"]
+      }
+    }
   }
 }

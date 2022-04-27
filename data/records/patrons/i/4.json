@@ -21,8 +21,8 @@
       "file-url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Pope-peter_pprubens.jpg",
       "attribution": "Peter Paul Rubens, Public domain, via Wikimedia Commons",
       "area-top-left-x": 0,
-      "area-top-left-y": 2318,
-      "area-bottom-right-x": 0,
+      "area-top-left-y": 0,
+      "area-bottom-right-x": 2318,
       "area-bottom-right-y": 2318
     }
   },
@@ -44,6 +44,21 @@
 
       "data-links": {
         "mr-1956-movable": ["1:#11"]
+      }
+    },
+
+    "2": {
+      "names": {
+        "la": [
+          "Romae Litaníae minores ad sanctum Petrum"
+        ],
+        "pl": [
+          "Rzymska mała procesja błagalna do świętego Piotra"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["2:#15"]
       }
     }
   }
