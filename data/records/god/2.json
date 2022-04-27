@@ -243,6 +243,21 @@
         "mr-2004-movable": ["1:#8"],
         "mr-1956-movable": ["1:#10"]
       }
+    },
+
+    "14": {
+      "names": {
+        "la": [
+          "Dominica in Albis"
+        ],
+        "pl": [
+          "Niedziela Biała"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#12"]
+      }
     }
   }
 }

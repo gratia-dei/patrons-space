@@ -28,6 +28,17 @@
             }
         }
     },
+    "get1956TheGreaterProcessionToSaintPeterDate|0": {
+        "records/patrons/i/4#1": {
+            "name": {
+                "la": "Petrus (Romae Litaníae majores ad sanctum Petrum)",
+                "pl": "Piotr Apostoł (Rzymska wielka procesja błagalna do świętego Piotra)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
     "get1956TheMostHolyNameOfJesusFeastDate|0": {
         "records/god/2#2": {
             "name": {
@@ -200,6 +211,28 @@
             },
             "sources": {
                 "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|36": {
+        "records/patrons/i/1#6": {
+            "name": {
+                "la": "Maria Virgo (Romae Litaniae minores ad sanctam Maraam Majorem)",
+                "pl": "Najświętsza Maryja Panna (Rzymska mała procesja błagalna do świętej Maryi Większej)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|7": {
+        "records/god/2#14": {
+            "name": {
+                "la": "Iesus Christus (Dominica in Albis)",
+                "pl": "Jezus Chrystus (Niedziela Biała)"
+            },
+            "sources": {
                 "mr-1956-movable": true
             }
         }

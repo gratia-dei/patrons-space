@@ -134,6 +134,21 @@
       "data-links": {
         "mr-1956-movable": ["1:#7"]
       }
+    },
+
+    "6": {
+      "names": {
+        "la": [
+          "Romae Litaniae minores ad sanctam Mariam Majorem"
+        ],
+        "pl": [
+          "Rzymska mała procesja błagalna do świętej Maryi Większej"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#13"]
+      }
     }
   }
 }

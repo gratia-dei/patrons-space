@@ -62,22 +62,22 @@
     },
 
     "11": {
-        "base": "get1956TheGreaterLitaniesInTheChurchOfSaintPeterDate",
+        "base": "get1956TheGreaterProcessionToSaintPeterDate",
         "move": 0,
-        "la": "Feria secunda infra Octavam Paschæ quoties ipsum Pascha in diem 25 Aprilis inciderit[/]Romæ Litaníæ majóres ad sanctum Patrum."
+        "la": "Feria secunda infra Octavam Paschæ quoties ipsum Pascha in diem 25 Aprilis inciderit[/][1|Romæ Litaníæ majóres ad sanctum Petrum]."
     },
 
     "12": {
         "base": "getResurrectionFeastDate",
         "move": 7,
-        "la": "Sabbato infra Octavam Paschæ[/]Domínica in Albis in Octáva Paschæ."
+        "la": "Sabbato infra Octavam Paschæ[/][1|Domínica in Albis] in Octáva Paschæ."
     },
 
     "13": {
         "page": "CV",
         "base": "getResurrectionFeastDate",
         "move": 36,
-        "la": "Dominica quinta post Pascha[/]Romæ Litaníæ minóres ad sanctam Maríam Majórem."
+        "la": "Dominica quinta post Pascha[/][1|Romæ Litaníæ minóres ad sanctam Maríam Majórem]."
     },
 
     "14": {

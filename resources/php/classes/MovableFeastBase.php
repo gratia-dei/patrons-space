@@ -55,11 +55,30 @@ class MovableFeastBase
         return substr($date, 5);
     }
 
-    public function get1956TheGreaterLitaniesInTheChurchOfSaintPeterDate(int $year): string
+    public function get1956TheGreaterProcessionToSaintPeterDate(int $year): string
     {
-        //...
+        $result = self::MISSING_DATE;
 
-        return self::MISSING_DATE;
+        $resurrectionDate = $this->getResurrectionFeastDate($year);
+        if ($resurrectionDate === '04-25') {
+            $result = '04-27';
+        }
+
+        return $result;
+    }
+
+    public function get1956VariationsTheGreaterProcessionToSaintPeterDate(int $year): string
+    {
+        $result = self::MISSING_DATE;
+
+        $resurrectionDate = $this->getResurrectionFeastDate($year);
+        if ($resurrectionDate === '04-25') {
+            $result = '04-28';
+        } else if ($resurrectionDate === '04-24') {
+            $result = '04-27';
+        }
+
+        return $result;
     }
 
     public function get2004BaptismOfJesusFeastDate(int $year): string
