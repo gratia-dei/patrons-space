@@ -3,5 +3,155 @@
         "la": "Die 1 ianuarii (Kaléndis ianuárii)",
         "en": "On 1st January (The January Kalends)",
         "pl": "Dnia 1 stycznia (Kalendy styczniowe)"
+    },
+    "die-2-ianuarii": {
+        "la": "Die 2 ianuarii (Quarto Nonas ianuárii)",
+        "en": "On 2nd January (The 4th day before the January Nones)",
+        "pl": "Dnia 2 stycznia (4 dzień przed nonami styczniowymi)"
+    },
+    "die-3-ianuarii": {
+        "la": "Die 3 ianuarii (Tértio Nonas ianuárii)",
+        "en": "On 3rd January (The 3rd day before the January Nones)",
+        "pl": "Dnia 3 stycznia (3 dzień przed nonami styczniowymi)"
+    },
+    "die-4-ianuarii": {
+        "la": "Die 4 ianuarii (Prídie Nonas ianuárii)",
+        "en": "On 4th January (On the day before January Nones)",
+        "pl": "Dnia 4 stycznia (Przeddzień non styczniowych)"
+    },
+    "die-5-ianuarii": {
+        "la": "Die 5 ianuarii (Nonis ianuárii)",
+        "en": "On 5th January (On the Nones)",
+        "pl": "Dnia 5 stycznia (Nony styczniowe)"
+    },
+    "die-6-ianuarii": {
+        "la": "Die 6 ianuarii (Octávo Idus ianuárii)",
+        "en": "On 6th January (The 8th day before the January Ides)",
+        "pl": "Dnia 6 stycznia (8 dzień przed idami styczniowymi)"
+    },
+    "die-7-ianuarii": {
+        "la": "Die 7 ianuarii (Séptimo Idus ianuárii)",
+        "en": "On 7th January (The 7th day before the January Ides)",
+        "pl": "Dnia 7 stycznia (7 dzień przed idami styczniowymi)"
+    },
+    "die-8-ianuarii": {
+        "la": "Die 8 ianuarii (Sexto Idus ianuárii)",
+        "en": "On 8th January (The 6th day before the January Ides)",
+        "pl": "Dnia 8 stycznia (6 dzień przed idami styczniowymi)"
+    },
+    "die-9-ianuarii": {
+        "la": "Die 9 ianuarii (Quinto Idus ianuárii)",
+        "en": "On 9th January (The 5th day before the January Ides)",
+        "pl": "Dnia 9 stycznia (5 dzień przed idami styczniowymi)"
+    },
+    "die-10-ianuarii": {
+        "la": "Die 10 ianuarii (Quarto Idus ianuárii)",
+        "en": "On 10th January (The 4th day before the January Ides)",
+        "pl": "Dnia 10 stycznia (4 dzień przed idami styczniowymi)"
+    },
+    "die-11-ianuarii": {
+        "la": "Die 11 ianuarii (Tértio Idus ianuárii)",
+        "en": "On 11th January (The 3rd day before the January Ides)",
+        "pl": "Dnia 11 stycznia (3 dzień przed idami styczniowymi)"
+    },
+    "die-12-ianuarii": {
+        "la": "Die 12 ianuarii (Prídie Idus ianuárii)",
+        "en": "On 12th January (On the day before January Ides)",
+        "pl": "Dnia 12 stycznia (Przeddzień id styczniowymi)"
+    },
+    "die-13-ianuarii": {
+        "la": "Die 13 ianuarii (Idibus ianuárii)",
+        "en": "On 13th January (On the January Ides)",
+        "pl": "Dnia 13 stycznia (Idy styczniowe)"
+    },
+    "die-14-ianuarii": {
+        "la": "Die 14 ianuarii (Décimo nono Kaléndas februárii)",
+        "en": "On 14th January (The 19th day before the February Kalends)",
+        "pl": "Dnia 14 stycznia (19 dzień przed kalendami lutowymi)"
+    },
+    "die-15-ianuarii": {
+        "la": "Die 15 ianuarii (Décimo octávo Kaléndas februárii)",
+        "en": "On 15th January (The 18th day before the February Kalends)",
+        "pl": "Dnia 15 stycznia (18 dzień przed kalendami lutowymi)"
+    },
+    "die-16-ianuarii": {
+        "la": "Die 16 ianuarii (Décimo séptimo Kaléndas februárii)",
+        "en": "On 16th January (The 17th day before the February Kalends)",
+        "pl": "Dnia 16 stycznia (17 dzień przed kalendami lutowymi)"
+    },
+    "die-17-ianuarii": {
+        "la": "Die 17 ianuarii (Sexto décimo Kaléndas februárii)",
+        "en": "On 17th January (The 16th day before the February Kalends)",
+        "pl": "Dnia 17 stycznia (16 dzień przed kalendami lutowymi)"
+    },
+    "die-18-ianuarii": {
+        "la": "Die 18 ianuarii (Quinto décimo Kaléndas februárii)",
+        "en": "On 18th January (The 15th day before the February Kalends)",
+        "pl": "Dnia 18 stycznia (15 dzień przed kalendami lutowymi)"
+    },
+    "die-19-ianuarii": {
+        "la": "Die 19 ianuarii (Quarto décimo Kaléndas februárii)",
+        "en": "On 19th January (The 14th day before the February Kalends)",
+        "pl": "Dnia 19 stycznia (14 dzień przed kalendami lutowymi)"
+    },
+    "die-20-ianuarii": {
+        "la": "Die 20 ianuarii (Tértio décimo Kaléndas februárii)",
+        "en": "On 20th January (The 13th day before the February Kalends)",
+        "pl": "Dnia 20 stycznia (13 dzień przed kalendami lutowymi)"
+    },
+    "die-21-ianuarii": {
+        "la": "Die 21 ianuarii (Duodécimo Kaléndas februárii)",
+        "en": "On 21st January (The 12th day before the February Kalends)",
+        "pl": "Dnia 21 stycznia (12 dzień przed kalendami lutowymi)"
+    },
+    "die-22-ianuarii": {
+        "la": "Die 22 ianuarii (Undécimo Kaléndas februárii)",
+        "en": "On 22nd January (The 11th day before the February Kalends)",
+        "pl": "Dnia 22 stycznia (11 dzień przed kalendami lutowymi)"
+    },
+    "die-23-ianuarii": {
+        "la": "Die 23 ianuarii (Décimo Kaléndas februárii)",
+        "en": "On 23rd January (The 10th day before the February Kalends)",
+        "pl": "Dnia 23 stycznia (10 dzień przed kalendami lutowymi)"
+    },
+    "die-24-ianuarii": {
+        "la": "Die 24 ianuarii (Nono Kaléndas februárii)",
+        "en": "On 24th January (The 9th day before the February Kalends)",
+        "pl": "Dnia 24 stycznia (9 dzień przed kalendami lutowymi)"
+    },
+    "die-25-ianuarii": {
+        "la": "Die 25 ianuarii (Octávo Kaléndas februárii)",
+        "en": "On 25th January (The 8th day before the February Kalends)",
+        "pl": "Dnia 25 stycznia (8 dzień przed kalendami lutowymi)"
+    },
+    "die-26-ianuarii": {
+        "la": "Die 26 ianuarii (Séptimo Kaléndas februárii)",
+        "en": "On 26th January (The 7th day before the February Kalends)",
+        "pl": "Dnia 26 stycznia (7 dzień przed kalendami lutowymi)"
+    },
+    "die-27-ianuarii": {
+        "la": "Die 27 ianuarii (Sexto Kaléndas februárii)",
+        "en": "On 27th January (The 6th day before the February Kalends)",
+        "pl": "Dnia 27 stycznia (6 dzień przed kalendami lutowymi)"
+    },
+    "die-28-ianuarii": {
+        "la": "Die 28 ianuarii (Quinto Kaléndas februárii)",
+        "en": "On 28th January (The 5th day before the February Kalends)",
+        "pl": "Dnia 28 stycznia (5 dzień przed kalendami lutowymi)"
+    },
+    "die-29-ianuarii": {
+        "la": "Die 29 ianuarii (Quarto Kaléndas februárii)",
+        "en": "On 29th January (The 4th day before the February Kalends)",
+        "pl": "Dnia 29 stycznia (4 dzień przed kalendami lutowymi)"
+    },
+    "die-30-ianuarii": {
+        "la": "Die 30 ianuarii (Tértio Kaléndas februárii)",
+        "en": "On 30th January (The 3rd day before the February Kalends)",
+        "pl": "Dnia 30 stycznia (3 dzień przed kalendami lutowymi)"
+    },
+    "die-31-ianuarii": {
+        "la": "Die 31 ianuarii (Prídie Kaléndas februárii)",
+        "en": "On 31st January (On the day before February Kalends)",
+        "pl": "Dnia 31 stycznia (Przeddzień kalend lutowych)"
     }
 }

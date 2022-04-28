@@ -1,0 +1,152 @@
+{
+    "die-1-februarii": {
+        "la": "Die 1 februarii (Kaléndis februárii)",
+        "en": "On 1st February (The February Kalends)",
+        "pl": "Dnia 1 lutego (Kalendy lutowe)"
+    },
+    "die-2-februarii": {
+        "la": "Die 2 februarii (Quarto Nonas februárii)",
+        "en": "On 2nd February (The 4th day before the February Nones)",
+        "pl": "Dnia 2 lutego (4 dzień przed nonami lutowymi)"
+    },
+    "die-3-februarii": {
+        "la": "Die 3 februarii (Tértio Nonas februárii)",
+        "en": "On 3rd February (The 3rd day before the February Nones)",
+        "pl": "Dnia 3 lutego (3 dzień przed nonami lutowymi)"
+    },
+    "die-4-februarii": {
+        "la": "Die 4 februarii (Prídie Nonas februárii)",
+        "en": "On 4th February (On the day before February Nones)",
+        "pl": "Dnia 4 lutego (Przeddzień non styczniowych)"
+    },
+    "die-5-februarii": {
+        "la": "Die 5 februarii (Nonis februárii)",
+        "en": "On 5th February (On the Nones)",
+        "pl": "Dnia 5 lutego (Nony lutowe)"
+    },
+    "die-6-februarii": {
+        "la": "Die 6 februarii (Octávo Idus februárii)",
+        "en": "On 6th February (The 8th day before the February Ides)",
+        "pl": "Dnia 6 lutego (8 dzień przed idami lutowymi)"
+    },
+    "die-7-februarii": {
+        "la": "Die 7 februarii (Séptimo Idus februárii)",
+        "en": "On 7th February (The 7th day before the February Ides)",
+        "pl": "Dnia 7 lutego (7 dzień przed idami lutowymi)"
+    },
+    "die-8-februarii": {
+        "la": "Die 8 februarii (Sexto Idus februárii)",
+        "en": "On 8th February (The 6th day before the February Ides)",
+        "pl": "Dnia 8 lutego (6 dzień przed idami lutowymi)"
+    },
+    "die-9-februarii": {
+        "la": "Die 9 februarii (Quinto Idus februárii)",
+        "en": "On 9th February (The 5th day before the February Ides)",
+        "pl": "Dnia 9 lutego (5 dzień przed idami lutowymi)"
+    },
+    "die-10-februarii": {
+        "la": "Die 10 februarii (Quarto Idus februárii)",
+        "en": "On 10th February (The 4th day before the February Ides)",
+        "pl": "Dnia 10 lutego (4 dzień przed idami lutowymi)"
+    },
+    "die-11-februarii": {
+        "la": "Die 11 februarii (Tértio Idus februárii)",
+        "en": "On 11th February (The 3rd day before the February Ides)",
+        "pl": "Dnia 11 lutego (3 dzień przed idami lutowymi)"
+    },
+    "die-12-februarii": {
+        "la": "Die 12 februarii (Prídie Idus februárii)",
+        "en": "On 12th February (On the day before February Ides)",
+        "pl": "Dnia 12 lutego (Przeddzień id lutowymi)"
+    },
+    "die-13-februarii": {
+        "la": "Die 13 februarii (Idibus februárii)",
+        "en": "On 13th February (On the February Ides)",
+        "pl": "Dnia 13 lutego (Idy lutowe)"
+    },
+    "die-14-februarii": {
+        "la": "Die 14 februarii (Sexto décimo Kaléndas mártii)",
+        "en": "On 14th February (The 16th day before the March Kalends)",
+        "pl": "Dnia 14 lutego (16 dzień przed kalendami marcowymi)"
+    },
+    "die-15-februarii": {
+        "la": "Die 15 februarii (Quinto décimo Kaléndas mártii)",
+        "en": "On 15th February (The 15th day before the March Kalends)",
+        "pl": "Dnia 15 lutego (15 dzień przed kalendami marcowymi)"
+    },
+    "die-16-februarii": {
+        "la": "Die 16 februarii (Quarto décimo Kaléndas mártii)",
+        "en": "On 16th February (The 14th day before the March Kalends)",
+        "pl": "Dnia 16 lutego (14 dzień przed kalendami marcowymi)"
+    },
+    "die-17-februarii": {
+        "la": "Die 17 februarii (Tértio décimo Kaléndas mártii)",
+        "en": "On 17th February (The 13th day before the March Kalends)",
+        "pl": "Dnia 17 lutego (13 dzień przed kalendami marcowymi)"
+    },
+    "die-18-februarii": {
+        "la": "Die 18 februarii (Duodécimo Kaléndas mártii)",
+        "en": "On 18th February (The 12th day before the March Kalends)",
+        "pl": "Dnia 18 lutego (12 dzień przed kalendami marcowymi)"
+    },
+    "die-19-februarii": {
+        "la": "Die 19 februarii (Undécimo Kaléndas mártii)",
+        "en": "On 19th February (The 11th day before the March Kalends)",
+        "pl": "Dnia 19 lutego (11 dzień przed kalendami marcowymi)"
+    },
+    "die-20-februarii": {
+        "la": "Die 20 februarii (Décimo Kaléndas mártii)",
+        "en": "On 20th February (The 10th day before the March Kalends)",
+        "pl": "Dnia 20 lutego (10 dzień przed kalendami marcowymi)"
+    },
+    "die-21-februarii": {
+        "la": "Die 21 februarii (Nono Kaléndas mártii)",
+        "en": "On 21st February (The 9th day before the March Kalends)",
+        "pl": "Dnia 21 lutego (9 dzień przed kalendami marcowymi)"
+    },
+    "die-22-februarii": {
+        "la": "Die 22 februarii (Octávo Kaléndas mártii)",
+        "en": "On 22nd February (The 8th day before the March Kalends)",
+        "pl": "Dnia 22 lutego (8 dzień przed kalendami marcowymi)"
+    },
+    "die-23-februarii": {
+        "la": "Die 23 februarii (Séptimo Kaléndas mártii)",
+        "en": "On 23rd February (The 7th day before the March Kalends)",
+        "pl": "Dnia 23 lutego (7 dzień przed kalendami marcowymi)"
+    },
+    "die-24-februarii": {
+        "la": "Die 24 februarii (Sexto Kaléndas mártii)",
+        "en": "On 24th February (The 6th day before the March Kalends)",
+        "pl": "Dnia 24 lutego (6 dzień przed kalendami marcowymi)"
+    },
+    "die-25-februarii": {
+        "la": "Die 25 februarii (Quinto Kaléndas mártii; vel in anno bissextili: Sexto Kaléndas mártii)",
+        "en": "On 25th February (The 5th day before the March Kalends; or in a leap year: The 6th day before the March Kalends)",
+        "pl": "Dnia 25 lutego (5 dzień przed kalendami marcowymi; lub w roku przestępnym: 6 dzień przed kalendami marcowymi)"
+    },
+    "die-26-februarii": {
+        "la": "Die 26 februarii (Quarto Kaléndas mártii; vel in anno bissextili: Quinto Kaléndas mártii)",
+        "en": "On 26th February (The 4th day before the March Kalends; or in a leap year: The 5th day before the March Kalends)",
+        "pl": "Dnia 26 lutego (4 dzień przed kalendami marcowymi; lub w roku przestępnym: 5 dzień przed kalendami marcowymi)"
+    },
+    "die-27-februarii": {
+        "la": "Die 27 februarii (Tértio Kaléndas mártii; vel in anno bissextili: Quarto Kaléndas mártii)",
+        "en": "On 27th February (The 3rd day before the March Kalends; or in a leap year: The 4th day before the March Kalends)",
+        "pl": "Dnia 27 lutego (3 dzień przed kalendami marcowymi; lub w roku przestępnym: 4 dzień przed kalendami marcowymi)"
+    },
+    "die-28-februarii-in-bissextili-anno": {
+        "la": "Die 28 februarii (Tértio Kaléndas mártii) --- in anno bissextili",
+        "en": "On 28th February (The 3rd day before the March Kalends) --- in a leap year",
+        "pl": "Dnia 28 lutego (3 dzień przed kalendami marcowymi) --- w roku przestępnym"
+    },
+    "die-28-februarii": {
+        "la": "Die 28 februarii (Prídie Kaléndas mártii) --- in anno non-bissextili",
+        "en": "On 28th February (On the day before March Kalends) --- in non-leap year",
+        "pl": "Dnia 28 lutego (Przeddzień kalend marcowych) --- w roku nieprzestępnym"
+    },
+    "die-29-februarii-in-bissextili-anno": {
+        "la": "Die 29 februarii (Prídie Kaléndas mártii) --- in anno bissextili",
+        "en": "On 29th February (On the day before March Kalends) --- in a leap year",
+        "pl": "Dnia 29 lutego (Przeddzień kalend marcowych) --- w roku przestępnym"
+    }
+}

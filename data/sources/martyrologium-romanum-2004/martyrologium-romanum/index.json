@@ -4,9 +4,59 @@
         "en": "January",
         "pl": "Styczeń"
     },
+    "februarius": {
+        "la": "Februarius",
+        "en": "February",
+        "pl": "Luty"
+    },
+    "martius": {
+        "la": "Martius",
+        "en": "March",
+        "pl": "Marzec"
+    },
+    "aprilis": {
+        "la": "Aprilis",
+        "en": "April",
+        "pl": "Kwiecień"
+    },
+    "maius": {
+        "la": "Maius",
+        "en": "May",
+        "pl": "Maj"
+    },
+    "iunius": {
+        "la": "Iunius",
+        "en": "June",
+        "pl": "Czerwiec"
+    },
+    "iulius": {
+        "la": "Iulius",
+        "en": "July",
+        "pl": "Lipiec"
+    },
     "augustus": {
         "la": "Augustus",
         "en": "August",
         "pl": "Sierpień"
+    },
+    "september": {
+        "la": "September",
+        "en": "September",
+        "pl": "Wrzesień"
+    },
+    "october": {
+        "la": "October",
+        "en": "October",
+        "pl": "Październik"
+    },
+    "november": {
+        "la": "November",
+        "en": "November",
+        "pl": "Listopad"
+    },
+    "december": {
+        "la": "December",
+        "en": "December",
+        "pl": "Grudzień"
     }
 }
