@@ -125,32 +125,32 @@
     "21": {
         "base": "getResurrectionFeastDate",
         "move": 60,
-        "la": "Feria quarta post Octavam Pentecostes[/]Festum sanctíssimi Córporis Christi."
+        "la": "Feria quarta post Octavam Pentecostes[/][1|Festum sanctíssimi Córporis Christi]."
     },
 
     "22": {
         "base": "getResurrectionFeastDate",
-        "move": 68,
-        "la": "Feria quarta infra Octavam sanctissimi Corporis Christi[/]Octáva sanctíssimi Córporis Christi."
+        "move": 67,
+        "la": "Feria quarta infra Octavam sanctissimi Corporis Christi[/][1|Octáva sanctíssimi Córporis Christi]."
     },
 
     "23": {
         "page": "CV",
         "base": "getResurrectionFeastDate",
-        "move": 69,
-        "la": "Feria quinta in Octava sanctissimi Corporis Christi[/]Festum sacratíssimi Cordis Jesu."
+        "move": 68,
+        "la": "Feria quinta in Octava sanctissimi Corporis Christi[/][1|Festum sacratíssimi Cordis Jesu]."
     },
 
     "24": {
         "page": "CVI",
         "base": "getResurrectionFeastDate",
-        "move": 77,
-        "la": "Feria quinta infra Octavam sacratissimi Cordis Jesu[/]Octáva sacratíssimi Cordis Jesu."
+        "move": 75,
+        "la": "Feria quinta infra Octavam sacratissimi Cordis Jesu[/][1|Octáva sacratíssimi Cordis Jesu]."
     },
 
     "25": {
         "base": "get1956JesusTheKingFeastDate",
         "move": 0,
-        "la": "Sabbato ante Dominicam quæ occurrere potest a die 25 et 31 Octobris inclusive[/]Festum Dómini nostri Jesu Christi Regis."
+        "la": "Sabbato ante Dominicam quæ occurrere potest a die 25 et 31 Octobris inclusive[/][1|Festum Dómini nostri Jesu Christi Regis]."
     }
 }

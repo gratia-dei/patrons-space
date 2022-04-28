@@ -32,10 +32,24 @@
             "1": "records/god/2#13"
         },
         "9": {
-            "1": "records/god/2#16"
+            "1": "records/god/2#16",
+            "2": "records/god/2#16"
+        },
+        "12": {
+            "1": "records/god/2#18",
+            "2": "records/god/2#18"
+        },
+        "13": {
+            "1": "records/god/2#20"
+        },
+        "15": {
+            "1": "records/god/2#23"
         },
         "10": {
             "1": "records/god/3#2"
+        },
+        "14": {
+            "1": "records/patrons/i/1#7"
         }
     }
 }

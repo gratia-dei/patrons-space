@@ -69,6 +69,7 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
                 continue;
             }
 
+            $previousLinks = [];
             foreach ($aliasData as $link) {
                 $recordNumber++;
 
@@ -77,6 +78,10 @@ class DataLinksContentBlock extends ContentBlock implements ContentBlockInterfac
                     continue;
                 }
                 list($linkId, $subPathAlias, $recordId) = $linkData;
+                if (isset($previousLinks[$subPathAlias][$recordId])) {
+                    continue;
+                }
+                $previousLinks[$subPathAlias][$recordId] = true;
 
                 if($subPathAlias === '') {
                     $subPathAlias = basename($mainPath);

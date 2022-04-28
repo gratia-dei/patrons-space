@@ -149,6 +149,21 @@
       "data-links": {
         "mr-1956-movable": ["1:#13"]
       }
+    },
+
+    "7": {
+      "names": {
+        "la": [
+          "Immaculatum Cor beate Mariae Virginis"
+        ],
+        "pl": [
+          "Niepokalane Serce Najświętszej Maryi Panny"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#14"]
+      }
     }
   }
 }

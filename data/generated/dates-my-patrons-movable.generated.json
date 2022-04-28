@@ -28,6 +28,17 @@
             }
         }
     },
+    "get1956JesusTheKingFeastDate|0": {
+        "records/god/2#22": {
+            "name": {
+                "la": "Iesus Christus (Iesus Christus Rex)",
+                "pl": "Jezus Chrystus (Jezus Chrystus Król)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
     "get1956TheGreaterProcessionToSaintPeterDate|0": {
         "records/patrons/i/4#1": {
             "name": {
@@ -84,6 +95,17 @@
             "name": {
                 "la": "Iosephus (Sancta Familia)",
                 "pl": "Józef z Nazaretu (Święta Rodzina)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getFirstSundayOfAdventDate|-7": {
+        "records/god/2#23": {
+            "name": {
+                "la": "Iesus Christus (Iesus Christus Universorum Rex)",
+                "pl": "Jezus Chrystus (Jezus Chrystus Król Wszechświata)"
             },
             "sources": {
                 "mr-2004-movable": true
@@ -264,6 +286,7 @@
                 "pl": "Jezus Chrystus (Wniebowstąpienie Jezusa Chrystusa)"
             },
             "sources": {
+                "mr-2004-movable": true,
                 "mr-1956-movable": true
             }
         }
@@ -334,11 +357,79 @@
             }
         }
     },
+    "getResurrectionFeastDate|60": {
+        "records/god/2#18": {
+            "name": {
+                "la": "Iesus Christus (Sanctissimum Corpore et Sanguis Christi)",
+                "pl": "Jezus Chrystus (Najświętsze Ciało i Krew Chrystusa)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|63": {
+        "records/god/2#18": {
+            "name": {
+                "la": "Iesus Christus (Sanctissimum Corpore et Sanguis Christi)",
+                "pl": "Jezus Chrystus (Najświętsze Ciało i Krew Chrystusa)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|67": {
+        "records/god/2#19": {
+            "name": {
+                "la": "Iesus Christus (Octava Sanctissimi Corporis Christi)",
+                "pl": "Jezus Chrystus (Oktawa Najświętszego Ciała Chrystusa)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|68": {
+        "records/god/2#20": {
+            "name": {
+                "la": "Iesus Christus (Sanctissimum Cor Iesu)",
+                "pl": "Jezus Chrystus (Najświętsze Serce Jezusa)"
+            },
+            "sources": {
+                "mr-2004-movable": true,
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|69": {
+        "records/patrons/i/1#7": {
+            "name": {
+                "la": "Maria Virgo (Immaculatum Cor beate Mariae Virginis)",
+                "pl": "Najświętsza Maryja Panna (Niepokalane Serce Najświętszej Maryi Panny)"
+            },
+            "sources": {
+                "mr-2004-movable": true
+            }
+        }
+    },
     "getResurrectionFeastDate|7": {
         "records/god/2#14": {
             "name": {
                 "la": "Iesus Christus (Dominica in Albis)",
                 "pl": "Jezus Chrystus (Niedziela Biała)"
+            },
+            "sources": {
+                "mr-1956-movable": true
+            }
+        }
+    },
+    "getResurrectionFeastDate|75": {
+        "records/god/2#21": {
+            "name": {
+                "la": "Iesus Christus (Octava Sacratissimi Cordis Iesu)",
+                "pl": "Jezus Chrystus (Oktawa Najświętszego Serca Jezusa)"
             },
             "sources": {
                 "mr-1956-movable": true

@@ -35,9 +35,12 @@ class MovableFeastBase
 
     public function get1956JesusTheKingFeastDate(int $year): string
     {
-        //...
+        $oct31 = "$year-10-31";
+        $weekDay = (int) date('w', strtotime($oct31));
 
-        return self::MISSING_DATE;
+        $date = $this->date->getDateMovedByDays($oct31, -$weekDay);
+
+        return substr($date, 5);
     }
 
     public function get1956TheMostHolyNameOfJesusFeastDate(int $year): string

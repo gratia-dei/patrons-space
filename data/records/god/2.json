@@ -286,7 +286,7 @@
       },
 
       "data-links": {
-        "mr-2004-movable": ["1:#9"],
+        "mr-2004-movable": ["1:#9", "2:#9"],
         "mr-1956-movable": ["1:#16"]
       }
     },
@@ -303,6 +303,98 @@
 
       "data-links": {
         "mr-1956-movable": ["1:#17"]
+      }
+    },
+
+    "18": {
+      "names": {
+        "la": [
+          "Sanctissimum Corpore et Sanguis Christi"
+        ],
+        "pl": [
+          "Najświętsze Ciało i Krew Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#12", "2:#12"],
+        "mr-1956-movable": ["1:#21"]
+      }
+    },
+
+    "19": {
+      "names": {
+        "la": [
+          "Octava Sanctissimi Corporis Christi"
+        ],
+        "pl": [
+          "Oktawa Najświętszego Ciała Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#22"]
+      }
+    },
+
+    "20": {
+      "names": {
+        "la": [
+          "Sanctissimum Cor Iesu"
+        ],
+        "pl": [
+          "Najświętsze Serce Jezusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#13"],
+        "mr-1956-movable": ["1:#23"]
+      }
+    },
+
+    "21": {
+      "names": {
+        "la": [
+          "Octava Sacratissimi Cordis Iesu"
+        ],
+        "pl": [
+          "Oktawa Najświętszego Serca Jezusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#24"]
+      }
+    },
+
+    "22": {
+      "names": {
+        "la": [
+          "Iesus Christus Rex"
+        ],
+        "pl": [
+          "Jezus Chrystus Król"
+        ]
+      },
+
+      "data-links": {
+        "mr-1956-movable": ["1:#25"]
+      }
+    },
+
+    "23": {
+      "names": {
+        "la": [
+          "Iesus Christus Universorum Rex"
+        ],
+        "pl": [
+          "Jezus Chrystus Król Wszechświata"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["1:#15"]
       }
     }
   }

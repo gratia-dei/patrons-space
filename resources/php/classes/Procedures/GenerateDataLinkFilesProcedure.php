@@ -117,8 +117,6 @@ class GenerateDataLinkFilesProcedure extends Procedure
 
                     if (isset($this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId])) {
                         $this->error("try to override static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
-                    } else if (in_array($sourceFilePath . $anchor, $this->generatedFilesData[$generatedFileFullPath][$recordId] ?? [])) {
-                        $this->error("more than one different generated link IDs have same location in static file '$staticFilePath' record with ID #$recordId for file '$sourceFilePath', data-links field '$fieldPath', link '$link' and directory path alias '$dstDirPathAlias'");
                     }
                     $this->generatedFilesData[$generatedFileFullPath][$recordId][$linkId] = $sourceFilePath . $anchor;
                 }

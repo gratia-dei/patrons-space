@@ -55,8 +55,11 @@
 
     "9": {
         "base": "getResurrectionFeastDate",
-        "move": 42,
-        "la": "In Ascensione Domini*[/][1|Sollémnitas Ascensiónis Dómini nostri Iesu Christi], quando quadragésimo post resurrectiónem die coram discípulis elevátus est in cælum, ad déxteram Patris sedens, donec véniat in glória iudicáre vivos et mórtuos.[/]*Ubi sollemnitas Ascensionis Domini non est de praecepto servanda, assignatur, tamquam diei proprio, dominicae VII Paschae."
+        "move": {
+            "1": 39,
+            "2": 42
+        },
+        "la": "In Ascensione Domini*[/][1|Sollémnitas Ascensiónis Dómini nostri Iesu Christi], quando quadragésimo post resurrectiónem die coram discípulis elevátus est in cælum, ad déxteram Patris sedens, donec véniat in glória iudicáre vivos et mórtuos.[/]*Ubi sollemnitas Ascensionis Domini non est de praecepto servanda, assignatur, tamquam diei proprio, [2|dominicae VII Paschae]."
     },
 
     "10": {
@@ -74,25 +77,28 @@
     "12": {
         "page": 37,
         "base": "getResurrectionFeastDate",
-        "move": 60,
-        "la": "Feria V vel Dominica post Sanctissimam Trinitatem*[/]Sollémnitas sanctissimi Córporis et Sánguinis Christi, quibus sacris alimóniis ipse remédium immortalitátis et pignus resurrectiónis præbet.[/]*Ubi sollemnitas sanctissimi Corporis et Sanguinis Christi non est de praecepto servanda, assignatur, tamquam diei proprio, dominicae post SS.mam Trinitatem."
+        "move": {
+            "1": 60,
+            "2": 63
+        },
+        "la": "Feria V vel Dominica post Sanctissimam Trinitatem*[/][1|Sollémnitas sanctissimi Córporis et Sánguinis Christi], quibus sacris alimóniis ipse remédium immortalitátis et pignus resurrectiónis præbet.[/]*Ubi sollemnitas sanctissimi Corporis et Sanguinis Christi non est de praecepto servanda, assignatur, tamquam diei proprio, [2|dominicae post SS.mam Trinitatem]."
     },
 
     "13": {
         "base": "getResurrectionFeastDate",
-        "move": 69,
-        "la": "Feria VI post Dominicam II post Pentecosten[/]Sollémnitas sacratíssimi Cordis Iesu, qui, mitis et húmilis corde, in cruce exaltátus, fons vitæ et dilectiónis factus est, ex quo háuriant gentes univérsæ."
+        "move": 68,
+        "la": "Feria VI post Dominicam II post Pentecosten[/][1|Sollémnitas sacratíssimi Cordis Iesu], qui, mitis et húmilis corde, in cruce exaltátus, fons vitæ et dilectiónis factus est, ex quo háuriant gentes univérsæ."
     },
 
     "14": {
         "base": "getResurrectionFeastDate",
-        "move": 70,
-        "la": "Sabbato post sollemnitatem sacritissimi Cordis Iesu[/]Memória Immaculáti Cordis beátæ Maríæ Vírginis, in quo ipsa, memóriam mysteriórum salútis in Fílio suo effectórum consérvans, eorum perfectiónem in Christo ardénter exspectávit."
+        "move": 69,
+        "la": "Sabbato post sollemnitatem sacritissimi Cordis Iesu[/][1|Memória Immaculáti Cordis beátæ Maríæ Vírginis], in quo ipsa, memóriam mysteriórum salútis in Fílio suo effectórum consérvans, eorum perfectiónem in Christo ardénter exspectávit."
     },
 
     "15": {
         "base": "getFirstSundayOfAdventDate",
         "move": -7,
-        "la": "Dominica ultima « per annum »: Domini nosti Iesu Christi universorum Regis[/]Sollémnitas Dómini nostri Iesu Christi, universórum Regis. Ipsi soli impérium, glória et maiéstas in infiníta sǽcula sæculorum."
+        "la": "Dominica ultima « per annum »: Domini nosti Iesu Christi universorum Regis[/][1|Sollémnitas Dómini nostri Iesu Christi, universórum Regis]. Ipsi soli impérium, glória et maiéstas in infiníta sǽcula sæculorum."
     }
 }
