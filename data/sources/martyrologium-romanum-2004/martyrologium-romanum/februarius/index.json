@@ -1,7 +1,7 @@
 {
     "die-1-februarii": {
         "la": "Die 1 februarii (Kaléndis februárii)",
-        "en": "On 1st February (The February Kalends)",
+        "en": "On 1st February (On the February Kalends)",
         "pl": "Dnia 1 lutego (Kalendy lutowe)"
     },
     "die-2-februarii": {
@@ -21,7 +21,7 @@
     },
     "die-5-februarii": {
         "la": "Die 5 februarii (Nonis februárii)",
-        "en": "On 5th February (On the Nones)",
+        "en": "On 5th February (On the February Nones)",
         "pl": "Dnia 5 lutego (Nony lutowe)"
     },
     "die-6-februarii": {
@@ -57,7 +57,7 @@
     "die-12-februarii": {
         "la": "Die 12 februarii (Prídie Idus februárii)",
         "en": "On 12th February (On the day before February Ides)",
-        "pl": "Dnia 12 lutego (Przeddzień id lutowymi)"
+        "pl": "Dnia 12 lutego (Przeddzień id lutowych)"
     },
     "die-13-februarii": {
         "la": "Die 13 februarii (Idibus februárii)",

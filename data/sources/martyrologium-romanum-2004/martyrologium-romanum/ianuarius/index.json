@@ -1,7 +1,7 @@
 {
     "die-1-ianuarii": {
         "la": "Die 1 ianuarii (Kaléndis ianuárii)",
-        "en": "On 1st January (The January Kalends)",
+        "en": "On 1st January (On the January Kalends)",
         "pl": "Dnia 1 stycznia (Kalendy styczniowe)"
     },
     "die-2-ianuarii": {
@@ -21,7 +21,7 @@
     },
     "die-5-ianuarii": {
         "la": "Die 5 ianuarii (Nonis ianuárii)",
-        "en": "On 5th January (On the Nones)",
+        "en": "On 5th January (On the January Nones)",
         "pl": "Dnia 5 stycznia (Nony styczniowe)"
     },
     "die-6-ianuarii": {
@@ -57,7 +57,7 @@
     "die-12-ianuarii": {
         "la": "Die 12 ianuarii (Prídie Idus ianuárii)",
         "en": "On 12th January (On the day before January Ides)",
-        "pl": "Dnia 12 stycznia (Przeddzień id styczniowymi)"
+        "pl": "Dnia 12 stycznia (Przeddzień id styczniowych)"
     },
     "die-13-ianuarii": {
         "la": "Die 13 ianuarii (Idibus ianuárii)",
