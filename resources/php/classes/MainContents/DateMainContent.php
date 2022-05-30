@@ -2,8 +2,7 @@
 
 class DateMainContent extends MainContent implements MainContentInterface
 {
-    private const MIN_YEAR_ALLOWED = 2020;
-    private const MIN_MONTH_ALLOWED_IN_MIN_YEAR = 8;
+    private const MIN_YEAR_ALLOWED = 1901;
     private const MAX_FUTURE_YEARS = 20;
 
     private $year;
@@ -22,7 +21,6 @@ class DateMainContent extends MainContent implements MainContentInterface
 
             if (checkdate($month, $day, $year)) {
                 if ($year < self::MIN_YEAR_ALLOWED
-                    || ($year === self::MIN_YEAR_ALLOWED && $month < self::MIN_MONTH_ALLOWED_IN_MIN_YEAR)
                     || $year > (int) date('Y') + self::MAX_FUTURE_YEARS
                 ) {
                     return false;
