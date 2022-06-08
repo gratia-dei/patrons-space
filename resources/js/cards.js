@@ -3,6 +3,8 @@ const DEFAULT_PAPER_ORIENTATION = 'v';
 const DEFAULT_MARGIN_SIZE = 50;
 const DEFAULT_PPI = 96;
 
+const CANVAS_SCALE_FACTOR = 10;
+
 const UNKNOWN = '?';
 
 const ALLOWED_PAPER_FORMAT_TYPES = ['A', 'B', 'C'];
@@ -350,9 +352,19 @@ const buildCanvas = async function() {
 
 const scaleCanvas = function(width, height) {
   const canvas = getCanvas();
+  const context = getContext();
 
   canvas.width = width;
   canvas.height = height;
+
+  canvas.style.width = canvas.style.width || canvas.width + 'px';
+  canvas.style.height = canvas.style.height || canvas.height + 'px';
+
+  var scaleFactor = CANVAS_SCALE_FACTOR;
+  canvas.width = Math.ceil(canvas.width * scaleFactor);
+  canvas.height = Math.ceil(canvas.height * scaleFactor);
+
+  context.scale(scaleFactor, scaleFactor);
 }
 
 const drawPreparedCanvasArea = function(width, height) {
@@ -483,7 +495,7 @@ const printCanvas = function() {
 
   const newWindow = window.open('', '', 'width=' + screen.availWidth + ',height=' + screen.availHeight);
   newWindow.document.open();
-  newWindow.document.write('<img src="' + canvas.toDataURL() + '">');
+  newWindow.document.write('<img src="' + canvas.toDataURL() + '" width="100%" height="100%">');
   newWindow.document.addEventListener('load', function() {
       newWindow.focus();
       newWindow.print();
