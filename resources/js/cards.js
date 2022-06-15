@@ -100,8 +100,6 @@ const CARD_DATA_PARAMS_FIELD_CARD_OWNER = 'lang-card-owner';
 const CARD_DATA_PARAMS_FIELD_QR_CODE_URL = 'lang-qr-code-url';
 
 const TRINITY_SYMBOL_URL = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Scutum_fidei_LAT.svg';
-const CATEGORY_ICONS_URL = '/files/resources/images/png/categories-icons/';
-const CATEGORY_ICONS_FILENAME_EXTENSION = '.png';
 
 const STATUS_COLOR_BORDER = '#000000';
 const STATUS_COLOR_CIRCLE = '#DDDDDD';
@@ -137,6 +135,11 @@ CARD_TYPE_BACKGROUND_IMAGES[CARD_TYPE_GOD] = CARD_TYPE_BACKGROUND_IMAGES[CARD_TY
 
 CSS_INVISIBLE = 'display: none';
 
+PATRON_CATEGORIES_JSON_FILE = '/files/data/records/categories.json';
+FEMALE_CATEGORY = 'female';
+CATEGORY_NAME = 'name';
+CATEGORY_FEMALE_EQUIVALENT_NAME = 'female-equivalent-' + CATEGORY_NAME;
+
 LANGUAGE_JSON_FILE = '/files/data/website-language-variables.json';
 LANGUAGE_MISSING_VARIABLE_SIGN = '!!!';
 LANGUAGE_VARIABLE_EDIT_BUTTON = 'lang-edit-fields';
@@ -144,6 +147,7 @@ LANGUAGE_VARIABLE_HIDE_BUTTON = 'lang-hide-fields';
 LANGUAGE_VARIABLE_REFRESH_BUTTON = 'lang-refresh-fields';
 
 let languageVariables = {};
+let patronCategories = {};
 let cardsData = [];
 let filesContents = {};
 let filesContentsErrors = {};
@@ -188,6 +192,7 @@ const getContext = function() {
 
 const buildForm = async function() {
   languageVariables = await getJsonFromFile(LANGUAGE_JSON_FILE);
+  patronCategories = await getJsonFromFile(PATRON_CATEGORIES_JSON_FILE);
   buildPaperFormatSelect();
   buildPaperOrientationSelect();
   buildMarginSizeSelect();
@@ -676,6 +681,33 @@ const getLanguageVariable = function(variable, capitalize) {
   return result;
 }
 
+const getCategoriesLanguageVariables = function(categories) {
+  let result = [];
+  let language = getLanguage();
+  let isFemale = false;
+  if (categories.indexOf(FEMALE_CATEGORY) != -1) {
+    isFemale = true;
+  }
+
+  for (const category of categories) {
+    let translation = category + LANGUAGE_MISSING_VARIABLE_SIGN;
+
+    if (isFemale && patronCategories[category][CATEGORY_FEMALE_EQUIVALENT_NAME] != undefined) {
+      if (patronCategories[category][CATEGORY_FEMALE_EQUIVALENT_NAME][language] != undefined) {
+        translation = patronCategories[category][CATEGORY_FEMALE_EQUIVALENT_NAME][language];
+      }
+    } else if (patronCategories[category][CATEGORY_NAME] != undefined) {
+      if (patronCategories[category][CATEGORY_NAME][language] != undefined) {
+        translation = patronCategories[category][CATEGORY_NAME][language];
+      }
+    }
+
+    result.push(translation);
+  }
+
+  return result;
+}
+
 const getTranslatedNameData = function(data, key) {
   const names = data[key];
   let language = getLanguage();
@@ -1057,8 +1089,8 @@ const getDataFileParams = function(cardType, data, dataPath) {
     result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_X] = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_X];
     result[CARD_DATA_PARAMS_FIELD_IMAGE_AREA_BOTTOM_RIGHT_Y] = imageData[IMAGE_DATA_FIELD_AREA_BOTTOM_RIGHT_Y];
     result[CARD_DATA_PARAMS_FIELD_DEATH] = getDeathDate(data[FILE_DATA_DEATH_KEY]);
-    result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY] ? data[FILE_DATA_CATEGORIES_KEY].join(',') : '';
-    result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY] ? data[FILE_DATA_ORDER_KEY].join(',') : '';
+    result[CARD_DATA_PARAMS_FIELD_CATEGORIES] = data[FILE_DATA_CATEGORIES_KEY] ? getCategoriesLanguageVariables(data[FILE_DATA_CATEGORIES_KEY]).join(', ') : '';
+    result[CARD_DATA_PARAMS_FIELD_ORDER] = data[FILE_DATA_ORDER_KEY] ? data[FILE_DATA_ORDER_KEY].join(', ') : '';
     result[CARD_DATA_PARAMS_FIELD_CARD_OWNER] = cardOwner;
     result[CARD_DATA_PARAMS_FIELD_QR_CODE_URL] = qrCodeUrl;
   }
@@ -1099,21 +1131,6 @@ const getDeathDate = function(dates) {
   }
 
   return date;
-}
-
-const drawCategoryIcon = function(category, x, y, size) {
-    let image = new Image();
-    image.onload = function() {
-      context.drawImage(image, x, y, size, size);
-    }
-    image.src = CATEGORY_ICONS_URL + category + CATEGORY_ICONS_FILENAME_EXTENSION;
-}
-
-const drawCategoriesIcons = function(categories, x, y, size) {
-  for (const category of categories) {
-    drawCategoryIcon(category, x, y, size);
-    x += size;
-  }
 }
 
 const drawGodTriangle = function(x, y, size) {
@@ -1332,16 +1349,20 @@ const drawCard = function(cardId) {
       }
 
       //categories
-      const categoriesSize = mm2px(5);
+      const categoriesWidth = cardWidth / 2;
+      const categoriesHeight = mm2px(5);
       const categoriesX = x + marginSize;
       const categoriesY = y + nameHeight + imageHeight + deathHeight;
-      drawCategoriesIcons(params[CARD_DATA_PARAMS_FIELD_CATEGORIES].split(','), categoriesX, categoriesY, categoriesSize);
+      const categoriesColor = 'green';
+      if (params[CARD_DATA_PARAMS_FIELD_CATEGORIES] !== undefined) {
+        drawText(params[CARD_DATA_PARAMS_FIELD_CATEGORIES], categoriesX, categoriesY, categoriesWidth, categoriesHeight, categoriesColor, fontStyle, TEXT_ALIGN_LEFT);
+      }
 
       //order
       const orderWidth = cardWidth / 2;
       const orderHeight = mm2px(7);
       const orderX = x + marginSize;
-      const orderY = categoriesY + categoriesSize;
+      const orderY = categoriesY + categoriesHeight;
       const orderColor = 'yellow';
       if (params[CARD_DATA_PARAMS_FIELD_ORDER] !== undefined) {
         drawText(params[CARD_DATA_PARAMS_FIELD_ORDER].replace(/,([^ ])/g, ', $1'), orderX, orderY, orderWidth, orderHeight, orderColor, fontStyle, TEXT_ALIGN_LEFT);

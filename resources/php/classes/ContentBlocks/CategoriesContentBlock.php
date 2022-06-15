@@ -9,7 +9,6 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
     private const NAME_INDEX = 'name';
     private const FEMALE_EQUIVALENT_NAME_INDEX = 'female-equivalent-name';
     private const DESCRIPTION_INDEX = 'description';
-    private const ICON_INDEX = 'icon';
 
     private const TRANSLATED_INDEXES = [
         self::NAME_INDEX,
@@ -72,7 +71,6 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
         $variables['record-id'] = $recordId;
         $variables['category-name'] = $name;
         $variables['category-description'] = $description;
-        $variables['category-icon-src'] = $categoryRow[self::ICON_INDEX] ?? '';
 
         $content = $this->getReplacedContent($categoryItemContent, $variables);
 
@@ -98,7 +96,6 @@ class CategoriesContentBlock extends ContentBlock implements ContentBlockInterfa
 
             $variables = [];
             $variables['category-name'] = $name;
-            $variables['category-icon-src'] = $categoryRow[self::ICON_INDEX] ?? '';
 
             $content = $this->getReplacedContent($itemContent, $variables);
 

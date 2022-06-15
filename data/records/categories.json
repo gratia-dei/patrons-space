@@ -1,6 +1,5 @@
 {
     "god": {
-        "icon": "/files/resources/images/png/categories-icons/god.png",
         "name": {
             "en": "God",
             "la": "Deus",
@@ -13,7 +12,6 @@
     },
 
     "angel": {
-        "icon": "/files/resources/images/png/categories-icons/angel.png",
         "name": {
             "en": "angel",
             "la": "angelus",
@@ -26,7 +24,6 @@
     },
 
     "male": {
-        "icon": "/files/resources/images/png/categories-icons/male.png",
         "name": {
             "en": "male",
             "la": "vir",
@@ -39,7 +36,6 @@
     },
 
     "female": {
-        "icon": "/files/resources/images/png/categories-icons/female.png",
         "name": {
             "en": "female",
             "la": "femina",
@@ -52,7 +48,6 @@
     },
 
     "group": {
-        "icon": "/files/resources/images/png/categories-icons/group.png",
         "name": {
             "en": "group",
             "la": "grex",
@@ -65,7 +60,6 @@
     },
 
     "mother-of-god": {
-        "icon": "/files/resources/images/png/categories-icons/mother-of-god.png",
         "name": {
             "en": "Mother of God",
             "la": "Mater Dei",
@@ -78,7 +72,6 @@
     },
 
     "martyr": {
-        "icon": "/files/resources/images/png/categories-icons/martyr.png",
         "name": {
             "en": "martyr",
             "la": "martyr",
@@ -95,7 +88,6 @@
     },
 
     "virgin": {
-        "icon": "/files/resources/images/png/categories-icons/virgin.png",
         "name": {
             "en": "virgin",
             "la": "virgo",
@@ -108,7 +100,6 @@
     },
 
     "apostle": {
-        "icon": "/files/resources/images/png/categories-icons/apostle.png",
         "name": {
             "en": "apostle",
             "la": "apostolus",
@@ -121,7 +112,6 @@
     },
 
     "evangelist": {
-        "icon": "/files/resources/images/png/categories-icons/evangelist.png",
         "name": {
             "en": "evangelist",
             "la": "evangelista",
@@ -134,7 +124,6 @@
     },
 
     "widow": {
-        "icon": "/files/resources/images/png/categories-icons/widow.png",
         "name": {
             "en": "widow",
             "la": "vidua",
@@ -147,7 +136,6 @@
     },
 
     "patriarch": {
-        "icon": "/files/resources/images/png/categories-icons/patriarch.png",
         "name": {
             "en": "patriarch",
             "la": "patriarcha",
@@ -160,7 +148,6 @@
     },
 
     "prophet": {
-        "icon": "/files/resources/images/png/categories-icons/prophet.png",
         "name": {
             "en": "prophet",
             "la": "propheta",
@@ -173,7 +160,6 @@
     },
 
     "confessor": {
-        "icon": "/files/resources/images/png/categories-icons/confessor.png",
         "name": {
             "en": "confessor",
             "la": "confessor",
@@ -186,7 +172,6 @@
     },
 
     "hermit": {
-        "icon": "/files/resources/images/png/categories-icons/hermit.png",
         "name": {
             "en": "hermit",
             "la": "anachoreta",
@@ -203,7 +188,6 @@
     },
 
     "tertiary": {
-        "icon": "/files/resources/images/png/categories-icons/tertiary.png",
         "name": {
             "en": "tertiary",
             "la": "tertiarius",
@@ -221,7 +205,6 @@
     },
 
     "abbot": {
-        "icon": "/files/resources/images/png/categories-icons/abbot.png",
         "name": {
             "en": "abbot",
             "la": "abbas",
@@ -239,7 +222,6 @@
     },
 
     "religious": {
-        "icon": "/files/resources/images/png/categories-icons/religious.png",
         "name": {
             "en": "religious",
             "la": "religiosus",
@@ -257,7 +239,6 @@
     },
 
     "doctor-of-the-church": {
-        "icon": "/files/resources/images/png/categories-icons/doctor-of-the-church.png",
         "name": {
             "en": "doctor of the Church",
             "la": "doctor Ecclesiae",
@@ -270,7 +251,6 @@
     },
 
     "pope": {
-        "icon": "/files/resources/images/png/categories-icons/pope.png",
         "name": {
             "en": "pope",
             "la": "papa",
@@ -283,7 +263,6 @@
     },
 
     "bishop": {
-        "icon": "/files/resources/images/png/categories-icons/bishop.png",
         "name": {
             "en": "bishop",
             "la": "episcopus",
@@ -296,7 +275,6 @@
     },
 
     "presbyter": {
-        "icon": "/files/resources/images/png/categories-icons/presbyter.png",
         "name": {
             "en": "presbyter",
             "la": "prezbyter",
@@ -309,7 +287,6 @@
     },
 
     "deacon": {
-        "icon": "/files/resources/images/png/categories-icons/deacon.png",
         "name": {
             "en": "deacon",
             "la": "diaconus",
@@ -322,7 +299,6 @@
     },
 
     "emperor": {
-        "icon": "/files/resources/images/png/categories-icons/emperor.png",
         "name": {
             "en": "emperor",
             "la": "imperator",
@@ -340,7 +316,6 @@
     },
 
     "king": {
-        "icon": "/files/resources/images/png/categories-icons/king.png",
         "name": {
             "en": "king",
             "la": "rex",
@@ -358,7 +333,6 @@
     },
 
     "prince": {
-        "icon": "/files/resources/images/png/categories-icons/prince.png",
         "name": {
             "en": "prince",
             "la": "princeps",
