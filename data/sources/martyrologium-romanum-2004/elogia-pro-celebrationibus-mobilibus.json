@@ -79,9 +79,11 @@
         "base": "getResurrectionFeastDate",
         "move": {
             "1": 60,
-            "2": 63
+            "2": 60,
+            "3": 63,
+            "4": 63
         },
-        "la": "Feria V vel Dominica post Sanctissimam Trinitatem*[/][1|Sollémnitas sanctissimi Córporis et Sánguinis Christi], quibus sacris alimóniis ipse remédium immortalitátis et pignus resurrectiónis præbet.[/]*Ubi sollemnitas sanctissimi Corporis et Sanguinis Christi non est de praecepto servanda, assignatur, tamquam diei proprio, [2|dominicae post SS.mam Trinitatem]."
+        "la": "Feria V vel Dominica post Sanctissimam Trinitatem*[/][1|Sollémnitas sanctissimi Córporis] et [2|Sánguinis Christi], quibus sacris alimóniis ipse remédium immortalitátis et pignus resurrectiónis præbet.[/]*Ubi [3|sollemnitas sanctissimi Corporis] et [4|Sanguinis Christi] non est de praecepto servanda, assignatur, tamquam diei proprio, dominicae post SS.mam Trinitatem."
     },
 
     "13": {

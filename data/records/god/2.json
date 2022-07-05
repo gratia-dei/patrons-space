@@ -309,20 +309,35 @@
     "18": {
       "names": {
         "la": [
-          "Sanctissimum Corpore et Sanguis Christi"
+          "Sanctissimum Corpore Christi"
         ],
         "pl": [
-          "Najświętsze Ciało i Krew Chrystusa"
+          "Najświętsze Ciało Chrystusa"
         ]
       },
 
       "data-links": {
-        "mr-2004-movable": ["1:#12", "2:#12"],
+        "mr-2004-movable": ["1:#12", "3:#12"],
         "mr-1956-movable": ["1:#21"]
       }
     },
 
     "19": {
+      "names": {
+        "la": [
+          "Pretiosissimum Sanguis Christi"
+        ],
+        "pl": [
+          "Najdroższa Krew Chrystusa"
+        ]
+      },
+
+      "data-links": {
+        "mr-2004-movable": ["2:#12", "4:#12"]
+      }
+    },
+
+    "20": {
       "names": {
         "la": [
           "Octava Sanctissimi Corporis Christi"
@@ -337,7 +352,7 @@
       }
     },
 
-    "20": {
+    "21": {
       "names": {
         "la": [
           "Sanctissimum Cor Iesu"
@@ -353,7 +368,7 @@
       }
     },
 
-    "21": {
+    "22": {
       "names": {
         "la": [
           "Octava Sacratissimi Cordis Iesu"
@@ -368,7 +383,7 @@
       }
     },
 
-    "22": {
+    "23": {
       "names": {
         "la": [
           "Iesus Christus Rex"
@@ -383,7 +398,7 @@
       }
     },
 
-    "23": {
+    "24": {
       "names": {
         "la": [
           "Iesus Christus Universorum Rex"
